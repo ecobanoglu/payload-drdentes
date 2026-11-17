@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from '@/features/adminGroups'
 
 import {
   BlocksFeature,
@@ -29,6 +30,11 @@ import { slugField } from 'payload'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
+  // Sidebar ve butonlarda görünen ad (admin paneli diline göre)
+  labels: {
+    singular: { tr: 'Yazı', en: 'Post' },
+    plural: { tr: 'Yazılar', en: 'Posts' },
+  },
   access: {
     create: staffCreateDraft,
     delete: isEditor,
@@ -48,6 +54,7 @@ export const Posts: CollectionConfig<'posts'> = {
     },
   },
   admin: {
+    group: ADMIN_GROUPS.content,
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>

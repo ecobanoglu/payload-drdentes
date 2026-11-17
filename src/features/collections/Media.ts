@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from '@/features/adminGroups'
 
 import {
   FixedToolbarFeature,
@@ -15,6 +16,14 @@ const dirname = path.dirname(filename)
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  // Sidebar ve butonlarda görünen ad (admin paneli diline göre)
+  labels: {
+    singular: { tr: 'Medya', en: 'Media' },
+    plural: { tr: 'Medya', en: 'Media' },
+  },
+  admin: {
+    group: ADMIN_GROUPS.content,
+  },
   folders: true,
   access: {
     create: isStaff,

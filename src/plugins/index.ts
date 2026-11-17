@@ -1,4 +1,5 @@
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
+import { ADMIN_GROUPS } from '@/features/adminGroups'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
@@ -35,6 +36,11 @@ export const plugins: Plugin[] = [
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {
+      labels: {
+        singular: { tr: 'Yönlendirme', en: 'Redirect' },
+        plural: { tr: 'Yönlendirmeler', en: 'Redirects' },
+      },
+      admin: { group: ADMIN_GROUPS.settings },
       access: { create: isEditor, update: isEditor, delete: isEditor },
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
@@ -84,9 +90,19 @@ export const plugins: Plugin[] = [
     defaultToEmail: process.env.EMAIL_CONTACT_TO,
     // Form gönderimi herkese açık kalır; okuma/silme yalnızca editör ve üstü
     formSubmissionOverrides: {
+      labels: {
+        singular: { tr: 'Form Gönderimi', en: 'Form Submission' },
+        plural: { tr: 'Form Gönderimleri', en: 'Form Submissions' },
+      },
+      admin: { group: ADMIN_GROUPS.forms },
       access: { read: isEditor, update: () => false, delete: isEditor },
     },
     formOverrides: {
+      labels: {
+        singular: { tr: 'Form', en: 'Form' },
+        plural: { tr: 'Formlar', en: 'Forms' },
+      },
+      admin: { group: ADMIN_GROUPS.forms },
       access: { create: isEditor, update: isEditorOrTranslator, delete: isEditor },
       hooks: { beforeChange: [restrictTranslatorEdits] },
       fields: ({ defaultFields }) => {
@@ -116,6 +132,11 @@ export const plugins: Plugin[] = [
     localize: true,
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
+      labels: {
+        singular: { tr: 'Arama Kaydı', en: 'Search Result' },
+        plural: { tr: 'Arama Kayıtları', en: 'Search Results' },
+      },
+      admin: { group: ADMIN_GROUPS.settings },
       access: { update: isEditor, delete: isEditor },
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]

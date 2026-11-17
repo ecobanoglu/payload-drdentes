@@ -4,12 +4,14 @@ import type { Page } from '@/payload-types'
 
 import { ArchiveBlock } from '@/features/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/features/blocks/CallToAction/Component'
+import { CardsBlockComponent } from '@/features/blocks/Cards/Component'
 import { ContentBlock } from '@/features/blocks/Content/Component'
 import { FormBlock } from '@/features/blocks/Form/Component'
 import { MediaBlock } from '@/features/blocks/MediaBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
+  cards: CardsBlockComponent,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,

@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/features/fields/linkGroup'
+import { defaultScenePalette, scenePaletteOptions } from './Scene3D/palettes'
 
 /** Sayfa üst alanı (hero). Tüm içeriği dile göre ayrı tutulur (`localized`). */
 export const hero: Field = {
@@ -36,6 +37,11 @@ export const hero: Field = {
         {
           label: 'Low Impact',
           value: 'lowImpact',
+        },
+        {
+          // Etkileşimli three.js sahnesi (ana sayfa için tasarlandı)
+          label: '3D Sahne',
+          value: 'scene3d',
         },
       ],
       required: true,
@@ -68,6 +74,17 @@ export const hero: Field = {
       },
       relationTo: 'media',
       required: true,
+    },
+    {
+      // 3D sahnenin renkleri; yalnızca "3D Sahne" tipinde görünür
+      name: 'scenePalette',
+      label: '3D sahne renk paleti',
+      type: 'select',
+      defaultValue: defaultScenePalette,
+      options: scenePaletteOptions,
+      admin: {
+        condition: (_, { type } = {}) => type === 'scene3d',
+      },
     },
   ],
   label: false,

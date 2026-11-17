@@ -26,7 +26,11 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   const hrefFor = (locale: Locale) => (alternates ? (alternates[locale] ?? '/') : pathname)
 
   return (
-    <nav aria-label={t('language')} className={cn('flex items-center gap-2 text-sm', className)}>
+    // text-primary: header temasına (açık/koyu) uyar
+    <nav
+      aria-label={t('language')}
+      className={cn('flex items-center gap-2 text-sm text-primary', className)}
+    >
       {locales.map((locale) => {
         const isActive = locale === currentLocale
         return (

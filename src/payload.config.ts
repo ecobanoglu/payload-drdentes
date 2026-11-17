@@ -5,6 +5,7 @@ import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
+import { CardSets } from './features/collections/CardSets'
 import { Categories } from './features/collections/Categories'
 import { Media } from './features/collections/Media'
 import { Pages } from './features/collections/Pages'
@@ -107,7 +108,8 @@ export default buildConfig({
         migrationDir: path.resolve(dirname, 'migrations'),
     }),
     email,
-    collections: [Pages, Posts, Media, Categories, Users],
+    // Sıra, admin sidebar'daki sırayı da belirler (grup içinde korunur)
+    collections: [Pages, Posts, Categories, Media, CardSets, Users],
     // Medya klasörleri: personel oluşturur/düzenler, editör ve üstü siler
     folders: {
         collectionOverrides: [

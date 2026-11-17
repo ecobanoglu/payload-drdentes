@@ -69,8 +69,9 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
-    media: Media;
     categories: Category;
+    media: Media;
+    'card-sets': CardSet;
     users: User;
     redirects: Redirect;
     forms: Form;
@@ -91,8 +92,9 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    'card-sets': CardSetsSelect<false> | CardSetsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -164,7 +166,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'scene3d';
     richText?: {
       root: {
         type: string;
@@ -205,8 +207,9 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
+    scenePalette?: ('aqua' | 'pearl' | 'gold') | null;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | CardsBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -796,6 +799,81 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardsBlock".
+ */
+export interface CardsBlock {
+  heading?: string | null;
+  intro?: string | null;
+  /**
+   * Globaller → Kart Grupları altında oluşturulan gruplardan birini seçin.
+   */
+  cardSet: number | CardSet;
+  columns?: ('2' | '3' | '4') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cards';
+}
+/**
+ * Sayfalarda "Cards" bloğu ile kullanılan, merkezi yönetilen kart setleri.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "card-sets".
+ */
+export interface CardSet {
+  id: number;
+  /**
+   * Örn. "Özellikler", "Hizmetler". Sitede görünmez.
+   */
+  name: string;
+  variant: 'features' | 'services';
+  cards?:
+    | {
+        icon?:
+          | (
+              | 'sparkles'
+              | 'smile'
+              | 'shieldCheck'
+              | 'heartPulse'
+              | 'stethoscope'
+              | 'syringe'
+              | 'scan'
+              | 'clock'
+              | 'calendar'
+              | 'award'
+              | 'users'
+              | 'globe'
+            )
+          | null;
+        image?: (number | null) | Media;
+        /**
+         * Diğer dillerde boş bırakılan kart o dilde gösterilmez.
+         */
+        title?: string | null;
+        description?: string | null;
+        enableLink?: boolean | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -993,12 +1071,16 @@ export interface PayloadLockedDocument {
         value: number | Post;
       } | null)
     | ({
+        relationTo: 'categories';
+        value: number | Category;
+      } | null)
+    | ({
         relationTo: 'media';
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'categories';
-        value: number | Category;
+        relationTo: 'card-sets';
+        value: number | CardSet;
       } | null)
     | ({
         relationTo: 'users';
@@ -1093,6 +1175,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        scenePalette?: T;
       };
   layout?:
     | T
@@ -1102,6 +1185,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        cards?: T | CardsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1212,6 +1296,18 @@ export interface FormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardsBlock_select".
+ */
+export interface CardsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  cardSet?: T;
+  columns?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1240,6 +1336,26 @@ export interface PostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  title?: T;
+  generateSlug?: T;
+  slug?: T;
+  parent?: T;
+  breadcrumbs?:
+    | T
+    | {
+        doc?: T;
+        url?: T;
+        label?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1337,19 +1453,28 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories_select".
+ * via the `definition` "card-sets_select".
  */
-export interface CategoriesSelect<T extends boolean = true> {
-  title?: T;
-  generateSlug?: T;
-  slug?: T;
-  parent?: T;
-  breadcrumbs?:
+export interface CardSetsSelect<T extends boolean = true> {
+  name?: T;
+  variant?: T;
+  cards?:
     | T
     | {
-        doc?: T;
-        url?: T;
-        label?: T;
+        icon?: T;
+        image?: T;
+        title?: T;
+        description?: T;
+        enableLink?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
         id?: T;
       };
   updatedAt?: T;

@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from '@/features/adminGroups'
 
 import { isAdmin, isAdminField, isAdminOrSelf } from '../../../access/rbac'
 import { can, ROLE_LABELS, ROLES } from '../../../access/roles'
@@ -14,6 +15,11 @@ import { protectRoles, protectSuperAdminDelete } from './hooks/protectRoles'
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  // Sidebar ve butonlarda görünen ad (admin paneli diline göre)
+  labels: {
+    singular: { tr: 'Kullanıcı', en: 'User' },
+    plural: { tr: 'Kullanıcılar', en: 'Users' },
+  },
   access: {
     // Admin paneline yalnızca personel girebilir; üyeler (member) giremez
     admin: ({ req: { user } }) => can.accessAdmin(user),
@@ -23,6 +29,7 @@ export const Users: CollectionConfig = {
     update: isAdminOrSelf,
   },
   admin: {
+    group: ADMIN_GROUPS.settings,
     defaultColumns: ['name', 'email', 'roles'],
     useAsTitle: 'name',
   },

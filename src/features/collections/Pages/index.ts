@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from '@/features/adminGroups'
 
 import { isEditor, isEditorOrTranslator, staffOrPublished } from '../../../access/rbac'
 import { restrictTranslatorEdits } from '../../../hooks/restrictTranslatorEdits'
@@ -6,6 +7,7 @@ import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
+import { CardsBlock } from '../../blocks/Cards/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/features/heros/config'
 import { slugField } from 'payload'
@@ -23,6 +25,11 @@ import {
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
+  // Sidebar ve butonlarda görünen ad (admin paneli diline göre)
+  labels: {
+    singular: { tr: 'Sayfa', en: 'Page' },
+    plural: { tr: 'Sayfalar', en: 'Pages' },
+  },
   access: {
     create: isEditor,
     delete: isEditor,
@@ -39,6 +46,7 @@ export const Pages: CollectionConfig<'pages'> = {
     breadcrumbs: true,
   },
   admin: {
+    group: ADMIN_GROUPS.content,
     defaultColumns: ['title', 'slug', 'parent', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
@@ -76,7 +84,7 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               localized: true,
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, CardsBlock],
               required: true,
               admin: {
                 initCollapsed: true,
