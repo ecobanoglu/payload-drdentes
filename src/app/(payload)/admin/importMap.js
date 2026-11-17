@@ -28,6 +28,11 @@ import { RowLabel as RowLabel_a2b03205fb8f40deb958f6910bf019e8 } from '@/feature
 import { AdminIcon as AdminIcon_066c562e10ad4e70ff0de1a39f9b91f6 } from '@/components/admin/Brand'
 import { AdminLogo as AdminLogo_066c562e10ad4e70ff0de1a39f9b91f6 } from '@/components/admin/Brand'
 import { AdminNavBrand as AdminNavBrand_066c562e10ad4e70ff0de1a39f9b91f6 } from '@/components/admin/Brand'
+import { StatWidget as StatWidget_a69c4e3d5d5409c0990d91ef87557cc1 } from '@/features/dashboard/widgets/StatWidget'
+import { SubmissionsChartWidget as SubmissionsChartWidget_b22324c68b5167051ee7318667f3cbbc } from '@/features/dashboard/widgets/SubmissionsChartWidget'
+import { TranslationStatusWidget as TranslationStatusWidget_9bda7f6a9fba89403d5407a443550da8 } from '@/features/dashboard/widgets/TranslationStatusWidget'
+import { RecentSubmissionsWidget as RecentSubmissionsWidget_71506fd7a1cf2b221a9641caed66001f } from '@/features/dashboard/widgets/RecentSubmissionsWidget'
+import { RecentContentWidget as RecentContentWidget_444b15207bb6e5e116cc73b194f95879 } from '@/features/dashboard/widgets/RecentContentWidget'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 
@@ -63,6 +68,11 @@ export const importMap = {
   "@/components/admin/Brand#AdminIcon": AdminIcon_066c562e10ad4e70ff0de1a39f9b91f6,
   "@/components/admin/Brand#AdminLogo": AdminLogo_066c562e10ad4e70ff0de1a39f9b91f6,
   "@/components/admin/Brand#AdminNavBrand": AdminNavBrand_066c562e10ad4e70ff0de1a39f9b91f6,
+  "@/features/dashboard/widgets/StatWidget#StatWidget": StatWidget_a69c4e3d5d5409c0990d91ef87557cc1,
+  "@/features/dashboard/widgets/SubmissionsChartWidget#SubmissionsChartWidget": SubmissionsChartWidget_b22324c68b5167051ee7318667f3cbbc,
+  "@/features/dashboard/widgets/TranslationStatusWidget#TranslationStatusWidget": TranslationStatusWidget_9bda7f6a9fba89403d5407a443550da8,
+  "@/features/dashboard/widgets/RecentSubmissionsWidget#RecentSubmissionsWidget": RecentSubmissionsWidget_71506fd7a1cf2b221a9641caed66001f,
+  "@/features/dashboard/widgets/RecentContentWidget#RecentContentWidget": RecentContentWidget_444b15207bb6e5e116cc73b194f95879,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24
 }

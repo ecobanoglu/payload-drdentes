@@ -140,6 +140,9 @@ npm run migrate
 
 Migration dosyaları depoya eklenir; yayında `npm run ci` bunları uygular.
 
+### Admin dashboard
+Açılış sayfasındaki widget'lar gerçek veriyle çalışır ve kullanıcının yetkisine uyar: istatistik kartları (sayfa, yazı, form gönderimi, medya), son 7 gün form gönderimi grafiği, dillere göre çeviri durumu, son form gönderimleri ve son güncellenen içerikler. Tanımlar ve varsayılan yerleşim: [src/features/dashboard](src/features/dashboard). Kullanıcı dashboard'u düzenlerse (taşı, boyutlandır, ekle/kaldır) yerleşim onun tercihi olarak saklanır.
+
 ### Animasyon
 - Yumuşak kaydırma (Lenis) ve GSAP yalnızca site tarafında; "hareketi azalt" ayarına uyulur.
 - GSAP'yi `@/lib/animation/gsap` üzerinden import edin. Kaydırınca belirme: `<Reveal>`.

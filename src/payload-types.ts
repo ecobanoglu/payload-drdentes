@@ -126,6 +126,11 @@ export interface Config {
   };
   locale: 'tr' | 'en' | 'es' | 'ar' | 'el';
   widgets: {
+    stat: StatWidget;
+    'submissions-chart': SubmissionsChartWidget;
+    'translation-status': TranslationStatusWidget;
+    'recent-submissions': RecentSubmissionsWidget;
+    'recent-content': RecentContentWidget;
     collections: CollectionsWidget;
   };
   user: User;
@@ -1890,6 +1895,56 @@ export interface FooterSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stat_widget".
+ */
+export interface StatWidget {
+  data?: {
+    metric: 'pages' | 'posts' | 'submissions' | 'media';
+  };
+  width: 'x-small' | 'small' | 'medium';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "submissions-chart_widget".
+ */
+export interface SubmissionsChartWidget {
+  data?: {
+    [k: string]: unknown;
+  };
+  width: 'medium' | 'large' | 'x-large' | 'full';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "translation-status_widget".
+ */
+export interface TranslationStatusWidget {
+  data?: {
+    [k: string]: unknown;
+  };
+  width: 'small' | 'medium' | 'large' | 'x-large' | 'full';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "recent-submissions_widget".
+ */
+export interface RecentSubmissionsWidget {
+  data?: {
+    [k: string]: unknown;
+  };
+  width: 'medium' | 'large' | 'x-large' | 'full';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "recent-content_widget".
+ */
+export interface RecentContentWidget {
+  data?: {
+    [k: string]: unknown;
+  };
+  width: 'medium' | 'large' | 'x-large' | 'full';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

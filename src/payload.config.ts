@@ -22,6 +22,7 @@ import { en } from '@payloadcms/translations/languages/en'
 import { tr } from '@payloadcms/translations/languages/tr'
 import { hasRole } from './access/roles'
 import { SITE_NAME } from './lib/utilities/site'
+import { dashboard } from './features/dashboard'
 
 /**
  * E-posta gönderimi (Resend). `RESEND_API_KEY` yoksa (ör. CI build) adaptör eklenmez;
@@ -50,6 +51,8 @@ export default buildConfig({
         },
         // Yalnızca açık tema (koyu mod seçeneği kaldırılır). Görünüm: src/app/(payload)/custom.scss
         theme: 'light',
+        // Gerçek verili dashboard widget'ları (src/features/dashboard)
+        dashboard,
         components: {
             // Payload logosu yerine site markası
             graphics: {
