@@ -7,16 +7,24 @@ import { Reveal } from '@/components/animation/Reveal'
 import { ArchiveBlock } from '@/features/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/features/blocks/CallToAction/Component'
 import { CardsBlockComponent } from '@/features/blocks/Cards/Component'
+import { ContactBlockComponent } from '@/features/blocks/Contact/Component'
+import { FaqBlockComponent } from '@/features/blocks/Faq/Component'
+import { FeatureSplitBlockComponent } from '@/features/blocks/FeatureSplit/Component'
+import { PricingBlockComponent } from '@/features/blocks/Pricing/Component'
 import { ContentBlock } from '@/features/blocks/Content/Component'
 import { FormBlock } from '@/features/blocks/Form/Component'
 import { MediaBlock } from '@/features/blocks/MediaBlock/Component'
 
 /** Kendi giriş animasyonunu yöneten bloklar (ör. kartlar sırayla belirir); dış Reveal uygulanmaz */
-const selfAnimatedBlocks = new Set<string>(['cards'])
+const selfAnimatedBlocks = new Set<string>(['cards', 'faq', 'pricing'])
 
 const blockComponents = {
   archive: ArchiveBlock,
   cards: CardsBlockComponent,
+  contact: ContactBlockComponent,
+  faq: FaqBlockComponent,
+  featureSplit: FeatureSplitBlockComponent,
+  pricing: PricingBlockComponent,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,

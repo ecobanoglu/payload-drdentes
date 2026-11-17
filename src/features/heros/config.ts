@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/features/fields/linkGroup'
+import { getYouTubeId } from '@/lib/utilities/youtube'
 import { defaultScenePalette, scenePaletteOptions } from './Scene3D/palettes'
 
 /** Sayfa üst alanı (hero). Tüm içeriği dile göre ayrı tutulur (`localized`). */
@@ -66,6 +67,37 @@ export const hero: Field = {
         maxRows: 2,
       },
     }),
+    {
+      // Butonların yanında "Tanıtım videosu" butonu; tıklanınca video açılır pencerede oynar
+      name: 'video',
+      label: { tr: 'Tanıtım videosu', en: 'Promo video' },
+      type: 'group',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'scene3d'].includes(type),
+      },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'url',
+              label: { tr: 'YouTube adresi', en: 'YouTube URL' },
+              type: 'text',
+              admin: { width: '60%', placeholder: 'https://www.youtube.com/watch?v=…' },
+              // Boş bırakılabilir; doluysa tanınan bir YouTube adresi olmalı
+              validate: (value: string | null | undefined) =>
+                !value || getYouTubeId(value) ? true : 'Geçerli bir YouTube video adresi girin.',
+            },
+            {
+              name: 'label',
+              label: { tr: 'Buton metni', en: 'Button label' },
+              type: 'text',
+              admin: { width: '40%', placeholder: 'Tanıtım Videosu' },
+            },
+          ],
+        },
+      ],
+    },
     {
       name: 'media',
       type: 'upload',

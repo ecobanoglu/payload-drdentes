@@ -223,3 +223,25 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+/* Zengin metindeki tablolar (Lexical): dar ekranda yatay kaydırılır, kenarlıklar temaya uyar */
+.lexical-table-container {
+  overflow-x: auto;
+  margin-block: 1.5rem;
+}
+.lexical-table {
+  width: 100%;
+  font-size: 0.9375rem;
+}
+.lexical-table .lexical-table-cell {
+  border-color: var(--border) !important;
+  vertical-align: top;
+  text-align: start;
+}
+.lexical-table .lexical-table-cell p {
+  margin: 0;
+}
+.lexical-table th.lexical-table-cell {
+  background: var(--muted);
+  font-weight: 600;
+}

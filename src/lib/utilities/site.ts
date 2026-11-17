@@ -6,7 +6,7 @@
  */
 
 /** Sitenin adı */
-export const SITE_NAME = 'Dr. Dentes'
+export const SITE_NAME = 'Dr.DENTES'
 
 /** Paylaşımlarda (Open Graph / Twitter) varsayılan görsel; sayfaya özel görsel yoksa kullanılır */
 export const DEFAULT_OG_IMAGE = '/og-default.webp'

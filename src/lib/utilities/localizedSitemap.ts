@@ -75,6 +75,6 @@ export const buildCollectionSitemap = async (
   )
 }
 
-/** Tüm dillerde aynı yolu olan statik sayfalar (ör. `/posts`, `/search`) için sitemap kayıtları. */
+/** Tüm dillerde aynı yolu olan statik sayfalar (ör. `/blog`, `/search`) için sitemap kayıtları. */
 export const staticRouteSitemap = (path: string): ISitemapField[] =>
   sitemapEntriesFromPaths(samePathInAllLocales(path), new Date().toISOString())

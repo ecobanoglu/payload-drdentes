@@ -34,10 +34,8 @@ export const AdminBar: React.FC<{
   const { adminBarProps } = props || {}
   const segments = useSelectedLayoutSegments()
   const [show, setShow] = useState(false)
-  // [locale] layout'unun altındaki ilk segment koleksiyonu belirtir: /tr/posts/... → posts
-  const collection = (
-    collectionLabels[segments?.[0] as keyof typeof collectionLabels] ? segments[0] : 'pages'
-  ) as keyof typeof collectionLabels
+  // [locale] layout'unun altındaki ilk segment: /tr/blog/... → posts koleksiyonu, diğerleri → pages
+  const collection: keyof typeof collectionLabels = segments?.[0] === 'blog' ? 'posts' : 'pages'
   const router = useRouter()
 
   const onAuthChange = React.useCallback((user: PayloadMeUser) => {

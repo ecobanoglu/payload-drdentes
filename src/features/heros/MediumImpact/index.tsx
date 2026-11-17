@@ -5,23 +5,29 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { VideoModal } from '@/components/VideoModal'
 
-export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText, video }) => {
   return (
     <div className="">
       <div className="container mb-8">
         {richText && <RichText className="mb-6" data={richText} enableGutter={false} />}
 
-        {Array.isArray(links) && links.length > 0 && (
-          <ul className="flex gap-4">
-            {links.map(({ link }, i) => {
+        {((Array.isArray(links) && links.length > 0) || video?.url) && (
+          <ul className="flex gap-4 flex-wrap items-center">
+            {links?.map(({ link }, i) => {
               return (
                 <li key={i}>
                   <CMSLink {...link} />
                 </li>
               )
             })}
-          </ul>
+            {video?.url && (
+                <li>
+                  <VideoModal url={video.url} label={video.label} />
+                </li>
+              )}
+            </ul>
         )}
       </div>
       <div className="container ">

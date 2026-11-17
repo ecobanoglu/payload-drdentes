@@ -6,6 +6,9 @@ import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { CardSets } from './features/collections/CardSets'
+import { Faqs } from './features/collections/Faqs'
+import { PricingPlans } from './features/collections/PricingPlans'
+import { ContactInfo } from './features/ContactInfo/config'
 import { Categories } from './features/collections/Categories'
 import { Media } from './features/collections/Media'
 import { Pages } from './features/collections/Pages'
@@ -36,7 +39,7 @@ const email = process.env.RESEND_API_KEY
     ? resendAdapter({
           apiKey: process.env.RESEND_API_KEY,
           defaultFromAddress: process.env.EMAIL_FROM_ADDRESS || 'onboarding@resend.dev',
-          defaultFromName: process.env.EMAIL_FROM_NAME || 'Dr. Dentes',
+          defaultFromName: process.env.EMAIL_FROM_NAME || 'Dr.DENTES',
       })
     : undefined
 
@@ -120,7 +123,7 @@ export default buildConfig({
     }),
     email,
     // Sıra, admin sidebar'daki sırayı da belirler (grup içinde korunur)
-    collections: [Pages, Posts, Categories, Media, CardSets, Users],
+    collections: [Pages, Posts, Faqs, PricingPlans, Categories, Media, CardSets, Users],
     // Medya klasörleri: personel oluşturur/düzenler, editör ve üstü siler
     folders: {
         collectionOverrides: [
@@ -131,7 +134,7 @@ export default buildConfig({
         ],
     },
     cors: [getServerSideURL()].filter(Boolean),
-    globals: [Header, Footer],
+    globals: [Header, Footer, ContactInfo],
     plugins,
     secret: process.env.PAYLOAD_SECRET,
     sharp,

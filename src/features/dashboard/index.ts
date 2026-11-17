@@ -70,7 +70,7 @@ export const dashboard: DashboardConfig = {
     { widgetSlug: 'translation-status', width: 'small' },
     { widgetSlug: 'recent-submissions', width: 'medium' },
     { widgetSlug: 'recent-content', width: 'medium' },
-    // Payload'un yerleşik koleksiyon kartları
-    { widgetSlug: 'collections', width: 'full' },
+    // Payload'un yerleşik koleksiyon kartları ("İçerik", "Globaller"… başlıklı) bilerek eklenmedi:
+    // aynı bağlantılar sidebar'da var. Kullanıcı isterse "Widget ekle" ile kendisi ekleyebilir.
   ],
 }

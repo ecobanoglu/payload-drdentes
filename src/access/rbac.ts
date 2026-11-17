@@ -55,3 +55,6 @@ export const staffCreateDraft: Access = ({ req: { user }, data }) => {
 
 /** Alan seviyesi: yalnızca admin */
 export const isAdminField: FieldAccess = ({ req: { user } }) => can.manageUsers(user)
+
+/** Alan seviyesi: yalnızca editör ve üstü (ör. fiyatlar — çevirmen çevirir ama tutarı değiştiremez) */
+export const isEditorField: FieldAccess = ({ req: { user } }) => can.manageContent(user)

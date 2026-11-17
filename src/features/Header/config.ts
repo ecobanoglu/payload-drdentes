@@ -34,6 +34,20 @@ export const Header: GlobalConfig = {
         },
       },
     },
+    {
+      // Menünün sağındaki vurgulu buton (ör. "Giriş Yap"); dile göre ayrı
+      name: 'cta',
+      label: { tr: 'Buton', en: 'Button' },
+      type: 'group',
+      localized: true,
+      fields: [
+        { name: 'enabled', label: { tr: 'Butonu göster', en: 'Show button' }, type: 'checkbox' },
+        link({
+          appearances: false,
+          overrides: { admin: { condition: (_, siblingData) => Boolean(siblingData?.enabled) } },
+        }),
+      ],
+    },
   ],
   hooks: {
     afterChange: [revalidateHeader],

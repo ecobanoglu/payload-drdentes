@@ -13,9 +13,9 @@
     "goHome": "العودة إلى الرئيسية"
   },
   "Posts": {
-    "title": "المقالات",
-    "metaTitle": "المقالات",
-    "pageMetaTitle": "المقالات – الصفحة {page}"
+    "title": "المدونة",
+    "metaTitle": "المدونة",
+    "pageMetaTitle": "المدونة – الصفحة {page}"
   },
   "Search": {
     "title": "بحث",
@@ -61,5 +61,41 @@
       "button": "إعادة تعيين كلمة المرور",
       "footer": "إذا لم تقدم هذا الطلب، تجاهل هذه الرسالة؛ لن تتغير كلمة المرور الخاصة بك."
     }
+  },
+  "Pricing": {
+    "monthly": "شهري",
+    "yearly": "سنوي",
+    "billingPeriod": "فترة الفوترة",
+    "perMonth": "/شهر",
+    "billedYearly": "يُفوتر {amount} سنويًا",
+    "save": "وفّر {percent}%",
+    "popular": "الأكثر شيوعًا",
+    "customPrice": "سعر مخصص",
+    "perYear": "/سنة"
+  },
+  "Contact": {
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "address": "العنوان",
+    "hours": "ساعات العمل",
+    "follow": "تابعنا",
+    "company": "الشركة",
+    "supportPhone": "التدريب والدعم",
+    "whatsapp": "واتساب",
+    "bankAccounts": "الحسابات البنكية",
+    "taxInfo": "المعلومات الضريبية"
+  },
+  "Faq": {
+    "expand": "إظهار الإجابة"
+  },
+  "Footer": {
+    "links": "روابط",
+    "contact": "اتصل بنا",
+    "hours": "ساعات العمل",
+    "social": "وسائل التواصل"
+  },
+  "Video": {
+    "play": "شاهد الفيديو",
+    "close": "إغلاق الفيديو"
   }
 }

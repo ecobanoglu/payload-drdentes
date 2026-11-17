@@ -1,50 +1,17 @@
-import type {
-  CollectionAfterChangeHook,
-  CollectionAfterDeleteHook,
-  CollectionConfig,
-  TextFieldSingleValidation,
-} from 'payload'
+import type { CollectionConfig } from 'payload'
 
 import { ADMIN_GROUPS } from '@/features/adminGroups'
 
-import { defaultLocale } from '../../../lib/i18n/config'
-
-import { revalidatePath } from 'next/cache'
 
 import { anyone, isEditor, isEditorOrTranslator } from '../../../access/rbac'
 import { restrictTranslatorEdits } from '../../../lib/hooks/restrictTranslatorEdits'
 import { link } from '../../fields/link'
+import { requiredInDefaultLocale } from '../../fields/validators'
+import {
+  revalidatePagesAfterChange,
+  revalidatePagesAfterDelete,
+} from '../../../lib/hooks/revalidatePages'
 import { cardIconOptions } from './icons'
-
-/**
- * Alan yalnızca varsayılan dilde (tr) zorunludur; diğer dillerde boş bırakılabilir.
- * Kademeli çeviri akışı için kullanılır (çevrilmemiş içerik o dilde gizlenir).
- */
-const requiredInDefaultLocale: TextFieldSingleValidation = (value, { req }) => {
-  const locale = req.locale && req.locale !== 'all' ? req.locale : defaultLocale
-  if (locale !== defaultLocale || (typeof value === 'string' && value.trim())) return true
-  return req.t('validation:required')
-}
-
-/**
- * Kart grubu değişince, onu kullanan sayfaların önbelleğini tüm dillerde temizler.
- * Hangi sayfaların kullandığını aramak yerine sayfa rotaları topluca yenilenir.
- */
-const revalidateCardSetPages = (context: Record<string, unknown>) => {
-  if (context.disableRevalidate) return
-  revalidatePath('/[locale]', 'page')
-  revalidatePath('/[locale]/[...slug]', 'page')
-}
-
-const revalidateAfterChange: CollectionAfterChangeHook = ({ doc, req: { context } }) => {
-  revalidateCardSetPages(context)
-  return doc
-}
-
-const revalidateAfterDelete: CollectionAfterDeleteHook = ({ doc, req: { context } }) => {
-  revalidateCardSetPages(context)
-  return doc
-}
 
 /**
  * Kart grupları: sayfalarda tekrar tekrar kullanılabilen, merkezi yönetilen kart setleri
@@ -154,6 +121,15 @@ export const CardSets: CollectionConfig<'card-sets'> = {
           localized: true,
         },
         {
+          // Kart altındaki kısa madde listesi; dil başına ayrı yazılır, böylece madde sayısı
+          // dile göre farklı olabilir (her satır bir madde)
+          name: 'points',
+          label: { tr: 'Maddeler', en: 'Bullet points' },
+          type: 'textarea',
+          localized: true,
+          admin: { description: 'Her satıra bir madde yazın. Boş bırakılabilir.' },
+        },
+        {
           // İsteğe bağlı bağlantı (ör. hizmet detay sayfası); etiket ve hedef dile göre ayrı
           name: 'enableLink',
           label: { tr: 'Bağlantı ekle', en: 'Add link' },
@@ -173,8 +149,8 @@ export const CardSets: CollectionConfig<'card-sets'> = {
   ],
   hooks: {
     beforeChange: [restrictTranslatorEdits],
-    afterChange: [revalidateAfterChange],
-    afterDelete: [revalidateAfterDelete],
+    afterChange: [revalidatePagesAfterChange],
+    afterDelete: [revalidatePagesAfterDelete],
   },
   timestamps: true,
 }

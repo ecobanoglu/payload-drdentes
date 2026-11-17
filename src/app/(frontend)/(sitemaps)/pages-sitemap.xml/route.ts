@@ -1,6 +1,7 @@
 import { getServerSideSitemap } from 'next-sitemap'
 import { unstable_cache } from 'next/cache'
 
+import { BLOG_PATH } from '@/lib/utilities/constants'
 import { buildCollectionSitemap, staticRouteSitemap } from '@/lib/utilities/localizedSitemap'
 
 /**
@@ -10,7 +11,7 @@ import { buildCollectionSitemap, staticRouteSitemap } from '@/lib/utilities/loca
 const getPagesSitemap = unstable_cache(
   async () => [
     ...staticRouteSitemap('/search'),
-    ...staticRouteSitemap('/posts'),
+    ...staticRouteSitemap(BLOG_PATH),
     ...(await buildCollectionSitemap('pages')),
   ],
   ['pages-sitemap'],

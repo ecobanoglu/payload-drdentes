@@ -131,7 +131,9 @@ export const FormBlock: React.FC<
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-              <div className="mb-4 last:mb-0">
+              {/* Alanlar satır sarmalı düzende: admin'de verilen genişlik (%50 vb.) geniş ekranda
+                  yan yana dizilir, mobilde her alan tam genişliktir */}
+              <div className="mb-6 flex flex-wrap gap-x-4 gap-y-6">
                 {formFromProps &&
                   formFromProps.fields &&
                   formFromProps.fields?.map((field, index) => {
@@ -139,7 +141,19 @@ export const FormBlock: React.FC<
                     const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
                     if (Field) {
                       return (
-                        <div className="mb-6 last:mb-0" key={index}>
+                        <div
+                          className="w-full md:w-(--field-width)"
+                          key={index}
+                          style={
+                            {
+                              // Yan yana alanlarda aradaki boşluk payı düşülür; tam genişlikte düşülmez
+                              '--field-width':
+                                'width' in field && field.width && Number(field.width) < 100
+                                  ? `calc(${field.width}% - 0.5rem)`
+                                  : '100%',
+                            } as React.CSSProperties
+                          }
+                        >
                           <Field
                             form={formFromProps}
                             {...field}

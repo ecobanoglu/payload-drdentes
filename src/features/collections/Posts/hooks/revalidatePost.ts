@@ -9,9 +9,9 @@ import type { Post } from '../../../../payload-types'
  * Slug'lar dile göre farklı olduğundan route kalıpları temizlenir.
  */
 const revalidateAllPostRoutes = (id: number | string) => {
-  revalidatePath('/[locale]/posts/[slug]', 'page')
-  revalidatePath('/[locale]/posts', 'page')
-  revalidatePath('/[locale]/posts/page/[pageNumber]', 'page')
+  revalidatePath('/[locale]/blog/[slug]', 'page')
+  revalidatePath('/[locale]/blog', 'page')
+  revalidatePath('/[locale]/blog/page/[pageNumber]', 'page')
   revalidateTag('posts-sitemap', 'max')
   revalidateTag(`posts_${id}`, 'max')
 }

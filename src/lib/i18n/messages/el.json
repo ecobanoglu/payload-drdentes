@@ -13,9 +13,9 @@
     "goHome": "Επιστροφή στην αρχική"
   },
   "Posts": {
-    "title": "Άρθρα",
-    "metaTitle": "Άρθρα",
-    "pageMetaTitle": "Άρθρα – Σελίδα {page}"
+    "title": "Blog",
+    "metaTitle": "Blog",
+    "pageMetaTitle": "Blog – Σελίδα {page}"
   },
   "Search": {
     "title": "Αναζήτηση",
@@ -61,5 +61,41 @@
       "button": "Επαναφορά κωδικού",
       "footer": "Αν δεν κάνατε εσείς αυτό το αίτημα, αγνοήστε αυτό το email· ο κωδικός σας δεν θα αλλάξει."
     }
+  },
+  "Pricing": {
+    "monthly": "Μηνιαία",
+    "yearly": "Ετήσια",
+    "billingPeriod": "Περίοδος χρέωσης",
+    "perMonth": "/μήνα",
+    "billedYearly": "Χρεώνεται {amount} ετησίως",
+    "save": "Εξοικονόμηση {percent}%",
+    "popular": "Πιο δημοφιλές",
+    "customPrice": "Κατόπιν προσφοράς",
+    "perYear": "/έτος"
+  },
+  "Contact": {
+    "email": "Email",
+    "phone": "Τηλέφωνο",
+    "address": "Διεύθυνση",
+    "hours": "Ώρες λειτουργίας",
+    "follow": "Ακολουθήστε μας",
+    "company": "Εταιρεία",
+    "supportPhone": "Εκπαίδευση & υποστήριξη",
+    "whatsapp": "WhatsApp",
+    "bankAccounts": "Τραπεζικοί λογαριασμοί",
+    "taxInfo": "Φορολογικά στοιχεία"
+  },
+  "Faq": {
+    "expand": "Εμφάνιση απάντησης"
+  },
+  "Footer": {
+    "links": "Σύνδεσμοι",
+    "contact": "Επικοινωνία",
+    "hours": "Ώρες λειτουργίας",
+    "social": "Κοινωνικά δίκτυα"
+  },
+  "Video": {
+    "play": "Δείτε το βίντεο",
+    "close": "Κλείσιμο βίντεο"
   }
 }

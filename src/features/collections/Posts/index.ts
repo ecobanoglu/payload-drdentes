@@ -3,6 +3,7 @@ import { ADMIN_GROUPS } from '@/features/adminGroups'
 
 import {
   BlocksFeature,
+  EXPERIMENTAL_TableFeature,
   FixedToolbarFeature,
   HeadingFeature,
   HorizontalRuleFeature,
@@ -32,8 +33,8 @@ export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
   // Sidebar ve butonlarda görünen ad (admin paneli diline göre)
   labels: {
-    singular: { tr: 'Yazı', en: 'Post' },
-    plural: { tr: 'Yazılar', en: 'Posts' },
+    singular: { tr: 'Blog Yazısı', en: 'Blog Post' },
+    plural: { tr: 'Blog Yazıları', en: 'Blog Posts' },
   },
   access: {
     create: staffCreateDraft,
@@ -102,6 +103,8 @@ export const Posts: CollectionConfig<'posts'> = {
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),
+                    // Karşılaştırma tabloları (ör. "Bulut mu? Masaüstü mü?" yazısı)
+                    EXPERIMENTAL_TableFeature(),
                   ]
                 },
               }),

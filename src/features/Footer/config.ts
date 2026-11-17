@@ -26,7 +26,8 @@ export const Footer: GlobalConfig = {
           appearances: false,
         }),
       ],
-      maxRows: 6,
+      // Footer'daki bağlantı sütunu (Yardım, API, politikalar…)
+      maxRows: 10,
       admin: {
         initCollapsed: true,
         components: {

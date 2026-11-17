@@ -1,6 +1,6 @@
 # Dr. Dentes
 
-Çok dilli (TR · EN · ES · AR · EL) klinik web sitesi. İçerik yönetimi **Payload CMS 3**, site **Next.js 16 (App Router)** ile aynı uygulamada çalışır.
+Çok dilli (TR · EN · ES · AR · EL) ürün tanıtım sitesi: özellikler, ücretlendirme, SSS, blog ve iletişim. İçerik yönetimi **Payload CMS 3**, site **Next.js 16 (App Router)** ile aynı uygulamada çalışır.
 
 | Katman | Teknoloji |
 |---|---|
@@ -72,6 +72,8 @@ Tamamı açıklamalarıyla [.env.example](.env.example) dosyasındadır. Özet:
 | `verify-locale-publishing.ts` | Dil bazlı yayınlamayı uçtan uca doğrular |
 | `verify-nested-pages.ts` | İç içe sayfa yollarını, yönlendirmeyi, hreflang'i doğrular |
 | `verify-card-sets.ts` | Kart gruplarını ve çevirmen kısıtlamasını doğrular |
+| `seed-product-site.ts` | Türkçe örnek içerik: ana sayfa, SSS, Ücretlendirme, İletişim sayfaları, SSS kayıtları, fiyat planları, menüler. Var olanlara dokunmaz. Yalnızca boş veritabanında (iletişim formunu oluşturmak için) kullanın |
+| `import-drdentes-content.ts` | drdentes.com.tr Türkçe içeriğini aktarır (`scripts/data/drdentes-tr.json` + sabit metinler): görseller, ana sayfa, Özellikler + 15 alt sayfa, Fiyat, S.S.S., İletişim, Banka Bilgileri, 12 blog yazısı, paketler, SSS, menüler, İletişim Bilgileri. Tekrar çalıştırılabilir; bu sayfalardaki elle yapılan değişikliklerin üzerine yazar |
 
 Doğrulama betikleri geliştirme sunucusu açıkken çalıştırılır, kendi test verisini oluşturur ve siler.
 
@@ -82,7 +84,7 @@ Doğrulama betikleri geliştirme sunucusu açıkken çalıştırılır, kendi te
 ```
 src/
   app/
-    (frontend)/[locale]/   Site sayfaları ([...slug] = CMS sayfaları, posts, search)
+    (frontend)/[locale]/   Site sayfaları ([...slug] = CMS sayfaları, blog, search)
     (frontend)/next/       Önizleme uçları
     (payload)/             Admin paneli ve API
   access/                  Roller ve erişim kuralları (roles.ts = tek kaynak)
@@ -119,6 +121,13 @@ docs/legal/                KVKK aydınlatma metni taslağı
 - **İçerik** Payload'da dile göre ayrı tutulur; her dil **ayrı yayınlanır**. Bir dilde yayınlanmamış içerik o dilde 404 döner (varsayılan dilden doldurulmaz).
 - **Arayüz metinleri** `src/lib/i18n/messages/{dil}.json` dosyalarındadır (e-posta metinleri dahil).
 - Slug'lar dile göre farklı olabilir; dil değiştirici ve hreflang etiketleri doğru karşılığa gider.
+
+### Ürün sitesi içeriği
+- **Sayfalar** admin panelinde bloklarla kurulur; ana sayfa dahil tüm içerik admin'den düzenlenir.
+- **Bloklar:** Kartlar (özellik/hizmet kartları), Özellik detayı (görsel + metin), Fiyatlandırma (aylık/yıllık geçişli), SSS (akordeon + FAQPage yapılandırılmış verisi), CTA, İletişim (form + iletişim bilgileri), İçerik, Medya, Arşiv (blog listesi), Form.
+- **Koleksiyonlar:** SSS ve Fiyat Planları (İçerik grubunda, sürükle-bırak sıralama). Fiyat ve para birimi her dilde ayrı girilir; tutarı yalnızca editör değiştirir.
+- **Globaller:** Kart Grupları, Üst/Alt Menü, İletişim Bilgileri.
+- **Blog:** `/{dil}/blog` (eski `/posts` adresleri kalıcı olarak yönlenir).
 
 ### Sayfalar
 - Ana sayfa: varsayılan dildeki slug'ı `home` olan sayfa.

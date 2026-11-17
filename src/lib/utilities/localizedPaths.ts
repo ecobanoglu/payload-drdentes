@@ -84,6 +84,6 @@ export const getLocalizedPaths = cache(
   },
 )
 
-/** Tüm dillerde aynı yolu kullanan sayfalar (ör. `/posts`, `/search`) için yol haritası üretir. */
+/** Tüm dillerde aynı yolu kullanan sayfalar (ör. `/blog`, `/search`) için yol haritası üretir. */
 export const samePathInAllLocales = (path: string): LocalizedPaths =>
   Object.fromEntries(locales.map((locale) => [locale, path])) as LocalizedPaths

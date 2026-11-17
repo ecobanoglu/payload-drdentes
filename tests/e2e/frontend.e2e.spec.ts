@@ -8,7 +8,7 @@ test.describe('Frontend', () => {
   })
 
   test('Arapça sayfa sağdan sola (rtl) render edilir', async ({ page }) => {
-    await page.goto('http://localhost:3000/ar/posts')
+    await page.goto('http://localhost:3000/ar/blog')
     await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
   })
 })

@@ -8,6 +8,10 @@ import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { CardsBlock } from '../../blocks/Cards/config'
+import { ContactBlock } from '../../blocks/Contact/config'
+import { FaqBlock } from '../../blocks/Faq/config'
+import { FeatureSplitBlock } from '../../blocks/FeatureSplit/config'
+import { PricingBlock } from '../../blocks/Pricing/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/features/heros/config'
 import { slugField } from 'payload'
@@ -84,7 +88,19 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               localized: true,
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, CardsBlock],
+              // Ürün tanıtım sitesi blokları: özellikler, fiyatlar, SSS, iletişim + genel içerik blokları
+              blocks: [
+                CardsBlock,
+                FeatureSplitBlock,
+                PricingBlock,
+                FaqBlock,
+                CallToAction,
+                ContactBlock,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

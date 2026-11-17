@@ -13,9 +13,9 @@
     "goHome": "Volver al inicio"
   },
   "Posts": {
-    "title": "Artículos",
-    "metaTitle": "Artículos",
-    "pageMetaTitle": "Artículos – Página {page}"
+    "title": "Blog",
+    "metaTitle": "Blog",
+    "pageMetaTitle": "Blog – Página {page}"
   },
   "Search": {
     "title": "Buscar",
@@ -61,5 +61,41 @@
       "button": "Restablecer mi contraseña",
       "footer": "Si no realizó esta solicitud, ignore este correo; su contraseña no cambiará."
     }
+  },
+  "Pricing": {
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "billingPeriod": "Periodo de facturación",
+    "perMonth": "/mes",
+    "billedYearly": "Facturado {amount} al año",
+    "save": "Ahorra {percent} %",
+    "popular": "Más popular",
+    "customPrice": "Personalizado",
+    "perYear": "/año"
+  },
+  "Contact": {
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "hours": "Horario de atención",
+    "follow": "Síguenos",
+    "company": "Empresa",
+    "supportPhone": "Formación y soporte",
+    "whatsapp": "WhatsApp",
+    "bankAccounts": "Cuentas bancarias",
+    "taxInfo": "Datos fiscales"
+  },
+  "Faq": {
+    "expand": "Mostrar respuesta"
+  },
+  "Footer": {
+    "links": "Enlaces",
+    "contact": "Contacto",
+    "hours": "Horario",
+    "social": "Redes sociales"
+  },
+  "Video": {
+    "play": "Ver el vídeo",
+    "close": "Cerrar vídeo"
   }
 }

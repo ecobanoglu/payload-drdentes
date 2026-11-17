@@ -1,4 +1,4 @@
-import { HOME_SLUG } from './constants'
+import { BLOG_PATH, HOME_SLUG } from './constants'
 
 /**
  * Doküman → front-end yolu (dil öneki OLMADAN) dönüşümleri. Tüm bağlantılar, dil
@@ -33,12 +33,12 @@ export const getPagePath = (page: PathablePage | null | undefined): string | nul
   return lastCrumb || `/${page.slug}`
 }
 
-/** Sayfa veya yazının yolunu döner: pages → `/a/b`, posts → `/posts/slug`. */
+/** Sayfa veya yazının yolunu döner: pages → `/a/b`, posts → `/blog/slug`. */
 export const getDocumentPath = (
   collection: RoutableCollection | string,
   doc: PathablePage | null | undefined,
 ): string | null => {
-  if (collection === 'posts') return doc?.slug ? `/posts/${doc.slug}` : null
+  if (collection === 'posts') return doc?.slug ? `${BLOG_PATH}/${doc.slug}` : null
   return getPagePath(doc)
 }
 

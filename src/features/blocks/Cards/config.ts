@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 
+import { linkGroup } from '../../fields/linkGroup'
+
 /**
  * "Cards" bloğu: Globaller altındaki bir **Kart Grubunu** sayfaya yerleştirir.
  *
@@ -46,5 +48,7 @@ export const CardsBlock: Block = {
         { label: '4', value: '4' },
       ],
     },
+    // Kartların altında ortalanmış butonlar (ör. "Tüm Özellikler")
+    linkGroup({ appearances: ['default', 'outline'], overrides: { maxRows: 2 } }),
   ],
 }

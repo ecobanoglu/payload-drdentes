@@ -1,3 +1,4 @@
+import { Check } from 'lucide-react'
 import React from 'react'
 
 import type { CardSet, CardsBlock as CardsBlockProps } from '@/payload-types'
@@ -17,6 +18,26 @@ const columnClasses: Record<string, string> = {
   '4': 'md:grid-cols-2 lg:grid-cols-4',
 }
 
+/** Kartın madde listesi: textarea'daki her dolu satır bir madde */
+const CardPoints = ({ points }: { points?: string | null }) => {
+  const items = (points ?? '')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+  if (items.length === 0) return null
+
+  return (
+    <ul className="space-y-2 text-sm text-muted-foreground">
+      {items.map((item, index) => (
+        <li key={index} className="flex gap-2">
+          <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-primary" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 /** Özellik kartı: ikon + başlık + açıklama (+ isteğe bağlı bağlantı) */
 const FeatureCard = ({ card }: { card: Card }) => {
   const Icon = card.icon ? cardIconComponents[card.icon] : undefined
@@ -30,6 +51,7 @@ const FeatureCard = ({ card }: { card: Card }) => {
       )}
       <h3 className="text-xl font-semibold">{card.title}</h3>
       {card.description && <p className="text-muted-foreground">{card.description}</p>}
+      <CardPoints points={card.points} />
       {card.enableLink && card.link && (
         <CMSLink {...card.link} appearance="link" className="mt-auto self-start px-0" />
       )}
@@ -48,6 +70,7 @@ const ServiceCard = ({ card }: { card: Card }) => (
     <div className="flex flex-1 flex-col gap-3 p-6">
       <h3 className="text-xl font-semibold">{card.title}</h3>
       {card.description && <p className="text-muted-foreground">{card.description}</p>}
+      <CardPoints points={card.points} />
       {card.enableLink && card.link && (
         <CMSLink {...card.link} appearance="link" className="mt-auto self-start px-0" />
       )}
@@ -67,6 +90,7 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
   intro,
   cardSet,
   columns,
+  links,
 }) => {
   if (!cardSet || typeof cardSet !== 'object') return null
 
@@ -93,6 +117,13 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
           ))}
         </ul>
       </Reveal>
+      {Array.isArray(links) && links.length > 0 && (
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          {links.map(({ link }, index) => (
+            <CMSLink key={index} size="lg" {...link} />
+          ))}
+        </div>
+      )}
     </section>
   )
 }

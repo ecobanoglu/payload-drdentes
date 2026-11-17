@@ -16,6 +16,7 @@ import type { Locale } from '@/lib/i18n/config'
 import { SetLocaleAlternates } from '@/lib/providers/LocaleAlternates'
 import { generateMeta } from '@/lib/utilities/generateMeta'
 import { getLocalizedPaths } from '@/lib/utilities/localizedPaths'
+import { BLOG_PATH } from '@/lib/utilities/constants'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
@@ -52,7 +53,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   setRequestLocale(locale)
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
-  const url = `/${locale}/posts/${decodedSlug}`
+  const url = `/${locale}${BLOG_PATH}/${decodedSlug}`
   const post = await queryPostBySlug({ locale, slug: decodedSlug })
 
   if (!post) return <PayloadRedirects url={url} locale={locale} />

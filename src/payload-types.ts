@@ -69,6 +69,8 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
+    faqs: Faq;
+    'pricing-plans': PricingPlan;
     categories: Category;
     media: Media;
     'card-sets': CardSet;
@@ -92,6 +94,8 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    faqs: FaqsSelect<false> | FaqsSelect<true>;
+    'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'card-sets': CardSetsSelect<false> | CardSetsSelect<true>;
@@ -119,10 +123,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'contact-info': ContactInfo;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'contact-info': ContactInfoSelect<false> | ContactInfoSelect<true>;
   };
   locale: 'tr' | 'en' | 'es' | 'ar' | 'el';
   widgets: {
@@ -211,10 +217,25 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
+    video?: {
+      url?: string | null;
+      label?: string | null;
+    };
     media?: (number | null) | Media;
     scenePalette?: ('aqua' | 'pearl' | 'gold') | null;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | CardsBlock)[];
+  layout: (
+    | CardsBlock
+    | FeatureSplitBlock
+    | PricingBlock
+    | FaqBlock
+    | CallToActionBlock
+    | ContactBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -473,6 +494,291 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardsBlock".
+ */
+export interface CardsBlock {
+  heading?: string | null;
+  intro?: string | null;
+  /**
+   * Globaller → Kart Grupları altında oluşturulan gruplardan birini seçin.
+   */
+  cardSet: number | CardSet;
+  columns?: ('2' | '3' | '4') | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cards';
+}
+/**
+ * Sayfalarda "Cards" bloğu ile kullanılan, merkezi yönetilen kart setleri.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "card-sets".
+ */
+export interface CardSet {
+  id: number;
+  /**
+   * Örn. "Özellikler", "Hizmetler". Sitede görünmez.
+   */
+  name: string;
+  variant: 'features' | 'services';
+  cards?:
+    | {
+        icon?:
+          | (
+              | 'sparkles'
+              | 'smile'
+              | 'shieldCheck'
+              | 'heartPulse'
+              | 'stethoscope'
+              | 'syringe'
+              | 'scan'
+              | 'clock'
+              | 'calendar'
+              | 'award'
+              | 'users'
+              | 'globe'
+            )
+          | null;
+        image?: (number | null) | Media;
+        /**
+         * Diğer dillerde boş bırakılan kart o dilde gösterilmez.
+         */
+        title?: string | null;
+        description?: string | null;
+        /**
+         * Her satıra bir madde yazın. Boş bırakılabilir.
+         */
+        points?: string | null;
+        enableLink?: boolean | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureSplitBlock".
+ */
+export interface FeatureSplitBlock {
+  /**
+   * Başlığın üstündeki küçük etiket (ör. "Randevu yönetimi").
+   */
+  eyebrow?: string | null;
+  heading?: string | null;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  bullets?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  media?: (number | null) | Media;
+  mediaPosition?: ('end' | 'start') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featureSplit';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock".
+ */
+export interface PricingBlock {
+  heading?: string | null;
+  intro?: string | null;
+  /**
+   * Boş bırakılırsa tüm planlar gösterilir.
+   */
+  plans?: (number | PricingPlan)[] | null;
+  defaultPeriod?: ('monthly' | 'yearly') | null;
+  showToggle?: boolean | null;
+  /**
+   * Her satır ayrı paragraf olarak gösterilir.
+   */
+  footnote?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricing';
+}
+/**
+ * Fiyatlar her dil için ayrı girilir (üstteki dil seçiciden). Sırayı listede sürükleyerek değiştirin.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing-plans".
+ */
+export interface PricingPlan {
+  id: number;
+  _order?: string | null;
+  name?: string | null;
+  description?: string | null;
+  pricingType?: ('fixed' | 'custom') | null;
+  currency?: ('TRY' | 'EUR' | 'USD' | 'GBP') | null;
+  monthlyPrice?: number | null;
+  /**
+   * Boş bırakılırsa yıllık seçenekte plan aylık fiyatla gösterilir. Aylık fiyat boşsa plan "/yıl" olarak gösterilir.
+   */
+  yearlyPrice?: number | null;
+  priceNote?: string | null;
+  customPriceLabel?: string | null;
+  features?:
+    | {
+        text: string;
+        /**
+         * İşaretli değilse üstü çizili gösterilir (plan karşılaştırması için).
+         */
+        included?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  link: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  highlighted?: boolean | null;
+  /**
+   * Boş bırakılırsa "En popüler" yazar.
+   */
+  badge?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock".
+ */
+export interface FaqBlock {
+  heading?: string | null;
+  intro?: string | null;
+  source?: ('all' | 'category' | 'selected') | null;
+  category?: ('general' | 'product' | 'pricing' | 'security' | 'support') | null;
+  items?: (number | Faq)[] | null;
+  /**
+   * Boş bırakılırsa tümü gösterilir (ör. ana sayfada 5).
+   */
+  limit?: number | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faq';
+}
+/**
+ * Sırayı listede sürükleyerek değiştirebilirsiniz.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs".
+ */
+export interface Faq {
+  id: number;
+  _order?: string | null;
+  question?: string | null;
+  answer?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  category: 'general' | 'product' | 'pricing' | 'security' | 'support';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
@@ -521,123 +827,22 @@ export interface CallToActionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContentBlock".
+ * via the `definition` "ContactBlock".
  */
-export interface ContentBlock {
-  columns?:
-    | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: any;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
+export interface ContactBlock {
+  heading?: string | null;
+  intro?: string | null;
+  /**
+   * Formlar bölümünde oluşturulan iletişim formu. Boşsa yalnızca bilgiler gösterilir.
+   */
+  form?: (number | null) | Form;
+  /**
+   * Bilgiler Globaller → İletişim Bilgileri'nden gelir.
+   */
+  showContactInfo?: boolean | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'content';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaBlock".
- */
-export interface MediaBlock {
-  media: number | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'mediaBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ArchiveBlock".
- */
-export interface ArchiveBlock {
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  populateBy?: ('collection' | 'selection') | null;
-  relationTo?: 'posts' | null;
-  categories?: (number | Category)[] | null;
-  limit?: number | null;
-  selectedDocs?:
-    | {
-        relationTo: 'posts';
-        value: number | Post;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'archive';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock".
- */
-export interface FormBlock {
-  form: number | Form;
-  enableIntro?: boolean | null;
-  introContent?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'formBlock';
+  blockType: 'contact';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -806,57 +1011,27 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CardsBlock".
+ * via the `definition` "ContentBlock".
  */
-export interface CardsBlock {
-  heading?: string | null;
-  intro?: string | null;
-  /**
-   * Globaller → Kart Grupları altında oluşturulan gruplardan birini seçin.
-   */
-  cardSet: number | CardSet;
-  columns?: ('2' | '3' | '4') | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cards';
-}
-/**
- * Sayfalarda "Cards" bloğu ile kullanılan, merkezi yönetilen kart setleri.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "card-sets".
- */
-export interface CardSet {
-  id: number;
-  /**
-   * Örn. "Özellikler", "Hizmetler". Sitede görünmez.
-   */
-  name: string;
-  variant: 'features' | 'services';
-  cards?:
+export interface ContentBlock {
+  columns?:
     | {
-        icon?:
-          | (
-              | 'sparkles'
-              | 'smile'
-              | 'shieldCheck'
-              | 'heartPulse'
-              | 'stethoscope'
-              | 'syringe'
-              | 'scan'
-              | 'clock'
-              | 'calendar'
-              | 'award'
-              | 'users'
-              | 'globe'
-            )
-          | null;
-        image?: (number | null) | Media;
-        /**
-         * Diğer dillerde boş bırakılan kart o dilde gösterilmez.
-         */
-        title?: string | null;
-        description?: string | null;
+        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
         enableLink?: boolean | null;
         link?: {
           type?: ('reference' | 'custom') | null;
@@ -872,12 +1047,87 @@ export interface CardSet {
               } | null);
           url?: string | null;
           label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
         };
         id?: string | null;
       }[]
     | null;
-  updatedAt: string;
-  createdAt: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaBlock".
+ */
+export interface MediaBlock {
+  media: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArchiveBlock".
+ */
+export interface ArchiveBlock {
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  populateBy?: ('collection' | 'selection') | null;
+  relationTo?: 'posts' | null;
+  categories?: (number | Category)[] | null;
+  limit?: number | null;
+  selectedDocs?:
+    | {
+        relationTo: 'posts';
+        value: number | Post;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'archive';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FormBlock".
+ */
+export interface FormBlock {
+  form: number | Form;
+  enableIntro?: boolean | null;
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'formBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1078,6 +1328,14 @@ export interface PayloadLockedDocument {
         value: number | Post;
       } | null)
     | ({
+        relationTo: 'faqs';
+        value: number | Faq;
+      } | null)
+    | ({
+        relationTo: 'pricing-plans';
+        value: number | PricingPlan;
+      } | null)
+    | ({
         relationTo: 'categories';
         value: number | Category;
       } | null)
@@ -1181,18 +1439,28 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
+        video?:
+          | T
+          | {
+              url?: T;
+              label?: T;
+            };
         media?: T;
         scenePalette?: T;
       };
   layout?:
     | T
     | {
+        cards?: T | CardsBlockSelect<T>;
+        featureSplit?: T | FeatureSplitBlockSelect<T>;
+        pricing?: T | PricingBlockSelect<T>;
+        faq?: T | FaqBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
+        contact?: T | ContactBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
-        cards?: T | CardsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1219,6 +1487,95 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardsBlock_select".
+ */
+export interface CardsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  cardSet?: T;
+  columns?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureSplitBlock_select".
+ */
+export interface FeatureSplitBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  body?: T;
+  bullets?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  media?: T;
+  mediaPosition?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock_select".
+ */
+export interface PricingBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  plans?: T;
+  defaultPeriod?: T;
+  showToggle?: T;
+  footnote?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock_select".
+ */
+export interface FaqBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  source?: T;
+  category?: T;
+  items?: T;
+  limit?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
@@ -1238,6 +1595,18 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock_select".
+ */
+export interface ContactBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  form?: T;
+  showContactInfo?: T;
   id?: T;
   blockName?: T;
 }
@@ -1303,18 +1672,6 @@ export interface FormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CardsBlock_select".
- */
-export interface CardsBlockSelect<T extends boolean = true> {
-  heading?: T;
-  intro?: T;
-  cardSet?: T;
-  columns?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1343,6 +1700,53 @@ export interface PostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs_select".
+ */
+export interface FaqsSelect<T extends boolean = true> {
+  _order?: T;
+  question?: T;
+  answer?: T;
+  category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing-plans_select".
+ */
+export interface PricingPlansSelect<T extends boolean = true> {
+  _order?: T;
+  name?: T;
+  description?: T;
+  pricingType?: T;
+  currency?: T;
+  monthlyPrice?: T;
+  yearlyPrice?: T;
+  priceNote?: T;
+  customPriceLabel?: T;
+  features?:
+    | T
+    | {
+        text?: T;
+        included?: T;
+        id?: T;
+      };
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
+  highlighted?: T;
+  badge?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1474,6 +1878,7 @@ export interface CardSetsSelect<T extends boolean = true> {
         image?: T;
         title?: T;
         description?: T;
+        points?: T;
         enableLink?: T;
         link?:
           | T
@@ -1818,6 +2223,24 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  cta?: {
+    enabled?: boolean | null;
+    link?: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: number | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1852,6 +2275,35 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-info".
+ */
+export interface ContactInfo {
+  id: number;
+  email?: string | null;
+  phone?: string | null;
+  supportPhone?: string | null;
+  whatsapp?: string | null;
+  companyName?: string | null;
+  taxInfo?: string | null;
+  brandNote?: string | null;
+  address?: string | null;
+  workingHours?: string | null;
+  /**
+   * Her satır ayrı gösterilir. İletişim bloğunda görünür.
+   */
+  bankInfo?: string | null;
+  social?:
+    | {
+        platform: 'linkedin' | 'instagram' | 'x' | 'facebook' | 'youtube';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1868,6 +2320,20 @@ export interface HeaderSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  cta?:
+    | T
+    | {
+        enabled?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1890,6 +2356,32 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-info_select".
+ */
+export interface ContactInfoSelect<T extends boolean = true> {
+  email?: T;
+  phone?: T;
+  supportPhone?: T;
+  whatsapp?: T;
+  companyName?: T;
+  taxInfo?: T;
+  brandNote?: T;
+  address?: T;
+  workingHours?: T;
+  bankInfo?: T;
+  social?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
         id?: T;
       };
   updatedAt?: T;

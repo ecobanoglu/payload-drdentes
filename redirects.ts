@@ -5,6 +5,9 @@ import type { NextConfig } from 'next'
  *
  * İçerik editörlerinin yönettiği yönlendirmeler için admin panelindeki
  * Ayarlar → Yönlendirmeler kullanılır; buraya yalnızca sabit, teknik yönlendirmeler eklenir.
- * Örnek: { source: '/eski-yol', destination: '/tr/yeni-yol', permanent: true }
  */
-export const redirects: NextConfig['redirects'] = async () => []
+export const redirects: NextConfig['redirects'] = async () => [
+  // Blog adresi /posts'tan /blog'a taşındı: eski bağlantılar kalıcı olarak yönlenir
+  { source: '/:locale/posts', destination: '/:locale/blog', permanent: true },
+  { source: '/:locale/posts/:path*', destination: '/:locale/blog/:path*', permanent: true },
+]

@@ -13,9 +13,9 @@
     "goHome": "Ana sayfaya dön"
   },
   "Posts": {
-    "title": "Yazılar",
-    "metaTitle": "Yazılar",
-    "pageMetaTitle": "Yazılar – Sayfa {page}"
+    "title": "Blog",
+    "metaTitle": "Blog",
+    "pageMetaTitle": "Blog – Sayfa {page}"
   },
   "Search": {
     "title": "Arama",
@@ -61,5 +61,41 @@
       "button": "Şifremi sıfırla",
       "footer": "Bu talebi siz yapmadıysanız bu e-postayı yok sayın; şifreniz değişmeyecektir."
     }
+  },
+  "Pricing": {
+    "monthly": "Aylık",
+    "yearly": "Yıllık",
+    "billingPeriod": "Faturalandırma dönemi",
+    "perMonth": "/ay",
+    "billedYearly": "Yıllık {amount} olarak faturalandırılır",
+    "save": "%{percent} tasarruf",
+    "popular": "En popüler",
+    "customPrice": "Size özel",
+    "perYear": "/yıl"
+  },
+  "Contact": {
+    "email": "E-posta",
+    "phone": "Telefon",
+    "address": "Adres",
+    "hours": "Çalışma saatleri",
+    "follow": "Bizi takip edin",
+    "company": "Firma",
+    "supportPhone": "Eğitim Destek",
+    "whatsapp": "WhatsApp",
+    "bankAccounts": "Banka hesapları",
+    "taxInfo": "Vergi bilgileri"
+  },
+  "Faq": {
+    "expand": "Cevabı göster"
+  },
+  "Footer": {
+    "links": "Bağlantılar",
+    "contact": "İletişim",
+    "hours": "Çalışma saatleri",
+    "social": "Sosyal medya"
+  },
+  "Video": {
+    "play": "Tanıtım Videosu",
+    "close": "Videoyu kapat"
   }
 }

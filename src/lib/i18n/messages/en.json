@@ -13,9 +13,9 @@
     "goHome": "Go home"
   },
   "Posts": {
-    "title": "Posts",
-    "metaTitle": "Posts",
-    "pageMetaTitle": "Posts – Page {page}"
+    "title": "Blog",
+    "metaTitle": "Blog",
+    "pageMetaTitle": "Blog – Page {page}"
   },
   "Search": {
     "title": "Search",
@@ -61,5 +61,41 @@
       "button": "Reset my password",
       "footer": "If you did not make this request, ignore this email; your password will not change."
     }
+  },
+  "Pricing": {
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "billingPeriod": "Billing period",
+    "perMonth": "/mo",
+    "billedYearly": "Billed {amount} yearly",
+    "save": "Save {percent}%",
+    "popular": "Most popular",
+    "customPrice": "Custom",
+    "perYear": "/yr"
+  },
+  "Contact": {
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "hours": "Working hours",
+    "follow": "Follow us",
+    "company": "Company",
+    "supportPhone": "Training & Support",
+    "whatsapp": "WhatsApp",
+    "bankAccounts": "Bank accounts",
+    "taxInfo": "Tax information"
+  },
+  "Faq": {
+    "expand": "Show answer"
+  },
+  "Footer": {
+    "links": "Links",
+    "contact": "Contact",
+    "hours": "Working hours",
+    "social": "Social media"
+  },
+  "Video": {
+    "play": "Watch the video",
+    "close": "Close video"
   }
 }

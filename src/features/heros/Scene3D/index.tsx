@@ -8,6 +8,7 @@ import type { Page } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
+import { VideoModal } from '@/components/VideoModal'
 import { getDirection } from '@/lib/i18n/config'
 import { useHeaderTheme } from '@/lib/providers/HeaderTheme'
 import { getScenePalette } from './palettes'
@@ -29,7 +30,7 @@ const HeroCanvas = dynamic(() => import('./HeroCanvas').then((m) => m.HeroCanvas
  * 3. Okunabilirlik için metin tarafına koyu geçiş.
  * 4. CMS'ten gelen metin ve butonlar.
  */
-export const Scene3DHero: React.FC<Page['hero']> = ({ links, richText, scenePalette }) => {
+export const Scene3DHero: React.FC<Page['hero']> = ({ links, richText, scenePalette, video }) => {
   const { setHeaderTheme } = useHeaderTheme()
   const containerRef = useRef<HTMLDivElement>(null)
   const direction = getDirection(useLocale())
@@ -61,13 +62,18 @@ export const Scene3DHero: React.FC<Page['hero']> = ({ links, richText, scenePale
       <div className="container relative pt-[10.4rem] pb-16">
         <div className="max-w-[36rem]">
           {richText && <RichText className="mb-6" data={richText} enableGutter={false} />}
-          {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex flex-wrap gap-4">
-              {links.map(({ link }, i) => (
+          {((Array.isArray(links) && links.length > 0) || video?.url) && (
+            <ul className="flex flex-wrap items-center gap-4">
+              {links?.map(({ link }, i) => (
                 <li key={i}>
                   <CMSLink {...link} />
                 </li>
               ))}
+              {video?.url && (
+                <li>
+                  <VideoModal url={video.url} label={video.label} />
+                </li>
+              )}
             </ul>
           )}
         </div>

@@ -1,0 +1,3602 @@
+{
+ "source": "https://drdentes.com.tr/tr/",
+ "features": [
+  {
+   "title": "Hasta Bilgi Sistemi",
+   "points": [
+    "Hasta arşivi, sağlık turizmi",
+    "Özel tarife ve para birimi",
+    "Periyodik kontroller",
+    "e-Reçete/Reçetem ve e-Rapor entegrasyonu",
+    "Sağlık Bakanlığı USS/e-Nabız entegrasyonu (DHBS, MBYS)"
+   ],
+   "sourceId": 1,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/1-hasta-bilgi-sistemi",
+   "slug": "hasta-bilgi-sistemi",
+   "metaDescription": "Hasta arşivi, sağlık turizmi Özel tarife ve para birimi Periyodik kontroller e-Reçete/Reçetem ve e-Rapor entegrasyonu Sağlık Bakanlığı USS/e-Nabız entegrasyonu",
+   "image": "https://drdentes.com.tr/img/ozellik/1.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Hasta kaydı ve ilgili işlemleri zorlanmadan yapın."
+    },
+    {
+     "tag": "li",
+     "text": "Hızlı iletişim düğmeleri ile hastalarınıza; telefon araması yapabilir, WhatsApp mesajı yollayabilir veya e-posta gönderebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "“Aile” ve “grup” tanımlayabilir, bu tanımlar içindeki hastaları tek tuşla görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dr.DENTES'in yapay zekalı arama yordamı ile hasta kartlarını hızlıca listeleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hasta bilgilerini yok etmek için yetkili şifre girmeniz gerekir. Silmeden önce hastaya ait istatistiklerle Dr.DENTES uyarıda bulunur.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastanın kaç ayda bir kontrole çağrılacağını takip edebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastaların; randevularını, tedavilerini, görüntülerini vb. internet sitenizden \"Erişim Kodu\" ile görmesini sağlayabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kısayol fonksiyonları ile tek tıkla; hastanın geçmiş ve gelecek tüm randevularına ulaşabilir, doğrudan randevu verebilir, faturalarına ulaşabilir ve SMS gönderebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Anamnez (hastalık hikayesi) kaydedebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastaya profil fotoğrafı yükleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Reçetem entegrasyonu ile e-Reçete oluşturabilir veya Antetli kağıt biçiminde reçete yazdırabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "USS/e-Nabız entegrasyonu ile Sağlık Bakanlığına veri gönderebilirsiniz (DHBS ve MBYS listesinde).",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Sağlık Bakanlığı'nın sağlık turizmi standartlarına uygundur.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastalarınıza \"Durum Bildirir Tek Hekim Raporu\" ve \"İstirahat Rapor\"unu e-Rapor olarak oluşturabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Randevusuna sadık olmayan, ödemelerini aksatan vb. hastalarınızı güvenilmez olarak işaretleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastanın cep telefonuna, kişisel bilgilerini doldurup hasta kartı oluşturabilmesi için SMS ile link gönderebilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Tedavi Yönetimi",
+   "points": [
+    "Diyagnoz, Planlama, Tedavi aşamalarının takibi",
+    "Seçilen planın sözleşmeye çevrilmesi",
+    "Türkçe, İngilizce, Almanca, Fransızca, Sırpça, Yunanca, Arnavutça tedavi planı ve proforma"
+   ],
+   "sourceId": 3,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/3-tedavi-yonetimi",
+   "slug": "tedavi-yonetimi",
+   "metaDescription": "Diyagnoz, Planlama, Tedavi aşamalarının takibi Seçilen planın sözleşmeye çevrilmesi Türkçe, İngilizce, Almanca, Fransızca, Sırpça, Yunanca, Arnavutça tedavi pla",
+   "image": "https://drdentes.com.tr/img/ozellik/3.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Tescilli tedavi ve ağız çizimleri ile Dr.DENTES; geçmiş, şimdi ve geleceğe planlanan kayıtlarınızı görselleştirerek önünüze sunar."
+    },
+    {
+     "tag": "li",
+     "text": "Hastanın diyagnoz, tedavi ve birden fazla planlamasını kaydedebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Tedavi planını sözleşmeye çevirebilirsiniz. Dr.DENTES, belirlediğiniz tahsilat tarihi geldiğinde size hatırlatma yapar.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dişleri; anatomik, normal veya basit görünüm ile görüntüleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dişlere ayrı ayrı not yazabilirsiniz, dişin tedavi geçmişini listeleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dr.DENTES’in desteklediği tüm dillerde diyagnoz, tedavi ve tedavi planı (proforma) çıktısı alabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Tek tuşla anlık olarak tarife ve dişhekimi değişikliği yapabilirsiniz. Tedavi fiyatlarını düzenleyebilir, eski-yeni fiyat karşılaştırması yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Sesle kontrol ile tedavileri konuşarak işleyebilirsiniz. Örneğin \"Diş Çekimi 14\" gibi.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Randevu Yönetimi",
+   "points": [
+    "Randevuları Google ve Apple takvim ile paylaşma",
+    "Hastalarınıza otomatik randevu hatırlatmaları",
+    "Hekime ya da tedaviye göre randevu renklendirme"
+   ],
+   "sourceId": 5,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/5-randevu-yonetimi",
+   "slug": "randevu-yonetimi",
+   "metaDescription": "Randevuları Google ve Apple takvim ile paylaşma Hastalarınıza otomatik randevu hatırlatmaları Hekime ya da tedaviye göre randevu renklendirme",
+   "image": "https://drdentes.com.tr/img/ozellik/5.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Randevular sizi yönetmesin, siz randevuları yönetin!"
+    },
+    {
+     "tag": "li",
+     "text": "Randevu defterinizi arzu ettiğiniz şekilde haftalık, günlük, hekim-hekim veya ünit-ünit görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Randevularınızı Apple takvim (iPhone, iPad) veya Google takvim (Android) ile paylaşabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Diş hekiminin çalışma saatlerinin dışına randevu verilip-verilemeyeceğini belirleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Randevuları açıklamaya veya dişhekimine göre renklendirebilirsiniz. Randevuların periyodu ve sürelerini ayarlayabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Öğle tatili, randevu defterinde farklı renkte gösterilebilir. Geçmiş tarihli randevular, gri renkli gösterilebilir. Özel günler de randevu defterinde farklı biçimde gösterilir.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Randevu eklerken ad-soyad yazıldığında Dr.DENTES hızlıca inceleme yapar. Girilen Ad ve soyadda hasta yoksa hasta kartı oluşturmayı sorar. Aynı ad soyadda birden fazla hasta varsa randevunun hangisine verileceğini sorar.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dr.DENTES, kontrol randevularını 24 saat öncesinde uyarı sistemi ile size hatırlatır.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Bilgisayarda randevu kaydını sürükle-bırakla taşıyabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Randevu kayıtlarını birebir kopyalayıp başka bir zaman için de verebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Belirteçler ile randevunun durumu simgelenir (“-“ gelmedi, \"+\" geldi vb.).",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Randevunun bağlandığı hasta kartını açabilirsiniz. Eğer hiçbir hasta kartına bağlı değilse seçenekler gösterilir (hasta yoksa yeni hasta kartı oluşturma, hasta varsa seçim yapma).",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "SMS’le randevu hatırlatması yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Bilgisayarda fare ile randevuların üzerine geldiğinizde randevuyla ilgili ayrıntıları görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "\"Güvenilmez\" olarak kaydettiğiniz hastalarınıza randevu verirken uyarı alırsınız.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastalarınıza randevu oluştururken geçmişteki toplam ve gelmediği randevu sayılarını görebilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Para Alma (Tahsilat)",
+   "points": [
+    "Ödeme tiplerine göre tahsilat ekleme",
+    "Beklenen tahsilatlar için alarm kurma, hatırlatma",
+    "Tahsilatları hastaya SMS ile bildirme, tahsilat makbuzu"
+   ],
+   "sourceId": 9,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/9-para-alma-tahsilat",
+   "slug": "para-alma-tahsilat",
+   "metaDescription": "Ödeme tiplerine göre tahsilat ekleme Beklenen tahsilatlar için alarm kurma, hatırlatma Tahsilatları hastaya SMS ile bildirme, tahsilat makbuzu",
+   "image": "https://drdentes.com.tr/img/ozellik/9.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Borç takibinde hastayla anlaşmazlıkların önüne geçin."
+    },
+    {
+     "tag": "li",
+     "text": "Hastanın borcu veya varsa alacağını görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastanın ödeme yapacağı tarih için hatırlatma kurabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Oral sayfasında yapılan sözleşmeyi görüntüleyip alacak takibi yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "“Aile Hesabı” ile o hastanın da içinde bulunduğu aynı ailedeki kişiler, borçları ve toplam borcu görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Alınan paralar için; makbuz yazdırabilir, otomatik SMS gönderilmesini sağlayabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hekimlere kalan borcu ayrı ayrı görebilirsiniz. Bir hastaya farklı hekimler tarafından yapılan tedavilerin hekim payını görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kredi kartı ile alınan tahsilatlar banka masrafını da görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "İstediğiniz hastaların hesap takibini (alacak-verecek) sonlandırabilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Fatura Sistemi",
+   "points": [
+    "e-Serbest Meslek Makbuzu (e-SMM) düzenleme",
+    "e-Fatura ve e-Arşiv Fatura düzenleme, e-Fatura alma",
+    "Eski tip (basılı) fatura düzenleme"
+   ],
+   "sourceId": 8,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/8-fatura-sistemi",
+   "slug": "fatura-sistemi",
+   "metaDescription": "e-Serbest Meslek Makbuzu (e-SMM) düzenleme e-Fatura ve e-Arşiv Fatura düzenleme, e-Fatura alma Eski tip (basılı) fatura düzenleme",
+   "image": "https://drdentes.com.tr/img/ozellik/8.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "İster eski tip (basılı), ister de yeni tip faturanızı (e-SMM, e-Fatura, e-Arşiv Fatura) doğrudan Dr.DENTES’ten kesebilirsiniz."
+    },
+    {
+     "tag": "li",
+     "text": "e-Serbest Meslek Makbuzu (e-SMM), e-Fatura ve e-Arşiv Faturayı birkaç saniyede kesebilirsiniz. Tarafınıza gelen e-Faturaları görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastalar, otomatik oluşturulan bağlantıyı paylaşmanız halinde kendisine ait e-Fatura, e-Arşiv Fatura ve e-SMM’yi görüntüleyebilir ve çıktısını alabilir. Bağlantıyı hastanın e-posta adresine otomatik gönderebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Eski tip (basılı) faturalarda; “Yazdırma Ayarları” ile yazdırılacak faturayı, fatura kağıdına göre ayarlayabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Devam eden tedaviler için parçalı fatura kesebilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Gider Sistemi",
+   "points": [
+    "Firmalara göre giderler",
+    "Personel giderleri",
+    "Gider alacak ve borçların takibi"
+   ],
+   "sourceId": 13,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/13-gider-sistemi",
+   "slug": "gider-sistemi",
+   "metaDescription": "Firmalara göre giderler Personel giderleri Gider alacak ve borçların takibi",
+   "image": "https://drdentes.com.tr/img/ozellik/13.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "“Giden paraların haddi hesabı yok.” Dr.DENTES’te hesabı var!"
+    },
+    {
+     "tag": "li",
+     "text": "Personel, klinik ve sarf giderleri için ayrı ayrı hesap (gider kartı) açıp ve bu giderlerin kaydını tutabilirsiniz. Havale/EFT ile ödemeleriniz için gider raporunda banka masrafını da görebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Gider kayıtlarınızın gizliliğini sağlayabilirsiniz. “Personel” gider kartları ve giderleri, özel yetkilendirme ile seçilen kullanıcılara gösterilmez.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Laboratuvar işlerinizi ayrıntılı kayıt ve takip edebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "İlişkili gider kayıtları ile ayrıntılı rapor alabilirsiniz. Gider kayıtlarınızı, hasta ve dişhekimi ile ilişkilendirebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dr.DENTES, aldığınız mal/hizmetlerin ödeme tarihinden 7 gün önce hatırlatma yapar.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Stok ve Maliyet Yönetimi",
+   "points": [
+    "Stok durumu ve hareketleri yönetimi",
+    "Tedavi bileşenleri ve gerçek maliyet hesaplama",
+    "Seri numaralı implant ve diğer malzeme takibi"
+   ],
+   "sourceId": 15,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/15-stok-ve-maliyet-yonetimi",
+   "slug": "stok-ve-maliyet-yonetimi",
+   "metaDescription": "Stok durumu ve hareketleri yönetimi Tedavi bileşenleri ve gerçek maliyet hesaplama Seri numaralı implant ve diğer malzeme takibi",
+   "image": "https://drdentes.com.tr/img/ozellik/15.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Stoğunuzdaki bilinmezliklere son verin!"
+    },
+    {
+     "tag": "li",
+     "text": "Stok girdi/çıktı durumlarınızı takip edebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Depolar arası stok aktarımı yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Tedavi bileşenlerini yönetip, gerçek maliyet hesaplaması yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Tedavi işlerken kullanılan malzemeleri seçebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Ürünleriniz için kritik stok miktarı belirleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Çoklu depo takibi ile birden fazla konumdaki ürünlerinizi takip edebilirsiniz",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kategori ve stok durumuna göre ürünlerinizi filtreleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Tedarikçilerinizden siparişinizi zamanında yapabilmeniz için anlık stok durumunuzu kolayca takip edebilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Tıbbi Görüntü Yönetimi",
+   "points": [
+    "RVG, panoramik ve fotoğraf yükleme",
+    "Tedavi öncesi ve sonrası karşılaştırma",
+    "Diş/çene ile ilişkili görüntüler"
+   ],
+   "sourceId": 4,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/4-tibbi-goruntu-yonetimi",
+   "slug": "tibbi-goruntu-yonetimi",
+   "metaDescription": "RVG, panoramik ve fotoğraf yükleme Tedavi öncesi ve sonrası karşılaştırma Diş/çene ile ilişkili görüntüler",
+   "image": "https://drdentes.com.tr/img/ozellik/4.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "RVG, DICOM, panoramik, PDF dosyası ve daha fazlası her an yanınızda!"
+    },
+    {
+     "tag": "li",
+     "text": "Ağız içi kamera, tablet veya telefon ile görüntü kaydedebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "DICOM biçimindeki görüntüler üzerinde mm olarak ölçüm yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Görüntü düzenleme sihirbazıyla; görüntüyü kırpma, efekt uygulama, döndürme vb. işlemler yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastaya öncesi-sonrası sunumu yapabilirsiniz. Yüklediğiniz görüntüleri karşılaştırabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Görüntüye özel not yazabilirsiniz, not ile görüntüyü eşleştirebilirsiniz. Bu notları sesle kontrol ile de yazabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Görüntüleri dişle veya çeneyle ilişkilendirebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Notları gizleyip/gösterebilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Yapay Zeka Film Analizi",
+   "points": [
+    "100+ Bulgu Tespiti",
+    "Hızlı ve güvenilir tanı",
+    "Panoramik, Bitewing, Periapikal ve Lateral Sefalometrik görüntülerin analizi",
+    "Kişiye özel raporlama"
+   ],
+   "sourceId": 17,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/17-yapay-zeka-film-analizi",
+   "slug": "yapay-zeka-film-analizi",
+   "metaDescription": "100+ Bulgu Tespiti Hızlı ve güvenilir tanı Panoramik, Bitewing, Periapikal ve Lateral Sefalometrik görüntülerin analizi Kişiye özel raporlama",
+   "image": "https://drdentes.com.tr/img/ozellik/17.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Yapay Zeka Destekli Görüntüleme Analizi:"
+    },
+    {
+     "tag": "p",
+     "text": "Gelişmiş yapay zeka teknolojileriyle panoramik, bitewing, periapikal ve lateral sefalometrik radyografiler üzerinde, şu ana kadar 1 milyon radyografi kullanılarak geliştirilmiş 100’den fazla yapay zeka modeli sayesinde, 100’den fazla klinik bulgu Dr.DENTES ile analiz edilebilir."
+    },
+    {
+     "tag": "p",
+     "text": "Karar verme süreçlerinde yapay zeka desteğiyle bulguları kolayca tespit edebilirsiniz!"
+    },
+    {
+     "tag": "p",
+     "text": "Yapay Zeka analizi ile;"
+    },
+    {
+     "tag": "li",
+     "text": "Dişlerin Tespiti ve Numaralandırılması,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Anatomik Yapıların Belirlenmesi: Maksiller sinüs ve mandibular kanal gibi önemli anatomik oluşumların kolayca tanımlanması,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Diş Problemlerinin Tespiti: Çürükler, gömülü dişler ve rezidüel kökler ve daha bir çok bulgunun tespiti,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Periodontal Sağlık Takibi: Kemik kaybı ve periodontal bulguların tespiti,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kist ve Tümör Gibi Çene Patolojileri: Potansiyel risklerin erken dönemde saptanması,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dental Restorasyonların Analizi: Dolgu, kuron, kök kanal dolgusu ve pontik gibi restorasyonların otomatik değerlendirilmesi,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Lateral Sefalometrik Hesaplamalar: Karmaşık ölçümlerin saniyeler içinde otomatik analizi",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Yapay Zekânın Gücü ile:"
+    },
+    {
+     "tag": "li",
+     "text": "Teşhis ve tedavi süreçlerinizi hızlandırıp, kolaylaştırabilir ve daha etkili hale getirebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hata payını azaltarak güvenilir ve tutarlı sonuçlar elde edebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hasta memnuniyetini artıracak detaylı raporlar ve açıklamalar sağlayabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Klinik kararlarınızı en üst düzeye taşıyacak hızlı ve güvenilir analizler gerçekleştirebilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Gelir - Gider Yönetimi",
+   "points": [
+    "İstenen tarih aralığına göre gelir gider takibi",
+    "Hekime göre gelir takibi",
+    "Hekime ve firmaya göre gider takibi"
+   ],
+   "sourceId": 10,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/10-gelir---gider-yonetimi",
+   "slug": "gelir-gider-yonetimi",
+   "metaDescription": "İstenen tarih aralığına göre gelir gider takibi Hekime göre gelir takibi Hekime ve firmaya göre gider takibi",
+   "image": "https://drdentes.com.tr/img/ozellik/10.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Yapacağınız ödemeleri ve beklediğiniz tahsilatları yönetin."
+    },
+    {
+     "tag": "li",
+     "text": "Günlük gelir-giderlerinizi takip edebilirsiniz (işletme defteri maiyetinde).",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Firma, hasta, ödeme tipi ve dişhekimi esas alınarak gelir-giderlerinizi listeleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kliniğinizin gelir-gider dengesi ve genel durum raporunu alabilirsiniz. Ayrıntılı grafikleri inceleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hangi firmadan hangi mal/hizmetleri aldığınızı listeleyebilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Gelişmiş Raporlama",
+   "points": [
+    "TSİM raporu oluşturma",
+    "Hakediş",
+    "Hekim performansı ölçme"
+   ],
+   "sourceId": 11,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/11-gelismis-raporlama",
+   "slug": "gelismis-raporlama",
+   "metaDescription": "TSİM raporu oluşturma Hakediş Hekim performansı ölçme",
+   "image": "https://drdentes.com.tr/img/ozellik/11.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Siz isteyin Dr.DENTES hazırlasın!"
+    },
+    {
+     "tag": "li",
+     "text": "Temel Sağlık İstatistikleri Modülü (TSİM) raporu.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kişisel Verilerin Korunması Kanunu (KVKK) gereğince sağlık hizmeti sunan (muayenehane, klinik, ADSP vs.) için şart koşulan VERBİS kaydıyla uyumlu “VERBİS Veri Envanteri” raporu. Bu rapor envanter hazırlamanızı kolaylaştırmak için sunulmuştur, VERBİS kaydı ve KVKK’ye uyumunuz için yeterli değildir!",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hakediş (prim) hesaplama raporu.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hangi hekimin hangi tedaviden kaç tane yaptığı, tedavinin kaç paraya yapıldığını listeleyebilirsiniz. Hekim performansını ölçebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Borcu olan hastaları listeleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kontrole çağrılacak hastaları listeleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hasta kartındaki yer alan tüm bilgilere göre liste alabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hangi yılda ne kadar hasta eklenmiş; ne kadar diyagnoz, planlama, tedavi yapılmış, ne kadar para giriş/çıkışı olmuş; en çok hangi tedaviler yapılmış, hangi hekim ne kadar tedavi yapmış vs. hem grafik hem de rakamlarla görebilirsiniz. Tüm bu raporları belirlenen tarih aralığına göre de alabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Günlük, aylık, yıllık ya da istenilen tarih aralığındaki kestiğiniz faturaları listeleyebilirsiniz. Aylık KDV, üç aylık geçici vergi ve yıllık kurumlar vergisi brüt hesaplamanızda yol gösterici olabilir.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dr.DENTES kullanımınızın aylık olarak veri boyutu ve trafik raporuna her an ulaşabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Oluşturduğunuz raporları PDF veya Excel biçiminde cihazınıza indirilebilirsiniz. Raporunuzun çıktısını alabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Raporunuzda yer alan hastalara toplu SMS yollayabilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "SMS Sistemi",
+   "points": [
+    "Toplu SMS gönderimi",
+    "Otomatik SMS gönderimleri",
+    "İleri tarihli SMS oluşturma",
+    "SMS ile KVKK onayı alma",
+    "SMS ile Dijital onam alma"
+   ],
+   "sourceId": 7,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/7-sms-sistemi",
+   "slug": "sms-sistemi",
+   "metaDescription": "Toplu SMS gönderimi Otomatik SMS gönderimleri İleri tarihli SMS oluşturma SMS ile KVKK onayı alma SMS ile Dijital onam alma",
+   "image": "https://drdentes.com.tr/img/ozellik/7.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Hastalara randevu, ödeme vb. hatırlatmaları yapmak, peşlerinden koşturmak yorucu. Bunları sizin yerinize otomatik yapan olsa güzel olmaz mı?"
+    },
+    {
+     "tag": "li",
+     "text": "Dr.DENTES, otomatik SMS ile; yarın randevusu olan hastalara, periyodik kontrol tarihi gelenlere, doğum günü olanlara gönderim yapar. Ayrıca randevu oluşturduğunuz anda ve hastadan ödeme alma kaydı işlendiği anda da otomatik SMS gönderimini kullanabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hastalara toplu veya tekil SMS gönderebilirsiniz. SMS gönderiminin anında veya ileri bir tarihte yapılmasını sağlayabilirsiniz (duyuru, bayram tebriği, kutlama vs.)",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Randevu hatırlatması, bakiye hatırlatması, doğum günü kutlaması ve periyodik kontrol için hazır SMS içeriklerinden faydalanabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "\"SMS Gönderim Raporu\" düğmesi ile gönderdiğiniz SMS'lerin alıcıya ulaşıp ulaşmadığını inceleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "\"SMS ile KVKK onayı al\" düğmesi ile hastalarınızdan SMS ile KVKK onayı alabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "“SMS ile Dijital onam al” düğmesi ile hastalarınızdan SMS ile dijital onam alabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "“SMS ile Yeni Hasta” düğmesi ile hastalarınızın kendi kartlarını oluşturmasını sağlayabilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Kullanıcı Yönetimi",
+   "points": [
+    "Sınırsız kullanıcı",
+    "Kullanıcı yetkilendirme/kısıtlama",
+    "Kullanıcılara özel dil seçenekleri"
+   ],
+   "sourceId": 6,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/6-kullanici-yonetimi",
+   "slug": "kullanici-yonetimi",
+   "metaDescription": "Sınırsız kullanıcı Kullanıcı yetkilendirme/kısıtlama Kullanıcılara özel dil seçenekleri",
+   "image": "https://drdentes.com.tr/img/ozellik/6.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Klinik yönetiminde çalışanların sorumluk ve yetkilerinin ayrı ele alınarak belirlenmesini öneriyoruz."
+    },
+    {
+     "tag": "li",
+     "text": "Sınırsız sayıda kullanıcı oluşturabilirsiniz. Kullanıcılara özel Dr.DENTES’in desteklediği dillerden seçim yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dr.DENTES’in esnek kullanıcı yetkilendirmesi ile kullanıcılara işlem-işlem yetki belirleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Ek yetkilendirmeler ile de kullanıcıya; geçmişin veya sadece aynı günün kayıtlarına ulaşmasını, klinikteki bir veya tüm hekimlerin hastalarını görebilmesi gibi belirlemeler yapabiliriniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Ayarlar",
+   "points": [
+    "İstenildiği zaman yedek oluşturma",
+    "Kliniğe göre özel ayarlar tanımlama",
+    "Randevu, SMS, tanıtım ayarları"
+   ],
+   "sourceId": 12,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/12-ayarlar",
+   "slug": "ayarlar",
+   "metaDescription": "İstenildiği zaman yedek oluşturma Kliniğe göre özel ayarlar tanımlama Randevu, SMS, tanıtım ayarları",
+   "image": "https://drdentes.com.tr/img/ozellik/12.jpg",
+   "body": [
+    {
+     "tag": "p",
+     "text": "Dr.DENTES’i arzu ettiğiniz şekilde özelleştirebilirsiniz."
+    },
+    {
+     "tag": "li",
+     "text": "Açılış sayfası, akıllı uyarı sistemi (randevu vb. için hatırlatma), banka masrafı, hasta notları gizliliği, randevu defterinin görünümü ve daha fazlasını özelleştirebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Dr.DENTES sizin yerinize otomatik yedek alır (kendiniz de yedek talep edip indirebilirsiniz).",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Planlama, tedavi, diyagnoz, reçete vb. çıktılarda gösterilecek bilgilerinizi düzenleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Klinikteki ünit sayısını, mevcut hekimleri (sınırsız sayıda eklenebilir), hekimlerin çalışma saatlerini, öğle tatili saatlerini, hekim primi hesaplamasındaki hakediş yüzdesini ayarlayabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Sınırsız sayıda fiyat tarifesi oluşturabilir, tarifelerinizi düzenleyebilirsiniz. Tedaviler ve fiyatlarını, tarifenin para birimi, hastaların tarifeye kayıt durumu ve daha fazlasını düzenleyebilirsiniz. Tarifelere yeni tedavi ekleyebilirsiniz, tedavilerin oral şemadaki çizimlerini belirleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Her yeni yılda, TDB ücret tarifesini yayınladıktan kısa süre sonra Dr.DENTES içerisinden erişebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Diyagnoz ekleyebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Demirbaşlarınızı tanımlayabilirsiniz, garanti ve kullanım bitiş süreleri ve sterilizasyon işlemlerini takip edebilirsiniz. Garanti ve kullanım bitiş tarihleri yaklaştığında Dr.DENTES uyarı hatırlatma yapar.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Sterilizasyon işlemlerini adım adım izleyebilirsiniz (kirli girişi, yıkama, paketleme, sterilizasyon, çıkış ve kullanım). Sterilizasyon aşamalarında barkod okuyucuyla malzeme ve personel kaydı yapabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "İnternette var olmak ve hastaların size daha kolay ulaşabilmesi için tanıtım ayarlarınızı yapabilirsiniz. Hastalardan randevu talebi alma, hastalardan soru alma ayarlarınızı açıp kapatabilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  },
+  {
+   "title": "Diğer Özellikler",
+   "points": [
+    "Çoklu dil desteği (Türkçe, İngilizce, Almanca, Fransızca, Sırpça, Yunanca, Arnavutça)",
+    "Sesle Kontrol",
+    "7/24 erişim"
+   ],
+   "sourceId": 16,
+   "sourceUrl": "https://drdentes.com.tr/tr/ozellik/16-diger-ozellikler",
+   "slug": "diger-ozellikler",
+   "metaDescription": "Çoklu dil desteği (Türkçe, İngilizce, Almanca, Fransızca, Sırpça, Yunanca, Arnavutça) Sesle Kontrol 7/24 erişim",
+   "image": "https://drdentes.com.tr/img/ozellik/16.jpg",
+   "body": [
+    {
+     "tag": "li",
+     "text": "Çoklu dil desteği (Türkçe, İngilizce, Almanca, Fransızca, Sırpça, Yunanca, Arnavutça) ile Dr.DENTES'i farklı dillerde kullanabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Tedavi, planlama, hasta notu gibi kayıtları sesiniz ile kaydedebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hesabınıza her yerden ve her cihazdan 7/24 kesintisiz erişebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Yeni hesap açılışına özel çevrimiçi eğitim hakkını kullanabilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Güncel yardım (kullanım) kılavuzuna erişebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kullanıma dair eğitim videolarını izleyebilirsiniz.",
+     "list": "ul"
+    }
+   ]
+  }
+ ],
+ "allFeatures": [
+  {
+   "tag": "p",
+   "text": "HASTA menülerinde"
+  },
+  {
+   "tag": "li",
+   "text": "Hasta arama penceresinde Son Görülme kolonu ile aynı isimde hastalar listelenince en son hangi hastaya tedavi yapıldığı kolayca görülür.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "HASTA > Hasta Kartı"
+  },
+  {
+   "tag": "li",
+   "text": "Ortak aile hesabı tanımlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hasta kartını silerken şifre istenir. Silerken şu bilgileri de gösterir; silinecek diyagnoz sayısı, planlama sayısı, tedavi sayısı, hesap kapama sayısı, not sayısı, görüntü sayısı, alınan para sayısı, reçete sayısı ve ilişkisi kopacak randevu ve gider sayısı.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Aile ve Grup tanımlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Aile ve Grup içindeki hastalar tek tuşla görülebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Çağrı yapan cihazlarda telefon numarası olan hastanın direkt aranmasını sağlayan telefon düğmesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "E-posta adresi girilmiş hastaya \"E-posta gönder\" düğmesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hastanın geçmiş ve gelecek tüm randevularını gösteren \"Randevular\" düğmesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hasta kartından direkt o hastaya randevu verilmesini sağlayan \"Randevu\" düğmesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Anamnez kaydı olunca \"Anamnez\" düğmesi yanıp söner.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Fatura\" düğmesi ile hastaya kesilen faturalar tek bir yerden gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hastayı direkt SMS alıcısı olarak ekleyerek sms gönderilmesini sağlayan \"SMS\" düğmesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "E- Reçete yazabilmenizi sağlayan \"Reçetem\" düğmesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hastadan KVKK onayı alabileceğiniz \"SMS ile KVKK onayı al\" düğmesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hastaya randevularını, tedavilerini ve görüntülerini internetten göstermeyi sağlayan \"Erişim Kodu\".",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hasta fotoğrafı çerçevesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Aynı isimdeki hasta uyarısı.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Kontrol Periyodu\" ile hastanın kaç ayda bir kontrole çağrılacağı seçilerek takibi yapılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hastalara \"İstirahat Raporu\" oluşturabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu verirken uyarı almak için hasta \"Güvenilmez\" olarak işaretlenebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "HASTA > Oral"
+  },
+  {
+   "tag": "li",
+   "text": "Diş numaralarına not yazılabilir ve notu bulunan diş numarası kırmızı renkte belirtilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Diş üzerine bilgisayarda farenin sağ tuşu ile tıklayarak, dokunmatik cihazlarda basılı tutarak o dişe ait yapılan tüm işlemler listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Arka planı sarı renkli olan işlemlerin çizimi şemada gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Planlamaların çıktısı alınabilir - Proforma.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Tedavi ve diyagnozların çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Planlanan işlemler tedaviye kopyalanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Yapılan tedavilerin kırmızı renkli olması o tedavinin faturaya işlenmesi, mavi renkli olması Planlamadan kopyalandığını gösterir. Faturalı tedaviler seçilemez ve üzerlerinde herhangi bir değişiklik yapılamaz.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Tedavi ve planlamalarda işlemlerin fiyatı yüzde olarak ya da istenen fiyata yuvarlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Planlamalar birden fazla açılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Uygulanan işlemler listesinde çoklu satır seçilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Anlık olarak tarife ve dişhekimi değiştirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Dişlerin anatomik, normal ve basit şema görünümü.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Diyagonuzu farklı göster\" seçeneği ile Tedavi ve Planlama ekranlarında Diyagnoz çizimleri gri renkte görünür.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hesap kapatma işleminden önceki kayıtlar varsayılan olarak görünmez. Bu kayıtları \"Kapalı hesabı göster\" seçeneği ile görebilirsiniz. Kayıtların görünmemesi Oral'de şemayı etkilemez.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hesap kapatma işleminden önceki kayıtlarda değişiklik yapılamaz.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Planlama sözleşme haline çevrilebilir ve bu sözleşme ile ödeme planı oluşturulabilir. Planlanan ödeme günlerinde Dr.DENTES uyarı verir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Tüm çeneyi hızlıca KAYIP DİŞ olarak işaretlemek için diyagnozdaki \"KRET\" işlemini kullanabilirsiniz.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Mikrofon simgeli \"Sesle Kontrol\" düğmesi ile tedavi ismi ve diş numarası söylenerek işlem konuşarak yapılabilir. Örneğin \"Diş Çekimi 14\" gibi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Uygulanan işlemler listesindeki tedavilerin fiyatında yuvarlama yapıldıysa listede toplam kolonundaki tutar kalın görünür. Üzerine gelince ise eski fiyat görünür.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Anamnez bilgilerine erişilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "HASTA > Not ve Görüntü"
+  },
+  {
+   "tag": "li",
+   "text": "Not ile görüntü eşleştirilebilir. Eşleşen notun görüntüsü açık olduğu zaman Notun arka planı sarı olur.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Nota tıklandığı zaman eşleştiği görüntü varsa ekrana o görüntü gelir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Görüntüler arasında geçiş yaparken görüntüye ait not varsa not listesi, ilgili notun bulunduğu satıra doğru kayar.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Kameradan fotoğraf çekilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Not eklerken mikrofon simgeli \"Sesle Yaz\" düğmesiyle not konuşarak yazdırılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "DICOM ve PDF biçimdeki dosyalar yüklenebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "DICOM biçiminde yüklenen görüntüler üzerinde mm olarak ölçüm yapılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Görüntünün sol üst köşesindeki Karşılaştır düğmesi ile en az 2 en fazla 4 görüntünün tek ekranda karşılaştırılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Görüntünün sağ üst köşesindeki Görüntü Düzenleyici düğmesiyle, görüntüyü kırpma, efekt uygulama, döndürme, yakınlaştırma, uzaklaştırma özellikleri kullanılabilir. Görüntüde yapılan değişiklikler istenirse kaydedilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Not girerken Önemli seçeneği işaretlenirse not, listede kırmızı çerçeveli görünür.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Tüm Görüntüler” düğmesiyle görüntüler tek ekranda küçük kareler halinde gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Görüntüler dişle veya çeneyle ilişkilendirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Notlar gizlenebilir/gösterilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "HASTA > Hesap"
+  },
+  {
+   "tag": "li",
+   "text": "Buradaki Sözleşme düğmesi ile, Oral sayfasında yapılan sözleşme görüntülenir ve sözleşmeden doğan alacak takip edilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Aile Hesabı düğmesiyle o hastanın da içinde bulunduğu aynı ailedeki kişiler, borçları ve toplam borç görüntülenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hastayı direkt SMS alıcısı olarak ekleyerek SMS gönderilmesini sağlayan \"SMS\" düğmesi.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Alarm düğmesiyle hastanın ödeme yapacağı tarih seçilebilir. Seçilen tarih geldiğinde Dr.DENTES uyarı verir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hesabı kapat ile hastanın bakiyesi sıfırlanır. Yapılan hesap kapatma işlemleri geri alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Alınan Paralar'da Ödeme Tipi Kredi Kartı seçili ise Banka Masrafı gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Alınan Paralar toplu olarak yazdırılabilir ya da Para Alındı Belgesi olarak her alınan para ayrı ayrı yazdırılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hastanın borcu varsa Tedaviler bölümünde, alacağı varsa Alınan Paralar bölümünde güncel bakiyesi gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Bakiye Dağılımı düğmesi bir hastaya farklı hekimler tarafından yapılan tedavilerin hekim payını gösterir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "HASTA > Fatura"
+  },
+  {
+   "tag": "li",
+   "text": "Eski tip/basılı fatura kesildikten sonra Fatura No değiştirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Uygulanan tedavilerden istenileni fatura kaleminden çıkarılarak fatura kesilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Yazdırma Ayarları düğmesiyle yazdırılacak fatura, basılı fatura kağıdına göre ayarlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "e-Fatura oluşturulabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "e-Arşiv fatura oluşturulabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "e-Serbest Meslek Makbuzu (e-SMM) oluşturulabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hastalar, otomatik oluşturulan bağlantının paylaşılması ile kendisine ait e-Fatura, e-Arşiv fatura ve e-Serbest meslek makbuzunu görüntüleyebilir ve çıktısını alabilir. Bağlantı hastaya e-posta ile gönderilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "HASTA > Reçete"
+  },
+  {
+   "tag": "li",
+   "text": "Endikasyon seçimine göre ilaç önerilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Reçete, antetli kağıt biçiminde yazdırılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RANDEVU"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu defteri hekim çalışma saatlerinden oluşturulabilir. (Ayarlar > Dişhekimi, Çalışma Saatleri)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevuların periyodu ve süreleri ayarlanabilir. (Ayarlar > Randevu)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevular, açıklamaya veya dişhekimine göre renklendirilebilir. (Ayarlar > Randevu)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Öğle tatili, randevu defterinde farklı renkte gösterilebilir. (Ayarlar > Dişhekimi, Öğle Tatil Saatleri)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu defteri günlük, haftalık ve aylık olarak görüntülenebilir. Telefonlarda sadece günlük olarak görünür.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Seçilen diş hekimlerinin randevuları gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu eklerken ad-soyad yazıldığında Dr.DENTES hızlıca inceleme yapar. Girilen Ad ve soyadda hasta yoksa hasta kartı oluşturmayı sorar. Aynı ad soyadda birden fazla hasta varsa randevunun hangisine verileceğini sorar.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevuya bilgisayarda sağ tıklandığında, dokunmatik cihazlarda ise basılı tutunca bağlandığı hasta kartını açar. Eğer hiçbir hasta kartına bağlı değilse seçenekler sunar (aynı ad ve soyadda hasta kartı yoksa yeni oluşturmayı, hasta varsa seçim yaptırmayı).",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Diş hekiminin çalışma saatlerinin dışına randevu verilip verilememesini belirlenebilir. (Bu özellik Ayarlar > Dişhekimi sayfasından yapılır. \"Çalışma saatleri dışında randevu verilemesin\" seçeneği işaretliyse randevu verilemez.)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Bilgisayarlarda sürükle bırak yöntemiyle randevu başka gün veya saate taşınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevuda bulunan SMS düğmesiyle hasta direkt SMS alıcısı olarak belirlenerek, hazır randevu mesajını mesaj içeriğine eklenerek SMS gönderilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevudaki Kopyala düğmesine basarak defterde tıklanan gün ve saate randevu kopyalanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Bilgisayarda randevuların altında bulunan \"=\" işaretine basılı tutarak sürüklendiğinde randevu süresi değiştirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevuların isimlerinin yanında bulunan parantez içinde \"-\" işareti randevu durumunun Gelmedi, \"+\" işareti durumunun Geldi olduğunu ifade eder. Diğer randevu durumlarında, durumun baş harfi yazılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Bilgisayarda fare randevuların üzerine getirildiğinde randevuyla ilgili detaylar gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Not eklenen randevuların sağ altında \"•••\" simgesi görünür.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu renkleri açıklamalara göre oluşur.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Kontrol randevuları, 24 saat öncesinde Dr.DENTES uyarılarında hatırlatılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Bilgisayarda randevu defterinin, herhangi bir gününün herhangi bir saatinin satırına tıklanıp, sol tık basılı şekilde fare aşağı kaydırıldığında tıklamanın başladığı ve bittiği saatler arasına randevu verilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu verirken hasta listesinden arama yapılarak hasta bulunup randevu verilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevuda isim girerken ilgili hastalar hemen altta listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Geçmiş tarihli randevular, randevu defterinde gri renkli gösterilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu defteri dişhekimlerine ve ünitlere göre gösterilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Özel günler randevu defterinde farklı biçimde gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "​Dr.DENTES’teki randevular Apple takvim (iPhone, iPad) veya Google takvim (Android) ile paylaşılabilir.​",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Güvenilmez\" olarak kayıtlı hastalara randevu verilirken uyarı alınır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu verirken hastanın geçmişteki toplam ve gelmediği randevu sayılır gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "GİDER > Gider Kartı"
+  },
+  {
+   "tag": "li",
+   "text": "Hesap Tipi Personel seçili olan gider kartları ve giderleri, özel yetkilendirme ile istenilen kullanıcılara gösterilmez.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "GİDER > Gider"
+  },
+  {
+   "tag": "li",
+   "text": "Alınan mal/hizmetlerde ve ödemelerde diş hekimi seçimi yapılabilir. Diş hekimi bazlı parasal raporlar buradaki verileri kullanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Alınan mal/hizmet hasta ile ilişkilendirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Alınan mal/hizmette Vade Tarihi 7 günden fazlaysa ve çıkan \"Bana hatırlat\" seçeneği işaretliyse, ödeme tarihinden 7 gün önce Dr.DENTES uyarılarda hatırlatılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Ödediğimiz bölümünde Ödeme Tipi \"Havale\" ise Banka Masrafı alanı açılır ve masraf yazıldıysa, kliniğin gider raporunu alırken banka masrafı da gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Alınan mal/hizmete indirim yapıldıysa, bunun ödemesini girerken İndirim seçeneği işaretlenir ve açılan kutuya indirim tutarı yazılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Laboratuvar işleri detaylı kayıt ve takip edilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Defter"
+  },
+  {
+   "tag": "li",
+   "text": "Açıldığı anda günlük gelir gideri gösterir. (İşletme defteri maiyetinde)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hasta, Ödeme Tipi ve Dişhekimi esas alınarak gelir listelenebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Firma Adı, Ödeme Tipi ve Dişhekimi bazlı gider listelenebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Gelir giderler grafikle gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Liste"
+  },
+  {
+   "tag": "li",
+   "text": "Hasta kartındaki tüm alanlara göre: En küçük, En büyük ve İçinde geçen kolonlarına değer girerek listeleme yapılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listeden ilgili hasta kartına geçiş yapılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel biçiminde cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listedeki hastalara SMS düğmesiyle SMS gönderilir. Düğmeye basıldığında listede cep telefonu doğru girilmiş hastalar direkt SMS alıcısı olarak eklenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listede en fazla 10 alan gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Bakiye"
+  },
+  {
+   "tag": "li",
+   "text": "Borcu olan hastalar listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Dişhekimi ve Grup bazlı liste alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel biçiminde cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listedeki hastalara SMS düğmesiyle SMS gönderilir. Düğmeye basıldığında listede cep telefonu doğru girilmiş hastalar direkt SMS alıcısı olarak eklenir. Hazır Bakiye mesajı, mesaj içeriğine otomatik olarak eklenir, istenirse değiştirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Kısmi Bakiye"
+  },
+  {
+   "tag": "li",
+   "text": "Sadece seçilen tarih aralığındaki yapılan tedavilere ve alınan paralara bakılarak borcu olan hastalar listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Dişhekimi ve Grup bazlı liste alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel biçiminde cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listedeki hastalara SMS düğmesiyle SMS gönderilir. Düğmeye basıldığında listede cep telefonu doğru girilmiş hastalar direkt SMS alıcısı olarak eklenir. Hazır Bakiye mesajı, mesaj içeriğine otomatik olarak eklenir, istenirse değiştirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Kontrol"
+  },
+  {
+   "tag": "li",
+   "text": "Bir hafta içerisinde kontrole çağrılacak hastalar listelenir. Bu liste, Hasta Kartında Kontrol Periyodu seçili hastaların Son Tedavi Tarihi baz alınarak hazırlanır. Son tedavi tarihi yoksa son randevu tarihi, o da yoksa son olarak Kayıt Tarihine bakılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Diş hekimi bazlı liste alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel biçiminde cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listedeki hastalara SMS düğmesiyle SMS gönderilir. Düğmeye basıldığında listede cep telefonu doğru girilmiş hastalar direkt SMS alıcısı olarak eklenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Tedavi Sayacı"
+  },
+  {
+   "tag": "li",
+   "text": "Açıldığında bugün kimin hangi tedaviden kaç tane yaptığı listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Dişhekimi, Grup ve Tarih bazlı liste alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel biçiminde cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Tedavi"
+  },
+  {
+   "tag": "li",
+   "text": "Açıldığında bugün kimin hangi hastaya hangi tedaviyi ne tarihte kaç paraya yaptığı listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Dişhekimi, Grup, Tedavi, Tarih ve Faturalı/Faturasız bazlı liste alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel formatında cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listedeki hastalara SMS düğmesiyle SMS gönderilir. Düğmeye basıldığında listede cep telefonu doğru girilmiş hastalar direkt SMS alıcısı olarak eklenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Fatura Listesi"
+  },
+  {
+   "tag": "li",
+   "text": "Günlük, aylık, yıllık ya da istenilen tarih aralığındaki kesilen faturaların listesi alınır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Aylık KDV, üç aylık geçici vergi ve yıllık kurumlar vergisi brüt hesabında yol gösterici olabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel biçiminde cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listedeki hastalara SMS düğmesiyle SMS gönderilir. Düğmeye basıldığında listede cep telefonu doğru girilmiş hastalar direkt SMS alıcısı olarak eklenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Gider"
+  },
+  {
+   "tag": "li",
+   "text": "Açıldığında tüm gider hesaplarının bakiyeleri listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hesap Tipi bazlı liste alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel biçiminde cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Hakediş"
+  },
+  {
+   "tag": "li",
+   "text": "Çok hekimli kliniklerde, hekimlerin hak edişlerinin belirlenmesinde yol gösterici olabilir. Yapılan tahsilata veya tedaviye göre ayrı sonuçlar alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Bugün Doğanlar"
+  },
+  {
+   "tag": "li",
+   "text": "Bugün doğan hastalar listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Dişhekimi ve Grup bazlı liste alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Liste PDF veya Excel biçiminde cihaza indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listenin çıktısı alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Listedeki hastalara SMS düğmesiyle SMS gönderilir. Düğmeye basıldığında listede cep telefonu doğru girilmiş hastalar direkt SMS alıcısı olarak eklenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > TSİM"
+  },
+  {
+   "tag": "li",
+   "text": "TSİM (Temel Sağlık İstatistikleri Modülü)'e girmek üzere rapor oluşturulur.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Oluşturulan raporlar daha sonra da görüntülenebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > VERBİS Veri Envanteri"
+  },
+  {
+   "tag": "li",
+   "text": "VERBİS kaydıyla uyumlu “VERBİS Veri Envanteri” raporu oluşturulabilir. Bu rapor VERBİS kaydı için örnektir, tek başına yeterli değildir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "RAPOR > Durum"
+  },
+  {
+   "tag": "li",
+   "text": "Hangi yılda ne kadar hasta eklenmiş; ne kadar diyagnoz, planlama, tedavi yapılmış, ne kadar para giriş/çıkışı olmuş; en çok hangi tedaviler yapılmış, hangi hekim ne kadar tedavi yapmış vs. hem grafik hem de rakamlarla gösterilir. Tüm bu raporlar belirlenen tarih aralığına göre de alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Dr.DENTES kullanımıyla ilgili aylık olarak veri boyutu ve trafik raporuna ulaşılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "BELGELER > Onam Formları"
+  },
+  {
+   "tag": "li",
+   "text": "Hazır onam formları bulunur (ortodonti, implant, genel bilgilendirme vb.)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Adli Vaka Raporu yazılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "BELGELER > Hasta Eğitimi"
+  },
+  {
+   "tag": "li",
+   "text": "Hasta bilgilendirme amaçlı örnek tedavi videoları bulunur.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Tümünü Oynat\" düğmesiyle bekleme salonundaki TV'de yayınlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "BELGELER > Hasta İşaret Dili"
+  },
+  {
+   "tag": "li",
+   "text": "Tedavi sırasında konuşamaz durumda olan hastalarla iletişim kurulabilmesi için işaret dili tablosu bulunur.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > Klinik"
+  },
+  {
+   "tag": "li",
+   "text": "Klinik logosu yüklenir. Planlama, tedavi, diyagnoz ve reçete çıktılarında logo görünür.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Firma Adı, Adres, İlçe, Şehir, Sabit Telefon, E-posta, İnternet Sitesi, Vergi Dairesi, Vergi Numarası planlama, tedavi, diyagnoz ve reçete çıktılarında görünür.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hakediş hesaplanırken kullanılacak tedavi başına maliyet yüzdesi \"Maliyet Yüzdesi\" alanına yazılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Açılış Sayfası alanı ile Dr.DENTES'e girildiğinde açılması istenen sayfa seçilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Uyarı sistemi alanıyla Dr.DENTES'in uyarılarının görünüp görünmeyeceği ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Kontrol, ölçü ve protez prova randevuları için hatırlatmaların görünüp görünmeyeceği ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Klinikteki ünit sayısı girilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevuda hastanın hekiminin otomatik seçilip seçilmeyeceği ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Notları Kapat alanıyla Not ve Görüntü sayfasındaki notların gösterilip gösterilmeyeceği seçilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Yedek alınabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > Dişhekimi"
+  },
+  {
+   "tag": "li",
+   "text": "Sınırsız sayıda diş hekimi eklenebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Ad, Soyad, Uzmanlık, Sabit Telefon, Ülke, Şehir, İlçe, Adres ve Çalışma Saatleri alanlarına girilenler bilgiler, smileparadise.org ve dishek.org sitelerinde yayınlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Öğle Tatili Saatleri alanından seçilen başlangıç ve bitiş saatleri arası randevu defterinde renkli olarak gösterilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Çalışma Saatleri, randevu defterinin başlangıç ve bitiş saatini belirler.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Çalışma saatleri dışında randevu verilmesin\" seçeneği ile hekimin çalışma saatleri dışında randevu alıp almayacağı ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Doğum Tarihi girilmiş diş hekimlerine Dr.DENTES tarafından SMS ve e-posta ile doğum günü kutlama mesajı gönderilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Prim hesaplanırken kullanılacak hakediş yüzdesi \"Hakediş Yüzdesi\" alanına yazılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > Kullanıcı"
+  },
+  {
+   "tag": "li",
+   "text": "Sınırsız sayıda kullanıcı oluşturulabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Yetkilendirme yapılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > Tarife"
+  },
+  {
+   "tag": "li",
+   "text": "Açıldığında varsayılan ücret tarifesi gelir. Sınırsız yeni tarife oluşturulabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Kopyala\" düğmesiyle açık tarifenin içindeki tedaviler başka bir tarifeye kopyalanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Para birimi değiştir\" düğmesiyle ekrandaki tarifenin para birimi o günkü kur üzerinden değiştirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Tedavileri Sırala\" düğmesiyle tedavilerin, HASTA > Oral sayfasındaki sıralaması ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Hasta Aktar\" düğmesiyle tek seferde hasta tarifeleri değiştirilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Varsayılan tarife\" düğmesi ekrandaki tarifeyi varsayılan tarife yapar. Yeni hasta eklerken otomatik olarak varsayılan tarife seçili gelir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Ekrandaki tarife listesi PDF veya Excel biçiminde indirilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Ekrandaki tarife listesi yazdırılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Ekrandaki tarifeye yeni tedavi eklenebilir. (Kullanıcı tarafından eklenen tedavilerin çizimi olmaz.)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Tedavilerin durumu pasif yapılarak kullanılmayan tedavilerin HASTA > Oral sayfasında görünmemesi sağlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > Diyagnoz"
+  },
+  {
+   "tag": "li",
+   "text": "Yeni diyagnoz eklenebilir. (Kullanıcı tarafından eklenen diyagnozların çizimi olmaz.)",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > Randevu"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu periyodu, randevu açıklmasının renk ve süresi istenildiği gibi ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu açıklama, renk ve süresi istenildiğinde varsayılan ayara döndürülebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Geçmiş tarihli randevuların gri renkte gösterilip gösterilmeyeceği ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > SMS Gönder"
+  },
+  {
+   "tag": "li",
+   "text": "Bir veya birden fazla alıcıya SMS gönderilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Gönderim Türü\" ile istenirse hemen SMS gönderilir, istenirse ileri tarihte gönderilmek üzere zamanı seçilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Süre\" ile mesajın geçerlilik süresi ayarlanır. Buradan seçilen süre sonunda SMS gönderimi durdurulur.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Hasta kartındaki diğer cep telefonlarına da gönder\" seçeneği işaretlendiğinde hasta kartında bulunan Telefon ve Yakınının Telefonu alanlarındaki numaralara da SMS gönderimi sağlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "SMS'lerde özel ifadeler kullanılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Randevu, Bakiye, Doğum günü ve Periyodik kontrol için hazır SMS içeriği bulunur.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Mesaj alanından, daha önceden gönderilen son 10 SMS içeriğine ulaşılabilir. İstenirse buradan seçim yapılarak mesaj içeriğine alınır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Mesaj alanındaki \"Türkçe >İng.\" düğmesiyle Türkçe karakterler otomatik olarak İngilizce karaktere dönüştürülerek karakter sayısı azaltılır. (Türkçe karakterler 2 karakter niteliğindedir.)",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"SMS Gönderim Raporu\" düğmesi ile gönderdiğiniz SMS'lerin alıcıya ulaşıp ulaşmadığı incelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"İleri Tarihli Gönderiler\" düğmesiyle, Gönderim Türü \"İleri tarihte gönder\" olan SMS'ler listelenir. Gönderim zamanı gelmemiş SMS'ler silinebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"SMS Ayarları\" düğmesine tıklayıp \"Randevu verilince hastaya otomatik SMS gönder\" onay kutusu işaretlendiğinde bir hastaya randevu kaydedildiği an SMS gönderilir. Randevu kopyalandığı veya taşındığında da hastaya SMS gönderilir. SMS içeriği ayarlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"SMS Ayarları\" düğmesine tıklayıp \"Yarın randevusu olan hastalara otomatik SMS gönder\" onay kutusunu işaretlendiğinde günlük olarak bir sonraki gün randevusu olan hastalara SMS gönderilir. SMS gönderim zamanı ve SMS içeriği ayarlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"SMS Ayarları\" düğmesine tıklayıp \"Periyodik kontrol tarihi gelen hastalara otomatik SMS gönder\" onay kutusunu işaretlendiğinde haftalık olarak o hafta kontrol periyodu gelmiş hastalara SMS gönderilir. SMS gönderim günü, saati ve SMS içeriği ayarlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"SMS Ayarları\" düğmesine tıklayıp \"Doğum günü olan hastalara otomatik SMS gönder.\" onay kutusunu işaretlendiğinde doğum günü olan hastalara SMS gönderilir. SMS gönderim saati ve SMS içeriği ayarlanabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > Demirbaş"
+  },
+  {
+   "tag": "li",
+   "text": "Klinikteki demirbaşlar tanımlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Tanımlanan demirbaşların sterilizasyonu, garanti ve kullanım bitiş süreleri takip edilebilir. Garanti ve kullanım bitiş tarihleri yaklaştığında uyarı sistemi ile bilgilendirme yapılır.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > Sterilizasyon"
+  },
+  {
+   "tag": "li",
+   "text": "Klinik malzemelerinin sterilizasyon kayıtları tutulur.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Malzemelerin kirli girişi, yıkama, paketleme, sterilizasyon, çıkış ve kullanım aşamaları takip edilebilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Sterilizasyon aşamalarında barkod okuyucuyla malzeme ve personel kaydı yapılabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "AYARLAR > dishek.org"
+  },
+  {
+   "tag": "li",
+   "text": "Hekim fotoğrafı yüklenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Kliniğin konumu seçilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Buradan girilen tüm bilgiler dishek.org ve smileparadise.org sitesinde yayınlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Hekim yayın durumunu Yayın (dishek.org) alanından ayarlayabilir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "\"Hasta randevu talepleri size iletilsin mi?\" alanı ile dishek.org ve smileparadise.org sitelerinden hastaların kendilerine randevu talep edip etmeyeceği ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "“Hasta soruları size iletilsin mi?” alanı ile dishek.org ve smileparadise.org sitelerinden hastaların kendilerine soru sorup sorumayacağı ayarlanır.",
+   "list": "ol"
+  },
+  {
+   "tag": "p",
+   "text": "Genel"
+  },
+  {
+   "tag": "li",
+   "text": "Özel Günler düğmesiyle içinde bulunulan yılın özel günleri listelenir.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Dr.DENTES'ten çıkış yapılan bölümden Veri boyutu, Aylık trafik ve SMS kredisi görülür.",
+   "list": "ol"
+  },
+  {
+   "tag": "li",
+   "text": "Okunmamış uyarılar üstte gösterilir ve okundu olarak işaretlenen uyarılar 7 gün sonra listeden kaldırılır.",
+   "list": "ol"
+  }
+ ],
+ "posts": [
+  {
+   "sourceId": 17,
+   "slug": "dis-klinigi-yonetim-yazilimi-nedir",
+   "title": "Diş Kliniği Yönetim Yazılımı Nedir?",
+   "description": "Bir diş kliniğinin günlük süreci yalnızca tedavi uygulanmasından ibaret değildir. Hasta kayıtlarının tutulması, randevularının planlanması, tedavi süreçlerinin takip edilmesi, tahsilatların yönetilmesi, faturaların düzenlenmesi, stokların kontrol edilmesi, raporların incelenmesi gibi birçok farklı süreç aynı anda yür&...",
+   "image": "https://drdentes.com.tr/img/blog/17.jpg",
+   "tags": [
+    "diş kliniği",
+    "diş klinik yönetim yazılımı",
+    "muayenehane",
+    "poliklinik",
+    "dişhekimi"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "Örneğin bir hastanın;"
+    },
+    {
+     "tag": "li",
+     "text": "Hasta kaydının oluşturulması,",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Hasta kaydının oluşturulması,"
+    },
+    {
+     "tag": "li",
+     "text": "Randevusunun planlanması,",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Randevusunun planlanması,"
+    },
+    {
+     "tag": "li",
+     "text": "Muayene ve anamnez bilgilerinin kaydedilmesi,",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Muayene ve anamnez bilgilerinin kaydedilmesi,"
+    },
+    {
+     "tag": "li",
+     "text": "Tedavi planının oluşturulması,",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Tedavi planının oluşturulması,"
+    },
+    {
+     "tag": "li",
+     "text": "Uygulanan tedavilerin takip edilmesi,",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Uygulanan tedavilerin takip edilmesi,"
+    },
+    {
+     "tag": "li",
+     "text": "USS/e-Nabız’a gönderilmesi,",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "USS/e-Nabız’a gönderilmesi,"
+    },
+    {
+     "tag": "li",
+     "text": "Ödeme ve tahsilat bilgilerinin işlenmesi,",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Ödeme ve tahsilat bilgilerinin işlenmesi,"
+    },
+    {
+     "tag": "li",
+     "text": "Faturasının oluşturulması,",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Faturasının oluşturulması,"
+    },
+    {
+     "tag": "li",
+     "text": "Geçmiş işlemlerinin ve randevularının görüntülenmesi",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Geçmiş işlemlerinin ve randevularının görüntülenmesi"
+    },
+    {
+     "tag": "p",
+     "text": "gibi farklı bir çok aşamaları bulunmaktadır. Bu süreçlerin Dr.DENTES Diş Klinik Yönetim Yazılımı ile yönetilmesi, kliniğin ihtiyaç duyduğu bilgilere daha kolay ulaşmasına yardımcı olur."
+    },
+    {
+     "tag": "p",
+     "text": "Diş Kliniği Yönetim Yazılımı Seçerken Nelere Dikkat Edilmeli?"
+    },
+    {
+     "tag": "p",
+     "text": "Kendi kliniğinizin iş akışını düşünerek şu soruları sormak daha doğru bir yaklaşım olabilir."
+    },
+    {
+     "tag": "li",
+     "text": "Hasta bilgilerine ve geçmiş işlemlere kolayca ulaşabiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Hasta bilgilerine ve geçmiş işlemlere kolayca ulaşabiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Tahsilat, gelir ve giderleri takip edebiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Tahsilat, gelir ve giderleri takip edebiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Stok takibi yapabiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Stok takibi yapabiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Barkod okuyucu ile kolaylıkla stok girişi yapabiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Barkod okuyucu ile kolaylıkla stok girişi yapabiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Kliniğimi her yerden ve her cihazdan yönetebiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Kliniğimi her yerden ve her cihazdan yönetebiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Sınırsız hekim ve kullanıcı ekleyebiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Sınırsız hekim ve kullanıcı ekleyebiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Kullanıcıların yetkilerini dilediğim gibi sınırlandırabiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Kullanıcıların yetkilerini dilediğim gibi sınırlandırabiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Klinik hakkında ihtiyaç duyduğum verilere raporlarla ulaşabiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Klinik hakkında ihtiyaç duyduğum verilere raporlarla ulaşabiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Hastalarıma otomatik SMS ile randevularını hatırlatabiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Hastalarıma otomatik SMS ile randevularını hatırlatabiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Sorularım olduğunda, yardıma ihtiyacım olduğunda danışabileceğim biri var mı?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Sorularım olduğunda, yardıma ihtiyacım olduğunda danışabileceğim biri var mı?"
+    },
+    {
+     "tag": "li",
+     "text": "Klinik giderlerini takip edebiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Klinik giderlerini takip edebiliyor muyum?"
+    },
+    {
+     "tag": "li",
+     "text": "Gelişmiş raporlar ile kliniğin durumunu ölçebiliyor muyum?",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Gelişmiş raporlar ile kliniğin durumunu ölçebiliyor muyum?"
+    },
+    {
+     "tag": "p",
+     "text": "Tüm bu sorularınızın cevabı Dr.DENTES diş kliniği yönetim yazılımında mevcuttur. Dr.DENTES; hasta yönetimi, randevu, tedavi ve planlama, tahsilat, fatura, gider, stok ve maliyet yönetimi, raporlama, SMS gönderimi, kullanıcı yetkilendirme ve yapay zeka destekli görüntü analizi gibi farklı süreçleri tek platformda bir araya getiren bir diş kliniği yönetim yazılımıdır."
+    },
+    {
+     "tag": "p",
+     "text": "Doğru yazılım, kliniğin yalnızca bugünkü ihtiyaçlarını değil, büyüdükçe ortaya çıkabilecek yeni ihtiyaçlarını da karşılayabilecek bir yapıya sahip olmalıdır."
+    },
+    {
+     "tag": "p",
+     "text": "Dr.DENTES, diş hekimleri ve diş kliniklerinin günlük süreçlerini dijital ortamda yönetmelerine yardımcı olmak için geliştirilmiştir. Klinik yönetiminizi kolaylaştırmak ve Dr.DENTES'in sunduğu özellikleri incelemek için drdentes.com.tr tanıtım sitemizi inceleyebilir ve bizimle +90 (506) 188 20 19 numaralı telefonumuz ile mesai saatlerimiz içerisinde iletişime geçebilirsiniz. Size yardımcı olmaktan memnuniyet duyacağız!"
+    }
+   ]
+  },
+  {
+   "sourceId": 16,
+   "slug": "drdentes-ile-fatura-kesimi",
+   "title": "Dr.DENTES ile Fatura Kesimi",
+   "description": "e-Fatura, e-Arşiv Fatura, e-Serbest Meslek Makbuzu ya da kağıda basılan fatura düzenlemek farklı görünse de fatura kesen kişiye çıkardığı zorluklar aynı olabilir. Kağıt faturada insani hatalar, kayıp nüshalar, arşivleme, fatura alıcısına faturanın yollanması, kağıt israfı ve çevre kirliliği gibi olumsuzluklar varken; yeni tip fatura sistemlerin...",
+   "image": "https://drdentes.com.tr/img/blog/16.jpg",
+   "tags": [
+    "e-fatura",
+    "e-smm",
+    "e-arşiv fatura",
+    "e-arşiv",
+    "elektronik fatura",
+    "e-serbest meslek makbuzu"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "e-Fatura, e-Arşiv Fatura, e-Serbest Meslek Makbuzu ya da kağıda basılan fatura düzenlemek farklı görünse de fatura kesen kişiye çıkardığı zorluklar aynı olabilir. Kağıt faturada insani hatalar, kayıp nüshalar, arşivleme, fatura alıcısına faturanın yollanması, kağıt israfı ve çevre kirliliği gibi olumsuzluklar varken; yeni tip fatura sistemlerinde ise ön muhasebe/işletme bilgisi gerekliliği, karışık ekranlar, kullanımı zor özellikler, onlarca gereksiz tuş, yetersiz destek içerikleri gibi olumsuzluklarla karşılaşabilirsiniz. Ancak Dr.DENTES’in yeni tip fatura sisteminde bunların hiçbiri ile karşılaşmazsınız."
+    },
+    {
+     "tag": "p",
+     "text": "Dr.DENTES, hem eski tip hem de yeni tip fatura kesimini destekler. İlerleyen zamanda tamamen yeni tip fatura sistemine devlet regülasyonları ile geçileceği için biz de yeni sistemi diş hekimlerine öneriyoruz (serbest meslek mükellefleri ve bazı şirket yapıları için geçiş zorunluluğu bir süre önce başladı). Dr.DENTES’te fatura sistemini mümkün olduğunca basitleştirdik. Dr.DENTES’te e-Fatura, e-Arşiv Fatura, e-Serbest Meslek Makbuzu (e-SMM) kesmek için ne ön muhasebe bilgisine ihtiyacınız var ne de fatura kesiminde zorluk yaşatacak ekranlar... Dr.DENTES’in iç entegrasyonu sayesinde fatura kesmek için ek program kullanmanıza veya yeni entegrasyonlara ihtiyacınız yok, tüm fatura işlemlerini mevcut hesabınızda ve ekranlarınızda tamamlarsınız, üstelik telefon gibi mobil cihazlardan dahi faturanızı kesebilirsiniz. Ayrıntılı video ve yardım içeriklerimiz fatura kesimine destek olacaktır."
+    },
+    {
+     "tag": "p",
+     "text": "DENTES ile fatura kesimi 4 basit adımdan oluşur:"
+    },
+    {
+     "tag": "li",
+     "text": "Fatura kesilecek kişinin veya kurumun daha önce kaydı yoksa hasta kartı/firma kartı oluşturulur (Evet! Banka/sigorta gibi kurumlara da fatura kesebilirsiniz).",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Hastaya yapılan tedaviler oral ekranında işlenir.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Fatura kesme ekranında “yeni” düğmesine basılır. Fatura kesen, fatura alıcısı ve fatura işlemleri otomatik olarak, işinizi kolaylaştıracak şekilde ekranınızda gözükür. Bu aşamadan sonra sadece kısa bir kontrolle faturanızı kesebilir ya da fatura üzerinde bir takım düzenlemeler yaptıktan sonra faturanızı kesebilirsiniz. Örneğin; kredi kartı için slip numarası eklemek, parça parça ödeme alınan tedavi için özel faturalandırma gibi.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "“Kaydet” düğmesine basılır, faturanız hem Dr.DENTES’e kaydedilir hem de Gelir İdaresi Başkanlığı (GİB)’na gönderilir eğer fatura teslim yöntemini “elektronik” belirledi iseniz aynı zamanda hastanızın e-postasına da faturanın bir örneği iletilir. Kestiğiniz faturaları daha sonra da tek tuşla hastalarınızla paylaşabilirsiniz.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Böyle bir adım yok :) Çünkü yukarıdaki 4 adımı yaklaşık 10 saniye içerisinde tamamlayıp faturanızı kesebilirsiniz (hasta kartı daha önce oluşturuldu ise).",
+     "list": "ol"
+    },
+    {
+     "tag": "p",
+     "text": "Fatularayla ilgili bazı sık sorulan sorular ve cevapları:"
+    },
+    {
+     "tag": "li",
+     "text": "Kime ne tip fatura kesmem gerekir? Cevap: Eğer e-SMM mükellefi iseniz karşı tarafın mükellef tipi ne olursa olsun sadece e-SMM kesebilirsiniz; eğer e-Fatura mükellefi iseniz ve karşı taraf da e-Fatura mükellefi ise sadece e-Fatura kesebilir, karşı taraf e-Fatura mükellefi değilse e-Arşiv Fatura kesebilirsiniz. Dr.DENTES fatura kesimi sırasında, GİB’in belirlediği bu kurallara göre sizi yönlendirir.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Yabancı hastalara fatura kesebilir miyim? Cevap: Evet. Hatta yabancı hastalara kendi dillerindeki tedavi isimleriyle bile fatura kesebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Keseceğim e-SMM/e-Fatura/e-Arşiv Fatura banka veya sigorta gibi kurumlar için uygun mu? Geçerli mi? Cevap: Evet. Dr.DENTES fatura sistemi GİB’in belirlediği kural ve standartlara göre oluşturulmuştur ve her yeni resmi yükümlülüğe göre de düzenlenir. Bundan dolayı kestiğiniz tüm faturalar kişi veya banka/sigorta gibi kurumlar için geçerlidir.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Muhasebecim ile faturalarımı paylaşabilir miyim? Cevap: Muhasebecinize kullanıcı oluşturarak kestiğiniz faturalara topluca ulaşabilir.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Fatura kesmek için e-İmza/Mali mühür gerekir mi? Cevap: e-SMM kesmek için e-İmzanızın bulunması gerekir. Türktrust, e-Güven, e-İmzaTR gibi firmalardan e-İmza alabilirsiniz. e-Fatura ve e-Arşiv Fatura kesmek içinse mali mühür gerekir, mali mühürü sadece TÜBİTAK KamuSM’den edinebilirsiniz. Dr.DENTES fatura kurulumunuz tamamlandıktan sonra e-İmza/mali mühür bilgisayarınıza takılı olmadan istediğiniz her cihazdan (bilgisayar, telefon, tablet vb.) fatura kesebilirsiniz.",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Yeni tip fatura sistemi (e-Fatura, e-Arşiv Fatura, e-SMM) hakkında daha fazla bilgi almak ve Dr.DENTES’ten kullanmaya başlamak için program içerisindeki Hakkımızda sayfasını inceleyebilir veya bizimle iletişime geçebilirsiniz."
+    }
+   ]
+  },
+  {
+   "sourceId": 14,
+   "slug": "kredi-karti-ile-yapilan-satislar",
+   "title": "Kredi Kartı ile Yapılan Satışlar",
+   "description": "Kredi kartı ile yapılan satışlarda adına fatura düzenlenen kişi ile ödemeyi yapan kişinin farklı kişiler olması halinde, yasal değerlendirme;Mükellef tarafından, satış yapılan kişi adına faturanın düzenlenmesi ayrıca fatura bedelinin malı satın alan kişi yerine başkası tarafından nakit veya kredi kartıyla ödenmesi durumunda, kredi kartının bir &oum...",
+   "image": "https://drdentes.com.tr/img/blog/14.jpg",
+   "tags": [
+    "Kredi Kartı",
+    "Mükellef",
+    "Vergi"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "Kredi kartı ile yapılan satışlarda adına fatura düzenlenen kişi ile ödemeyi yapan kişinin farklı kişiler olması halinde, yasal değerlendirme;"
+    },
+    {
+     "tag": "p",
+     "text": "Mükellef tarafından, satış yapılan kişi adına faturanın düzenlenmesi ayrıca fatura bedelinin malı satın alan kişi yerine başkası tarafından nakit veya kredi kartıyla ödenmesi durumunda, kredi kartının bir ödeme aracı olduğu göz önünde bulundurularak faturanın mal veya hizmeti satın alan kişi adına düzenlenmesinde bir sakınca bulunmadığı değerlendirilmektedir."
+    },
+    {
+     "tag": "p",
+     "text": "Diğer taraftan faturası daha önce düzenlenmiş bir mal teslimine ilişkin bedelin tamamının veya bir kısmının bilahare nakden veya kredi kartı ile tahsil edilmesi hâlinde bu tahsilat için ayrıca bir fatura düzenlenmeyecektir. Bu konuya ilişkin bir özelge de mevcuttur."
+    },
+    {
+     "tag": "img",
+     "src": "https://drdentes.com.tr/u/images/kredi%20karti.jpg",
+     "alt": "kredi kartı ile ödeme"
+    },
+    {
+     "tag": "p",
+     "text": "Vergi Dairesi Müdürlüğü’nün **** vergi kimlik numaralı mükellefi tarafından İstanbul Vergi Dairesi Başkanlığından; “kredi kartı ile yapılan satışlarda çeşitli nedenlerle adına fatura düzenlenen kişi ile ödemeyi yapan kişinin farklı kişiler olabildiği belirtilerek, bu durumun Vergi Usul Kanunu hükümlerine aykırı olup olmadığı” hususunda görüş talep edilmiştir. Söz konusu görüş talebine istinaden İstanbul Vergi Dairesi Başkanlığı Mükellef Hizmetleri Usul Grup Müdürlüğü tarafından 08.06.2011 tarihli ve B.07.1.GİB.4.34.19.02-019.01-666 sayılı özelgede;"
+    },
+    {
+     "tag": "p",
+     "text": "“Buna göre, beyaz eşya veya mobilya satışlarınızda, satış yaptığınız kişi adına faturanın düzenlenmesi gerekmektedir. Bedelin malı satın alan kişi yerine başkası tarafından nakit veya kredi kartıyla ödenmesi, faturanın bu kişi adına düzenlenmesini engellemeyecektir. Ayrıca kredi kartı bir ödeme aracı olduğundan, faturası daha evvel düzenlenmiş bir mal teslimine ilişkin bedelin tamamının veya bir kısmının bilahare nakden veya kredi kartı ile tahsil edilmesi hâlinde bu tahsilat için ayrıca bir fatura düzenlenmeyecektir. Ancak yetkililerce izahat istenildiğinde, sonradan kredi kartıyla yapılan tahsilatın, daha önceki bir tarihte tanzim olunmuş bir belgeye (fatura vb) ilişkin olduğunun tarafınızca ispatlanması gerektiği tabiidir.”"
+    },
+    {
+     "tag": "p",
+     "text": "şeklinde görüş bildirilmiştir."
+    },
+    {
+     "tag": "p",
+     "text": "Saygılarımla,"
+    },
+    {
+     "tag": "p",
+     "text": "A. Korcan TURAN Serbest Muhasebeci Mali Müsavir - Mali Hukuk Uzmanı Dokuz Eylül Üniversitesi E. Ögretim Görevlisi"
+    },
+    {
+     "tag": "p",
+     "text": "Adres: Akdeniz Cad. No:5/309 Pasaport - İZMİR Tel: 0 232 441 78 05 GSM: 0 532 687 05 02 Faks: 0 232 484 03 29 e-posta: korcanturan@yahoo.com"
+    }
+   ]
+  },
+  {
+   "sourceId": 10,
+   "slug": "dishekimliginde-dijitallesme",
+   "title": "Dişhekimliğinde Dijitalleşme",
+   "description": "Diş hekimliği, anamnezden tedaviye değin hastalarla sürekli etkileşim halinde olduğundan daima devinir: Yeni bir teknoloji gelir, hasta istekleri değişir, yeni taleplere ayak uydurulur, başka bir yeni gelişme meydana gelir… Her küçük değişim zamanla tüm diş hekimliğinin takip etmesi gereken akımı oluşturur. Diş hekimliğini ileriye taşıyacak gel...",
+   "image": "https://drdentes.com.tr/img/blog/10.jpg",
+   "tags": [
+    "Diş hekimliği",
+    "dijitalleşme",
+    "teknoloji",
+    "akıllı yazılım",
+    "yapay zeka"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "Diş hekimliği, anamnezden tedaviye değin hastalarla sürekli etkileşim halinde olduğundan daima devinir: Yeni bir teknoloji gelir, hasta istekleri değişir, yeni taleplere ayak uydurulur, başka bir yeni gelişme meydana gelir… Her küçük değişim zamanla tüm diş hekimliğinin takip etmesi gereken akımı oluşturur. Diş hekimliğini ileriye taşıyacak gelişmelerden birkaçını sizinle paylaşmak istiyoruz."
+    },
+    {
+     "tag": "p",
+     "text": "Apple, Siri ses teknolojisinde çığır açtığından beri hasta adayının ilk başvurusundan, tedavisini tamamlayıp sağlığının keyfini sürmeye başladığı ana kadar dilediği her an bu teknoloji sizin işlerinizin bir kısmını üstlenebilir. Sesli yanıt sistemlerinden, sesinizle tedavi kaydı girişine kadar birçok işi süratle, eksiksiz ve unutulmadan tamamlayabilirsiniz."
+    },
+    {
+     "tag": "p",
+     "text": "Z kuşağı hasta adayları internetin içine doğduklarından kendilerine hangi tedavilerin, ne şekilde uygulanacağını bilmek istiyorlar. Görsel olarak tatmin edilmek onların ilk şartı. Bu şartı takiben beklemeye tahammül edemeyecekleri ikinci şartsa; tedavinin gecikmesi! Randevu planlamasından, tedavide kullanılacak malzemelerin alınmasına kadar ihtiyaçlarınızı çevrim içi (online) çözümler ile istediğiniz her an -gece yarısı dahi!- karşılayabilirsiniz. Tedavide kullanılacak ancak stoğunuzda bulunmayan malzeme siparişini gece e-ticaret sitesinden (topcudental.com) verip sabahında muayenehanenizde teslim alabilirsiniz. Z kuşağı, internet sitenizden randevu talep edilebileceği gibi hekim listesi sunan sitelerden (dishek.org) de size ulaşabilir. Hatta kendinizi iyi tanımlamanız halinde yurt dışı hastalar dahi size bu sitelerden (smileparadise.org) ulaşabilirler."
+    },
+    {
+     "tag": "img",
+     "src": "https://drdentes.com.tr/u/images/eye-digital.jpg",
+     "alt": "Dijitalleşme"
+    },
+    {
+     "tag": "p",
+     "text": "Her birimiz özeliz ancak bize genel muamelesi yapıldığında çıldırıyoruz. Klasik tatil mesajları başta olmak üzere, can sıkıcı, satış maksatlı aramalara kadar, genel amaçlı, çoğunluğu hedef alan yaklaşımlar bizi duyarsızlaştırıyor. Tedavimize özen ve takibine önem verilmesini bekliyoruz. Diş çekim yerinin iyileşmesinden tutun da diş beyazlatma randevumuzun hatırlatılmasına kadar birçok ihtiyacın hekimimiz tarafından hatırlanmasını hatta randevumuzun verilmesini bekliyoruz. Peki siz bütün bunları yapabiliyor musunuz? Yoksa akıllı bir yapay zeka desteğine ihtiyacınız mı var?"
+    },
+    {
+     "tag": "p",
+     "text": "Hasta memnuniyet seviyesi ne durumda? Tedavi işlevini yerine getiriyor mu? Yoksa yaşam kalitesinde kayıplar var mı? Bu bilgiyi gerçek anlamda edinebiliyor musunuz? Daha önce yaşadığı tedavi deneyimi nasıldı? Üzücü, ağrılı ve bir sonraki tedaviden kaçınır yapıda mı? Yoksa bir tatile gider gibi size gelmek isteyecek mi?"
+    },
+    {
+     "tag": "p",
+     "text": "Bunlar ve daha fazlası için hazırlıklı mısınız?"
+    }
+   ]
+  },
+  {
+   "sourceId": 7,
+   "slug": "bulut-teknolojisinin-faydalari",
+   "title": "Bulut Teknolojisinin Faydaları",
+   "description": "Bulut (cloud) hiçbir kurulum gerektirmeyen web tabanlı programlar için kolaylık sunan çevrimiçi depolama hizmetidir. İnternet üzerinde barındırılan tüm uygulama, program ve verilerin sanal bir makine (bulut) üzerinde depolanması, internete bağlantısı olan her cihazdan bu bilgilere, programlara ve verilere kolaylıkla ulaşım sağlanabilen...",
+   "image": "https://drdentes.com.tr/img/blog/7.jpg",
+   "tags": [
+    "bulut",
+    "veri depolama",
+    "bulut yedekleme"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "Bulut (cloud) hiçbir kurulum gerektirmeyen web tabanlı programlar için kolaylık sunan çevrimiçi depolama hizmetidir. İnternet üzerinde barındırılan tüm uygulama, program ve verilerin sanal bir makine (bulut) üzerinde depolanması, internete bağlantısı olan her cihazdan bu bilgilere, programlara ve verilere kolaylıkla ulaşım sağlanabilen hizmetin tümüne bulut teknolojisi adı verilmektedir. Google, Microsoft, Apple, Amazon ve daha birçok teknoloji devi şirket bulut teknolojisini kullanır ve aynı zamanda satışını da yapar."
+    },
+    {
+     "tag": "h4",
+     "text": "Fiziksel Sınırlamalar Yok!"
+    },
+    {
+     "tag": "p",
+     "text": "Bulut teknolojisinden önce veriler sabit disklerde (HDD), DVD vb. saklanırdı. Zamanla saklanan veri miktarı arttıkça alan yetersizliği baş gösterdi. Önceleri veriler “megabayt” seviyesinde iken şimdi çok daha büyük (gigabayt) veri depoluyoruz. Şirketler, verileri saklamanın yanı sıra yedeklemek de zorundalar. Bu noktada çare olarak bulut teknolojisi devreye giriyor. Bulut, fiziksel anlamda kullanılan HDD’lerden daha fazla depolama alanı, hızlı veri transferi ve yedekleme üzerinde maliyet tasarrufu yapabilme gibi birçok fayda sağlıyor. Şirketlerin iş yükünün bulut ile oldukça hafiflediğini söyleyebiliriz."
+    },
+    {
+     "tag": "img",
+     "src": "https://drdentes.com.tr/u/images/tum-cihazlardan-erisim.jpg",
+     "alt": "Tüm cihazlardan erişim"
+    },
+    {
+     "tag": "h4",
+     "text": "Kolay Kurulum"
+    },
+    {
+     "tag": "p",
+     "text": "Hızlı kurulum ve kullanım kolaylığı bulut sağlayan ile bilgisayar veya diğer cihazların etkileşimine izin veren, cihaz ve kullanıcı arasındaki iletişimi sağlayan bir ara yüz ile bağlantı kurulur. Uygulamanın kullanılacağı her cihaza kurulum yapılmasına ihtiyaç duyulmaz. Kurulumdan kaynaklanan maliyet, zaman kaybı ve iş yükü gibi olumsuzlukları ortadan kaldırır. Ayrıca bulut teknolojisinde API’ler kullanılabilir, bu sayede ihtiyaç duyulan sistemler ile entegrasyon sağlanabilir."
+    },
+    {
+     "tag": "h4",
+     "text": "Ulaşılabilirlik"
+    },
+    {
+     "tag": "p",
+     "text": "Bulut teknolojisinde sanallaştırma, sunucuların ve depolama cihazlarının paylaşımına ve kullanımının artmasına olanak sağlar. Var olan sanal makine üzerindeki veriler kolaylıkla paylaşım izni verilen farklı bir cihazdan aktarılabilir. Verilerin bulunduğu cihaza bağımlılık olmaz. Bu paylaşım özelliği sayesinde buluta bağlı her cihazdan ve istenildiği anda verilere ulaşılabilir. (Örneğin: telefon, tablet, bilgisayar hatta klima vb. cihazlar). Tatil, evden çalışma, seyahat gibi durumlarda bile iş takibine imkan verir."
+    },
+    {
+     "tag": "img",
+     "src": "https://drdentes.com.tr/u/images/her-yerden-eris.jpg",
+     "alt": "Her yerden erişim"
+    },
+    {
+     "tag": "h4",
+     "text": "Uyumluluk"
+    },
+    {
+     "tag": "p",
+     "text": "Bulut teknolojisi her sektörden şirket için uygundur. Örneğin Dr.DENTES klinik yönetim yazılımı ile diş kliniklerine sunulan bulut hizmetinin, Bardacık gibi bir apartman yönetim ve izleme sistemi için de uygulanabilirliği vardır. Farklı sektörlerdeki şirketlerin ihtiyaçlarını karşılar."
+    },
+    {
+     "tag": "h4",
+     "text": "Yüksek Güvenlik"
+    },
+    {
+     "tag": "p",
+     "text": "Doğal afetler, fiziksel yıpranmalar, zararlı çevresel etkenler, bilgisiz veya kötü niyetli kişilerin verileri ulaşılamaz hale getirmesi ve hırsızlık gibi riskleri bulunmaz. Veri alışverişi şifreleme algoritmalarıyla yapılır, dışarıdan müdahaleler engellenir. Gelişmiş güvenlik sistemleri ile saklı verilerin değiştirilmesi, bozulması veya çalınması gibi saldırılara önlem alınır. Yapılan güvenlik güncelleştirmeleri sisteme anında uygulanır, böylece yeni çıkan virüslere, saldırı yöntemlerine vb. zararlı faaliyetlere karşı koruma sağlanır. Çoklu yedekleme ile sistemlerden birinde sorun yaşansa bile bir diğer sistemden işlemler aksamadan yürütülebilir, yaşanan sorundan kullanıcıların etkilenmez. Sadece istenilen kişiler ve cihazların verilere erişmesini sağlayacak izinler düzenlenerek yetkilendirme yapılabilir."
+    },
+    {
+     "tag": "h4",
+     "text": "Yedekleme"
+    },
+    {
+     "tag": "p",
+     "text": "Bulut teknolojisindeki çoklu yedekleme sistemleri sayesinde güvenilirlik düzeyi yüksektir. Bu sistemlerle basitleştirilen yedekleme ile veri kaybı en alt seviyeye indirilir. İş devamlılığı için planlı yedek alma işlemlerini kolaylaştırır. Yedek almak için sistemin kapatılması vb. gereklilik yoktur. Yedek alma, işlerin aksamasına sebep olmaz."
+    },
+    {
+     "tag": "h4",
+     "text": "Kesintisiz Bakım ve Güncelleme"
+    },
+    {
+     "tag": "p",
+     "text": "Bulut teknolojisi uygulamalarının bakımı oldukça kolaydır. Uygulamayı kullanacak her kullanıcın bilgisayarında bakım çalışması yapmaya gereksinim duyulmaz. Güncellemeler buluta bağlı tüm cihazlara çok kısa sürede ulaştırılır. Her kullanıcının ayrı ayrı güncellemeyi indirme ve kurma zahmeti yaşanmaz, dağıtımı basitleştirir. Kullanıcılar, güncelleştirme işlemi yapmaya gerek duymadan dağıtımı yapılan güncel uygulamayı kullanır."
+    },
+    {
+     "tag": "h4",
+     "text": "Ölçeklenebilirlik"
+    },
+    {
+     "tag": "p",
+     "text": "İhtiyaç doğrultusunda depolama alanları kolayca genişletilebilir. Fiziksel depolamadaki yeni donanım maliyetleri, verileri taşıma ve sistem kesintileri gibi durumlar yaşanmaz. Bulut, istenilen boyutta istenilen sayıda cihazın kullanımına uygun hale getirilebilir."
+    }
+   ]
+  },
+  {
+   "sourceId": 13,
+   "slug": "dis-tedavisinde-covid-19-bulasi-hakkinda-yeni-arastirma",
+   "title": "Diş Tedavisinde COVID-19 Bulaşı Hakkında Yeni Araştırma",
+   "description": "COVID-19 salgını günlük aktivitelerimizin tamamını etkiledi. Bazılarının durdurulmasına, bazılarının yok olmasına, bazılarınınsa şekil değiştirmesine sebep oldu. Örneğin diş tedavilerinde randevular arasındaki süre daha da açıldı, klinik düzenleri değişti, hasta ve hasta yakınlarının HES kodu sorgulanmaya başlandı vb. Peki diş tedavisi hekim ve h...",
+   "image": "https://drdentes.com.tr/img/blog/13.jpg",
+   "tags": [
+    "COVID-19",
+    "diş tedavisi",
+    "aerosol",
+    "dişhekimi"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "COVID-19 salgını günlük aktivitelerimizin tamamını etkiledi. Bazılarının durdurulmasına, bazılarının yok olmasına, bazılarınınsa şekil değiştirmesine sebep oldu. Örneğin diş tedavilerinde randevular arasındaki süre daha da açıldı, klinik düzenleri değişti, hasta ve hasta yakınlarının HES kodu sorgulanmaya başlandı vb. Peki diş tedavisi hekim ve hasta açısından risk taşır mı? Aerosol korkuları haklı mı?"
+    },
+    {
+     "tag": "p",
+     "text": "COVID-19 üzerine birçok araştırma sürdürülüyor, her gün yeni bilgiler edinmeye devam ediyoruz. Pandemiden etkilenen diş tedavileri de bilim insanlarının merceği altında. Ohio Eyalet Üniversitesi araştırmacılarının Journal of Dental Research’de yayınlanan çalışmasında, diş tedavisindeki bir dizi işlemde; personel, ekipman ve aerosollerin ulaştığı diğer yüzeylerden örnekler topladı. Önceki araştırmalar, aerosollerin tedavi ekibine ve hastanın göğsüne düşme eğiliminde olduğunu ve 11 fit kadar uzağa gidebildiğini gösteriyordu. Ancak yeni çalışmalarda, yalnızca bakterilerin varlığı bulundu, nadiren organizma tespit edildi ve kaynağı belirlenemedi. Yeni çalışmada, asemptomatik hastaların tükürüğünde düşük seviyelerde SARS-CoV-2 virüsü tespit edildiğinde bile tedavi sırasında üretilen aerosoller koronavirüs belirtisi göstermedi. Makalenin baş yazarı Prof. Periodontolog Purnima Kumar, \"Dişlerinizi temizlettirmek, COVID-19 enfeksiyonu riski açısından muayenehanede ikram edilen bir bardak sudan içmekten daha fazla değildir\" diyor. Profesör, bakterilerin kaynağının tükürük olmadığını belirtip \"Bu virüsün aerosol yoluyla yayıldığını ve muayenehanede konuşma, öksürme veya hapşırma ile hala yüksek bir bulaşma riski taşıyabileceği gerçeğini unutmamalıyız\""
+    },
+    {
+     "tag": "p",
+     "text": "Yeni araştırmalarla elde edilen yeni bilgiler risk kaynakları ve önlemlerimizi gözden geçirmemize ve değiştirmemize sebep olabiliyor."
+    },
+    {
+     "tag": "p",
+     "text": "Kaynak: Elvan Genç (VYG) - dentiss.com/dis-tedavilerinde-covid-19-riski-hakkinda-yeni-arastirma-y2927"
+    }
+   ]
+  },
+  {
+   "sourceId": 2,
+   "slug": "saglik-turizmi-belgesi-ve-denetimleri",
+   "title": "Sağlık Turizmi Belgesi ve Denetimleri",
+   "description": "Sağlık Turizmi ve Turistin Sağlığı konularında çalışmak için yeni kliniğimizi 2020 yılında açtık. Sağlık turizmi yetki belgesi almak için evraklarımızı tamamladık ve Sağlık Bakanlığına başvurduk. Bir (1) ay sonunda sağlık turizmi yetki belgemizi aldık. Süreç oldukça basit, istenilen evraklar kolaylıkla tamamlanabilinecek türde...",
+   "image": "https://drdentes.com.tr/img/blog/2.jpg",
+   "tags": [
+    "sağlık turizmi",
+    "turistin sağlığı",
+    "SİNA",
+    "dental yazılım"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "Sağlık Turizmi ve Turistin Sağlığı konularında çalışmak için yeni kliniğimizi 2020 yılında açtık. Sağlık turizmi yetki belgesi almak için evraklarımızı tamamladık ve Sağlık Bakanlığına başvurduk. Bir (1) ay sonunda sağlık turizmi yetki belgemizi aldık. Süreç oldukça basit, istenilen evraklar kolaylıkla tamamlanabilinecek türden (evrak dökümü İl Sağlık Müdürlüğünden veriliyor). Sağlık turizmi yetki belgesine sahip kliniklerin olağan yıllık denetimi söz konusu. Bu yıl ilk denetimimiz yapıldı. Evraklarımız kontrol edildi (İl Sağlık Müdürlüğünden istenen evraklar), eksiklerimiz tespit edildi ve giderilmesi için bir (1) ay süre verildi."
+    },
+    {
+     "tag": "p",
+     "text": "Neler kontrol edilir?"
+    },
+    {
+     "tag": "p",
+     "text": "Yabancı hasta takip sistemine (SİNA) kayıtlı her hastanın;"
+    },
+    {
+     "tag": "li",
+     "text": "Tedavi başlangıcında \"Onam formunun\" varlığı,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Tedavi sonunda \"Epikriz raporunun\" yazıldığı,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Yapılan işlemlere ait e-Faturanın düzenlendiği,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Hizmet ayrıntı belgesinin hazırlandığı,",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "e-Nabız (USS) sistemine gönderilen hasta bilgileri ile SİNA sistemine kayıtlı hastaların Sağlık Turizmi / Turistin Sağlığı girişlerinin tutarlılığı denetlenir.",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "SİNA'da kliniğimiz adına kayıtlı hastalardan rastgele bir kaç örnek seçip yukarıda belirtilen hususlar dahilinde kontrol edildi."
+    },
+    {
+     "tag": "p",
+     "text": "Başvuru sürecinde derlediğiniz belgeler kontrolden geçiyor. Şayet bu belgeleri dosyalayıp ayrı saklarsanız bu konuda zorluk yaşamazsınız."
+    },
+    {
+     "tag": "p",
+     "text": "Kayıt, takip ve arşiv sistemi olarak Dr.DENTES programını kullanıyoruz. Program USS'ye veri gönderimi ve e-Fatura konusunda işlerimizi kolaylaştırıyor. Hasta oral diyagnozundan yapılan tedavilerin kaydına kadar işleyiş basit. Bu kayıtların USS (e-Nabız) sistemine gönderilmesi ve GİB'e bağlı e-Fatura düzenlenmesi ise hızlı. Kayıtlar arasında ilişkisel tutarsızlıkları önlemesi ise iyi planlanmış."
+    },
+    {
+     "tag": "p",
+     "text": "Not: Serbest diş hekimliğinde 2021 yılı itibariyle on beş (15) yılı tamamladım. Turistik bölge olan Marmaris'te ise on bir (11) yıldır çalışıyorum. Turistik bölgede profesyonel olarak Sağlık Turizmi yapmak istediğimizden 2020 yılında polikliniğimize yetki belgesi aldık."
+    },
+    {
+     "tag": "p",
+     "text": "Diş Hekimi Sinem ÇELEBİ ÇELEBİ DENTAL AĞIZ VE DİŞ SAĞLIĞI POLİKLİNİĞİ Marmaris / MUĞLA"
+    }
+   ]
+  },
+  {
+   "sourceId": 11,
+   "slug": "ileti-yonetim-sistemi-iys-nedir",
+   "title": "İleti Yönetim Sistemi (İYS) Nedir?",
+   "description": "İleti Yönetim Sistemi (İYS) Nedir?İleti Yönetim Sistemi (İYS), 6563 sayılı “Elektronik Ticaretin Düzenlenmesi Hk. Kanun” gereği kurulan, Türkiye Odalar ve Borsalar Birliği ve T.C. Ticaret Bakanlığı ortak yönetimindeki sistemdir. \"Ticari elektronik ileti\" izinlerinin tutulduğu bir veri tabanı da denebilir.Elektronik Ticari İleti ...",
+   "image": "https://drdentes.com.tr/img/blog/11.jpg",
+   "tags": [
+    "İleti Yönetim Sistemi",
+    "İYS",
+    "Ticari İleti",
+    "Ticari İleti Onayı",
+    "SMS"
+   ],
+   "body": [
+    {
+     "tag": "h4",
+     "text": "İleti Yönetim Sistemi (İYS) Nedir?"
+    },
+    {
+     "tag": "p",
+     "text": "İleti Yönetim Sistemi (İYS), 6563 sayılı “Elektronik Ticaretin Düzenlenmesi Hk. Kanun” gereği kurulan, Türkiye Odalar ve Borsalar Birliği ve T.C. Ticaret Bakanlığı ortak yönetimindeki sistemdir. \"Ticari elektronik ileti\" izinlerinin tutulduğu bir veri tabanı da denebilir."
+    },
+    {
+     "tag": "h4",
+     "text": "Elektronik Ticari İleti Nedir?"
+    },
+    {
+     "tag": "p",
+     "text": "Kampanya, reklam, tanıtım ve pazarlama ya da işletmenin tanınırlığını arttırmak amacıyla; telefon araması, SMS, e-posta vb. ile yapılan her türlü ticari iletişimdir. Ticari iletiye örnekler;"
+    },
+    {
+     "tag": "li",
+     "text": "Bayram, doğum günü vb. özel gün kutlaması.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Kampanya veya indirim duyuruları. Örneğin “diş beyazlatmada yaz kampanyası…”, “implant tedavisinde %x indirim” gibi.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Şube açılışınızı duyurmak, hastayla ilgili olmayan tanıtım amaçlı bilgilendirmeler vb. Örneğin “kliniğimiz tamamen steril olarak hizmetinizde!”, “ABC’deki yeni şubemizin açılışı….” gibi.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "“x gün önce tedavi hakkında bilgi almıştınız ancak kliniğimize gelmediniz, tekrar bilgilendirme yapalım, muayene olabilirsiniz…” gibi kendinizi hatırlatma.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Sektör dışından örnek; “x GB internet paketi ayda sadece a TL’ye….”",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "Bu örnekler dışında eğer mesajınız, ticari kazanç elde etme amaçlı ise bunun ticari ileti olduğunu varsayabilirsiniz."
+    },
+    {
+     "tag": "h4",
+     "text": "İYS’ye Kayıt Olmalı Mıyım?"
+    },
+    {
+     "tag": "img",
+     "src": "https://drdentes.com.tr/u/images/reklam-mesaj%C4%B1.jpg",
+     "alt": "Reklam SMS'i"
+    },
+    {
+     "tag": "p",
+     "text": "Yukarıda örneklenen içeriklere benzer ileti gönderiyorsanız veya kanuna uygun olarak göndermeye devam etmek istiyorsanız, evet kayıt olmalısınız. “Hizmet sağlayıcı” yani dişhekimi, poliklinik, ağız ve diş sağlığı merkezi vb. olarak herhangi bir hastanıza “ticari ileti” yollamak istediğinizde, ilgili hastanın size “ticari ileti gönderim onayı” vermesi gereklidir. Dr.DENTES’te hastalarınızın ticari ileti onay durumunu kaydedip listeleyebilirsiniz. 31 Mayıs 2021’e kadar iys.org.tr’den “hizmet sağlayıcı” kaydınızı yapmanız ve sadece ticari ileti onayı vermiş hastalarınızın onay kaydını İYS’ye eklemelisiniz, İYS’ye kayıt ücretsizdir. Bu kayıtları yapmadığınız takdirde yasal yaptırımlarla karşılaşabilirsiniz."
+    },
+    {
+     "tag": "h4",
+     "text": "“Ticari İleti” Kapsamında Olmayan İletiler"
+    },
+    {
+     "tag": "p",
+     "text": "6563 sayılı kanuna göre hastaya tedavisi veya aldığı ürünle ilgili bilgilendirme “ticari ileti” değildir! Ticari ileti kapsamında olmayan örnekler;"
+    },
+    {
+     "tag": "li",
+     "text": "Borç hatırlatma, tahsilat bilgilendirmesi, sözleşme hakkında bilgilendirme vb.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Randevu, kontrol periyodu vb. hatırlatması.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Klinik adresinin değişmesi, randevu günü/saati değişikliği vb. bilgilendirmeler.",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Tedavi öncesi/sonrası için bilgilendirme (ön hazırlık, alınacak malzemeler, ağız bakımı, onam vs.)",
+     "list": "ul"
+    },
+    {
+     "tag": "li",
+     "text": "Sektör dışında örnek; kredi kartı ile alışverişte bankadan gelen SMS onay kodu.",
+     "list": "ul"
+    },
+    {
+     "tag": "p",
+     "text": "gibi bilgilendirmeler “ticari ileti” değildir, bu iletiler için “ticari ileti onayı” şartı aranmaz."
+    },
+    {
+     "tag": "h4",
+     "text": "Ticari İleti Onayını Nasıl Kayıt Ederim?"
+    },
+    {
+     "tag": "p",
+     "text": "Dr.DENTES’te hastalarınızın ticari ileti onay durumunu kaydedebilirsiniz. Dr.DENTES'te ticari ileti onay kaydı bulunmayan hastalar, otomatik ve el ile SMS gönderim listesine alınmaz. Ticari ileti almak istediğini belirten hastaların ileti onayını İYS’ye de kaydetmeniz gereklidir."
+    },
+    {
+     "tag": "h4",
+     "text": "Hastanın Ticari İleti Onayı Yoksa veya “Red” Durumundaysa Ne Yapmalıyım?"
+    },
+    {
+     "tag": "p",
+     "text": "Eğer hastanızın onay kaydı yoksa veya kişisel İYS paneli üzerinden size verdiği ticari ileti onayını “red” durumuna getirdiyse 3 (üç) iş günü içerisinde kendisine ticari ileti gönderimini durdurmalısınız. Aksi halde yasal yaptırımlarla karşılaşabilirsiniz."
+    },
+    {
+     "tag": "h4",
+     "text": "Yazılımların İYS'ye Entegrasyonu İçin Şartlar"
+    },
+    {
+     "tag": "p",
+     "text": "İYS ticari ileti onay durumlarına; İYS paneliniz üzerinden veya İYS iş ortaklarının ücretli sunduğu İYS araçlarıyla ulaşabilirsiniz. Yazılımların İYS ile iş ortaklığı için; ilk yıl sözleşme bedeli, yıllık sözleşme yenileme ücreti, ISO 22301 ve ISO 27001 güncel sertifikalarına sahiplik, teknik şartları ve API lisans koşullarını sağlamaları gereklidir."
+    },
+    {
+     "tag": "p",
+     "text": "Kaynak: iys.org.tr"
+    }
+   ]
+  },
+  {
+   "sourceId": 8,
+   "slug": "kvkk-denetimi-nasil-yapar",
+   "title": "KVKK Denetimi Nasıl Yapar?",
+   "description": "Kişisel Verilerin Korunması Kurumu’na şikayetlerin ve denetimlerinin nasıl yapıldığının bilinmesi önem kazanmaktadır. Çünkü KVKK’ya yapılan şikayetlere cevap vermenin önemi kadar “Biz KVKK denetlemek için geldik!” diye ortaya çıkan kişilerin ne yetki ile geldikleri her zaman sorgulanmalıdır.Kişisel Verilerin ...",
+   "image": "https://drdentes.com.tr/img/blog/8.jpg",
+   "tags": [
+    "KVKK",
+    "KVKK denetimi",
+    "KVKK başvuru",
+    "KVKK şikayet"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "Kişisel Verilerin Korunması Kurumu’na şikayetlerin ve denetimlerinin nasıl yapıldığının bilinmesi önem kazanmaktadır. Çünkü KVKK’ya yapılan şikayetlere cevap vermenin önemi kadar “Biz KVKK denetlemek için geldik!” diye ortaya çıkan kişilerin ne yetki ile geldikleri her zaman sorgulanmalıdır."
+    },
+    {
+     "tag": "p",
+     "text": "Kişisel Verilerin Korunması Kurumu denetleme yetkisini hiçbir danışmanlık kurumuna ya da avukata devretmemiştir. Fakat kurum ve kuruluşlar, KVKK yükümlülüklerine uyumlarının dışarıdan bir gözle incelenmesi için danışmanlık kuruluşlarından hizmet alabilir. Bu aldıkları hizmet sonucu eksikler raporlanabilir. Bu raporlar KVKK’ya uyumun resmi onayı değildir. KVKK’nın onayını içermez!"
+    },
+    {
+     "tag": "p",
+     "text": "Şikayet ve Kişisel Verilerin Korunması Kuruluna savunma;"
+    },
+    {
+     "tag": "p",
+     "text": "Kişisel verisi işlenen kişi (hasta, hasta yakını, ziyaretçi vs.) önce diş hekimi veya polikliniğe doğrudan şikayette bulunabilir. Yeterli cevabı alamaması sonucu Kişisel Verilerin Korunması Kurumu’na şikayet eder."
+    },
+    {
+     "tag": "p",
+     "text": "İlgili kişinin kuruma şikayette bulunmasında öngörülen süre, veri sorumlusunun cevabını öğrendiği tarihten itibaren 30 (otuz) ve her halde başvuru tarihinden itibaren 60 (altmış) gündür. Fakat kurumun inceleme yapabilmesi için mutlaka ilgilinin şikayetine ihtiyaç yoktur. Kurumun ihlal iddiasını herhangi bir şekilde öğrenmesi durumunda da resen harekete geçerek görev alanına giren konularda gerekli incelemeyi yapması yetkisi dahilindedir."
+    },
+    {
+     "tag": "p",
+     "text": "Veri sorumluları, devlet sırrı niteliğindeki bilgi ve belgeler hariç, talep edilen bilgi ve belgeleri, kuruma 15 (on beş) gün içinde göndermek veya gerektiğinde yerinde inceleme yapılmasına imkan sağlamak zorundadır."
+    },
+    {
+     "tag": "img",
+     "src": "https://drdentes.com.tr/u/images/kvkk-ba%C5%9Fvuru.jpg",
+     "alt": "KVKK başvuru işlemleri"
+    },
+    {
+     "tag": "img",
+     "src": "https://drdentes.com.tr/u/images/kvkk-%C5%9Fikayet.jpg",
+     "alt": "KVKK şikayet işlemleri"
+    },
+    {
+     "tag": "p",
+     "text": "KVKK hakkında daha fazla bilgi için: Yeşim DİNÇER - TQNet Kalite Sertifikasyon Hizmetleri - 0 (232) 433 1905 - 0 (541) 711 6026 - ofis@turkkalite.net"
+    }
+   ]
+  },
+  {
+   "sourceId": 5,
+   "slug": "yapay-zeka-ile-dis-filmi-analizi",
+   "title": "Yapay Zeka ile Diş Filmi Analizi",
+   "description": "Derin öğrenme yöntemi ile panoramik radyografiden diş eksikliklerinin tespiti: Bir yapay zekâ pilot çalışmasıÖzer Çelik(0000-0002-4409-3101)&alpha;, Alper Odabaş(0000-0002-4361-3056)&alpha;, İbrahim Şevki Bayrakdar(0000-0001-5036-9867)&beta;, Elif Bilgir(0000-0001-9521-4682)&beta;, Fatma Akkoca(0000-0002-4522-656X)&beta;Selcuk ...",
+   "image": "https://drdentes.com.tr/img/blog/5.jpg",
+   "tags": [
+    "Panoramik radyografi",
+    "derin öğrenme",
+    "yapay zeka",
+    "diş hekimliği"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "Derin öğrenme yöntemi ile panoramik radyografiden diş eksikliklerinin tespiti: Bir yapay zekâ pilot çalışması"
+    },
+    {
+     "tag": "p",
+     "text": "Özer Çelik(0000-0002-4409-3101)α, Alper Odabaş(0000-0002-4361-3056)α, İbrahim Şevki Bayrakdar(0000-0001-5036-9867)β, Elif Bilgir(0000-0001-9521-4682)β, Fatma Akkoca(0000-0002-4522-656X)β"
+    },
+    {
+     "tag": "p",
+     "text": "Selcuk Dent J, ODMFR 2019 Kongre Kitapçığı Özel Sayısı Başvuru Tarihi: 10 Ocak 2019 Yayına Kabul Tarihi: 07 Şubat 2019"
+    },
+    {
+     "tag": "p",
+     "text": "α Eskişehir Osmangazi Üniversitesi, Fen Fakültesi, Matematik-Bilgisayar Anabilim Dalı, Eskişehir β Eskişehir Osmangazi Üniversitesi, Diş Hekimliği Fakültesi, Ağız, Diş Ve Çene Radyolojisi Anabilim Dalı, Eskişehir"
+    },
+    {
+     "tag": "p",
+     "text": "ÖZET"
+    },
+    {
+     "tag": "p",
+     "text": "Derin öğrenme yöntemi ile panoramik radyografiden diş eksikliklerinin tespiti: Bir yapay zekâ pilot çalışması"
+    },
+    {
+     "tag": "p",
+     "text": "Amaç: Bu çalışmanın amacı, panoramik radyografide diş eksikliklerinin değerlendirilmesi için tasarlanmış tanı amaçlı bilgisayar yazılımının işlevini geliştirmek ve değerlendirmektir."
+    },
+    {
+     "tag": "p",
+     "text": "Gereç ve Yöntemler: Veri seti eksik diş tespiti için 99 tam diş ve 54 eksik diş olmak üzere 153 görüntüden oluşmaktadır. Tüm görüntüler Ağız, Diş ve Çene Radyolojisi uzmanları tarafından tekrar kontrol edilmiş ve doğrulanmıştır. Veri setindeki tüm görüntüler eğitim öncesinde 971 X 474 piksel olarak yeniden boyutlandırılmıştır. Açık kaynak kodlu python programlama dili ve OpenCV, NumPy, Pandas, ile Matplotlib kütüphaneleri etkin olarak kullanılarak bir rastgele dizilim oluşturulmuştur. Önceden eğitilmiş bir Google Net Inception v3 CNN ağı ön işleme için kullanılmış ve veri setleri transfer öğrenimi kullanılarak eğitilmiştir."
+    },
+    {
+     "tag": "p",
+     "text": "Bulgular: Eğitim de kullanılan görüntülerin modeli tahminlendirmesi ile çıkan başarı oranı % 94.7’dir. Eğitimde kullanılmayan test için ayrılan görüntülerin tahminlemesindeki başarı oranı % 75’dir."
+    },
+    {
+     "tag": "p",
+     "text": "Sonuç: Derin öğrenme tekniklerinde veri seti arttıkça başarı oranları da artmaktadır. Daha fazla görüntüyle oluşacak veri setininin eğitim modellerinde başarı oranları yükselecektir. Gelecek çalışmalar daha büyük veri setleriyle yapılmalıdır."
+    },
+    {
+     "tag": "p",
+     "text": "GİRİŞ"
+    },
+    {
+     "tag": "p",
+     "text": "Diş hekimliği hizmetleri genel itibariyle ağız içi hastalıkların tanı, tedavi ve önlenmesini kapsayan, sağlık sektöründeki en hızlı büyüyen sektörlerden biridir."
+    },
+    {
+     "tag": "p",
+     "text": "Diş eksiklikleri bireylerde maloklüzyon, fonksiyon kaybı ve estetik problemlere sebep verdiği için teşhisi büyük önem taşımaktadır. Diş hekimliğinde diş eksikliklerinin tespit edilmesinde intraoral veya ekstraoral radyografilerden yararlanılır. Panoramik radyografi, dişlere ve çenelere genel bir bakış açısı sunan ve diş eksikliklerinin teşhisi için gerekli bilgileri sağlayan ekstraoral radyografidir. Bu radyografilerin yorumlanması zordur ve klinik deneyim gerektirir. Bununla birlikte deneyimli diş hekimleri dahi radyolojik muayenede diş kayıplarını veya eksikliklerini gözden kaçırabilmektedir.1, 2"
+    },
+    {
+     "tag": "p",
+     "text": "Makine öğrenimi, bilgisayarların açıkça programlanmadığı, ancak mevcut verilerin ilişkilerini analiz ederek görevlerini yerine getirebildiği yapay zeka dalıdır. Derin öğrenme ise bir veya daha fazla gizli katman içeren yapay sinir ağları ve benzeri makine öğrenme algoritmalarını kapsayan çalışma alanıdır. 3"
+    },
+    {
+     "tag": "p",
+     "text": "Son zamanlarda, diş hekimliğinde dijital görüntüleme sistemindeki ilerlemeler radyografilerden diş çürüğü, periodontal hastalık ve diş eksikliği tespiti için derin öğrenmeye dayalı yazılım tasarımları geliştirme imkanı sunmuştur. 4"
+    },
+    {
+     "tag": "p",
+     "text": "Bu çalışmanın amacı, panoramik radyografide diş eksikliklerinin değerlendirilmesi için tasarlanmış tanı amaçlı bilgisayar yazılımının işlevini geliştirmek ve değerlendirmektir."
+    },
+    {
+     "tag": "p",
+     "text": "GEREÇ VE YÖNTEM"
+    },
+    {
+     "tag": "p",
+     "text": "Bu çalışma, 2018 yılı içerisinde Eskişehir Osmangazi Üniversitesi, Diş Hekimliği Fakültesi hastanesine gelen hastalardan elde edilen görüntülerin sınıflandırılmasından oluşturduğunuz veri seti ile gerçekleştirilmiştir. Veri seti düzenlemeden önce belirli bir anlam düzeyinin üzerinde yer alan gürültü, belirsizlik, bozulma ve gölgeler değerlendirmeye alınmamıştır. Veri seti eksik diş tespiti için 99 tam diş ve 54 eksik diş olmak üzere 153 görüntüden oluşmaktadır. Tüm görüntüler uzman diş hekimleri tarafından tekrar kontrol edilmiş ve doğrulanmıştır. Resim 1’de"
+    },
+    {
+     "tag": "p",
+     "text": "eksik ve tam diş görüntüleri yer almaktadır."
+    },
+    {
+     "tag": "p",
+     "text": "Resim 1..a: Bütün dişlerin mevcut olduğu hastasının panoramik radyografisi b: Eksik dişlerin varlığında hastanın panoramik radyografisi"
+    },
+    {
+     "tag": "p",
+     "text": "Ön işleme ve görüntü büyütme:"
+    },
+    {
+     "tag": "p",
+     "text": "Veri setindeki tüm görüntüler eğitim öncesinde 971 X 474 piksel olarak yeniden boyutlandırılmıştır. Açık kaynak kodlu python programlama dili ve OpenCV, NumPy, Pandas, ile Matplotlib kütüphaneleri etkin olarak kullanılarak bir rastgele dizilim oluşturulmuştur. Eğitime katılan görsellerin tekrardan test için kullanımını engellemek için veri seti eğitim ve test olarak iki parçaya ayrılmıştır. Eksik diş tespiti için eğitim ve doğrulama veri seti 76 ve test veri seti 32 görüntüden oluşmaktadır."
+    },
+    {
+     "tag": "p",
+     "text": "Önceden eğitilmiş bir Google Net Inception v3 CNN ağı ön işleme için kullanılmış ve veri setleri transfer öğrenimi kullanılarak eğitilmiştir. 2014 ImageNet Büyük Ölçekli Görsel Tanıma Yarışmasında mükemmel performans gösteren Inception v3 mimarisi, başlangıçta 1000 nesne kategorisinden oluşan yaklaşık 1.28 milyon resmi öğrenmiştir. Bu yöntem 22 derin katmandan oluşur ve aynı katmanda farklı boyutlarda konvolüsyonel filtreler uygulayarak farklı ölçek özellikleri elde etmek mümkündür. Resim 2’de yer aldığı gibi yardımcı bir sınıflandırıcı, tamamen birbirine bağlı katmanlar ve softmax fonksiyonlarını içeren toplam 9 başlangıç modülü içermektedir. 5"
+    },
+    {
+     "tag": "p",
+     "text": "Resim 2. InceptionV3 modelinin şematik diyagramı (sıkıştırılmış görünüm) 10"
+    },
+    {
+     "tag": "p",
+     "text": "Eğitim ve doğrulama veri seti optimal CNN algoritması ağırlık faktörlerini tahmin etmek ve oluşturmak için kullanılmıştır. Bu çalışmada tüm CNN'ler Python'daki TensorFlow kütüphanesinin InceptionV3 mimarisi kullanılarak 2000 eğitim adım sayısı verilerek gerçekleştirilmiştir."
+    },
+    {
+     "tag": "p",
+     "text": "BULGULAR"
+    },
+    {
+     "tag": "p",
+     "text": "Eğitim de kullanılan görüntülerin modeli tahminlendirmesi ile çıkan başarı oranı %94,7 dir. Tüm veri seti ve dengeli veri seti ile sonuçların farkı Tablo 1’de yer almaktadır. Eğitimde kullanılmayan test için ayrılan görüntülerin tahminlemesindeki başarı oranı %75’dir. Tahminleme sonuçları Tablo 2’de yer almaktadır. Eğitim ve Test tahminleme sonuçlarını incelendiğinde kısıtlı sayıda veri seti ile alınan başarı oranının %75 olduğu görülmektedir."
+    },
+    {
+     "tag": "p",
+     "text": "Tablo 1. Eğitim veri setinin modele tahminlendirme sonuçları"
+    },
+    {
+     "tag": "table",
+     "rows": [
+      [
+       "",
+       "Tüm Veri Seti ile Eğitim Modeli",
+       "Dengeli Veri Seti İle Eğitim Modeli"
+      ],
+      [
+       "",
+       "Vaka Sayısı",
+       "Vaka Oranı",
+       "Vaka Sayısı",
+       "Vaka Oranı"
+      ],
+      [
+       "1 (evet)",
+       "70",
+       "% 95.7",
+       "38",
+       "%92.1"
+      ],
+      [
+       "0 (hayır)",
+       "38",
+       "% 97.3",
+       "38",
+       "% 97.3"
+      ]
+     ]
+    },
+    {
+     "tag": "p",
+     "text": "Tablo 2. Test veri setinin modele tahminlendirme sonuçları"
+    },
+    {
+     "tag": "table",
+     "rows": [
+      [
+       "",
+       "Tüm Veri Seti ile Eğitim Modeli",
+       "Dengeli Veri Seti İle Eğitim Modeli"
+      ],
+      [
+       "",
+       "Vaka Sayısı",
+       "Vaka Oranı",
+       "Vaka Sayısı",
+       "Vaka Oranı"
+      ],
+      [
+       "1 (evet)",
+       "29",
+       "% 89.6",
+       "16",
+       "% 81.25"
+      ],
+      [
+       "0 (hayır)",
+       "16",
+       "% 56.25",
+       "16",
+       "% 68.75"
+      ]
+     ]
+    },
+    {
+     "tag": "p",
+     "text": "TARTIŞMA"
+    },
+    {
+     "tag": "p",
+     "text": "Makine öğrenmesi ve derin öğrenme, bir araca gözlemler baz alınarak nasıl karar vereceğini öğrenmesini sağlama yeteneği olarak tanımlanır. Biyomedikal bağlamda ise bu aracın etkisi, diş hekimlerine karar vermelerine yardımcı olmak için ek bilgiler sağlamasıdır. Derin öğrenmenin diğer avantajı ise çoklu seviyelerde temsil edilebilecek görüntüler ile yüksek boyutlu veri kümelerine sahip olmasıdır. 6, 7"
+    },
+    {
+     "tag": "p",
+     "text": "Günümüzde, çeşitli çalışmalar, X-ışınları, bilgisayarlı tomografi (BT), manyetik rezonans görüntüleme (MRG) ve pozitron emisyon tomografi taramaları gibi tıbbi görüntülerin yorumlanmasında yapay zekâ yaklaşımlarının potansiyel doğruluğunu değerlendirmiştir ve sonuçlar umut vericidir. 6, 8"
+    },
+    {
+     "tag": "p",
+     "text": "Diş hekimliğinde ise çürük mevcudiyeti ve periodontal hastalık açısından riskli dişlerin tespitinde derin öğrenme tekniği ile geliştirilen yazılımlar literatürde mevcuttur."
+    },
+    {
+     "tag": "p",
+     "text": "Valizadeh ve ark.2 dijital radyografilerde posterior dişlerdeki mine ve dentin seviyesinde aproksimal çürüklerin tespiti ve derinliğinin kabul edilebilir ölçümünü gerçekleştiren bir yazılım geliştirmişlerdir. 2"
+    },
+    {
+     "tag": "p",
+     "text": "Ben Ali ve ark.3 da dijital radyografilerde çürük teşhisi ve sınıflandırılması ile ilgili geliştirdikleri yazılımı çalışmalarında sunmuşlardır.4 Srivastava ve ark.4 ise bitewing radyografilerde diş çürüğü tespitinde diş hekimlerinin performansını artıran bir Bilgisayar Destekli Tanı sistemini çalışmalarında göstermişlerdir.1 Lee ve ark.5 derin konvolüsyonel bir nöral ağ algoritmasına dayalı bilgisayar destekli algılama sistemi ile periodontal hastalık açısından riskli dişlerin teşhis ve tahmini değerlendiren bir çalışma sunmuşlardır.9"
+    },
+    {
+     "tag": "p",
+     "text": "Diş eksikliklerinin değerlendirilmesi için tasarlanmış tanı amaçlı bilgisayar yazılımı ile ilgili literatürde çalışma mevcut değildir."
+    },
+    {
+     "tag": "p",
+     "text": "SONUÇ"
+    },
+    {
+     "tag": "p",
+     "text": "Derin öğrenme tekniklerinde veri seti arttıkça başarı oranları da artmaktadır. Daha fazla tam ve eksik dişli görüntülerle oluşacak veri setinin eğitim modellerinde başarı oranları yükselecektir. Gelecek çalışmalar daha büyük veri setleriyle yapılmalıdır."
+    },
+    {
+     "tag": "p",
+     "text": "KAYNAKLAR"
+    },
+    {
+     "tag": "li",
+     "text": "Srivastava MM, Kumar P, Pradhan L, Varadarajan S. Detection of Tooth caries in Bitewing Radiographs using Deep Learning. arXiv preprint arXiv:171107312. 2017.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Valizadeh S, Goodini M, Ehsani S, Mohseni H, Azimi F, Bakhshandeh H. Designing of a computer software for detection of approximal caries in posterior teeth. Iranian Journal of Radiology. 2015;12(4).",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Wang S, Summers RM. Machine learning and radiology. Medical image analysis. 2012;16(5):933-51.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Ali RB, Ejbali R, Zaied M, editors. Detection and classification of dental caries in x-ray images using deep neural networks. Int Conf on Software Engineering Advances (ICSEA); 2016.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Mahdianpari M, Salehi B, Rezaee M, Mohammadimanesh F, Zhang Y. Very deep convolutional neural networks for complex land cover mapping using multispectral remote sensing imagery. Remote Sensing. 2018;10(7):1119.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Lakhani P, Sundaram B. Deep learning at chest radiography: automated classification of pulmonary tuberculosis by using convolutional neural networks. Radiology. 2017;284(2):574-82.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "El-Damanhoury HM, Fakhruddin KS, Awad MA. Effectiveness of teaching International Caries Detection and Assessment System II and its e-learning program to freshman dental students on occlusal caries detection. European journal of dentistry. 2014;8(4):493.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Lehman CD, Wellman RD, Buist DS, Kerlikowske K, Tosteson AN, Miglioretti DL. Diagnostic accuracy of digital screening mammography with and without computer-aided detection. JAMA internal medicine. 2015;175(11):1828-37.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Lee J-H, Kim D-h, Jeong S-N, Choi S-H. Diagnosis and prediction of periodontally compromised teeth using a deep learning-based convolutional neural network algorithm. Journal of periodontal & implant science. 2018;48(2):114-23.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Szegedy C, Vanhoucke V, Ioffe S, Shlens J, Wojna Z, editors. Rethinking the inception architecture for computer vision. Proceedings of the IEEE conference on computer vision and pattern recognition; 2016.",
+     "list": "ol"
+    }
+   ]
+  },
+  {
+   "sourceId": 4,
+   "slug": "kvkk-ve-verbis-nedir",
+   "title": "KVKK ve VERBİS nedir?",
+   "description": "KVKK ve VERBİS tedirgin olunacak konular değildir. Kişisel veri sahibi (hasta) ve veri sorumlusu (klinik) arasındaki hak ve sorumlulukları belirleyen kanuna KVKK (Kişisel Verileri Koruma Kanunu) ve o kanununu yürüten Kişisel Verileri Koruma Kurumu'nun kurduğu bilişim sicil sistemine VERBİS denir.KVKK'da amaç veriyi NEREDE SAKLADIĞINIZ değil hastada...",
+   "image": "https://drdentes.com.tr/img/blog/4.jpg",
+   "tags": [
+    "VERBİS",
+    "KVKK",
+    "veri sorumlusu",
+    "Kişisel Verileri Koruma Kanunu",
+    "Kişisel Verileri Koruma Kurumu"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "KVKK ve VERBİS tedirgin olunacak konular değildir. Kişisel veri sahibi (hasta) ve veri sorumlusu (klinik) arasındaki hak ve sorumlulukları belirleyen kanuna KVKK (Kişisel Verileri Koruma Kanunu) ve o kanununu yürüten Kişisel Verileri Koruma Kurumu'nun kurduğu bilişim sicil sistemine VERBİS denir."
+    },
+    {
+     "tag": "p",
+     "text": "KVKK'da amaç veriyi NEREDE SAKLADIĞINIZ değil hastadan aldığınız verileri;"
+    },
+    {
+     "tag": "li",
+     "text": "Kişinin izni dahilinde edinmeniz,",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Ne kadar süre ile saklayacağınızı beyan etmeniz,",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Şayet paylaşmanız gerekiyor ise hangi hallerde kiminle paylaştığınızı ve",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Size emanet edilen bilgileri korumak için hangi tedbirleri aldığınızı beyan ettiğiniz bir sistemdir.",
+     "list": "ol"
+    },
+    {
+     "tag": "p",
+     "text": "Hastaya yapılması gereken bilgilendirmeler;"
+    },
+    {
+     "tag": "li",
+     "text": "İlgili kişinin \"Açık Rıza Beyanı\" ile bilgilerini alabilirsiniz. Örneğin hasta kimlik bilgilerini aldınız (veya hasta el yazısı ile bir form doldurdu). Doldurduğu formun altında \"şahsi bilgilerimi şu maksatla kullanmanıza izin verdiğimi beyan ederim.\" ibaresini yazarak imzalamalıdır.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Hasta verilerini saklayacağınız süreyi de kendisi ile paylaşmalısınız. Yani 1. maddede aldığınız veriler ne kadar süre ile sizin kayıtlarınızda yer alacak? 1 gün 10 yıl ? Bunu da yazmalı ve hastanın da bunu kabul etmesini 1.maddede temin etmelisiniz. Süre sonunda nasıl imha edeceğinizi de açıklamalısınız.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Örneğin Sağlık Bakanlığına, diş laboratuvarına veya adli bir durum olduğunda kolluk kuvvetlerine hangi bilgileri vereceksiniz? Bunları da 1. maddede belirtmelisiniz ve hasta bilmeli ki mücbir bir durumda siz verilerini paylaşabilirsiniz.",
+     "list": "ol"
+    },
+    {
+     "tag": "li",
+     "text": "Size verilen bilgilerin güvenliğini nasıl sağlıyorsunuz? Hangi tedbirleri alıyorsunuz? 4.1. Örneğin hasta bilgilerini kağıda aldığınızı farz edelim. Bu bilgilerin güvenliğini nasıl sağlıyorsunuz? Kasa vs. ile saklıyor musunuz? Şifreli ve çalınması çok zor olan dolaplarınız veya deponuz mu var? O depoya/dolaba ait anahtar/asma kilit anahtarı kimlerde var? Ve lazım olan kartların alınması, kullanılması ve ortalıkta dolaşmadan geri o depoya girişi nasıl sağlanıyor? 4.2. Şayet masaüstü bilgisayarda ise; o bilgisayarları kim nasıl ve hangi izinlerle kullanıyor? Yedek alma yönergeleri var mı? Varsa nasıl? O yedekler nasıl alınıyor? Nerede saklanıyor? Hangi sıklıkla alınıyor? Bilgisayarların çalınması, bozulması durumunda bilgileriniz üçüncü şahısların eline geçmemesi için hangi tedbirleri alıyorsunuz? Yazılım firması ile gizlilik sözleşmeniz var mı? 4.3. Şayet bulutta ise; bulut firması ile gizlilik ve veri güvenliği sözleşmeniz var mı? Yedek alınıyor mu? İhtiyacınız olduğunda ulaşabiliyor musunuz?",
+     "list": "ol"
+    },
+    {
+     "tag": "p",
+     "text": "Daha ayrıntılı bilgi için dilerseniz; Kişisel Verileri Koruma Kurumu'na ait Youtube hesabından videolar izleyebilirsiniz. Video izlemek yerine okumayı tercih ederseniz VERBİS hakkında hazırlanmış kılavuzu buraya tıklayarak okuyabilirsiniz."
+    }
+   ]
+  },
+  {
+   "sourceId": 3,
+   "slug": "hangisini-secmeliyim-bulut-mu-masaustu-mu",
+   "title": "Hangisini Seçmeliyim? Bulut mu? Masaüstü mü?",
+   "description": "Bulut teknolojisi bundan 10 yıl önceye kadar aşina olmadığımız bir kavramdı. Günümüzde ise hemen hemen her gün duyuyoruz, duymasak bile her gün farkında olmadan bulut teknolojisini kullanıyoruz. Bulut kısaca; verilerinizin, internet üzerinde sanal bir makinede (bulut) depolanması ile internete bağlantısı olan her cihazdan bu verilerinize kolay...",
+   "image": "https://drdentes.com.tr/img/blog/3.jpg",
+   "tags": [
+    "Bulut teknolojisi",
+    "bulut yazılım",
+    "dental program",
+    "diş kliniği yönetim yazılımı"
+   ],
+   "body": [
+    {
+     "tag": "p",
+     "text": "Bulut teknolojisi bundan 10 yıl önceye kadar aşina olmadığımız bir kavramdı. Günümüzde ise hemen hemen her gün duyuyoruz, duymasak bile her gün farkında olmadan bulut teknolojisini kullanıyoruz. Bulut kısaca; verilerinizin, internet üzerinde sanal bir makinede (bulut) depolanması ile internete bağlantısı olan her cihazdan bu verilerinize kolaylıkla ulaşım sağlamanıza yarayan hizmettir. Bugün; ofis yazılımları, çevrim içi kurslar, bankacılık, telekom hizmetleri ve diş kliniği yönetimi bulut teknolojisiyle sağlanabiliyor. Bulut, endüstri 4.0 ile iç içe geçmiş; teknolojinin odak noktasında olduğu için sürekli yenilenen ve güçlenen bir yapıdır. Masaüstü yazılımlar hala yaşamaya devam etmekte ancak günümüz teknolojisinin ihtiyaç ve teknolojilerine yeterince ayak uyduramamaktadır. Masaüstü yazılımlar, motorlu arabaların çıkmasıyla ulaşımın ilk tercihinden kalkan at arabalarına benzetilebilir."
+    },
+    {
+     "tag": "p",
+     "text": "Mobil cihazların ve internetin içine doğan Z kuşağı; tüm işlerini az sayıda dokunuşla, istediği yerden ve istediği zamanda gerçekleştirme beklentisinde. Bulut, tam olarak bu beklentileri karşılayabiliyorken; masaüstü, eski teknolojiyle oluşturulan ve geçmişten gelen alışkanlıkları sürdüren yapıdadır. Masaüstünün aksine bulut teknolojisi, yeni neslin beklentilerine yönelik olarak gelişmesini sürdürmektedir. Bulut, çağımızın baş döndüren hızla değişen ihtiyaçlarına ayak uydurmaktadır. Masaüstü yazılımlarsa tükenen kullanıcı sayısıyla günümüzde hayatta kalma savaşı vermektedir."
+    },
+    {
+     "tag": "p",
+     "text": "Bulut ve masaüstü yazılımların karşılaştırılaştırılmasına aşağıdaki tablodan ulaşabilirsiniz."
+    },
+    {
+     "tag": "table",
+     "rows": [
+      [
+       "Geliştirme & Güncelleme",
+       "Masaüstü",
+       "Bulut",
+       ""
+      ],
+      [
+       "Kullanıcı deneyimi geliştirme",
+       "Yazılımcının isteğine bağlı.",
+       "Kullanıcıların ortak seçimine bağlı.",
+       ""
+      ],
+      [
+       "Bakım ve güncelleme",
+       "Program kesintiye uğrar. Cihaz ve işletim sistemi uyuşmazlığı hatalara neden olabilir. Her cihaz için ayrı ayrı çalışma yapmak gerekir.",
+       "Tüm cihazlarda aynı anda ve çok kısa sürede güncelleme ve bakım yapılabilir. Kullanılacak cihazların güncel internet tarayıcılarını çalıştırabilmesi yeterlidir.",
+       ""
+      ],
+      [
+       "Güvenlik",
+       "Masaüstü",
+       "Bulut",
+       ""
+      ],
+      [
+       "Veritabanı güvenliği (veritabanın yönetilmesi, erişimin şifrelenmesi, saldırı ve yetkisiz erişimler için koruma).",
+       "Klinik sorumlu.",
+       "Bulut sağlayıcı sorumlu.",
+       "*KVKK"
+      ],
+      [
+       "Ağ güvenliği (güvenlik duvarı ve ağ geçidi kurulması ve sürekli güncel tutulması, ağa bağlı cihazların denetlenmesi).",
+       "Klinik sorumlu.",
+       "Yerel ağdan bağımsız, güvenli erişim.",
+       "*KVKK"
+      ],
+      [
+       "Verilerin barındırıldığı her bir cihazın güvenliği (cihazlara kimlerin, ne zaman ve ne şekilde erişebileceğinin belirlenmesi; cihazların, ek güvenlik önlemlerinin olduğu başka bir odaya alınması; odaya giriş-çıkış kayıtlarının tutulması).",
+       "Klinik sunucu odası kurmalı.",
+       "Sunucu odalarının güvenliği ISO27001 Bilgi Güvenliği Yönetim Sistemi ve KVKK’ya uygun olarak sağlanır. Buluta erişen cihazların güvenliğinin sağlanmasından klinik sorumludur.",
+       "*KVKK"
+      ],
+      [
+       "Fizilsel tehditlere (yangın, deprem, su baskını vb.) önlem (bina altyapısının düzenli olarak bakıma alınması, acil durum müdahale araçları ve otomatik alarm-söndürme-soğutma gibi sistemlerin kurulması, acil eylem planı hazırlanması ve müdahale ekiplerinin bulundurulması).",
+       "Klinik sorumlu.",
+       "Bulut sağlayıcı sorumlu.",
+       "*KVKK"
+      ],
+      [
+       "Hırsızlık (güvenlik görevlisi, alarm ve kamera sistemi bulunması).",
+       "Klinik sorumlu.",
+       "Bulut sağlayıcı sorumlu.",
+       "*KVKK"
+      ],
+      [
+       "Kullanıcı (sekreter, hekim vb.) işlem kayıtlarının (log) tutulması. Kayıtların dış müdahalelere karşı korunarak saklanması.",
+       "Klinik sorumlu.",
+       "Bulut sağlayıcı sorumlu.",
+       "*KVKK"
+      ],
+      [
+       "Siber güvenlik (saldırı tespit ve önleme sistemleri kurulması, düzenli sızma testleri yapılması, güvenlik standartlarının (ISO27001) uygulanması ve denetlenmesi)",
+       "Klinik sorumlu. Siber güvenlik danışmanlığı alınmalı.",
+       "Bulut sağlayıcı sorumlu.",
+       "*KVKK"
+      ],
+      [
+       "Fidye saldırılarına önlem alınması (dosya, fotoğraf, veri tabanı vs.nin kriptolanması).",
+       "Klinik; tüm Windows, Mac OS, Linux ve Android cihazları korumalı, güncel antivirüs bulundurmalı ve düzenli yedek almalı.",
+       "Önleme ve yedekleme sistemleriyle fidye tehdidi geçersiz kılınır.",
+       "*KVKK"
+      ],
+      [
+       "Klinik yönetimi ve veri girişine yönelik idari tedbirler (VERBİS kaydı, KVKK politikalarının hazırlanması vb.)",
+       "Klinik sorumlu.",
+       "Klinik sorumlu.",
+       "*KVKK"
+      ],
+      [
+       "Verilerin kopyalanması/transferi",
+       "Kötü niyetli kişilerce; bir USB bellek ile dahi hastalara ait tüm veriler kopyalanabilir.",
+       "Tüm güvenlik katmanlarının aşılması gerekir. Veriler kopyalansa dahi okunamaz.",
+       "*KVKK"
+      ],
+      [
+       "Erişim",
+       "Masaüstü",
+       "Bulut",
+       ""
+      ],
+      [
+       "Kullanıcı (sekreter, hekim vb.) yetkilerinin belirlenmesi ve şifrelerin yönetilmesi.",
+       "Klinik sorumlu.",
+       "Klinik, kullanıcı ve şifreleri yönetmekten sorumludur. Klinik, programın yönetici (en yetkili kişi) kullanıcısına ait bilgilerin gizliliği ve güvenliğini sağlamalıdır.",
+       "*KVKK"
+      ],
+      [
+       "Ulaşılabilirlik",
+       "Klinikteki cihazlara bağımlıdır, her yerden kullanılamaz.",
+       "İstenilen cihazdan istenilen zamanda kullanılabilir.",
+       ""
+      ],
+      [
+       "Evden çalışma (günümüzdeki virüs salgını gibi durumlarda)",
+       "Evden çalışmak için sistem taşınmalı ve yeni güvenlik önlemleri alınmalıdır. Ek maliyet çıkar, zaman kaybettirir.",
+       "Anında ve maliyetsiz olarak evden çalışmaya geçilebilir. Mevcut güvenlik önlemleri sürdürülür.",
+       "*KVKK"
+      ],
+      [
+       "Mobilite",
+       "YOK",
+       "Daima",
+       ""
+      ],
+      [
+       "Esneklik",
+       "Masaüstü",
+       "Bulut",
+       ""
+      ],
+      [
+       "Uyumluluk",
+       "Kliniğin sunduğu hizmetlere göre özelleştirme gerektirir.",
+       "Diş hekimliğinin tüm dallarında kullanılabilir.",
+       ""
+      ],
+      [
+       "Fiziksel sınırlar",
+       "VAR. Veriler arttıkça sabit ve harici diskler yetersiz kalır. Daha büyük kapasiteli disk almak gerekir.",
+       "YOK. İhtiyaca göre anında sanal alanlar oluşturulabilir.",
+       ""
+      ],
+      [
+       "Ölçeklenebilirlik",
+       "Değişen ve artan ihtiyaçlar karşılanamaz. Sürekli maliyet ve zaman kaybı oluşur.",
+       "İhtiyaca göre saniyeler içinde yeni kullanıcılar açılabilir, istenen cihazlardan kullanılabilir.",
+       ""
+      ],
+      [
+       "Genel Özellikler",
+       "Masaüstü",
+       "Bulut",
+       ""
+      ],
+      [
+       "Servis",
+       "Telefon ile başlayan girişim şayet telefon meşgul değilse.",
+       "Çevrim içi mesaj erişimi ile beklemesiz.",
+       ""
+      ],
+      [
+       "Eğitim",
+       "Klinikte ve firma müsaitse.",
+       "Randevu saatinde, çevrim içi (online) ve mekandan bağımsız.",
+       ""
+      ],
+      [
+       "Destek",
+       "Firma müsaitliğine göre.",
+       "Çevrim içi mesaj erişimi ile beklemesiz.",
+       ""
+      ],
+      [
+       "Yedek sistemi",
+       "Genellikle “yedek” kavramından uzak.",
+       "O da ne? Bulut %99.99 ayakta ve daimi yedekli.",
+       ""
+      ],
+      [
+       "Türkiye 2014-2018 Bilgi Toplumu Stratejisi Eylem Planı",
+       "Masaüstüne yer yok.",
+       "3. KOBİ’ler için Bulut Programı Geliştirilmesi.",
+       ""
+      ],
+      [
+       "Merkezi yönetim",
+       "YOK.",
+       "Daima.",
+       ""
+      ],
+      [
+       "Kurulum",
+       "Programın kullanılacağı tüm cihazlara ayrı ayrı kurulum gerekir. Cihaz uyumsuzlukları nedeniyle kurulum aksayabilir.",
+       "Kurulum gerektirmez, dakikalar içinde programa erişim sağlanır. Kullanılacak cihazların güncel internet tarayıcılarını çalıştırabilmesi yeterlidir.",
+       ""
+      ],
+      [
+       "Maliyet",
+       "Şube, cihaz, kullanıcı ve hekim başına ücret talep edilir.",
+       "Şube, cihaz, kullanıcı ve hekim başına ek ücret istenmez.",
+       ""
+      ],
+      [
+       "IoT (Nesnelerin İnterneti)",
+       "UYUMSUZ.",
+       "Sonsuz cihazla UYUMLU. Endüstri 4.0 ve Sağlık 4.0'a bütünleşik.",
+       ""
+      ],
+      [
+       "Hastalara ulaşım",
+       "Eski yöntemlerle (telefon aramaları, el ile SMS gönderimi vs.)",
+       "Çevirimiçi randevu talebi, otomatik SMS; hızlı Whatsapp, e-posta, telefon bağlantıları.",
+       ""
+      ],
+      [
+       "Çevrimiçi hizmetlere erişim (e-Fatura/e-SMM, USS/e-Nabız, e-Reçete)",
+       "Dolaylı.",
+       "Doğrudan.",
+       ""
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

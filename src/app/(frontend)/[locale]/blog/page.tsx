@@ -9,6 +9,7 @@ import { getPayload } from 'payload'
 import type { Locale } from '@/lib/i18n/config'
 import { buildAlternates } from '@/lib/utilities/generateMeta'
 import { samePathInAllLocales } from '@/lib/utilities/localizedPaths'
+import { BLOG_PATH } from '@/lib/utilities/constants'
 import React from 'react'
 import PageClient from './page.client'
 
@@ -69,12 +70,12 @@ export default async function Page({ params }: Args) {
   )
 }
 
-/** Sayfa başlığı ve dil karşılıkları (`/tr/posts`, `/en/posts`, ...) */
+/** Sayfa başlığı ve dil karşılıkları (`/tr/blog`, `/en/blog`, ...) */
 export async function generateMetadata({ params }: Args): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Posts' })
   return {
     title: t('metaTitle'),
-    alternates: buildAlternates(locale, samePathInAllLocales('/posts')),
+    alternates: buildAlternates(locale, samePathInAllLocales(BLOG_PATH)),
   }
 }
