@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { RelatedPosts } from '@/features/blocks/RelatedPosts/Component'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { setRequestLocale } from 'next-intl/server'
@@ -11,7 +11,7 @@ import RichText from '@/components/RichText'
 
 import type { Post } from '@/payload-types'
 
-import { PostHero } from '@/heros/PostHero'
+import { PostHero } from '@/features/heros/PostHero'
 import type { Locale } from '@/i18n/config'
 import { SetLocaleAlternates } from '@/providers/LocaleAlternates'
 import { generateMeta } from '@/utilities/generateMeta'

@@ -3,7 +3,7 @@ import type { GlobalConfig } from 'payload'
 import { isEditorOrTranslator } from '@/access/rbac'
 import { restrictTranslatorEditsGlobal } from '@/hooks/restrictTranslatorEdits'
 
-import { link } from '@/fields/link'
+import { link } from '@/features/fields/link'
 import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {
@@ -26,7 +26,7 @@ export const Header: GlobalConfig = {
       admin: {
         initCollapsed: true,
         components: {
-          RowLabel: '@/Header/RowLabel#RowLabel',
+          RowLabel: '@/features/Header/RowLabel#RowLabel',
         },
       },
     },

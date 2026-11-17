@@ -1,8 +1,8 @@
 import type { CollectionConfig } from 'payload'
 
-import { isAdmin, isAdminField, isAdminOrSelf } from '../../access/rbac'
-import { can, ROLE_LABELS, ROLES } from '../../access/roles'
-import { localeLabels, locales } from '../../i18n/config'
+import { isAdmin, isAdminField, isAdminOrSelf } from '../../../access/rbac'
+import { can, ROLE_LABELS, ROLES } from '../../../access/roles'
+import { localeLabels, locales } from '../../../i18n/config'
 import { protectRoles, protectSuperAdminDelete } from './hooks/protectRoles'
 
 export const Users: CollectionConfig = {

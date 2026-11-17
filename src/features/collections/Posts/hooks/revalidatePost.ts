@@ -2,7 +2,7 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'paylo
 
 import { revalidatePath, revalidateTag } from 'next/cache'
 
-import type { Post } from '../../../payload-types'
+import type { Post } from '../../../../payload-types'
 
 /**
  * Yazı önbelleğini tüm dillerde temizler: yazı detayı, yazı listesi ve sayfalama.

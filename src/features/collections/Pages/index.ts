@@ -1,16 +1,16 @@
 import type { CollectionConfig } from 'payload'
 
-import { isEditor, isEditorOrTranslator, staffOrPublished } from '../../access/rbac'
-import { restrictTranslatorEdits } from '../../hooks/restrictTranslatorEdits'
+import { isEditor, isEditorOrTranslator, staffOrPublished } from '../../../access/rbac'
+import { restrictTranslatorEdits } from '../../../hooks/restrictTranslatorEdits'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { hero } from '@/heros/config'
+import { hero } from '@/features/heros/config'
 import { slugField } from 'payload'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { generatePreviewPath } from '../../utilities/generatePreviewPath'
+import { populatePublishedAt } from '../../../hooks/populatePublishedAt'
+import { generatePreviewPath } from '../../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
 import {

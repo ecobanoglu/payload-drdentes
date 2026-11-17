@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
-import { anyone, isEditor, isEditorOrTranslator } from '../access/rbac'
-import { restrictTranslatorEdits } from '../hooks/restrictTranslatorEdits'
+import { anyone, isEditor, isEditorOrTranslator } from '../../access/rbac'
+import { restrictTranslatorEdits } from '../../hooks/restrictTranslatorEdits'
 import { slugField } from 'payload'
 
 export const Categories: CollectionConfig = {

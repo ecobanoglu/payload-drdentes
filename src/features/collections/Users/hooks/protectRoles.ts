@@ -1,6 +1,6 @@
 import { Forbidden, type CollectionBeforeChangeHook, type CollectionBeforeDeleteHook } from 'payload'
 
-import { hasRole } from '../../../access/roles'
+import { hasRole } from '../../../../access/roles'
 
 const isSuperAdmin = (user: { roles?: string[] | null } | null | undefined) =>
   Boolean(user?.roles?.includes('super-admin'))

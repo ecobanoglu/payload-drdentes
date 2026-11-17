@@ -7,7 +7,7 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { linkGroup } from '@/fields/linkGroup'
+import { linkGroup } from '@/features/fields/linkGroup'
 
 /** Sayfa üst alanı (hero). Tüm içeriği dile göre ayrı tutulur (`localized`). */
 export const hero: Field = {
