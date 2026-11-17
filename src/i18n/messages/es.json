@@ -1,0 +1,46 @@
+{
+  "Common": {
+    "siteName": "Dr. Dentes",
+    "home": "Inicio",
+    "search": "Buscar",
+    "language": "Idioma",
+    "skipToContent": "Ir al contenido"
+  },
+  "NotFound": {
+    "title": "404",
+    "description": "No se pudo encontrar esta página.",
+    "goHome": "Volver al inicio"
+  },
+  "Posts": {
+    "title": "Artículos",
+    "metaTitle": "Artículos",
+    "pageMetaTitle": "Artículos – Página {page}"
+  },
+  "Search": {
+    "title": "Buscar",
+    "placeholder": "Buscar",
+    "noResults": "No se encontraron resultados.",
+    "metaTitle": "Buscar"
+  },
+  "PageRange": {
+    "noResults": "La búsqueda no produjo resultados.",
+    "showing": "Mostrando {start}–{end} de {total, plural, one {# artículo} other {# artículos}}"
+  },
+  "Pagination": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "goPrevious": "Ir a la página anterior",
+    "goNext": "Ir a la página siguiente",
+    "morePages": "Más páginas",
+    "label": "Paginación"
+  },
+  "Card": {
+    "noImage": "Sin imagen",
+    "untitledCategory": "Categoría sin título"
+  },
+  "Form": {
+    "loading": "Enviando, por favor espere...",
+    "error": "Algo salió mal. Inténtelo de nuevo.",
+    "required": "Este campo es obligatorio"
+  }
+}

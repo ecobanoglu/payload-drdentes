@@ -1,0 +1,22 @@
+import { useTranslations } from 'next-intl'
+import React from 'react'
+
+import { Button } from '@/components/ui/button'
+import { Link } from '@/i18n/navigation'
+
+/** 404 sayfası: metinler ve "ana sayfaya dön" bağlantısı aktif dile göre gösterilir. */
+export default function NotFound() {
+  const t = useTranslations('NotFound')
+
+  return (
+    <div className="container py-28">
+      <div className="prose max-w-none">
+        <h1 style={{ marginBottom: 0 }}>{t('title')}</h1>
+        <p className="mb-4">{t('description')}</p>
+      </div>
+      <Button asChild variant="default">
+        <Link href="/">{t('goHome')}</Link>
+      </Button>
+    </div>
+  )
+}

@@ -1,0 +1,46 @@
+{
+  "Common": {
+    "siteName": "Dr. Dentes",
+    "home": "Home",
+    "search": "Search",
+    "language": "Language",
+    "skipToContent": "Skip to content"
+  },
+  "NotFound": {
+    "title": "404",
+    "description": "This page could not be found.",
+    "goHome": "Go home"
+  },
+  "Posts": {
+    "title": "Posts",
+    "metaTitle": "Posts",
+    "pageMetaTitle": "Posts – Page {page}"
+  },
+  "Search": {
+    "title": "Search",
+    "placeholder": "Search",
+    "noResults": "No results found.",
+    "metaTitle": "Search"
+  },
+  "PageRange": {
+    "noResults": "Search produced no results.",
+    "showing": "Showing {start}–{end} of {total, plural, one {# post} other {# posts}}"
+  },
+  "Pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "goPrevious": "Go to previous page",
+    "goNext": "Go to next page",
+    "morePages": "More pages",
+    "label": "Pagination"
+  },
+  "Card": {
+    "noImage": "No image",
+    "untitledCategory": "Untitled category"
+  },
+  "Form": {
+    "loading": "Loading, please wait...",
+    "error": "Something went wrong. Please try again.",
+    "required": "This field is required"
+  }
+}

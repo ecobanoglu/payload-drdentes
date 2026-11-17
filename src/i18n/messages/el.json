@@ -1,0 +1,46 @@
+{
+  "Common": {
+    "siteName": "Dr. Dentes",
+    "home": "Αρχική",
+    "search": "Αναζήτηση",
+    "language": "Γλώσσα",
+    "skipToContent": "Μετάβαση στο περιεχόμενο"
+  },
+  "NotFound": {
+    "title": "404",
+    "description": "Η σελίδα δεν βρέθηκε.",
+    "goHome": "Επιστροφή στην αρχική"
+  },
+  "Posts": {
+    "title": "Άρθρα",
+    "metaTitle": "Άρθρα",
+    "pageMetaTitle": "Άρθρα – Σελίδα {page}"
+  },
+  "Search": {
+    "title": "Αναζήτηση",
+    "placeholder": "Αναζήτηση",
+    "noResults": "Δεν βρέθηκαν αποτελέσματα.",
+    "metaTitle": "Αναζήτηση"
+  },
+  "PageRange": {
+    "noResults": "Η αναζήτηση δεν επέστρεψε αποτελέσματα.",
+    "showing": "Εμφάνιση {start}–{end} από {total, plural, one {# άρθρο} other {# άρθρα}}"
+  },
+  "Pagination": {
+    "previous": "Προηγούμενη",
+    "next": "Επόμενη",
+    "goPrevious": "Μετάβαση στην προηγούμενη σελίδα",
+    "goNext": "Μετάβαση στην επόμενη σελίδα",
+    "morePages": "Περισσότερες σελίδες",
+    "label": "Σελιδοποίηση"
+  },
+  "Card": {
+    "noImage": "Χωρίς εικόνα",
+    "untitledCategory": "Κατηγορία χωρίς τίτλο"
+  },
+  "Form": {
+    "loading": "Αποστολή, παρακαλώ περιμένετε...",
+    "error": "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά.",
+    "required": "Αυτό το πεδίο είναι υποχρεωτικό"
+  }
+}

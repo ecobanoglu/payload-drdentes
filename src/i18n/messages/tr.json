@@ -1,0 +1,46 @@
+{
+  "Common": {
+    "siteName": "Dr. Dentes",
+    "home": "Ana sayfa",
+    "search": "Ara",
+    "language": "Dil",
+    "skipToContent": "İçeriğe geç"
+  },
+  "NotFound": {
+    "title": "404",
+    "description": "Aradığınız sayfa bulunamadı.",
+    "goHome": "Ana sayfaya dön"
+  },
+  "Posts": {
+    "title": "Yazılar",
+    "metaTitle": "Yazılar",
+    "pageMetaTitle": "Yazılar – Sayfa {page}"
+  },
+  "Search": {
+    "title": "Arama",
+    "placeholder": "Ara",
+    "noResults": "Sonuç bulunamadı.",
+    "metaTitle": "Arama"
+  },
+  "PageRange": {
+    "noResults": "Arama sonuç vermedi.",
+    "showing": "{total} yazıdan {start}–{end} arası gösteriliyor"
+  },
+  "Pagination": {
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "goPrevious": "Önceki sayfaya git",
+    "goNext": "Sonraki sayfaya git",
+    "morePages": "Diğer sayfalar",
+    "label": "Sayfalama"
+  },
+  "Card": {
+    "noImage": "Görsel yok",
+    "untitledCategory": "Adsız kategori"
+  },
+  "Form": {
+    "loading": "Gönderiliyor, lütfen bekleyin...",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "required": "Bu alan zorunludur"
+  }
+}

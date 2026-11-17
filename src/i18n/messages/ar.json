@@ -1,0 +1,46 @@
+{
+  "Common": {
+    "siteName": "Dr. Dentes",
+    "home": "الرئيسية",
+    "search": "بحث",
+    "language": "اللغة",
+    "skipToContent": "انتقل إلى المحتوى"
+  },
+  "NotFound": {
+    "title": "404",
+    "description": "تعذّر العثور على هذه الصفحة.",
+    "goHome": "العودة إلى الرئيسية"
+  },
+  "Posts": {
+    "title": "المقالات",
+    "metaTitle": "المقالات",
+    "pageMetaTitle": "المقالات – الصفحة {page}"
+  },
+  "Search": {
+    "title": "بحث",
+    "placeholder": "ابحث",
+    "noResults": "لم يتم العثور على نتائج.",
+    "metaTitle": "بحث"
+  },
+  "PageRange": {
+    "noResults": "لم يُسفر البحث عن أي نتائج.",
+    "showing": "عرض {start}–{end} من {total, plural, zero {# مقالة} one {مقالة واحدة} two {مقالتين} few {# مقالات} many {# مقالة} other {# مقالة}}"
+  },
+  "Pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "goPrevious": "الانتقال إلى الصفحة السابقة",
+    "goNext": "الانتقال إلى الصفحة التالية",
+    "morePages": "صفحات أخرى",
+    "label": "ترقيم الصفحات"
+  },
+  "Card": {
+    "noImage": "لا توجد صورة",
+    "untitledCategory": "فئة بدون عنوان"
+  },
+  "Form": {
+    "loading": "جارٍ الإرسال، يرجى الانتظار...",
+    "error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "required": "هذا الحقل مطلوب"
+  }
+}

@@ -1,0 +1,10 @@
+# Tüm metin dosyalarında satır sonu LF (Windows/macOS/Linux arasında tutarlılık)
+* text=auto eol=lf
+
+# İkili dosyalar
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary
+*.glb binary
+*.ktx2 binary
