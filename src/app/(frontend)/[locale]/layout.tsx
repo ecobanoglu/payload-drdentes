@@ -2,10 +2,9 @@ import type { Metadata } from 'next'
 
 import { cn } from '@/lib/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
-import { Noto_Sans_Arabic } from 'next/font/google'
+import { Inter, Noto_Sans_Arabic } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
@@ -26,7 +25,18 @@ import '../globals.css'
 import { getServerSideURL } from '@/lib/utilities/getURL'
 
 /**
- * Arapça font. Geist Arapça karakter içermediği için font yığınında Geist'ten sonra gelir;
+ * Sitenin ana fontu: Inter (değişken font, tüm kalınlıklar tek dosyada).
+ * `latin-ext` Türkçe ve İspanyolca karakterleri, `greek` Yunanca karakterleri kapsar.
+ * Font build sırasında indirilip siteyle birlikte sunulur (Google'a istek gitmez).
+ */
+const inter = Inter({
+  subsets: ['latin', 'latin-ext', 'greek'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+/**
+ * Arapça font. Inter Arapça karakter içermediği için font yığınında Inter'den sonra gelir;
  * tarayıcı yalnızca Arapça karakterler için bu fonta geçer. `preload: false` sayesinde
  * diğer dillerde hiç indirilmez (unicode-range ile yalnızca gerektiğinde yüklenir).
  */
@@ -64,7 +74,7 @@ export default async function RootLayout({ children, params }: Args) {
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable, notoSansArabic.variable)}
+      className={cn(inter.variable, GeistMono.variable, notoSansArabic.variable)}
       lang={locale}
       dir={getDirection(locale)}
       suppressHydrationWarning
