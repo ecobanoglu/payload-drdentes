@@ -1,6 +1,6 @@
 'use client'
-import { useHeaderTheme } from '@/providers/HeaderTheme'
-import { Link, usePathname } from '@/i18n/navigation'
+import { useHeaderTheme } from '@/lib/providers/HeaderTheme'
+import { Link, usePathname } from '@/lib/i18n/navigation'
 import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'

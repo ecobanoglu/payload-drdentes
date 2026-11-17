@@ -1,7 +1,7 @@
 import { getServerSideSitemap } from 'next-sitemap'
 import { unstable_cache } from 'next/cache'
 
-import { buildCollectionSitemap } from '@/utilities/localizedSitemap'
+import { buildCollectionSitemap } from '@/lib/utilities/localizedSitemap'
 
 /**
  * Yazı sitemap'i: her yazının yayınlandığı her dil için ayrı kayıt + hreflang karşılıkları.

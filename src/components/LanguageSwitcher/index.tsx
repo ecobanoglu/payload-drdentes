@@ -3,10 +3,10 @@
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
-import { localeLabels, locales, type Locale } from '@/i18n/config'
-import { Link, usePathname } from '@/i18n/navigation'
-import { useLocaleAlternates } from '@/providers/LocaleAlternates'
-import { cn } from '@/utilities/ui'
+import { localeLabels, locales, type Locale } from '@/lib/i18n/config'
+import { Link, usePathname } from '@/lib/i18n/navigation'
+import { useLocaleAlternates } from '@/lib/providers/LocaleAlternates'
+import { cn } from '@/lib/utilities/ui'
 
 /**
  * Dil değiştirici.

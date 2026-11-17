@@ -8,8 +8,8 @@ import type { Page } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
-import { getDirection } from '@/i18n/config'
-import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { getDirection } from '@/lib/i18n/config'
+import { useHeaderTheme } from '@/lib/providers/HeaderTheme'
 import { getScenePalette } from './palettes'
 
 /**

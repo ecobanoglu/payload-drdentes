@@ -1,10 +1,10 @@
 import { Button, type ButtonProps } from '@/components/ui/button'
-import { cn } from '@/utilities/ui'
-import { Link } from '@/i18n/navigation'
+import { cn } from '@/lib/utilities/ui'
+import { Link } from '@/lib/i18n/navigation'
 import React from 'react'
 
 import type { Page, Post } from '@/payload-types'
-import { getDocumentPath } from '@/utilities/pagePath'
+import { getDocumentPath } from '@/lib/utilities/pagePath'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
@@ -23,7 +23,7 @@ type CMSLinkType = {
 
 /**
  * CMS'ten gelen bağlantıyı (iç doküman referansı veya özel URL) render eder.
- * `@/i18n/navigation` Link'i iç bağlantılara aktif dil önekini otomatik ekler
+ * `@/lib/i18n/navigation` Link'i iç bağlantılara aktif dil önekini otomatik ekler
  * (`/hakkimizda` → `/tr/hakkimizda`); `https://...` gibi dış bağlantılara dokunmaz.
  * Not: CMS'te özel URL girerken dil öneki yazmayın (`/iletisim`, `/tr/iletisim` değil).
  */

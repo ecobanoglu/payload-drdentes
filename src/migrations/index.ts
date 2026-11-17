@@ -4,6 +4,7 @@ import * as migration_20261117_151943_nested_pages from './20261117_151943_neste
 import * as migration_20261117_155552_scene3d_hero from './20261117_155552_scene3d_hero';
 import * as migration_20261117_161023_card_sets from './20261117_161023_card_sets';
 import * as migration_20261117_161233_card_title_optional_locales from './20261117_161233_card_title_optional_locales';
+import * as migration_20261117_174443_media_storage_prefix from './20261117_174443_media_storage_prefix';
 
 export const migrations = [
   {
@@ -34,6 +35,11 @@ export const migrations = [
   {
     up: migration_20261117_161233_card_title_optional_locales.up,
     down: migration_20261117_161233_card_title_optional_locales.down,
-    name: '20261117_161233_card_title_optional_locales'
+    name: '20261117_161233_card_title_optional_locales',
+  },
+  {
+    up: migration_20261117_174443_media_storage_prefix.up,
+    down: migration_20261117_174443_media_storage_prefix.down,
+    name: '20261117_174443_media_storage_prefix'
   },
 ];

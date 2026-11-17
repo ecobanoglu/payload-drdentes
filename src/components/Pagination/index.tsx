@@ -8,8 +8,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
-import { cn } from '@/utilities/ui'
-import { useRouter } from '@/i18n/navigation'
+import { cn } from '@/lib/utilities/ui'
+import { useRouter } from '@/lib/i18n/navigation'
 import React from 'react'
 
 /** Yazı listesi sayfalaması; `/posts/page/N` adreslerine (dil önekiyle) gider. */

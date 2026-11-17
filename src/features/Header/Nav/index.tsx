@@ -5,7 +5,7 @@ import React from 'react'
 import type { Header as HeaderType } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
-import { Link } from '@/i18n/navigation'
+import { Link } from '@/lib/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { SearchIcon } from 'lucide-react'
 

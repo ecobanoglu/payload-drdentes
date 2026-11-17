@@ -5,7 +5,7 @@ import type { CardSet, CardsBlock as CardsBlockProps } from '@/payload-types'
 import { Reveal } from '@/components/animation/Reveal'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
-import { cn } from '@/utilities/ui'
+import { cn } from '@/lib/utilities/ui'
 import { cardIconComponents } from './icons'
 
 type Card = NonNullable<CardSet['cards']>[number]

@@ -11,11 +11,11 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { editorOrOwnPost, isEditor, staffCreateDraft, staffOrPublished } from '../../../access/rbac'
-import { restrictTranslatorEdits } from '../../../hooks/restrictTranslatorEdits'
+import { restrictTranslatorEdits } from '../../../lib/hooks/restrictTranslatorEdits'
 import { Banner } from '../../blocks/Banner/config'
 import { Code } from '../../blocks/Code/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { generatePreviewPath } from '../../../utilities/generatePreviewPath'
+import { generatePreviewPath } from '../../../lib/utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 

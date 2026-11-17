@@ -4,8 +4,8 @@ import { PerformanceMonitor } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import React, { Suspense, useEffect, useRef, useState, type RefObject } from 'react'
 
-import { useReducedMotion } from '@/utilities/useReducedMotion'
-import { cn } from '@/utilities/ui'
+import { useReducedMotion } from '@/lib/utilities/useReducedMotion'
+import { cn } from '@/lib/utilities/ui'
 import type { ScenePalette } from './palettes'
 import { PearlScene, type SceneQuality } from './PearlScene'
 

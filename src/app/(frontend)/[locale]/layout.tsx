@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { cn } from '@/utilities/ui'
+import { cn } from '@/lib/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
@@ -12,17 +12,17 @@ import React from 'react'
 import { AdminBar } from '@/components/AdminBar'
 import { Footer } from '@/features/Footer/Component'
 import { Header } from '@/features/Header/Component'
-import { getDirection, ogLocales, type Locale } from '@/i18n/config'
-import { routing } from '@/i18n/routing'
-import { Providers } from '@/providers'
-import { LocaleAlternatesProvider } from '@/providers/LocaleAlternates'
-import { SmoothScrollProvider } from '@/providers/SmoothScroll'
-import { InitTheme } from '@/providers/Theme/InitTheme'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { getDirection, ogLocales, type Locale } from '@/lib/i18n/config'
+import { routing } from '@/lib/i18n/routing'
+import { Providers } from '@/lib/providers'
+import { LocaleAlternatesProvider } from '@/lib/providers/LocaleAlternates'
+import { SmoothScrollProvider } from '@/lib/providers/SmoothScroll'
+import { InitTheme } from '@/lib/providers/Theme/InitTheme'
+import { mergeOpenGraph } from '@/lib/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
 import '../globals.css'
-import { getServerSideURL } from '@/utilities/getURL'
+import { getServerSideURL } from '@/lib/utilities/getURL'
 
 /**
  * Arapça font. Geist Arapça karakter içermediği için font yığınında Geist'ten sonra gelir;

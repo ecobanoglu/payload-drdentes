@@ -20,9 +20,9 @@ import type {
 } from '@/payload-types'
 import { BannerBlock } from '@/features/blocks/Banner/Component'
 import { CallToActionBlock } from '@/features/blocks/CallToAction/Component'
-import { cn } from '@/utilities/ui'
+import { cn } from '@/lib/utilities/ui'
 import { useLocale } from 'next-intl'
-import { getDocumentPath } from '@/utilities/pagePath'
+import { getDocumentPath } from '@/lib/utilities/pagePath'
 
 type NodeTypes =
   | DefaultNodeTypes

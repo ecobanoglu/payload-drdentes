@@ -8,12 +8,18 @@ const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 import { redirects } from './redirects'
 
-/** next-intl eklentisi: her istekte dil ve arayüz metinlerini `src/i18n/request.ts` üzerinden yükler */
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
+/** next-intl eklentisi: her istekte dil ve arayüz metinlerini `src/lib/i18n/request.ts` üzerinden yükler */
+const withNextIntl = createNextIntlPlugin('./src/lib/i18n/request.ts')
 
 const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : process.env.__NEXT_PRIVATE_ORIGIN || 'http://localhost:3000'
+
+/**
+ * R2'deki görsellerin herkese açık adresi (ör. https://media.drdentes.com).
+ * next/image'in bu adresten görsel optimize edebilmesi için izin listesine eklenir.
+ */
+const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL
 
 const nextConfig: NextConfig = {
   // Temporarily required on Windows until Next.js fixes Turbopack Sass resolution.
@@ -29,7 +35,7 @@ const nextConfig: NextConfig = {
     ],
     qualities: [100],
     remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
+      ...[NEXT_PUBLIC_SERVER_URL, R2_PUBLIC_URL].filter((item): item is string => Boolean(item)).map((item) => {
         const url = new URL(item)
 
         return {

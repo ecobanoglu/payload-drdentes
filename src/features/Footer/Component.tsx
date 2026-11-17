@@ -1,9 +1,9 @@
-import { getCachedGlobal } from '@/utilities/getGlobals'
-import { Link } from '@/i18n/navigation'
-import type { Locale } from '@/i18n/config'
+import { getCachedGlobal } from '@/lib/utilities/getGlobals'
+import { Link } from '@/lib/i18n/navigation'
+import type { Locale } from '@/lib/i18n/config'
 import React from 'react'
 
-import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
+import { ThemeSelector } from '@/lib/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 

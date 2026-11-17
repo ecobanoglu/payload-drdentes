@@ -7,12 +7,12 @@ import type {
 
 import { ADMIN_GROUPS } from '@/features/adminGroups'
 
-import { defaultLocale } from '../../../i18n/config'
+import { defaultLocale } from '../../../lib/i18n/config'
 
 import { revalidatePath } from 'next/cache'
 
 import { anyone, isEditor, isEditorOrTranslator } from '../../../access/rbac'
-import { restrictTranslatorEdits } from '../../../hooks/restrictTranslatorEdits'
+import { restrictTranslatorEdits } from '../../../lib/hooks/restrictTranslatorEdits'
 import { link } from '../../fields/link'
 import { cardIconOptions } from './icons'
 

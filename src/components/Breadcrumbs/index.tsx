@@ -1,9 +1,9 @@
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
-import type { Locale } from '@/i18n/config'
-import { Link } from '@/i18n/navigation'
-import { absoluteLocalizedURL } from '@/utilities/generateMeta'
+import type { Locale } from '@/lib/i18n/config'
+import { Link } from '@/lib/i18n/navigation'
+import { absoluteLocalizedURL } from '@/lib/utilities/generateMeta'
 
 /** nested-docs eklentisinin ürettiği yol zincirinin bir halkası */
 type Crumb = { url?: string | null; label?: string | null; id?: string | null }

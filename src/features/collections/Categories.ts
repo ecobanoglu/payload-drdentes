@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { ADMIN_GROUPS } from '@/features/adminGroups'
 
 import { anyone, isEditor, isEditorOrTranslator } from '../../access/rbac'
-import { restrictTranslatorEdits } from '../../hooks/restrictTranslatorEdits'
+import { restrictTranslatorEdits } from '../../lib/hooks/restrictTranslatorEdits'
 import { slugField } from 'payload'
 
 export const Categories: CollectionConfig = {

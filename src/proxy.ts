@@ -1,6 +1,6 @@
 import createMiddleware from 'next-intl/middleware'
 
-import { routing } from './i18n/routing'
+import { routing } from './lib/i18n/routing'
 
 /**
  * Dil yönlendirmesi: `/` → `/tr` (veya tarayıcı diline göre), önek eksikse eklenir.

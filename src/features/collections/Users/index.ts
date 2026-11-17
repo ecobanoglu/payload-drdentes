@@ -3,14 +3,14 @@ import { ADMIN_GROUPS } from '@/features/adminGroups'
 
 import { isAdmin, isAdminField, isAdminOrSelf } from '../../../access/rbac'
 import { can, ROLE_LABELS, ROLES } from '../../../access/roles'
-import { localeLabels, locales } from '../../../i18n/config'
+import { localeLabels, locales } from '../../../lib/i18n/config'
 import {
   forgotPasswordHTML,
   forgotPasswordSubject,
   RESET_PASSWORD_EXPIRATION_MS,
   verifyEmailHTML,
   verifyEmailSubject,
-} from '../../../email/authEmails'
+} from '../../../lib/email/authEmails'
 import { protectRoles, protectSuperAdminDelete } from './hooks/protectRoles'
 
 export const Users: CollectionConfig = {

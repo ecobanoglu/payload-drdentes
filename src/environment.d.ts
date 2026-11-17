@@ -13,6 +13,15 @@ declare global {
       EMAIL_FROM_NAME?: string
       /** Form bildirimlerinin varsayılan alıcısı (formda alıcı yoksa) */
       EMAIL_CONTACT_TO?: string
+      /** Cloudflare R2 medya depolaması (hepsi tanımlıysa etkin; bkz. src/lib/plugins/r2Storage.ts) */
+      R2_ACCOUNT_ID?: string
+      R2_ACCESS_KEY_ID?: string
+      R2_SECRET_ACCESS_KEY?: string
+      R2_BUCKET?: string
+      /** Dosyaların herkese açık adresi (özel alan adı veya r2.dev), sonda "/" olmadan */
+      R2_PUBLIC_URL?: string
+      /** "true" ise dosyalar tarayıcıdan doğrudan R2'ye yüklenir (bucket CORS gerekir) */
+      R2_CLIENT_UPLOADS?: string
     }
   }
 }

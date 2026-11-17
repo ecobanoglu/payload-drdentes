@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { Button } from '@/components/ui/button'
-import { Link } from '@/i18n/navigation'
+import { Link } from '@/lib/i18n/navigation'
 
 /** 404 sayfası: metinler ve "ana sayfaya dön" bağlantısı aktif dile göre gösterilir. */
 export default function NotFound() {
