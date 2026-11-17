@@ -29,7 +29,10 @@ export const ThemeSelector: React.FC = () => {
   }
 
   React.useEffect(() => {
+    // Kasıtlı: tercih yalnızca tarayıcıda (localStorage) var; sunucu render'ıyla uyumsuzluk
+    // olmaması için ilk render 'auto' ile yapılır, tercih yüklendikten sonra okunur.
     const preference = window.localStorage.getItem(themeLocalStorageKey)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setValue(preference ?? 'auto')
   }, [])
 

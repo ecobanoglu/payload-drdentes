@@ -48,6 +48,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     document.documentElement.setAttribute('data-theme', themeToSet)
+    // Kasıtlı: tema tercihi yalnızca tarayıcıda okunabilir (localStorage / sistem ayarı);
+    // sunucu render'ıyla uyumsuzluk olmaması için yükleme sonrası state'e yazılır.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setThemeState(themeToSet)
   }, [])
 

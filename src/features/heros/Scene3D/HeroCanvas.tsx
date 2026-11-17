@@ -49,20 +49,12 @@ const detectInitialQuality = (): SceneQuality => {
 export function HeroCanvas({ palette, containerRef, direction }: Props) {
   const reducedMotion = useReducedMotion()
   const scrollProgress = useRef(0)
-  const [enabled, setEnabled] = useState(false)
-  const [quality, setQuality] = useState<SceneQuality>('high')
-  const [dpr, setDpr] = useState(1.5)
+  // Bu bileşen yalnızca tarayıcıda yüklenir (ssr: false); yetenekler ilk render'da ölçülür
+  const [enabled] = useState(supportsWebGL)
+  const [quality, setQuality] = useState<SceneQuality>(detectInitialQuality)
+  const [dpr, setDpr] = useState(() => (quality === 'high' ? 1.5 : 1))
   const [inView, setInView] = useState(true)
   const [ready, setReady] = useState(false)
-
-  // Tarayıcı yeteneklerini bir kez kontrol et
-  useEffect(() => {
-    if (!supportsWebGL()) return
-    const initial = detectInitialQuality()
-    setQuality(initial)
-    setDpr(initial === 'high' ? 1.5 : 1)
-    setEnabled(true)
-  }, [])
 
   // Hero görünür mü? Görünmüyorsa çizimi durdur
   useEffect(() => {

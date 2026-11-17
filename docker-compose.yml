@@ -1,31 +1,18 @@
-version: '3'
-
+# Yerel geliştirme için PostgreSQL.
+# Başlatma:  docker compose up -d
+# .env:      DATABASE_URL=postgresql://postgres:postgres@localhost:5432/payload-drdentes
 services:
-  payload:
-    image: node:22.23.5-alpine
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
     ports:
-      - '3000:3000'
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: payload-drdentes
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
-    depends_on:
-      - mongo
-    env_file:
-      - .env
-
-  mongo:
-    image: mongo:latest
-    ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
-    volumes:
-      - data:/data/db
-    logging:
-      driver: none
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
-  data:
-  node_modules:
+  pgdata:

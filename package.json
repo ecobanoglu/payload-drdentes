@@ -1,7 +1,7 @@
 {
   "name": "payload-drdentes",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "Dr. Dentes – çok dilli klinik web sitesi (Payload CMS + Next.js)",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -25,6 +25,7 @@
     "ci": "npm run migrate && npm run build"
   },
   "dependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "5.3.0",
     "@gsap/react": "^2.1.2",
     "@payloadcms/admin-bar": "3.93.0",
     "@payloadcms/db-postgres": "3.93.0",

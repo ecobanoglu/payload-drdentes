@@ -5,16 +5,14 @@ import type { Media, Page, Post, Config } from '../../payload-types'
 import { defaultLocale, ogLocales, type Locale } from '@/lib/i18n/config'
 import type { LocalizedPaths } from './localizedPaths'
 import { mergeOpenGraph } from './mergeOpenGraph'
+import { DEFAULT_OG_IMAGE, SITE_NAME } from './site'
 import { getServerSideURL } from './getURL'
-
-/** Sayfa başlıklarının sonuna eklenen site adı */
-export const SITE_NAME = 'Dr. Dentes'
 
 /** OG görselinin tam URL'ini döner; görsel yoksa varsayılan görseli kullanır. */
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
 
-  let url = serverUrl + '/website-template-OG.webp'
+  let url = serverUrl + DEFAULT_OG_IMAGE
 
   if (image && typeof image === 'object' && 'url' in image) {
     const ogUrl = image.sizes?.og?.url
@@ -86,6 +84,7 @@ export const generateMeta = async (args: {
       title,
       url: paths?.[locale] ? absoluteLocalizedURL(locale, paths[locale]) : undefined,
     }),
-    title,
+    // Başlık site adını zaten içerir; layout şablonu ("%s | site") ikinci kez eklemesin
+    title: { absolute: title },
   }
 }

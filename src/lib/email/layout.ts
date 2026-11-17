@@ -1,7 +1,8 @@
 import { getDirection } from '@/lib/i18n/config'
+import { SITE_NAME } from '@/lib/utilities/site'
 
-/** E-postalarda görünen marka adı */
-export const EMAIL_BRAND_NAME = 'Dr. Dentes'
+/** E-postalarda görünen marka adı (site adı) */
+export const EMAIL_BRAND_NAME = SITE_NAME
 
 /** HTML içine güvenle metin yerleştirmek için özel karakterleri kaçışlar. */
 export const escapeHtml = (value: string) =>

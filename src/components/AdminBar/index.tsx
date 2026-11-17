@@ -14,18 +14,15 @@ import { getClientSideURL } from '@/lib/utilities/getURL'
 
 const baseClass = 'admin-bar'
 
+/** Admin çubuğunda "Sayfayı düzenle" gibi bağlantılar için koleksiyon adları */
 const collectionLabels = {
   pages: {
-    plural: 'Pages',
-    singular: 'Page',
+    plural: 'Sayfalar',
+    singular: 'Sayfa',
   },
   posts: {
-    plural: 'Posts',
-    singular: 'Post',
-  },
-  projects: {
-    plural: 'Projects',
-    singular: 'Project',
+    plural: 'Yazılar',
+    singular: 'Yazı',
   },
 }
 
@@ -37,8 +34,9 @@ export const AdminBar: React.FC<{
   const { adminBarProps } = props || {}
   const segments = useSelectedLayoutSegments()
   const [show, setShow] = useState(false)
+  // [locale] layout'unun altındaki ilk segment koleksiyonu belirtir: /tr/posts/... → posts
   const collection = (
-    collectionLabels[segments?.[1] as keyof typeof collectionLabels] ? segments[1] : 'pages'
+    collectionLabels[segments?.[0] as keyof typeof collectionLabels] ? segments[0] : 'pages'
   ) as keyof typeof collectionLabels
   const router = useRouter()
 

@@ -1,0 +1,661 @@
+/**
+ * Admin paneli teması — açık tema, mor ana renk, kart tabanlı yerleşim.
+ *
+ * Payload stilleri `@layer payload-default` katmanındadır; buradaki kurallar `@layer payload`
+ * katmanında olduğu için Payload'un dosyalarına dokunmadan onları ezer.
+ *
+ * Yapı:
+ *  1. Tasarım değişkenleri (renk, font, radius) ve Payload değişken eşlemeleri
+ *  2. Genel yerleşim (zemin, header, sidebar)
+ *  3. Bileşenler (buton, kart, tablo, form alanları, sekmeler, pill)
+ *  4. Marka (logo) sınıfları
+ *
+ * Ana rengi değiştirmek için yalnızca `--admin-primary*` değişkenlerini güncelleyin.
+ */
+
+@layer payload {
+  /* ───────────────────────── 1. Değişkenler ───────────────────────── */
+  :root,
+  html[data-theme='light'] {
+    /* Ana renk ve tonları */
+    --admin-primary: #6a4cff;
+    --admin-primary-hover: #5b3ef0;
+    --admin-primary-soft: rgba(106, 76, 255, 0.11);
+    --admin-primary-ring: rgba(106, 76, 255, 0.28);
+
+    /* Yüzeyler ve çizgiler */
+    --admin-page-bg: #eef0f5;
+    --admin-surface: #ffffff;
+    --admin-surface-muted: #f6f7fb;
+    --admin-hover: #f3f4f9;
+    --admin-line: rgba(17, 20, 32, 0.08);
+    --admin-line-strong: rgba(17, 20, 32, 0.14);
+
+    /* Metin */
+    --admin-text: #171a23;
+    --admin-text-2: #5a6173;
+    --admin-text-3: #9097a8;
+
+    /* Köşe yuvarlaklıkları ve gölge */
+    --admin-radius-sm: 8px;
+    --admin-radius: 10px;
+    --admin-radius-lg: 16px;
+    --admin-shadow: 0 1px 2px rgba(17, 20, 32, 0.04), 0 1px 1px rgba(17, 20, 32, 0.02);
+    --admin-shadow-hover: 0 6px 20px rgba(17, 20, 32, 0.07);
+
+    /* Font */
+    --font-body: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    /* Payload radius değişkenleri */
+    --style-radius-s: var(--admin-radius-sm);
+    --style-radius-m: var(--admin-radius);
+    --style-radius-l: var(--admin-radius-lg);
+
+    /* Sidebar genişliği */
+    --nav-width: 258px;
+
+    /* Payload gri ölçeği → hafif mavi tonlu nötrler (metin, çizgi, zemin hepsi buradan) */
+    --theme-elevation-0: #ffffff;
+    --theme-elevation-50: #f6f7fb;
+    --theme-elevation-100: #eef0f5;
+    --theme-elevation-150: #e3e6ee;
+    --theme-elevation-200: #d3d7e1;
+    --theme-elevation-250: #c3c8d4;
+    --theme-elevation-300: #b2b8c6;
+    --theme-elevation-350: #a2a8b8;
+    --theme-elevation-400: #9097a8;
+    --theme-elevation-450: #7f8698;
+    --theme-elevation-500: #6e7588;
+    --theme-elevation-550: #646b7e;
+    --theme-elevation-600: #5a6173;
+    --theme-elevation-650: #4d5466;
+    --theme-elevation-700: #414756;
+    --theme-elevation-750: #353a47;
+    --theme-elevation-800: #2a2e39;
+    --theme-elevation-850: #1f222b;
+    --theme-elevation-900: #171a23;
+    --theme-elevation-950: #10121a;
+    --theme-elevation-1000: #0a0c12;
+
+    /* Payload vurgu ölçeği (odak halkası, seçili satır, onay kutusu…) → ana renk */
+    --theme-success-50: #f3f0ff;
+    --theme-success-100: #e9e4ff;
+    --theme-success-150: #dcd4ff;
+    --theme-success-200: #cbbfff;
+    --theme-success-250: #b7a8ff;
+    --theme-success-300: #a391ff;
+    --theme-success-350: #8f7aff;
+    --theme-success-400: #7e63ff;
+    --theme-success-450: #7457ff;
+    --theme-success-500: #6a4cff;
+    --theme-success-550: #5e41f0;
+    --theme-success-600: #5236de;
+    --theme-success-650: #472dc6;
+    --theme-success-700: #3c25ac;
+    --theme-success-750: #321f91;
+    --theme-success-800: #291a77;
+    --theme-success-850: #20155e;
+    --theme-success-900: #181046;
+
+    --theme-bg: var(--admin-page-bg);
+    --theme-text: var(--admin-text);
+    --theme-input-bg: var(--admin-surface);
+    --theme-border-color: var(--admin-line-strong);
+  }
+
+  /* ───────────────────────── 2. Genel yerleşim ───────────────────────── */
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.005em;
+  }
+
+  .template-default,
+  .template-default__wrap {
+    background-color: var(--admin-page-bg);
+  }
+
+  /* Header: yarı saydam beyaz, bulanık, alt çizgili */
+  .app-header {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--admin-line);
+  }
+
+  .app-header__bg {
+    display: none;
+  }
+
+  .step-nav {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--admin-text);
+
+    a {
+      color: var(--admin-text-3);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--admin-primary);
+      }
+    }
+  }
+
+  /* Dil seçici (Yerel ayar) */
+  .localizer-button {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    padding: 6px 10px;
+    font-weight: 600;
+  }
+
+  /* Sayfa başlıkları */
+  .list-header__title,
+  .doc-header__title,
+  .dashboard h1 {
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--admin-text);
+  }
+
+  /* ─────────────── Sidebar ─────────────── */
+  .nav {
+    background: var(--admin-surface);
+    border-right: 1px solid var(--admin-line);
+  }
+
+  .nav__scroll {
+    --nav-padding-inline-start: 14px;
+    --nav-padding-inline-end: 14px;
+    --nav-padding-block-start: 18px;
+  }
+
+  .nav__wrap {
+    gap: 2px;
+  }
+
+  /* Grup başlığı: "İÇERİK", "AYARLAR" */
+  .nav-group {
+    margin-bottom: 14px;
+  }
+
+  .nav-group__toggle {
+    padding: 0 10px;
+    margin-bottom: 6px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--admin-text-3);
+  }
+
+  .nav__link {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: var(--admin-radius);
+    font-size: 13px;
+    line-height: 1.35;
+    font-weight: 500;
+    color: var(--admin-text-2);
+    transition:
+      background-color 120ms ease,
+      color 120ms ease;
+  }
+
+  .nav a.nav__link:hover,
+  .nav a.nav__link:focus-visible {
+    text-decoration: none;
+    background: var(--admin-hover);
+    color: var(--admin-text);
+  }
+
+  /* Aktif menü öğesi: açık mor zemin, mor metin */
+  .nav__link.active,
+  .nav__link:has(.nav__link-indicator) {
+    background: var(--admin-primary-soft);
+    color: var(--admin-primary);
+    font-weight: 600;
+    padding-left: 10px;
+  }
+
+  .nav__link-indicator {
+    display: none;
+  }
+
+  .nav__controls {
+    padding: 14px 10px 0;
+    border-top: 1px solid var(--admin-line);
+  }
+
+  /* ───────────────────────── 3. Bileşenler ───────────────────────── */
+
+  /* Butonlar */
+  .btn {
+    border-radius: var(--admin-radius);
+    font-weight: 700;
+    letter-spacing: -0.005em;
+  }
+
+  .btn--style-primary {
+    background-color: var(--admin-primary);
+    color: #ffffff;
+    box-shadow: 0 1px 2px rgba(106, 76, 255, 0.25);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--admin-primary-hover);
+      color: #ffffff;
+    }
+
+    &.btn--disabled {
+      background-color: var(--theme-success-200);
+      color: #ffffff;
+      box-shadow: none;
+    }
+  }
+
+  .btn--style-secondary {
+    background-color: var(--admin-surface);
+    color: var(--admin-text);
+    box-shadow: inset 0 0 0 1px var(--admin-line-strong);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--admin-hover);
+      box-shadow: inset 0 0 0 1px var(--admin-line-strong);
+    }
+  }
+
+  /* "Yeni oluştur" gibi başlık yanındaki küçük butonlar */
+  .btn--style-pill {
+    background: var(--admin-primary);
+    color: #ffffff;
+    border-radius: var(--admin-radius);
+    padding-inline: 12px;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--admin-primary-hover);
+      color: #ffffff;
+    }
+  }
+
+  /* Pill'ler (Sütunlar, Filtreler, durum etiketleri) */
+  .pill {
+    border-radius: var(--admin-radius-sm);
+    font-weight: 600;
+  }
+
+  .list-controls .pill,
+  .pill--style-light {
+    background: var(--admin-surface);
+    box-shadow: inset 0 0 0 1px var(--admin-line);
+    color: var(--admin-text);
+
+    &:hover {
+      background: var(--admin-hover);
+    }
+  }
+
+  .pill--style-success {
+    background: rgba(51, 212, 147, 0.14);
+    color: #12a46a;
+  }
+
+  .pill--style-warning {
+    background: rgba(247, 184, 78, 0.18);
+    color: #b7791f;
+  }
+
+  .pill--style-error {
+    background: rgba(247, 109, 125, 0.14);
+    color: #d6455a;
+  }
+
+  /* Dashboard kartları */
+  .card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius-lg);
+    box-shadow: var(--admin-shadow);
+    padding: 18px 20px;
+    min-height: 88px;
+    transition:
+      box-shadow 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .card--has-onclick:hover {
+    background: var(--admin-surface);
+    border-color: var(--admin-primary-ring);
+    box-shadow: var(--admin-shadow-hover);
+    transform: translateY(-1px);
+  }
+
+  .card__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--admin-text);
+  }
+
+  .card__actions .btn {
+    background: var(--admin-primary-soft);
+    color: var(--admin-primary);
+    border-radius: 999px;
+    box-shadow: none;
+
+    .stroke {
+      stroke: var(--admin-primary);
+    }
+
+    &:hover {
+      background: var(--admin-primary);
+      color: #ffffff;
+
+      .stroke {
+        stroke: #ffffff;
+      }
+    }
+  }
+
+  /* Dashboard grup başlıkları ("İçerik", "Ayarlar") */
+  .dashboard__label {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--admin-text);
+  }
+
+  /* Liste arama / filtre çubuğu */
+  .list-controls__wrap,
+  .search-filter {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-line);
+    border-radius: 12px;
+    box-shadow: var(--admin-shadow);
+  }
+
+  .search-filter__input,
+  .search-filter input {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* Tablolar: beyaz kart içinde, ince satır çizgileri, küçük büyük-harf başlıklar */
+  .table {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-line);
+    border-radius: 14px;
+    box-shadow: var(--admin-shadow);
+    overflow: hidden;
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    thead {
+      background: var(--admin-surface-muted);
+
+      th {
+        padding: 12px 16px;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--admin-text-3);
+        border-bottom: 1px solid var(--admin-line);
+
+        button,
+        span {
+          color: inherit;
+          font-weight: inherit;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        background: transparent;
+        transition: background-color 120ms ease;
+
+        &:nth-child(odd),
+        &:nth-child(even) {
+          background: transparent;
+        }
+
+        &:hover {
+          background: var(--admin-hover);
+        }
+
+        &:not(:last-child) td {
+          border-bottom: 1px solid var(--admin-line);
+        }
+      }
+
+      td {
+        padding: 14px 16px;
+        font-size: 13.5px;
+        color: var(--admin-text);
+      }
+
+      /* İlk sütundaki başlık bağlantısı */
+      a {
+        color: var(--admin-text);
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--admin-primary);
+        }
+      }
+    }
+  }
+
+  /* Form alanları */
+  .field-type input:not([type='checkbox']):not([type='radio']),
+  .field-type textarea,
+  .react-select .rs__control,
+  .input-wrapper input {
+    border-radius: var(--admin-radius);
+    border-color: var(--admin-line-strong);
+    background: var(--admin-surface);
+  }
+
+  .field-type input:focus,
+  .field-type textarea:focus,
+  .react-select .rs__control--is-focused {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px var(--admin-primary-ring);
+  }
+
+  .field-label {
+    font-weight: 600;
+    color: var(--admin-text);
+  }
+
+  /* Okunur-yalnız alanlar (slug kilidi, breadcrumbs) */
+  .field-type.read-only input {
+    background: var(--admin-surface-muted);
+    color: var(--admin-text-2);
+  }
+
+  /* Belge üst bilgisi ve kontrol çubuğu */
+  .doc-header {
+    border-bottom: none;
+  }
+
+  .doc-controls {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--admin-line);
+    border-bottom: 1px solid var(--admin-line);
+  }
+
+  .doc-tab {
+    border-radius: var(--admin-radius);
+    font-weight: 600;
+
+    &--active,
+    &.doc-tab--active {
+      background: var(--admin-primary-soft);
+      color: var(--admin-primary);
+    }
+  }
+
+  /* Alan sekmeleri (Hero / Content / SEO) */
+  .tabs-field__tab-button {
+    font-weight: 600;
+    color: var(--admin-text-3);
+
+    &--active {
+      color: var(--admin-text);
+      box-shadow: inset 0 -2px 0 var(--admin-primary);
+    }
+  }
+
+  /* Dizi / blok satırları (collapsible) */
+  .collapsible {
+    border-radius: 12px;
+    border-color: var(--admin-line);
+    background: var(--admin-surface);
+
+    &__toggle-wrap {
+      border-radius: 12px 12px 0 0;
+    }
+  }
+
+  /* Popup / açılır menüler */
+  .popup__content {
+    border-radius: 12px;
+    border: 1px solid var(--admin-line);
+    box-shadow: 0 12px 32px rgba(17, 20, 32, 0.12);
+  }
+
+  /* Sayfalama */
+  .paginator__page--is-current {
+    background: var(--admin-primary);
+    color: #ffffff;
+    border-radius: var(--admin-radius-sm);
+  }
+
+  /* Giriş sayfası */
+  .template-minimal {
+    background: var(--admin-page-bg);
+  }
+
+  .template-minimal__wrap {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-line);
+    border-radius: 20px;
+    box-shadow: var(--admin-shadow-hover);
+    padding: 40px;
+  }
+
+  /* ───────────────────────── Düzeltmeler (ekran görüntüsü kontrolünden) ───────────────────────── */
+
+  /*
+   * Sidebar açıkken aç/kapa düğmesi logonun üstüne binmesin: header'a, sidebar'ın hemen
+   * sağına taşınır. Düğmenin kapsayıcısı `.template-default`'un kardeşi olduğundan düğmenin
+   * kendi "açık" sınıfıyla seçilir. Dar ekranlarda sidebar tam ekran açılır ve düğme orada
+   * kapatma düğmesidir; bu yüzden yalnızca geniş ekranlarda uygulanır.
+   */
+  @media (min-width: 1025px) {
+    .template-default__nav-toggler-wrapper:has(.nav-toggler--is-open) {
+      transform: translateX(var(--nav-width));
+    }
+  }
+
+  .template-default__nav-toggler,
+  .nav-toggler {
+    border-radius: var(--admin-radius);
+  }
+
+  /* Dashboard grup başlıkları ("Globaller", "İçerik"…) */
+  .modular-dashboard h2,
+  .collections h2 {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--admin-text);
+  }
+
+  .collections__card-list {
+    gap: 14px;
+  }
+
+  /* Kart üzerindeki "+" düğmesi: küçük yuvarlak */
+  .card__actions {
+    align-self: flex-start;
+  }
+
+  .card__actions .btn {
+    width: 28px;
+    height: 28px;
+    min-height: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Başlıklar header'a yapışmasın */
+  .modular-dashboard,
+  .collection-list__wrap,
+  .doc-header {
+    padding-top: 22px;
+  }
+
+  /* Sidebar alt kısmı (çıkış) tam genişlikte ayrılır */
+  .nav__controls {
+    width: 100%;
+  }
+
+  /* Salt okunur alanlar (slug kilitliyken, breadcrumbs) soluk görünür.
+     Seçiciler, yukarıdaki genel input kuralından daha özgül olacak şekilde yazıldı. */
+  .field-type.read-only input:not([type='checkbox']):not([type='radio']),
+  .field-type input:disabled:not([type='checkbox']):not([type='radio']),
+  .field-type input[readonly]:not([type='checkbox']):not([type='radio']) {
+    background: var(--admin-surface-muted);
+    color: var(--admin-text-2);
+    box-shadow: none;
+  }
+
+  /* Alan sekmeleri (Hero / Content / SEO): aktif sekme çizgisi ana renkte */
+  .tabs-field__tab-button:after {
+    background: var(--admin-primary);
+  }
+
+  /* ───────────────────────── 4. Marka ───────────────────────── */
+  .admin-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--admin-text);
+
+    &__mark {
+      flex-shrink: 0;
+      display: block;
+    }
+
+    &__name {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    &--nav {
+      padding: 4px 10px 20px;
+      margin-bottom: 8px;
+      width: 100%;
+      border-bottom: 1px solid var(--admin-line);
+    }
+
+    &--large .admin-brand__name {
+      font-size: 24px;
+    }
+  }
+}

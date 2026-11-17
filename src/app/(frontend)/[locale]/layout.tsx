@@ -19,6 +19,7 @@ import { LocaleAlternatesProvider } from '@/lib/providers/LocaleAlternates'
 import { SmoothScrollProvider } from '@/lib/providers/SmoothScroll'
 import { InitTheme } from '@/lib/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/lib/utilities/mergeOpenGraph'
+import { SITE_NAME } from '@/lib/utilities/site'
 import { draftMode } from 'next/headers'
 
 import '../globals.css'
@@ -72,6 +73,7 @@ export default async function RootLayout({ children, params }: Args) {
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
       </head>
       <body>
         <NextIntlClientProvider>
@@ -103,6 +105,8 @@ export async function generateMetadata({ params }: Omit<Args, 'children'>): Prom
 
   return {
     metadataBase: new URL(getServerSideURL()),
+    // Sayfa başlıkları: "Yazılar | Dr. Dentes"; başlık vermeyen sayfada yalnızca site adı
+    title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
     openGraph: mergeOpenGraph({ locale: ogLocales[locale as Locale] }),
     twitter: {
       card: 'summary_large_image',

@@ -17,12 +17,14 @@ import { beforeSyncWithSearch } from '@/lib/search/beforeSync'
 
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/lib/utilities/getURL'
+import { SITE_NAME } from '@/lib/utilities/site'
 import { defaultLocale } from '@/lib/i18n/config'
 import { HOME_SLUG } from '@/lib/utilities/constants'
 import { getDocumentPath } from '@/lib/utilities/pagePath'
 
+/** SEO başlığı önerisi: "Sayfa başlığı | Dr. Dentes" */
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+  return doc?.title ? `${doc.title} | ${SITE_NAME}` : SITE_NAME
 }
 
 /** SEO önizlemesi için sayfanın/yazının tam adresi (iç içe sayfa yolu ve dil öneki dahil). */

@@ -6,13 +6,12 @@ import configPromise from '@payload-config'
 import { setRequestLocale } from 'next-intl/server'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
-import { redirect } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import React, { cache } from 'react'
-import { homeStatic } from '@/endpoints/seed/home-static'
 
 import { RenderBlocks } from '@/features/blocks/RenderBlocks'
 import { RenderHero } from '@/features/heros/RenderHero'
-import { defaultLocale, type Locale } from '@/lib/i18n/config'
+import { defaultLocale, isLocale, type Locale } from '@/lib/i18n/config'
 import { SetLocaleAlternates } from '@/lib/providers/LocaleAlternates'
 import { generateMeta } from '@/lib/utilities/generateMeta'
 import { getLocalizedPaths, HOME_SLUG } from '@/lib/utilities/localizedPaths'
@@ -68,18 +67,14 @@ const withLocale = (locale: Locale, path: string) => (path === '/' ? `/${locale}
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { locale, slug } = await paramsPromise
+  // Dil öneki olmayan istekler (ör. /.well-known/...) buraya düşebilir: sorgu yapmadan 404
+  if (!isLocale(locale)) notFound()
   setRequestLocale(locale)
 
   const path = segmentsToPath(slug)
   const url = withLocale(locale, path)
-  let page: RequiredDataFromCollectionSlug<'pages'> | null
-
-  page = await queryPageByPath({ locale, path })
-
-  // Site henüz seed edilmediyse varsayılan dilde örnek ana sayfa göster
-  if (!page && path === '/' && locale === defaultLocale) {
-    page = homeStatic
-  }
+  // Ana sayfa henüz oluşturulmadıysa (slug: "home") bu da 404 döner
+  const page: RequiredDataFromCollectionSlug<'pages'> | null = await queryPageByPath({ locale, path })
 
   if (!page) {
     return <PayloadRedirects url={url} locale={locale} />
@@ -114,6 +109,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 /** Sayfanın SEO bilgileri + diğer dillerdeki karşılıkları (hreflang). */
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { locale, slug } = await paramsPromise
+  if (!isLocale(locale)) return {}
   const page = await queryPageByPath({ locale, path: segmentsToPath(slug) })
   const paths = page?.id ? await getLocalizedPaths('pages', page.id) : undefined
 

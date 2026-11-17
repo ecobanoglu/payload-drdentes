@@ -21,6 +21,7 @@ import { defaultLocale, isRtl, localeLabels, locales } from './lib/i18n/config'
 import { en } from '@payloadcms/translations/languages/en'
 import { tr } from '@payloadcms/translations/languages/tr'
 import { hasRole } from './access/roles'
+import { SITE_NAME } from './lib/utilities/site'
 
 /**
  * E-posta gönderimi (Resend). `RESEND_API_KEY` yoksa (ör. CI build) adaptör eklenmez;
@@ -43,13 +44,20 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
     admin: {
+        // Tarayıcı sekmesinde "Sayfalar – Dr. Dentes" gibi görünür
+        meta: {
+            titleSuffix: ` – ${SITE_NAME}`,
+        },
+        // Yalnızca açık tema (koyu mod seçeneği kaldırılır). Görünüm: src/app/(payload)/custom.scss
+        theme: 'light',
         components: {
-            // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-            // Feel free to delete this at any time. Simply remove the line below.
-            beforeLogin: ['@/components/BeforeLogin'],
-            // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-            // Feel free to delete this at any time. Simply remove the line below.
-            beforeDashboard: ['@/components/BeforeDashboard'],
+            // Payload logosu yerine site markası
+            graphics: {
+                Icon: '@/components/admin/Brand#AdminIcon',
+                Logo: '@/components/admin/Brand#AdminLogo',
+            },
+            // Sidebar'ın en üstünde logo + site adı
+            beforeNavLinks: ['@/components/admin/Brand#AdminNavBrand'],
         },
         importMap: {
             baseDir: path.resolve(dirname),

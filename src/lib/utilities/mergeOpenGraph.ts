@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
+
 import { getServerSideURL } from './getURL'
+import { DEFAULT_OG_IMAGE, SITE_NAME } from './site'
 
-/** Site adı (sekme başlığı ve Open Graph) */
-const SITE_NAME = 'Dr. Dentes'
-
+/** Tüm sayfalarda geçerli varsayılan Open Graph değerleri */
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
   description: SITE_NAME,
   images: [
     {
-      url: `${getServerSideURL()}/website-template-OG.webp`,
+      url: `${getServerSideURL()}${DEFAULT_OG_IMAGE}`,
     },
   ],
   siteName: SITE_NAME,

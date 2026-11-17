@@ -7,6 +7,8 @@ import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
 
 import { importMap } from './admin/importMap.js'
+// Admin fontu (yerel dosya; Google Fonts'a istek atılmaz)
+import '@fontsource-variable/plus-jakarta-sans'
 import './custom.scss'
 
 type Args = {
