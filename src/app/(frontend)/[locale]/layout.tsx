@@ -16,6 +16,7 @@ import { getDirection, ogLocales, type Locale } from '@/i18n/config'
 import { routing } from '@/i18n/routing'
 import { Providers } from '@/providers'
 import { LocaleAlternatesProvider } from '@/providers/LocaleAlternates'
+import { SmoothScrollProvider } from '@/providers/SmoothScroll'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
@@ -75,6 +76,8 @@ export default async function RootLayout({ children, params }: Args) {
       <body>
         <NextIntlClientProvider>
           <Providers>
+            {/* Yumuşak kaydırma (Lenis) + GSAP ScrollTrigger; yalnızca site tarafında */}
+            <SmoothScrollProvider>
             <LocaleAlternatesProvider>
               <AdminBar
                 adminBarProps={{
@@ -86,6 +89,7 @@ export default async function RootLayout({ children, params }: Args) {
               {children}
               <Footer locale={locale} />
             </LocaleAlternatesProvider>
+            </SmoothScrollProvider>
           </Providers>
         </NextIntlClientProvider>
       </body>

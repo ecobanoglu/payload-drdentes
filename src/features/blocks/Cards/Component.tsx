@@ -2,6 +2,7 @@ import React from 'react'
 
 import type { CardSet, CardsBlock as CardsBlockProps } from '@/payload-types'
 
+import { Reveal } from '@/components/animation/Reveal'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import { cn } from '@/utilities/ui'
@@ -82,13 +83,16 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
           {intro && <p className="text-lg text-muted-foreground">{intro}</p>}
         </header>
       )}
-      <ul className={cn('grid grid-cols-1 gap-6', columnClasses[columns ?? '3'])}>
-        {cards.map((card, index) => (
-          <li key={card.id ?? index}>
-            <CardComponent card={card} />
-          </li>
-        ))}
-      </ul>
+      {/* Kartlar kaydırınca sırayla belirir */}
+      <Reveal stagger={0.12}>
+        <ul className={cn('grid grid-cols-1 gap-6', columnClasses[columns ?? '3'])}>
+          {cards.map((card, index) => (
+            <li key={card.id ?? index} data-reveal-item>
+              <CardComponent card={card} />
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </section>
   )
 }
