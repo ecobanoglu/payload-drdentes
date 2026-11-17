@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { setRequestLocale } from 'next-intl/server'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
+import { redirect } from 'next/navigation'
 import React, { cache } from 'react'
 import { homeStatic } from '@/endpoints/seed/home-static'
 
@@ -14,12 +16,13 @@ import { defaultLocale, type Locale } from '@/i18n/config'
 import { SetLocaleAlternates } from '@/providers/LocaleAlternates'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getLocalizedPaths, HOME_SLUG } from '@/utilities/localizedPaths'
+import { getPagePath, pathToSegments } from '@/utilities/pagePath'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 /**
- * Build sırasında her dilde yayınlanmış tüm sayfaları statik üretir.
- * Üst layout'tan gelen `locale` parametresiyle çağrılır.
+ * Build sırasında her dilde yayınlanmış tüm sayfaları (iç içe olanlar dahil) statik üretir.
+ * `/hizmetler/implant` → `{ slug: ['hizmetler', 'implant'] }`
  */
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const payload = await getPayload({ config: configPromise })
@@ -33,41 +36,60 @@ export async function generateStaticParams({ params }: { params: { locale: strin
     pagination: false,
     select: {
       slug: true,
+      breadcrumbs: true,
     },
   })
 
   return pages.docs
-    .filter((doc) => Boolean(doc.slug) && doc.slug !== HOME_SLUG)
-    .map(({ slug }) => ({ slug }))
+    .map((doc) => getPagePath(doc))
+    .filter((path): path is string => Boolean(path) && path !== '/')
+    .map((path) => ({ slug: pathToSegments(path) }))
 }
 
 type Args = {
   params: Promise<{
     locale: Locale
-    slug?: string
+    /** URL segmentleri; ana sayfada tanımsız */
+    slug?: string[]
   }>
 }
 
-/** CMS sayfası. `slug` yoksa ana sayfa gösterilir (`[locale]/page.tsx` bunu yeniden kullanır). */
+/** URL segmentlerinden sayfa yolunu üretir: `['hizmetler', 'implant']` → `/hizmetler/implant` */
+const segmentsToPath = (segments?: string[]) =>
+  segments?.length ? `/${segments.map((s) => decodeURIComponent(s)).join('/')}` : '/'
+
+/** Dil öneki eklenmiş yol: `('tr', '/')` → `/tr`, `('tr', '/a/b')` → `/tr/a/b` */
+const withLocale = (locale: Locale, path: string) => (path === '/' ? `/${locale}` : `/${locale}${path}`)
+
+/**
+ * CMS sayfası (iç içe sayfalar dahil). Segment yoksa ana sayfa gösterilir
+ * (`[locale]/page.tsx` bunu yeniden kullanır).
+ */
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
-  const { locale, slug = HOME_SLUG } = await paramsPromise
+  const { locale, slug } = await paramsPromise
   setRequestLocale(locale)
 
-  // Decode to support slugs with special characters
-  const decodedSlug = decodeURIComponent(slug)
-  const url = slug === HOME_SLUG ? `/${locale}` : `/${locale}/${decodedSlug}`
+  const path = segmentsToPath(slug)
+  const url = withLocale(locale, path)
   let page: RequiredDataFromCollectionSlug<'pages'> | null
 
-  page = await queryPage({ locale, slug: decodedSlug })
+  page = await queryPageByPath({ locale, path })
 
   // Site henüz seed edilmediyse varsayılan dilde örnek ana sayfa göster
-  if (!page && slug === HOME_SLUG && locale === defaultLocale) {
+  if (!page && path === '/' && locale === defaultLocale) {
     page = homeStatic
   }
 
   if (!page) {
     return <PayloadRedirects url={url} locale={locale} />
+  }
+
+  // Sayfa doğru slug ile ama yanlış/eski yoldan açıldıysa (ör. üst sayfası değişti)
+  // asıl adrese yönlendir: /tr/eski-ust/implant → /tr/hizmetler/implant
+  const canonicalPath = 'id' in page && page.id ? getPagePath(page) : path
+  if (canonicalPath && canonicalPath !== path) {
+    redirect(encodeURI(withLocale(locale, canonicalPath)))
   }
 
   const { hero, layout } = page
@@ -82,6 +104,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
+      <Breadcrumbs crumbs={page.breadcrumbs} locale={locale} />
       <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
     </article>
@@ -90,27 +113,31 @@ export default async function Page({ params: paramsPromise }: Args) {
 
 /** Sayfanın SEO bilgileri + diğer dillerdeki karşılıkları (hreflang). */
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { locale, slug = HOME_SLUG } = await paramsPromise
-  const page = await queryPage({ locale, slug: decodeURIComponent(slug) })
+  const { locale, slug } = await paramsPromise
+  const page = await queryPageByPath({ locale, path: segmentsToPath(slug) })
   const paths = page?.id ? await getLocalizedPaths('pages', page.id) : undefined
 
   return generateMeta({ doc: page, locale, paths })
 }
 
 /**
- * Sayfayı istenen dilde getirir.
+ * Sayfayı istenen dilde, yoluna göre getirir.
  *
+ * - Slug'lar koleksiyonda benzersiz olduğundan sayfa, yolun son segmentiyle bulunur;
+ *   yolun tamamının doğruluğu sayfada (`canonicalPath`) kontrol edilir.
  * - `fallbackLocale: false`: çevrilmemiş içerik varsayılan dilden doldurulmaz;
  *   sayfa o dilde yayınlanmadıysa bulunamaz (404 / redirect).
- * - Ana sayfa, varsayılan dildeki slug'ı `home` olan dokümandır; diğer dillerdeki
- *   slug'ı ne olursa olsun `/{locale}` adresinde gösterilir.
+ * - Ana sayfa (`/`), varsayılan dildeki slug'ı `home` olan dokümandır.
  * - Taslak modunda (önizleme) yayınlanmamış içerik de gelir.
  */
-const queryPage = cache(async ({ locale, slug }: { locale: Locale; slug: string }) => {
+const queryPageByPath = cache(async ({ locale, path }: { locale: Locale; path: string }) => {
   const { isEnabled: draft } = await draftMode()
   const payload = await getPayload({ config: configPromise })
 
-  if (slug !== HOME_SLUG) {
+  if (path !== '/') {
+    const lastSlug = pathToSegments(path).at(-1)
+    if (!lastSlug) return null
+
     const result = await payload.find({
       collection: 'pages',
       draft,
@@ -121,7 +148,7 @@ const queryPage = cache(async ({ locale, slug }: { locale: Locale; slug: string 
       fallbackLocale: false,
       where: {
         slug: {
-          equals: slug,
+          equals: lastSlug,
         },
       },
     })

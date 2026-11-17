@@ -1,5 +1,4 @@
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
-import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
@@ -10,22 +9,26 @@ import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/
 import { searchFields } from '@/search/fieldOverrides'
 import { isEditor, isEditorOrTranslator } from '@/access/rbac'
 import { restrictTranslatorEdits } from '@/hooks/restrictTranslatorEdits'
+import { wrapFormEmails } from '@/email/formEmails'
+import { localeSafeNestedDocsPlugin } from './localeSafeNestedDocs'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
 
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 import { defaultLocale } from '@/i18n/config'
+import { HOME_SLUG } from '@/utilities/constants'
+import { getDocumentPath } from '@/utilities/pagePath'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
 }
 
+/** SEO önizlemesi için sayfanın/yazının tam adresi (iç içe sayfa yolu ve dil öneki dahil). */
 const generateURL: GenerateURL<Post | Page> = ({ doc, collectionConfig, locale }) => {
-  const url = `${getServerSideURL()}/${locale || defaultLocale}`
-  const prefix = collectionConfig?.slug === 'posts' ? '/posts' : ''
+  const base = `${getServerSideURL()}/${locale || defaultLocale}`
+  const path = getDocumentPath(collectionConfig?.slug ?? 'pages', doc)
 
-  if (!doc?.slug || doc.slug === 'home') return url
-  return `${url}${prefix}/${doc.slug}`
+  return !path || path === '/' ? base : `${base}${path}`
 }
 
 export const plugins: Plugin[] = [
@@ -52,9 +55,20 @@ export const plugins: Plugin[] = [
       },
     },
   }),
-  nestedDocsPlugin({
-    collections: ['categories'],
-    generateURL: (docs) => docs.reduce((url, doc) => `${url}/${doc.slug}`, ''),
+  /**
+   * İç içe dokümanlar: sayfalara ve kategorilere "üst doküman" (parent) ve dile göre ayrı
+   * tutulan yol zinciri (breadcrumbs) ekler. Üst sayfanın slug'ı değişince alt sayfaların
+   * yolları otomatik yeniden hesaplanır.
+   *
+   * Ana sayfa yola eklenmez: ana sayfanın altındaki sayfa `/home/x` değil `/x` olur.
+   * Çok dil uyumu için eklentinin sarmalanmış sürümü kullanılır (bkz. localeSafeNestedDocs.ts).
+   */
+  localeSafeNestedDocsPlugin({
+    collections: ['categories', 'pages'],
+    generateURL: (docs) =>
+      docs
+        .filter((doc) => doc.slug !== HOME_SLUG)
+        .reduce((url, doc) => `${url}/${doc.slug}`, ''),
   }),
   seoPlugin({
     generateTitle,
@@ -64,6 +78,10 @@ export const plugins: Plugin[] = [
     fields: {
       payment: false,
     },
+    // Bildirim e-postalarını ortak şablona yerleştirir (dil ve yazı yönü dahil)
+    beforeEmail: wrapFormEmails,
+    // Formda alıcı belirtilmemişse bildirimler bu adrese gider
+    defaultToEmail: process.env.EMAIL_CONTACT_TO,
     // Form gönderimi herkese açık kalır; okuma/silme yalnızca editör ve üstü
     formSubmissionOverrides: {
       access: { read: isEditor, update: () => false, delete: isEditor },

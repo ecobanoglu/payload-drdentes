@@ -3,6 +3,13 @@ import type { CollectionConfig } from 'payload'
 import { isAdmin, isAdminField, isAdminOrSelf } from '../../../access/rbac'
 import { can, ROLE_LABELS, ROLES } from '../../../access/roles'
 import { localeLabels, locales } from '../../../i18n/config'
+import {
+  forgotPasswordHTML,
+  forgotPasswordSubject,
+  RESET_PASSWORD_EXPIRATION_MS,
+  verifyEmailHTML,
+  verifyEmailSubject,
+} from '../../../email/authEmails'
 import { protectRoles, protectSuperAdminDelete } from './hooks/protectRoles'
 
 export const Users: CollectionConfig = {
@@ -23,6 +30,18 @@ export const Users: CollectionConfig = {
     // Başarısız girişlerde hesap kilitleme
     maxLoginAttempts: 5,
     lockTime: 10 * 60 * 1000,
+    // Yeni kullanıcı, e-postasındaki bağlantıya tıklayıp adresini doğrulamadan giriş yapamaz.
+    // Admin panelinden ilk oluşturulan kullanıcı otomatik doğrulanmış sayılır.
+    verify: {
+      generateEmailHTML: verifyEmailHTML,
+      generateEmailSubject: verifyEmailSubject,
+    },
+    // "Şifremi unuttum" e-postası; metinler next-intl `Email` mesajlarından gelir
+    forgotPassword: {
+      expiration: RESET_PASSWORD_EXPIRATION_MS,
+      generateEmailHTML: forgotPasswordHTML,
+      generateEmailSubject: forgotPasswordSubject,
+    },
   },
   fields: [
     {

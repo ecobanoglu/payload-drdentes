@@ -1,4 +1,5 @@
 import { postgresAdapter } from '@payloadcms/db-postgres';
+import { resendAdapter } from '@payloadcms/email-resend'
 import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
@@ -19,6 +20,22 @@ import { defaultLocale, isRtl, localeLabels, locales } from './i18n/config'
 import { en } from '@payloadcms/translations/languages/en'
 import { tr } from '@payloadcms/translations/languages/tr'
 import { hasRole } from './access/roles'
+
+/**
+ * E-posta gönderimi (Resend). `RESEND_API_KEY` yoksa (ör. CI build) adaptör eklenmez;
+ * Payload e-postaları konsola yazar ve uygulama çalışmaya devam eder.
+ *
+ * Gönderici adresi Resend'de doğrulanmış bir alan adından olmalıdır (ör. bildirim@alanadi.com).
+ * Alan adı doğrulanana kadar `onboarding@resend.dev` kullanılır; bu adres yalnızca
+ * Resend hesabının sahibine e-posta gönderebilir.
+ */
+const email = process.env.RESEND_API_KEY
+    ? resendAdapter({
+          apiKey: process.env.RESEND_API_KEY,
+          defaultFromAddress: process.env.EMAIL_FROM_ADDRESS || 'onboarding@resend.dev',
+          defaultFromName: process.env.EMAIL_FROM_NAME || 'Dr. Dentes',
+      })
+    : undefined
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -83,7 +100,13 @@ export default buildConfig({
         pool: {
             connectionString: process.env.DATABASE_URL || '',
         },
+        // Şema değişiklikleri yalnızca migration dosyalarıyla uygulanır (geliştirmede de).
+        // Otomatik "push" kapalı: etkileşimli onay soruları ve geliştirme/yayın şema farkı oluşmaz.
+        // Alan eklediğinizde: `npm run migrate:create <isim>` → `npm run migrate`
+        push: false,
+        migrationDir: path.resolve(dirname, 'migrations'),
     }),
+    email,
     collections: [Pages, Posts, Media, Categories, Users],
     // Medya klasörleri: personel oluşturur/düzenler, editör ve üstü siler
     folders: {

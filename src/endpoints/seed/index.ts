@@ -101,7 +101,10 @@ export const seed = async ({
   const [demoAuthor, image1Doc, image2Doc, image3Doc, imageHomeDoc] = await Promise.all([
     payload.create({
       collection: 'users',
+      // Demo hesap: doğrulama e-postası gönderilmez, doğrulanmış olarak oluşturulur
+      disableVerificationEmail: true,
       data: {
+        _verified: true,
         name: 'Demo Author',
         email: 'demo-author@example.com',
         password: 'password',

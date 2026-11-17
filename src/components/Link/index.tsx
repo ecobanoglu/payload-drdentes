@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation'
 import React from 'react'
 
 import type { Page, Post } from '@/payload-types'
+import { getDocumentPath } from '@/utilities/pagePath'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
@@ -39,11 +40,10 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     url,
   } = props
 
+  // İç bağlantı: referans edilen dokümanın tam yolu (iç içe sayfalar dahil); aksi halde özel URL
   const href =
-    type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
-      ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${
-          reference.value.slug
-        }`
+    type === 'reference' && typeof reference?.value === 'object'
+      ? getDocumentPath(reference.relationTo, reference.value)
       : url
 
   if (!href) return null

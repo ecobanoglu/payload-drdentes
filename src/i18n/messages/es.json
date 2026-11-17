@@ -4,7 +4,8 @@
     "home": "Inicio",
     "search": "Buscar",
     "language": "Idioma",
-    "skipToContent": "Ir al contenido"
+    "skipToContent": "Ir al contenido",
+    "breadcrumb": "Ruta de navegación"
   },
   "NotFound": {
     "title": "404",
@@ -42,5 +43,23 @@
     "loading": "Enviando, por favor espere...",
     "error": "Algo salió mal. Inténtelo de nuevo.",
     "required": "Este campo es obligatorio"
+  },
+  "Email": {
+    "greeting": "Hola {name}:",
+    "greetingAnonymous": "Hola:",
+    "verify": {
+      "subject": "Verifique su dirección de correo electrónico",
+      "heading": "Verifique su dirección de correo electrónico",
+      "body": "Se ha creado una cuenta del panel de administración para usted. Para poder iniciar sesión, verifique su dirección de correo electrónico haciendo clic en el botón de abajo.",
+      "button": "Verificar mi correo",
+      "footer": "Si no solicitó esta cuenta, puede ignorar este correo."
+    },
+    "resetPassword": {
+      "subject": "Solicitud de restablecimiento de contraseña",
+      "heading": "Restablezca su contraseña",
+      "body": "Hemos recibido una solicitud para restablecer la contraseña de su cuenta. Haga clic en el botón de abajo para elegir una nueva contraseña. El enlace es válido durante {hours, plural, one {# hora} other {# horas}}.",
+      "button": "Restablecer mi contraseña",
+      "footer": "Si no realizó esta solicitud, ignore este correo; su contraseña no cambiará."
+    }
   }
 }

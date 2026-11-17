@@ -4,6 +4,7 @@ import type { Page, Post } from '@/payload-types'
 import type { Locale } from '@/i18n/config'
 import { getCachedDocument } from '@/utilities/getDocument'
 import { getCachedRedirects } from '@/utilities/getRedirects'
+import { getDocumentPath, type PathablePage } from '@/utilities/pagePath'
 import { notFound, redirect } from 'next/navigation'
 
 interface Props {
@@ -14,11 +15,11 @@ interface Props {
   url: string
 }
 
-/** Referanslı yönlendirme hedefinin dil önekli yolunu üretir. */
-const toLocalizedPath = (locale: Locale, relationTo: string | undefined, slug?: string | null) => {
-  if (!slug) return null
-  const prefix = relationTo && relationTo !== 'pages' ? `/${relationTo}` : ''
-  return `/${locale}${prefix}/${slug}`
+/** Referanslı yönlendirme hedefinin dil önekli yolunu üretir (iç içe sayfa yolu dahil). */
+const toLocalizedPath = (locale: Locale, relationTo: string, doc?: PathablePage | null) => {
+  const path = getDocumentPath(relationTo, doc)
+  if (!path) return null
+  return path === '/' ? `/${locale}` : `/${locale}${path}`
 }
 
 /**
@@ -48,7 +49,7 @@ export const PayloadRedirects: React.FC<Props> = async ({ disableNotFound, local
         typeof value === 'object'
           ? value
           : ((await getCachedDocument(relationTo, value, locale)()) as Page | Post | null)
-      redirectUrl = toLocalizedPath(locale, relationTo, document?.slug)
+      redirectUrl = toLocalizedPath(locale, relationTo, document)
     }
 
     if (redirectUrl) redirect(redirectUrl)

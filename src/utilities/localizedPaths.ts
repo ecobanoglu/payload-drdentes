@@ -4,17 +4,14 @@ import { cache } from 'react'
 
 import { defaultLocale, locales, type Locale } from '@/i18n/config'
 import { HOME_SLUG } from './constants'
+import { getDocumentPath, type RoutableCollection } from './pagePath'
 
 export { HOME_SLUG }
 
 /** Dil → o dildeki sayfa yolu (dil öneki olmadan), ör. `{ tr: '/hakkimizda', en: '/about' }` */
 export type LocalizedPaths = Partial<Record<Locale, string>>
 
-/** Yolu hesaplanabilen koleksiyonlar */
-export type RoutableCollection = 'pages' | 'posts'
-
-/** Koleksiyonların URL önekleri: pages → `/slug`, posts → `/posts/slug` */
-const collectionPrefix: Record<RoutableCollection, string> = { pages: '', posts: '/posts' }
+export type { RoutableCollection }
 
 type LocalizedValue<T> = T | Partial<Record<Locale, T>> | null | undefined
 
@@ -32,10 +29,11 @@ const readLocalized = <T>(value: LocalizedValue<T>, locale: Locale): T | undefin
  */
 export const pathsFromAllLocalesDoc = (
   collection: RoutableCollection,
-  doc: { slug?: unknown; _status?: unknown },
+  doc: { slug?: unknown; _status?: unknown; breadcrumbs?: unknown },
 ): LocalizedPaths => {
   const slugs = doc.slug as LocalizedValue<string>
   const statuses = doc._status as LocalizedValue<string>
+  const breadcrumbs = doc.breadcrumbs as LocalizedValue<{ url?: string | null }[]>
   const isHome = collection === 'pages' && readLocalized(slugs, defaultLocale) === HOME_SLUG
 
   const paths: LocalizedPaths = {}
@@ -48,8 +46,12 @@ export const pathsFromAllLocalesDoc = (
       continue
     }
 
-    const slug = readLocalized(slugs, locale)
-    if (slug) paths[locale] = `${collectionPrefix[collection]}/${slug}`
+    // İç içe sayfalarda tam yol bu dilin breadcrumbs'ından gelir
+    const path = getDocumentPath(collection, {
+      slug: readLocalized(slugs, locale),
+      breadcrumbs: readLocalized(breadcrumbs, locale),
+    })
+    if (path) paths[locale] = path
   }
 
   return paths
@@ -75,7 +77,7 @@ export const getLocalizedPaths = cache(
       depth: 0,
       draft: false,
       overrideAccess: true,
-      select: { slug: true, _status: true },
+      select: { slug: true, _status: true, ...(collection === 'pages' ? { breadcrumbs: true } : {}) },
     })
 
     return pathsFromAllLocalesDoc(collection, doc)

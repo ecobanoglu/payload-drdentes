@@ -26,7 +26,9 @@ export async function seedTestUser(): Promise<void> {
   await payload.create({
     collection: 'users',
     // Admin e2e testleri panelde tam yetki gerektirir
-    data: { ...testUser, roles: ['admin'] },
+    // Doğrulama e-postası gönderilmez; test kullanıcısı doğrulanmış olarak oluşturulur
+    disableVerificationEmail: true,
+    data: { ...testUser, roles: ['admin'], _verified: true },
   })
 }
 

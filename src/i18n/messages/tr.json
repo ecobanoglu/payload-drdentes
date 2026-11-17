@@ -4,7 +4,8 @@
     "home": "Ana sayfa",
     "search": "Ara",
     "language": "Dil",
-    "skipToContent": "İçeriğe geç"
+    "skipToContent": "İçeriğe geç",
+    "breadcrumb": "Sayfa yolu"
   },
   "NotFound": {
     "title": "404",
@@ -42,5 +43,23 @@
     "loading": "Gönderiliyor, lütfen bekleyin...",
     "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
     "required": "Bu alan zorunludur"
+  },
+  "Email": {
+    "greeting": "Merhaba {name},",
+    "greetingAnonymous": "Merhaba,",
+    "verify": {
+      "subject": "E-posta adresinizi doğrulayın",
+      "heading": "E-posta adresinizi doğrulayın",
+      "body": "Sizin için bir yönetim paneli hesabı oluşturuldu. Giriş yapabilmek için aşağıdaki düğmeye tıklayarak e-posta adresinizi doğrulayın.",
+      "button": "E-postamı doğrula",
+      "footer": "Bu hesabı siz talep etmediyseniz bu e-postayı yok sayabilirsiniz."
+    },
+    "resetPassword": {
+      "subject": "Şifre sıfırlama talebi",
+      "heading": "Şifrenizi sıfırlayın",
+      "body": "Hesabınız için bir şifre sıfırlama talebi aldık. Yeni şifre belirlemek için aşağıdaki düğmeye tıklayın. Bağlantı {hours} saat geçerlidir.",
+      "button": "Şifremi sıfırla",
+      "footer": "Bu talebi siz yapmadıysanız bu e-postayı yok sayın; şifreniz değişmeyecektir."
+    }
   }
 }

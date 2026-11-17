@@ -8,12 +8,13 @@ import type { Page } from '../../../../payload-types'
  * Sayfa önbelleğini tüm dillerde temizler.
  *
  * Slug'lar dile göre farklı olduğundan (ve çevrilmeyen alanlar tüm dilleri etkilediğinden)
- * tek tek yol yerine route kalıbı temizlenir: `/[locale]` (ana sayfa) ve `/[locale]/[slug]`.
+ * tek tek yol yerine route kalıbı temizlenir: `/[locale]` (ana sayfa) ve `/[locale]/[...slug]`
+ * (iç içe sayfalar dahil; üst sayfa değişince alt sayfaların adresleri de yenilenir).
  * Küçük/orta ölçekli bir sitede bu, doğruluk açısından en güvenli yaklaşımdır.
  */
 const revalidateAllPageRoutes = (id: number | string) => {
   revalidatePath('/[locale]', 'page')
-  revalidatePath('/[locale]/[slug]', 'page')
+  revalidatePath('/[locale]/[...slug]', 'page')
   revalidateTag('pages-sitemap', 'max')
   revalidateTag(`pages_${id}`, 'max')
 }

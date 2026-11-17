@@ -22,6 +22,7 @@ import { BannerBlock } from '@/features/blocks/Banner/Component'
 import { CallToActionBlock } from '@/features/blocks/CallToAction/Component'
 import { cn } from '@/utilities/ui'
 import { useLocale } from 'next-intl'
+import { getDocumentPath } from '@/utilities/pagePath'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -38,8 +39,8 @@ const createInternalDocToHref =
     if (typeof value !== 'object') {
       throw new Error('Expected value to be an object')
     }
-    const slug = value.slug
-    return relationTo === 'posts' ? `/${locale}/posts/${slug}` : `/${locale}/${slug}`
+    const path = getDocumentPath(relationTo, value as Parameters<typeof getDocumentPath>[1]) ?? '/'
+    return path === '/' ? `/${locale}` : `/${locale}${path}`
   }
 
 /** Lexical düğümlerini React bileşenlerine çeviren eşlemeyi aktif dil için üretir. */

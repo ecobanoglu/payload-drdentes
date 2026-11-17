@@ -57,7 +57,12 @@ export const buildCollectionSitemap = async (
     limit: 1000,
     pagination: false,
     overrideAccess: true,
-    select: { slug: true, _status: true, updatedAt: true },
+    select: {
+      slug: true,
+      _status: true,
+      updatedAt: true,
+      ...(collection === 'pages' ? { breadcrumbs: true } : {}),
+    },
   })
 
   const fallbackDate = new Date().toISOString()
