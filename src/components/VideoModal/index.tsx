@@ -45,13 +45,16 @@ export function VideoModal({ url, label, className }: Props) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger
         className={cn(
-          'group inline-flex h-10 items-center gap-3 rounded-md pe-4 text-sm font-medium transition-colors',
+          'group inline-flex h-10 items-center gap-3 rounded-md pe-4 text-sm font-medium cursor-pointer transition-colors',
           className,
         )}
       >
         <span className="relative inline-flex size-10 items-center justify-center rounded-full bg-white text-neutral-900 shadow-lg ring-1 ring-black/5 transition-transform group-hover:scale-105">
           {/* Dikkat çeken yumuşak dalga (hareketi azalt ayarında kapalı) */}
-          <span aria-hidden className="absolute inset-0 rounded-full bg-white/40 motion-safe:animate-ping" />
+          <span
+            aria-hidden
+            className="absolute inset-0 rounded-full bg-white/40 motion-safe:animate-ping"
+          />
           <Play aria-hidden className="relative size-4 translate-x-px fill-current" />
         </span>
         {title}

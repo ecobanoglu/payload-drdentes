@@ -11,12 +11,14 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
 
   return (
-    <nav className="flex gap-3 items-center">
+    <nav className="flex gap-6 items-center">
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="link" />
       })}
       {/* Vurgulu buton (ör. "Giriş Yap") */}
-      {data?.cta?.enabled && data.cta.link && <CMSLink {...data.cta.link} appearance="default" size="sm" />}
+      {data?.cta?.enabled && data.cta.link && (
+        <CMSLink {...data.cta.link} appearance="default" size="sm" />
+      )}
     </nav>
   )
 }

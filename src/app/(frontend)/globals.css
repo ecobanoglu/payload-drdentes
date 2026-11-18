@@ -126,7 +126,13 @@
   --error: oklch(75% 0.15 25deg);
 }
 
-[data-theme='dark'] {
+/*
+ * Koyu tema renkleri. İkinci seçici: sayfada koyu hero varsa (`data-header-theme="dark"`)
+ * en üstteki header, JavaScript çalışmadan önce de (ilk çizimde) koyu temayla çizilir;
+ * böylece menü yazıları yüklenirken siyah görünüp sonra beyaza dönmez.
+ */
+[data-theme='dark'],
+html:has([data-header-theme='dark']) [data-header-top] {
   --background: oklch(14.5% 0 0deg);
   --foreground: oklch(98.5% 0 0deg);
   --card: oklch(17% 0 0deg);
@@ -244,4 +250,150 @@ html[data-theme='light'] {
 .lexical-table th.lexical-table-cell {
   background: var(--muted);
   font-weight: 600;
+}
+
+/*
+ * Hero açılış animasyonu ve sürekli süzülme (ör. ürün vitrini hero'su) — tamamen CSS.
+ *
+ * CSS animasyonları tarayıcı sayfayı çizdiği anda başlar; JavaScript'in yüklenmesini
+ * (hydration) beklemez, bu yüzden açılışta duraklama olmaz. `both` dolgusu sayesinde öğe
+ * kendi gecikmesi dolana kadar gizli kalır. Sıra, öğedeki `--reveal-delay` ile verilir.
+ *
+ * Cihaz ve etiketlerde ikinci animasyon süzülmedir: giriş bitince (gecikme + süre) başlar.
+ * Listede sonra geldiği için çalışırken `transform` değerini o belirler; giriş ile çakışmaz.
+ * Süzülme yönü `data-float` ile seçilir: up / down (8px), sm-up / sm-down (5px).
+ * Animasyon karelerinde CSS değişkeni kullanılmaz ve yalnızca opacity/transform değişir:
+ * tarayıcı bunları GPU'da, ana iş parçacığını meşgul etmeden yürütür.
+ * "Hareketi azalt" açıksa hiçbiri çalışmaz; her şey baştan görünür.
+ */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes reveal-up-blur {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+@keyframes reveal-device {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 70px, 0) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes reveal-tag {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes float-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+@keyframes float-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 8px, 0);
+  }
+}
+@keyframes float-sm-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+@keyframes float-sm-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Metin: üst başlık → başlık → açıklama → butonlar (butonların gecikmesi öğede) */
+  [data-reveal],
+  [data-reveal-text] :is(h1, h2, p) {
+    animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s) both;
+  }
+  [data-reveal='eyebrow'] {
+    --reveal-delay: 0.05s;
+  }
+  [data-reveal-text] :is(h1, h2) {
+    --reveal-delay: 0.2s;
+    animation-name: reveal-up-blur;
+    animation-duration: 0.9s;
+  }
+  [data-reveal-text] p {
+    --reveal-delay: 0.45s;
+  }
+
+  /* Cihazlar ve etiketler: giriş + ardından sürekli süzülme */
+  [data-showcase-card],
+  [data-showcase-tag] {
+    animation-name: var(--reveal-name), var(--float-name, none);
+    animation-duration: var(--reveal-duration), var(--float-duration, 3s);
+    animation-delay:
+      var(--reveal-delay, 0s),
+      calc(var(--reveal-delay, 0s) + var(--reveal-duration) + var(--float-delay, 0s));
+    animation-timing-function: var(--reveal-ease), ease-in-out;
+    animation-iteration-count: 1, infinite;
+    animation-direction: normal, alternate;
+    animation-fill-mode: both, none;
+    will-change: transform, opacity;
+  }
+  [data-showcase-card] {
+    --reveal-name: reveal-device;
+    --reveal-duration: 0.9s;
+    --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-showcase-tag] {
+    --reveal-name: reveal-tag;
+    --reveal-duration: 0.5s;
+    /* Hafif sekme (back.out benzeri) */
+    --reveal-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  [data-float='up'] {
+    --float-name: float-up;
+  }
+  [data-float='down'] {
+    --float-name: float-down;
+  }
+  [data-float='sm-up'] {
+    --float-name: float-sm-up;
+  }
+  [data-float='sm-down'] {
+    --float-name: float-sm-down;
+  }
 }

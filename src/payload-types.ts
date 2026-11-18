@@ -177,7 +177,8 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'scene3d';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'scene3d' | 'showcase';
+    eyebrow?: string | null;
     richText?: {
       root: {
         type: string;
@@ -220,6 +221,46 @@ export interface Page {
     video?: {
       url?: string | null;
       label?: string | null;
+    };
+    showcase?: {
+      /**
+       * HEX renk kodu (ör. #1d1e1f).
+       */
+      background?: string | null;
+      screens?: ('animated' | 'images') | null;
+      /**
+       * Şeffaf arka planlı PNG önerilir.
+       */
+      laptop?: (number | null) | Media;
+      tablet?: (number | null) | Media;
+      phone?: (number | null) | Media;
+      features?:
+        | {
+            text: string;
+            icon?:
+              | (
+                  | 'users'
+                  | 'calendar'
+                  | 'invoice'
+                  | 'wallet'
+                  | 'sms'
+                  | 'support'
+                  | 'reports'
+                  | 'security'
+                  | 'cloud'
+                  | 'mobile'
+                  | 'clinic'
+                  | 'check'
+                  | 'appointment'
+                  | 'receipt'
+                  | 'send'
+                  | 'network'
+                  | 'reportChart'
+                )
+              | null;
+            id?: string | null;
+          }[]
+        | null;
     };
     media?: (number | null) | Media;
     scenePalette?: ('aqua' | 'pearl' | 'gold') | null;
@@ -1423,6 +1464,7 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         type?: T;
+        eyebrow?: T;
         richText?: T;
         links?:
           | T
@@ -1444,6 +1486,22 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               url?: T;
               label?: T;
+            };
+        showcase?:
+          | T
+          | {
+              background?: T;
+              screens?: T;
+              laptop?: T;
+              tablet?: T;
+              phone?: T;
+              features?:
+                | T
+                | {
+                    text?: T;
+                    icon?: T;
+                    id?: T;
+                  };
             };
         media?: T;
         scenePalette?: T;

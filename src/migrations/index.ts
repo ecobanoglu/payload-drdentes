@@ -8,6 +8,9 @@ import * as migration_20261117_174443_media_storage_prefix from './20261117_1744
 import * as migration_20261117_192931_product_site from './20261117_192931_product_site';
 import * as migration_20261117_205719_site_content_fields from './20261117_205719_site_content_fields';
 import * as migration_20261117_212503_hero_video from './20261117_212503_hero_video';
+import * as migration_20261118_125956_hero_showcase from './20261118_125956_hero_showcase';
+import * as migration_20261118_131608_hero_showcase_screens from './20261118_131608_hero_showcase_screens';
+import * as migration_20261118_132731_hero_tag_icons from './20261118_132731_hero_tag_icons';
 
 export const migrations = [
   {
@@ -58,6 +61,21 @@ export const migrations = [
   {
     up: migration_20261117_212503_hero_video.up,
     down: migration_20261117_212503_hero_video.down,
-    name: '20261117_212503_hero_video'
+    name: '20261117_212503_hero_video',
+  },
+  {
+    up: migration_20261118_125956_hero_showcase.up,
+    down: migration_20261118_125956_hero_showcase.down,
+    name: '20261118_125956_hero_showcase',
+  },
+  {
+    up: migration_20261118_131608_hero_showcase_screens.up,
+    down: migration_20261118_131608_hero_showcase_screens.down,
+    name: '20261118_131608_hero_showcase_screens',
+  },
+  {
+    up: migration_20261118_132731_hero_tag_icons.up,
+    down: migration_20261118_132731_hero_tag_icons.down,
+    name: '20261118_132731_hero_tag_icons'
   },
 ];

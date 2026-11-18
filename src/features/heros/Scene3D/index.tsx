@@ -45,8 +45,10 @@ export const Scene3DHero: React.FC<Page['hero']> = ({ links, richText, scenePale
     <div
       ref={containerRef}
       // Mobilde metin alta yaslanır (form üstte); geniş ekranda dikeyde ortalanır
-      className="relative isolate -mt-[10.4rem] flex min-h-[90vh] items-end overflow-hidden text-white md:items-center"
+      className="relative isolate -mt-[10.5rem] flex min-h-[90vh] items-end overflow-hidden text-white md:items-center"
       data-theme="dark"
+      // Header'ın ilk çizimde açık renkli (beyaz) olması için (globals.css)
+      data-header-theme="dark"
       style={{ background: palette.background }}
     >
       <div aria-hidden className="absolute inset-0 -z-20">
@@ -59,7 +61,7 @@ export const Scene3DHero: React.FC<Page['hero']> = ({ links, richText, scenePale
         className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-black/45 via-black/10 to-transparent rtl:bg-linear-to-l"
       />
 
-      <div className="container relative pt-[10.4rem] pb-16">
+      <div className="container relative pt-[10.5rem] pb-16">
         <div className="max-w-[36rem]">
           {richText && <RichText className="mb-6" data={richText} enableGutter={false} />}
           {((Array.isArray(links) && links.length > 0) || video?.url) && (

@@ -287,6 +287,24 @@ async function ensureMedia(url: string, filename: string, alt: string): Promise<
   }
 }
 
+/**
+ * Depodaki yerel bir görseli (ör. `data/hero/*.png`) Medya'ya yükler; aynı adlı medya varsa onu kullanır.
+ */
+async function ensureLocalMedia(relativePath: string, alt: string): Promise<number | null> {
+  const filename = path.basename(relativePath)
+  const { docs } = await payload.find({ collection: 'media', where: { filename: { equals: filename } }, limit: 1, depth: 0 })
+  if (docs[0]) return docs[0].id
+  const buffer = fs.readFileSync(path.resolve(dirname, relativePath))
+  const media = await payload.create({
+    collection: 'media',
+    locale,
+    data: { alt },
+    file: { data: buffer, mimetype: 'image/png', name: filename, size: buffer.length },
+  })
+  log(`  ↑ ${filename}`)
+  return media.id
+}
+
 // ─────────────────────────── Yardımcılar ───────────────────────────
 
 /** CMS sayfasına bağlantı (dil önekini site ekler) */
@@ -569,6 +587,17 @@ const { docs: forms } = await payload.find({ collection: 'forms', locale, where:
 const formId = forms[0]?.id
 if (!formId) log('! "İletişim Formu" bulunamadı — İletişim bölümü formsuz oluşturulacak (önce seed-product-site.ts çalıştırın)')
 
+/** Ana sayfa hero'sunda cihazların çevresindeki özellik etiketleri (metin + ikon) */
+const HERO_FEATURES: { text: string; icon: string }[] = [
+  { text: 'Sınırsız hekim ve kullanıcı yönetimi', icon: 'users' },
+  { text: 'Randevu yönetimi', icon: 'appointment' },
+  { text: 'Fatura Sistemi', icon: 'invoice' },
+  { text: 'Tahsilat Yönetimi', icon: 'receipt' },
+  { text: 'SMS Gönderimi', icon: 'send' },
+  { text: '7/24 Kesintisiz İletişim', icon: 'network' },
+  { text: 'Gelişmiş Raporlar ile Klinik durum takibi', icon: 'reportChart' },
+]
+
 // ─────────────────────────── 7. Sayfalar ───────────────────────────
 
 log('\n— Sayfalar')
@@ -743,15 +772,28 @@ await upsertPage('home', {
   title: 'Ana Sayfa',
   parent: null,
   hero: {
-    type: 'scene3d',
-    scenePalette: 'aqua',
-    richText: rich({ h: 'h1', text: "Dr.DENTES: 1992'den beri tek dokunuşla çok iş!" }, 'Teknolojiyi sevenlere Dr.DENTES ile teknolojik çözümler!'),
+    // Koyu zeminli ürün vitrini: solda metin ve butonlar, sağda cihaz görselleri + özellik etiketleri
+    type: 'showcase',
+    eyebrow: 'Dr Dentes ile Teknolojik Çözümler',
+    richText: rich(
+      { h: 'h1', text: "Dr.DENTES: 1992'den beri tek dokunuş ile çok iş" },
+      "1992'den bugüne kadar geliştirdiğimiz en yeni diş kliniği yönetim yazılımı. Etkileşimli, çevrim içi (online), her yerden ve her cihazdan erişim kolaylığı. Öngörü ve deneyime dayalı akıllı çalışma mantığı işlerinizi sezerek hayatınızı kolaylaştırır.",
+    ),
     links: [
       { link: urlLink('https://dtsanal.com/basvuru/', 'Demo Talep Et', 'default') },
       { link: urlLink('https://dtsanal.com/', 'Demoyu İncele', 'outline') },
     ],
     // Butonların yanında açılır pencerede oynayan tanıtım videosu
     video: { url: 'https://www.youtube.com/watch?v=KL1cCOgtEX4', label: 'Tanıtım Videosu' },
+    showcase: {
+      background: '#1d1e1f',
+      // Cihazlarda animasyonlu arayüz; görseller "Yüklenen görseller" seçilirse kullanılır
+      screens: 'animated',
+      laptop: await ensureLocalMedia('data/hero/drdentes-bilgisayar.png', 'Dr.DENTES randevu ekranı (bilgisayar)'),
+      tablet: await ensureLocalMedia('data/hero/drdentes-tablet.png', 'Dr.DENTES hasta kartı (tablet)'),
+      phone: await ensureLocalMedia('data/hero/drdentes-telefon.png', 'Dr.DENTES diş şeması (telefon)'),
+      features: HERO_FEATURES,
+    },
   },
   layout: [
     {
