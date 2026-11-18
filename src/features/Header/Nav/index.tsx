@@ -13,7 +13,15 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   return (
     <nav className="flex gap-6 items-center">
       {navItems.map(({ link }, i) => {
-        return <CMSLink key={i} {...link} appearance="link" />
+        return (
+          <CMSLink
+            key={i}
+            {...link}
+            appearance="link"
+            // Hover'da alt çizgi yerine dil seçicideki gibi hafif gri zemin
+            className="h-9 rounded-md hover:bg-primary/10 hover:no-underline focus-visible:bg-primary/10"
+          />
+        )
       })}
       {/* Vurgulu buton (ör. "Giriş Yap") */}
       {data?.cta?.enabled && data.cta.link && (
