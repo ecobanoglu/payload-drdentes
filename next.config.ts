@@ -32,6 +32,10 @@ const nextConfig: NextConfig = {
       {
         pathname: '/api/media/file/**',
       },
+      // public/images altındaki statik tasarım görselleri (ör. telefon çerçevesi)
+      {
+        pathname: '/images/**',
+      },
     ],
     qualities: [100],
     remotePatterns: [

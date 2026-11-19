@@ -650,6 +650,7 @@ export interface CardSet {
  * via the `definition` "FeatureSplitBlock".
  */
 export interface FeatureSplitBlock {
+  background?: ('none' | 'dark' | 'primary' | 'shifting') | null;
   /**
    * Başlığın üstündeki küçük etiket (ör. "Randevu yönetimi").
    */
@@ -700,6 +701,22 @@ export interface FeatureSplitBlock {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Telefon ekranları: bölüm ekran yüksekliğinde sabitlenir, sayfa kaydırıldıkça telefon çerçevesindeki ekranlar sağdan sola akar.
+   */
+  mediaStyle?: ('single' | 'phonePair' | 'phoneScreens') | null;
+  /**
+   * Ekran görüntüleri listedeki sırayla gösterilir (önerilen oran 224×396).
+   */
+  screens?: (number | Media)[] | null;
+  /**
+   * Şeffaf zeminli PNG; solda, önde durur.
+   */
+  phoneFront?: (number | null) | Media;
+  /**
+   * Şeffaf zeminli PNG; sağda, arkada durur.
+   */
+  phoneBack?: (number | null) | Media;
   media?: (number | null) | Media;
   mediaPosition?: ('end' | 'start') | null;
   id?: string | null;
@@ -1587,6 +1604,7 @@ export interface CardsBlockSelect<T extends boolean = true> {
  * via the `definition` "FeatureSplitBlock_select".
  */
 export interface FeatureSplitBlockSelect<T extends boolean = true> {
+  background?: T;
   eyebrow?: T;
   heading?: T;
   body?: T;
@@ -1611,6 +1629,10 @@ export interface FeatureSplitBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  mediaStyle?: T;
+  screens?: T;
+  phoneFront?: T;
+  phoneBack?: T;
   media?: T;
   mediaPosition?: T;
   id?: T;

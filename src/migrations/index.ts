@@ -15,6 +15,10 @@ import * as migration_20261119_085422_cards_layout from './20261119_085422_cards
 import * as migration_20261119_102011_hero_brand_button from './20261119_102011_hero_brand_button';
 import * as migration_20261119_102743_cards_background from './20261119_102743_cards_background';
 import * as migration_20261119_103843_cards_limit from './20261119_103843_cards_limit';
+import * as migration_20261119_112311_feature_split_phone_pair from './20261119_112311_feature_split_phone_pair';
+import * as migration_20261119_113903_feature_split_phone_screens from './20261119_113903_feature_split_phone_screens';
+import * as migration_20261119_114610_feature_split_primary_background from './20261119_114610_feature_split_primary_background';
+import * as migration_20261119_115159_feature_split_shifting_background from './20261119_115159_feature_split_shifting_background';
 
 export const migrations = [
   {
@@ -100,6 +104,26 @@ export const migrations = [
   {
     up: migration_20261119_103843_cards_limit.up,
     down: migration_20261119_103843_cards_limit.down,
-    name: '20261119_103843_cards_limit'
+    name: '20261119_103843_cards_limit',
+  },
+  {
+    up: migration_20261119_112311_feature_split_phone_pair.up,
+    down: migration_20261119_112311_feature_split_phone_pair.down,
+    name: '20261119_112311_feature_split_phone_pair',
+  },
+  {
+    up: migration_20261119_113903_feature_split_phone_screens.up,
+    down: migration_20261119_113903_feature_split_phone_screens.down,
+    name: '20261119_113903_feature_split_phone_screens',
+  },
+  {
+    up: migration_20261119_114610_feature_split_primary_background.up,
+    down: migration_20261119_114610_feature_split_primary_background.down,
+    name: '20261119_114610_feature_split_primary_background',
+  },
+  {
+    up: migration_20261119_115159_feature_split_shifting_background.up,
+    down: migration_20261119_115159_feature_split_shifting_background.down,
+    name: '20261119_115159_feature_split_shifting_background'
   },
 ];

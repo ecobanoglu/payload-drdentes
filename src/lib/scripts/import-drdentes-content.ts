@@ -578,6 +578,18 @@ const stepImages: (number | null)[] = []
 for (const [index, title] of STEP_TITLES.entries()) {
   stepImages.push(await ensureMedia(`${ORIGIN}/img/kullaniciadim/${index + 1}.jpg`, `kullanici-adim-${index + 1}.jpg`, title))
 }
+/** Mobil uygulama ekran görüntüleri (telefon çerçevesinde sırayla gösterilir): [dosya, açıklama] */
+const MOBILE_SCREENS: [string, string][] = [
+  ['01-hasta-karti.png', 'hasta kartı'],
+  ['02-dis-semasi.png', 'diş şeması'],
+  ['03-randevu-takvimi.png', 'randevu takvimi'],
+  ['04-notlar-goruntuler.png', 'notlar ve görüntüler'],
+  ['05-istatistikler.png', 'istatistikler'],
+  ['06-cari-bakiye.png', 'cari bakiye'],
+  ['07-tedarikci-islemleri.png', 'tedarikçi işlemleri'],
+  ['08-fatura-listesi.png', 'fatura listesi'],
+  ['09-tsim-raporu.png', 'TSİM raporu'],
+]
 const mobileImage = await ensureMedia(`${ORIGIN}/img/mobilslider/1.jpg`, 'mobil-uygulama-1.jpg', 'Dr.DENTES mobil uygulaması')
 const heroImage = await ensureMedia(`${ORIGIN}/img/slider/1.jpg`, 'drdentes-slider-1.jpg', "Dr.DENTES: 1992'den beri tek dokunuşla çok iş!")
 
@@ -825,6 +837,15 @@ await upsertPage('home', {
         { link: urlLink('https://play.google.com/store/apps/details?id=com.drdentesmobile', 'Google Play', 'outline') },
       ],
       media: mobileImage,
+      // Ekran yüksekliğinde sabitlenen bölüm: kaydırdıkça telefondaki ekranlar sağdan sola geçer,
+      // zemin marka mavisiyle başlar ve her ekranda rastgele bir renge döner
+      background: 'shifting',
+      mediaStyle: 'phoneScreens',
+      screens: (
+        await Promise.all(
+          MOBILE_SCREENS.map(([file, alt]) => ensureLocalMedia(`data/mobile/screens/${file}`, `Dr.DENTES mobil uygulaması: ${alt}`)),
+        )
+      ).filter((id): id is number => id !== null),
       mediaPosition: 'start',
     },
     { blockType: 'cards', heading: 'Nasıl Kullanıcı Olabilirim?', cardSet: stepsSetId, columns: '3' },

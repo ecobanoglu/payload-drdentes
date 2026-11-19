@@ -22,6 +22,23 @@ export const FeatureSplitBlock: Block = {
   },
   fields: [
     {
+      // Bölümün zemini: sayfa zemini veya hero'daki gibi koyu (tam genişlik)
+      name: 'background',
+      label: { tr: 'Arka plan', en: 'Background' },
+      type: 'select',
+      defaultValue: 'none',
+      options: [
+        { label: { tr: 'Yok', en: 'None' }, value: 'none' },
+        { label: { tr: 'Koyu (hero gibi)', en: 'Dark (like hero)' }, value: 'dark' },
+        { label: { tr: 'Primary (marka mavisi)', en: 'Primary (brand blue)' }, value: 'primary' },
+        {
+          // Telefon ekranları modunda: ekran değiştikçe zemin rastgele bir renge geçer
+          label: { tr: 'Kaydırdıkça değişen renkler', en: 'Shifting colors on scroll' },
+          value: 'shifting',
+        },
+      ],
+    },
+    {
       name: 'eyebrow',
       label: { tr: 'Üst etiket', en: 'Eyebrow' },
       type: 'text',
@@ -49,11 +66,69 @@ export const FeatureSplitBlock: Block = {
     {
       name: 'bullets',
       label: { tr: 'Madde listesi', en: 'Bullet points' },
-      labels: { singular: { tr: 'Madde', en: 'Bullet' }, plural: { tr: 'Maddeler', en: 'Bullets' } },
+      labels: {
+        singular: { tr: 'Madde', en: 'Bullet' },
+        plural: { tr: 'Maddeler', en: 'Bullets' },
+      },
       type: 'array',
       fields: [{ name: 'text', label: { tr: 'Metin', en: 'Text' }, type: 'text', required: true }],
     },
     linkGroup({ appearances: ['default', 'outline'], overrides: { maxRows: 2 } }),
+    {
+      // Görselin sunuluşu: tek görsel veya üst üste duran, animasyonlu iki telefon
+      name: 'mediaStyle',
+      label: { tr: 'Görsel tipi', en: 'Media style' },
+      type: 'select',
+      defaultValue: 'single',
+      options: [
+        { label: { tr: 'Tek görsel', en: 'Single image' }, value: 'single' },
+        {
+          label: { tr: 'İki telefon (animasyonlu)', en: 'Two phones (animated)' },
+          value: 'phonePair',
+        },
+        {
+          label: { tr: 'Telefon ekranları (kaydırmalı)', en: 'Phone screens (scroll)' },
+          value: 'phoneScreens',
+        },
+      ],
+      admin: {
+        description:
+          'Telefon ekranları: bölüm ekran yüksekliğinde sabitlenir, sayfa kaydırıldıkça telefon çerçevesindeki ekranlar sağdan sola akar.',
+      },
+    },
+    {
+      // Telefon çerçevesinin içinde sırayla gösterilecek ekran görüntüleri (224×396 oranında)
+      name: 'screens',
+      label: { tr: 'Telefon ekranları', en: 'Phone screens' },
+      type: 'upload',
+      relationTo: 'media',
+      hasMany: true,
+      admin: {
+        condition: (_, siblingData) => siblingData?.mediaStyle === 'phoneScreens',
+        description: 'Ekran görüntüleri listedeki sırayla gösterilir (önerilen oran 224×396).',
+      },
+    },
+    {
+      // İki telefon: öndeki solda, arkadaki sağda ve biraz yukarıda durur; ikisi de şeffaf PNG olmalı
+      type: 'row',
+      admin: { condition: (_, siblingData) => siblingData?.mediaStyle === 'phonePair' },
+      fields: [
+        {
+          name: 'phoneFront',
+          label: { tr: 'Öndeki telefon', en: 'Front phone' },
+          type: 'upload',
+          relationTo: 'media',
+          admin: { width: '50%', description: 'Şeffaf zeminli PNG; solda, önde durur.' },
+        },
+        {
+          name: 'phoneBack',
+          label: { tr: 'Arkadaki telefon', en: 'Back phone' },
+          type: 'upload',
+          relationTo: 'media',
+          admin: { width: '50%', description: 'Şeffaf zeminli PNG; sağda, arkada durur.' },
+        },
+      ],
+    },
     {
       type: 'row',
       fields: [
@@ -62,7 +137,12 @@ export const FeatureSplitBlock: Block = {
           label: { tr: 'Görsel', en: 'Image' },
           type: 'upload',
           relationTo: 'media',
-          admin: { width: '50%' },
+          admin: {
+            width: '50%',
+            // Tek görsel modunda kullanılır
+            condition: (_, siblingData) =>
+              siblingData?.mediaStyle !== 'phonePair' && siblingData?.mediaStyle !== 'phoneScreens',
+          },
         },
         {
           name: 'mediaPosition',
@@ -71,7 +151,10 @@ export const FeatureSplitBlock: Block = {
           defaultValue: 'end',
           options: [
             { label: { tr: 'Sağda (RTL dillerde solda)', en: 'End (left in RTL)' }, value: 'end' },
-            { label: { tr: 'Solda (RTL dillerde sağda)', en: 'Start (right in RTL)' }, value: 'start' },
+            {
+              label: { tr: 'Solda (RTL dillerde sağda)', en: 'Start (right in RTL)' },
+              value: 'start',
+            },
           ],
           admin: { width: '50%' },
         },
