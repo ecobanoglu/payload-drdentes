@@ -2,7 +2,7 @@ import type { Field, GroupField } from 'payload'
 
 import deepMerge from '@/lib/utilities/deepMerge'
 
-export type LinkAppearances = 'default' | 'outline'
+export type LinkAppearances = 'default' | 'outline' | 'brand'
 
 export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
   default: {
@@ -12,6 +12,12 @@ export const appearanceOptions: Record<LinkAppearances, { label: string; value: 
   outline: {
     label: 'Outline',
     value: 'outline',
+  },
+  // Temadan bağımsız marka mavisi (#2f49dc); koyu zeminli alanlarda da mavi kalır.
+  // Yalnızca açıkça izin verilen bağlantı alanlarında (ör. hero) seçilebilir.
+  brand: {
+    label: 'Brand (#2f49dc)',
+    value: 'brand',
   },
 }
 

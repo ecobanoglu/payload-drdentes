@@ -76,6 +76,8 @@ export const hero: Field = {
       label: false,
     },
     linkGroup({
+      // Hero koyu zeminli olabilir: "Brand" seçilen buton orada da marka mavisiyle görünür
+      appearances: ['default', 'outline', 'brand'],
       overrides: {
         maxRows: 2,
       },

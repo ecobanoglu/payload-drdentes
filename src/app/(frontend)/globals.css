@@ -94,8 +94,11 @@
   --card-foreground: oklch(14.5% 0 0deg);
   --popover: oklch(100% 0 0deg);
   --popover-foreground: oklch(14.5% 0 0deg);
-  --primary: oklch(20.5% 0 0deg);
-  --primary-foreground: oklch(98.5% 0 0deg);
+  /* Marka rengi (#2f49dc): temadan bağımsız; koyu zeminli alanlarda da buton rengi olarak kullanılır */
+  --brand: oklch(48.9% 0.224 268.3deg);
+  --brand-foreground: oklch(98.5% 0 0deg);
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-foreground);
   --secondary: oklch(97% 0 0deg);
   --secondary-foreground: oklch(20.5% 0 0deg);
   --muted: oklch(97% 0 0deg);
@@ -177,6 +180,8 @@ html:has([data-header-theme='dark']) [data-header-top] {
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -220,7 +225,6 @@ html:has([data-header-theme='dark']) [data-header-top] {
     @apply bg-background text-foreground min-h-[100vh] flex flex-col;
   }
 }
-
 
 /* Zengin metindeki tablolar (Lexical): dar ekranda yatay kaydırılır, kenarlıklar temaya uyar */
 .lexical-table-container {

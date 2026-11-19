@@ -8,6 +8,7 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import { cn } from '@/lib/utilities/ui'
 import { cardIconComponents } from './icons'
+import { CardsScrollStory } from './ScrollStory'
 
 type Card = NonNullable<CardSet['cards']>[number]
 
@@ -64,7 +65,12 @@ const ServiceCard = ({ card }: { card: Card }) => (
   <article className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card">
     {card.image && typeof card.image === 'object' && (
       <div className="relative aspect-[4/3] w-full overflow-hidden">
-        <Media resource={card.image} fill imgClassName="object-cover" size="(min-width: 1024px) 33vw, 100vw" />
+        <Media
+          resource={card.image}
+          fill
+          imgClassName="object-cover"
+          size="(min-width: 1024px) 33vw, 100vw"
+        />
       </div>
     )}
     <div className="flex flex-1 flex-col gap-3 p-6">
@@ -84,12 +90,16 @@ const ServiceCard = ({ card }: { card: Card }) => (
  * - Kart grubu sayfa sorgusuyla birlikte (aynı dilde) gelir.
  * - Bu dile çevrilmemiş (başlığı boş) kartlar gösterilmez.
  * - Kart grubu silinmiş veya yayında değilse blok hiç render edilmez.
+ * - `layout: 'scrollStory'` seçiliyse kartlar ızgara yerine kaydırmalı anlatım olarak gösterilir.
+ * - `background: 'muted'` seçiliyse bölüm tam genişlikte açık gri (--muted) zemin üzerinde gösterilir.
  */
 export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
   heading,
   intro,
   cardSet,
   columns,
+  layout,
+  background,
   links,
 }) => {
   if (!cardSet || typeof cardSet !== 'object') return null
@@ -99,31 +109,49 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
 
   const CardComponent = cardSet.variant === 'services' ? ServiceCard : FeatureCard
 
+  // Bölüm başlığı + giriş metni (kaydırmalı anlatımda sabitlenen alanın içinde gösterilir)
+  const header =
+    heading || intro ? (
+      <header className="max-w-[48rem]">
+        {heading && <h2 className="mb-4 text-3xl font-semibold md:text-4xl">{heading}</h2>}
+        {intro && <p className="text-lg text-muted-foreground">{intro}</p>}
+      </header>
+    ) : null
+
+  const isMuted = background === 'muted'
+
   return (
-    <section className="container">
-      {(heading || intro) && (
-        <header className="mb-10 max-w-[48rem]">
-          {heading && <h2 className="mb-4 text-3xl font-semibold md:text-4xl">{heading}</h2>}
-          {intro && <p className="text-lg text-muted-foreground">{intro}</p>}
-        </header>
-      )}
-      {/* Kartlar kaydırınca sırayla belirir */}
-      <Reveal stagger={0.12}>
-        <ul className={cn('grid grid-cols-1 gap-6', columnClasses[columns ?? '3'])}>
-          {cards.map((card, index) => (
-            <li key={card.id ?? index} data-reveal-item>
-              <CardComponent card={card} />
-            </li>
-          ))}
-        </ul>
-      </Reveal>
-      {Array.isArray(links) && links.length > 0 && (
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
-          {links.map(({ link }, index) => (
-            <CMSLink key={index} size="lg" {...link} />
-          ))}
-        </div>
-      )}
+    // Muted zemin: tam genişlik şerit + iç boşluk. Kart zemini (--card) muted ile neredeyse
+    // aynı ton olduğundan bu bölümde kartlar sayfa zemini (beyaz) ile çizilir.
+    <section className={cn(isMuted && 'bg-muted py-16 md:py-24 [--card:var(--background)]')}>
+      <div className="container">
+        {layout === 'scrollStory' ? (
+          // Solda görsel, sağda numaralı metin; kaydırdıkça kartlar sırayla değişir.
+          // Başlık bölüm boyunca ekranda kalsın diye bileşene verilir.
+          <CardsScrollStory cards={cards} header={header} />
+        ) : (
+          // Kartlar kaydırınca sırayla belirir
+          <>
+            {header && <div className="mb-10">{header}</div>}
+            <Reveal stagger={0.12}>
+              <ul className={cn('grid grid-cols-1 gap-6', columnClasses[columns ?? '3'])}>
+                {cards.map((card, index) => (
+                  <li key={card.id ?? index} data-reveal-item>
+                    <CardComponent card={card} />
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </>
+        )}
+        {Array.isArray(links) && links.length > 0 && (
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {links.map(({ link }, index) => (
+              <CMSLink key={index} size="lg" {...link} />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   )
 }

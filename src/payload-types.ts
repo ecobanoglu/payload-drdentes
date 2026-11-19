@@ -213,7 +213,7 @@ export interface Page {
             /**
              * Choose how the link should be rendered.
              */
-            appearance?: ('default' | 'outline') | null;
+            appearance?: ('default' | 'outline' | 'brand') | null;
           };
           id?: string | null;
         }[]
@@ -544,6 +544,11 @@ export interface CardsBlock {
    * Globaller → Kart Grupları altında oluşturulan gruplardan birini seçin.
    */
   cardSet: number | CardSet;
+  /**
+   * Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Görselli (hizmet) kart gruplarıyla en iyi sonucu verir.
+   */
+  layout?: ('grid' | 'scrollStory') | null;
+  background?: ('none' | 'muted') | null;
   columns?: ('2' | '3' | '4') | null;
   links?:
     | {
@@ -1551,6 +1556,8 @@ export interface CardsBlockSelect<T extends boolean = true> {
   heading?: T;
   intro?: T;
   cardSet?: T;
+  layout?: T;
+  background?: T;
   columns?: T;
   links?:
     | T

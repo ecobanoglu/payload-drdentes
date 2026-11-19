@@ -11,6 +11,9 @@ import * as migration_20261117_212503_hero_video from './20261117_212503_hero_vi
 import * as migration_20261118_125956_hero_showcase from './20261118_125956_hero_showcase';
 import * as migration_20261118_131608_hero_showcase_screens from './20261118_131608_hero_showcase_screens';
 import * as migration_20261118_132731_hero_tag_icons from './20261118_132731_hero_tag_icons';
+import * as migration_20261119_085422_cards_layout from './20261119_085422_cards_layout';
+import * as migration_20261119_102011_hero_brand_button from './20261119_102011_hero_brand_button';
+import * as migration_20261119_102743_cards_background from './20261119_102743_cards_background';
 
 export const migrations = [
   {
@@ -76,6 +79,21 @@ export const migrations = [
   {
     up: migration_20261118_132731_hero_tag_icons.up,
     down: migration_20261118_132731_hero_tag_icons.down,
-    name: '20261118_132731_hero_tag_icons'
+    name: '20261118_132731_hero_tag_icons',
+  },
+  {
+    up: migration_20261119_085422_cards_layout.up,
+    down: migration_20261119_085422_cards_layout.down,
+    name: '20261119_085422_cards_layout',
+  },
+  {
+    up: migration_20261119_102011_hero_brand_button.up,
+    down: migration_20261119_102011_hero_brand_button.down,
+    name: '20261119_102011_hero_brand_button',
+  },
+  {
+    up: migration_20261119_102743_cards_background.up,
+    down: migration_20261119_102743_cards_background.down,
+    name: '20261119_102743_cards_background'
   },
 ];

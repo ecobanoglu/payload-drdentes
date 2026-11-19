@@ -38,10 +38,39 @@ export const CardsBlock: Block = {
       },
     },
     {
+      // Kartların sunuluş biçimi: klasik ızgara veya kaydırdıkça kartların sırayla değiştiği
+      // sabitlenmiş (sticky) anlatım bölümü
+      name: 'layout',
+      label: { tr: 'Görünüm', en: 'Layout' },
+      type: 'select',
+      defaultValue: 'grid',
+      options: [
+        { label: { tr: 'Izgara', en: 'Grid' }, value: 'grid' },
+        { label: { tr: 'Kaydırmalı anlatım', en: 'Scroll story' }, value: 'scrollStory' },
+      ],
+      admin: {
+        description:
+          'Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Görselli (hizmet) kart gruplarıyla en iyi sonucu verir.',
+      },
+    },
+    {
+      // Bölümün arka planı: yok (sayfa zemini) veya --muted ile tam genişlikte açık gri şerit
+      name: 'background',
+      label: { tr: 'Arka plan', en: 'Background' },
+      type: 'select',
+      defaultValue: 'none',
+      options: [
+        { label: { tr: 'Yok', en: 'None' }, value: 'none' },
+        { label: { tr: 'Açık gri (muted)', en: 'Light gray (muted)' }, value: 'muted' },
+      ],
+    },
+    {
       name: 'columns',
       label: { tr: 'Sütun sayısı (geniş ekran)', en: 'Columns (wide screens)' },
       type: 'select',
       defaultValue: '3',
+      // Sütun sayısı yalnızca ızgara görünümünde anlamlı
+      admin: { condition: (_, siblingData) => siblingData?.layout !== 'scrollStory' },
       options: [
         { label: '2', value: '2' },
         { label: '3', value: '3' },

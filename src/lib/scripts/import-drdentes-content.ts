@@ -316,7 +316,7 @@ const pageLink = (id: number, label: string, appearance?: 'default' | 'outline')
 })
 
 /** Dış ya da sabit adrese bağlantı; dış adresler yeni sekmede açılır */
-const urlLink = (url: string, label: string, appearance?: 'default' | 'outline') => ({
+const urlLink = (url: string, label: string, appearance?: 'default' | 'outline' | 'brand') => ({
   type: 'custom' as const,
   url,
   label,
@@ -781,7 +781,7 @@ await upsertPage('home', {
     ),
     links: [
       { link: urlLink('https://dtsanal.com/basvuru/', 'Demo Talep Et', 'default') },
-      { link: urlLink('https://dtsanal.com/', 'Demoyu İncele', 'outline') },
+      { link: urlLink('https://dtsanal.com/', 'Demoyu İncele', 'brand') },
     ],
     // Butonların yanında açılır pencerede oynayan tanıtım videosu
     video: { url: 'https://www.youtube.com/watch?v=KL1cCOgtEX4', label: 'Tanıtım Videosu' },
@@ -802,7 +802,8 @@ await upsertPage('home', {
       intro:
         "1992'den bugüne kadar geliştirdiğimiz en yeni diş kliniği yönetim yazılımı. Etkileşimli, çevrim içi (online), her yerden ve her cihazdan erişim kolaylığı. Öngörü ve deneyime dayalı akıllı çalışma mantığı işlerinizi sezerek hayatınızı kolaylaştırır.",
       cardSet: advantagesSetId,
-      columns: '4',
+      // Kaydırdıkça kartların sırayla değiştiği sabitlenmiş anlatım bölümü
+      layout: 'scrollStory',
     },
     {
       blockType: 'cards',
@@ -810,6 +811,7 @@ await upsertPage('home', {
       intro: 'Tüm özellikleri inceleyin...',
       cardSet: homeFeaturesSetId,
       columns: '3',
+      background: 'muted',
       links: [{ link: pageLink(featuresPageId, 'Tüm Özellikler', 'outline') }],
     },
     {

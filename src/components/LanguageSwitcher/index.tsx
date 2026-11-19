@@ -39,9 +39,9 @@ export function LanguageSwitcher({ className }: { className?: string }) {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger
         aria-label={`${t('language')}: ${localeLabels[currentLocale]}`}
-        // text-primary: header temasına (açık/koyu) uyar
+        // text-secondary-foreground: menü bağlantılarıyla aynı renk; header temasına (açık/koyu) uyar
         className={cn(
-          'inline-flex h-9 items-center gap-1.5 rounded-md px-2 text-sm font-semibold uppercase text-primary outline-none transition-colors hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary/40 data-[state=open]:bg-primary/10',
+          'inline-flex h-9 items-center gap-1.5 rounded-md px-2 text-sm font-semibold uppercase text-secondary-foreground outline-none transition-colors hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary/40 data-[state=open]:bg-primary/10',
           className,
         )}
       >
