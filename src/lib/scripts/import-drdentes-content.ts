@@ -812,6 +812,8 @@ await upsertPage('home', {
       cardSet: homeFeaturesSetId,
       columns: '3',
       background: 'muted',
+      // Ana sayfada yalnızca ilk 3 öne çıkan özellik; tümü "Tüm Özellikler" sayfasında
+      limit: 3,
       links: [{ link: pageLink(featuresPageId, 'Tüm Özellikler', 'outline') }],
     },
     {
@@ -825,23 +827,13 @@ await upsertPage('home', {
       media: mobileImage,
       mediaPosition: 'start',
     },
-    { blockType: 'pricing', heading: 'Paket Fiyatları', defaultPeriod: 'yearly', showToggle: false, footnote: PRICING_FOOTNOTE },
     { blockType: 'cards', heading: 'Nasıl Kullanıcı Olabilirim?', cardSet: stepsSetId, columns: '3' },
-    addonsBlock(),
-    { blockType: 'faq', heading: 'Sık Sorulan Sorular', intro: 'Hakkımızda daha fazla bilgi edinmek ister misiniz?', source: 'all' },
     {
       blockType: 'archive',
       introContent: rich({ h: 'h2', text: 'Blog' }, 'Diş hekimliğine dair gelişmeler...'),
       populateBy: 'collection',
       relationTo: 'posts',
       limit: 3,
-    },
-    {
-      blockType: 'contact',
-      heading: 'Bize Ulaşın',
-      intro: 'Herhangi bir sorunuz varsa iletişim formunu doldurmanız yeterlidir, size kısa sürede cevap vereceğiz.',
-      form: formId,
-      showContactInfo: true,
     },
   ],
   meta: meta(

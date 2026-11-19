@@ -14,6 +14,7 @@ import * as migration_20261118_132731_hero_tag_icons from './20261118_132731_her
 import * as migration_20261119_085422_cards_layout from './20261119_085422_cards_layout';
 import * as migration_20261119_102011_hero_brand_button from './20261119_102011_hero_brand_button';
 import * as migration_20261119_102743_cards_background from './20261119_102743_cards_background';
+import * as migration_20261119_103843_cards_limit from './20261119_103843_cards_limit';
 
 export const migrations = [
   {
@@ -94,6 +95,11 @@ export const migrations = [
   {
     up: migration_20261119_102743_cards_background.up,
     down: migration_20261119_102743_cards_background.down,
-    name: '20261119_102743_cards_background'
+    name: '20261119_102743_cards_background',
+  },
+  {
+    up: migration_20261119_103843_cards_limit.up,
+    down: migration_20261119_103843_cards_limit.down,
+    name: '20261119_103843_cards_limit'
   },
 ];

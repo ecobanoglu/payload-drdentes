@@ -550,6 +550,10 @@ export interface CardsBlock {
   layout?: ('grid' | 'scrollStory') | null;
   background?: ('none' | 'muted') | null;
   columns?: ('2' | '3' | '4') | null;
+  /**
+   * Boş bırakılırsa gruptaki tüm kartlar gösterilir.
+   */
+  limit?: number | null;
   links?:
     | {
         link: {
@@ -1559,6 +1563,7 @@ export interface CardsBlockSelect<T extends boolean = true> {
   layout?: T;
   background?: T;
   columns?: T;
+  limit?: T;
   links?:
     | T
     | {

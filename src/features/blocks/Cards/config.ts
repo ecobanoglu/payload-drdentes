@@ -77,6 +77,17 @@ export const CardsBlock: Block = {
         { label: '4', value: '4' },
       ],
     },
+    {
+      // Gruptaki kartların yalnızca ilk N tanesi gösterilir (ör. ana sayfada 3 öne çıkan özellik);
+      // boş bırakılırsa tümü gösterilir. Grubun kendisi değişmez.
+      name: 'limit',
+      label: { tr: 'Gösterilecek kart sayısı', en: 'Number of cards to show' },
+      type: 'number',
+      min: 1,
+      admin: {
+        description: 'Boş bırakılırsa gruptaki tüm kartlar gösterilir.',
+      },
+    },
     // Kartların altında ortalanmış butonlar (ör. "Tüm Özellikler")
     linkGroup({ appearances: ['default', 'outline'], overrides: { maxRows: 2 } }),
   ],

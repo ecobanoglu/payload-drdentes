@@ -39,50 +39,90 @@ const CardPoints = ({ points }: { points?: string | null }) => {
   )
 }
 
+/**
+ * Tıklanabilir kart: kartın bağlantısı görünmez bir katmanla (`after:` sözde öğesi) tüm kartı
+ * kaplar; kartın herhangi bir yerine tıklamak bağlantıyı açar. Ekran okuyucu ve klavye için tek
+ * bir bağlantı kalır. Kartta bağlantı yoksa kart tıklanamaz.
+ */
+const cardLinkClassName =
+  'mt-auto self-start px-0 after:absolute after:inset-0 after:rounded-lg after:content-[""]'
+
+/**
+ * Bağlantılı kartın üzerine gelince/odaklanınca hafif gölge ve odak halkası.
+ * `group`: kartın içindeki başlık, kartın üzerine gelinince ana renge döner (cardTitleClassName).
+ */
+const linkedCardClassName =
+  'group cursor-pointer transition-shadow hover:shadow-md has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-primary/40'
+
+/** Kart başlığı: bağlantılı kartta üzerine gelince/odaklanınca ana renk (primary) */
+const cardTitleClassName =
+  'text-xl font-semibold transition-colors group-hover:text-primary group-has-[a:focus-visible]:text-primary'
+
 /** Özellik kartı: ikon + başlık + açıklama (+ isteğe bağlı bağlantı) */
 const FeatureCard = ({ card }: { card: Card }) => {
   const Icon = card.icon ? cardIconComponents[card.icon] : undefined
 
+  const hasLink = Boolean(card.enableLink && card.link)
+
   return (
-    <article className="flex h-full flex-col gap-4 rounded-lg border border-border bg-card p-6">
+    <article
+      className={cn(
+        'relative flex flex-1 flex-col gap-4 rounded-lg bg-card p-6',
+        hasLink && linkedCardClassName,
+      )}
+    >
       {Icon && (
         <span className="inline-flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
           <Icon aria-hidden className="size-6" />
         </span>
       )}
-      <h3 className="text-xl font-semibold">{card.title}</h3>
+      <h3 className={cardTitleClassName}>{card.title}</h3>
       {card.description && <p className="text-muted-foreground">{card.description}</p>}
       <CardPoints points={card.points} />
-      {card.enableLink && card.link && (
-        <CMSLink {...card.link} appearance="link" className="mt-auto self-start px-0" />
+      {hasLink && card.link && (
+        <CMSLink {...card.link} appearance="link" className={cardLinkClassName} />
       )}
     </article>
   )
 }
 
-/** Hizmet kartı: görsel + başlık + açıklama + bağlantı */
-const ServiceCard = ({ card }: { card: Card }) => (
-  <article className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card">
-    {card.image && typeof card.image === 'object' && (
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
+/**
+ * Hizmet kartı: görsel + başlık + açıklama + bağlantı.
+ * Görsel kendi boyutunda gösterilir (gerilmez/kırpılmaz); kart dar kalırsa genişliğe sığacak
+ * kadar orantılı küçülür. Görsel satır başına hizalanır: soldan sağa dillerde solda,
+ * Arapçada (sağdan sola) sağda.
+ */
+const ServiceCard = ({ card }: { card: Card }) => {
+  const hasLink = Boolean(card.enableLink && card.link)
+
+  return (
+    <article
+      className={cn(
+        'relative flex flex-1 flex-col overflow-hidden rounded-lg bg-card',
+        hasLink && linkedCardClassName,
+      )}
+    >
+      {card.image && typeof card.image === 'object' && (
         <Media
           resource={card.image}
-          fill
-          imgClassName="object-cover"
+          className="flex justify-start px-6 pt-6"
+          pictureClassName="block max-w-full"
+          imgClassName="h-auto max-w-full"
           size="(min-width: 1024px) 33vw, 100vw"
         />
-      </div>
-    )}
-    <div className="flex flex-1 flex-col gap-3 p-6">
-      <h3 className="text-xl font-semibold">{card.title}</h3>
-      {card.description && <p className="text-muted-foreground">{card.description}</p>}
-      <CardPoints points={card.points} />
-      {card.enableLink && card.link && (
-        <CMSLink {...card.link} appearance="link" className="mt-auto self-start px-0" />
       )}
-    </div>
-  </article>
-)
+      <div className="flex flex-1 flex-col gap-3 p-6">
+        <h3 className={cardTitleClassName}>{card.title}</h3>
+        {card.description && <p className="text-muted-foreground">{card.description}</p>}
+        <CardPoints points={card.points} />
+        {/* Bağlantı en altta: tüm kartlarda aynı hizada */}
+        {hasLink && card.link && (
+          <CMSLink {...card.link} appearance="link" className={cardLinkClassName} />
+        )}
+      </div>
+    </article>
+  )
+}
 
 /**
  * "Cards" bloğunun görünümü: seçilen kart grubundaki kartları grid olarak gösterir.
@@ -91,6 +131,7 @@ const ServiceCard = ({ card }: { card: Card }) => (
  * - Bu dile çevrilmemiş (başlığı boş) kartlar gösterilmez.
  * - Kart grubu silinmiş veya yayında değilse blok hiç render edilmez.
  * - `layout: 'scrollStory'` seçiliyse kartlar ızgara yerine kaydırmalı anlatım olarak gösterilir.
+ * - `limit` girildiyse gruptaki kartların yalnızca ilk N tanesi gösterilir.
  * - `background: 'muted'` seçiliyse bölüm tam genişlikte açık gri (--muted) zemin üzerinde gösterilir.
  */
 export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
@@ -100,11 +141,15 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
   columns,
   layout,
   background,
+  limit,
   links,
 }) => {
   if (!cardSet || typeof cardSet !== 'object') return null
 
-  const cards = (cardSet.cards ?? []).filter((card) => Boolean(card.title))
+  // Bu dilde başlığı olan kartlar; sınır girildiyse yalnızca ilk N tanesi
+  const cards = (cardSet.cards ?? [])
+    .filter((card) => Boolean(card.title))
+    .slice(0, limit && limit > 0 ? limit : undefined)
   if (cards.length === 0) return null
 
   const CardComponent = cardSet.variant === 'services' ? ServiceCard : FeatureCard
@@ -136,7 +181,8 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
             <Reveal stagger={0.12}>
               <ul className={cn('grid grid-cols-1 gap-6', columnClasses[columns ?? '3'])}>
                 {cards.map((card, index) => (
-                  <li key={card.id ?? index} data-reveal-item>
+                  // flex: kart, ızgara satırının tam yüksekliğini doldurur → bağlantılar aynı hizada
+                  <li key={card.id ?? index} data-reveal-item className="flex">
                     <CardComponent card={card} />
                   </li>
                 ))}
