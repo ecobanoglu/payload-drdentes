@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label'
 import React from 'react'
 
 import { Error } from '../Error'
+import { renderInlineLinks } from '../inlineLinks'
 import { Width } from '../Width'
 
 export const Checkbox: React.FC<
@@ -21,22 +22,29 @@ export const Checkbox: React.FC<
 
   return (
     <Width width={width}>
-      <div className="flex items-center gap-2">
+      {/* items-start: uzun (çok satırlı) onay metinlerinde kutu ilk satırla hizalı kalır */}
+      <div className="flex items-start gap-3">
         <CheckboxUi
           defaultChecked={defaultValue}
           id={name}
+          className="mt-0.5"
           {...props}
           onCheckedChange={(checked) => {
             setValue(props.name, checked)
           }}
         />
-        <Label htmlFor={name}>
+        {/* Etiket blok akışında: içindeki bağlantılar metinle aynı satırda kalır */}
+        <Label
+          htmlFor={name}
+          className="block text-sm leading-relaxed font-normal text-black/70 dark:text-white/70"
+        >
           {required && (
             <span className="required">
               * <span className="sr-only">(required)</span>
             </span>
           )}
-          {label}
+          {/* "[metin](adres)" kalıpları bağlantıya çevrilir (ör. Açık Rıza Beyanı) */}
+          {renderInlineLinks(label)}
         </Label>
       </div>
       {errors[name] && <Error name={name} />}

@@ -9,6 +9,8 @@ import { CallToActionBlock } from '@/features/blocks/CallToAction/Component'
 import { CardsBlockComponent } from '@/features/blocks/Cards/Component'
 import { ContactBlockComponent } from '@/features/blocks/Contact/Component'
 import { FaqBlockComponent } from '@/features/blocks/Faq/Component'
+import { FeatureCatalogBlockComponent } from '@/features/blocks/FeatureCatalog/Component'
+import { FeatureDetailBlockComponent } from '@/features/blocks/FeatureDetail/Component'
 import { FeatureSplitBlockComponent } from '@/features/blocks/FeatureSplit/Component'
 import { PricingBlockComponent } from '@/features/blocks/Pricing/Component'
 import { PricingAddonsBlockComponent } from '@/features/blocks/PricingAddons/Component'
@@ -26,6 +28,8 @@ const blockComponents = {
   contact: ContactBlockComponent,
   faq: FaqBlockComponent,
   featureSplit: FeatureSplitBlockComponent,
+  featureDetail: FeatureDetailBlockComponent,
+  featureCatalog: FeatureCatalogBlockComponent,
   pricing: PricingBlockComponent,
   pricingAddons: PricingAddonsBlockComponent,
   testimonials: TestimonialsBlockComponent,
@@ -34,6 +38,10 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
 }
+
+/** Blok tam genişlikte renkli bir zemin üzerinde mi (ör. `background: 'muted'`) */
+const hasFullWidthBackground = (block: Page['layout'][0]) =>
+  'background' in block && Boolean(block.background) && block.background !== 'none'
 
 /**
  * Sayfanın içerik bloklarını sırayla render eder. Her blok kaydırınca yumuşakça belirir
@@ -59,13 +67,17 @@ export const RenderBlocks: React.FC<{
               // @ts-expect-error there may be some mismatch between the expected types here
               const content = <Block {...block} disableInnerContainer />
 
+              // Tam genişlikte renkli zeminli bloklar (gri, koyu, marka mavisi...) dış boşluksuz:
+              // komşu renkli bölümlerle arada beyaz şerit kalmaz; boşluğu kendi iç dolgusu verir
+              const margin = hasFullWidthBackground(block) ? 'my-0' : 'my-16'
+
               // Kendi animasyonunu yöneten bloklar düz kapsayıcıda; diğerleri kaydırınca belirir
               return selfAnimatedBlocks.has(blockType) ? (
-                <div className="my-16" key={index}>
+                <div className={margin} key={index}>
                   {content}
                 </div>
               ) : (
-                <Reveal className="my-16" key={index}>
+                <Reveal className={margin} key={index}>
                   {content}
                 </Reveal>
               )

@@ -143,5 +143,17 @@
     "reply": "Dr.DENTES yanıtı",
     "loadMore": "Daha fazla göster",
     "announcement": "Duyuru"
+  },
+  "FeatureDetail": {
+    "otherFeatures": "Diğer Özellikler"
+  },
+  "FeatureCatalog": {
+    "modules": "Modüller",
+    "searchPlaceholder": "Özelliklerde ara (ör. randevu, SMS, fatura)",
+    "clear": "Aramayı temizle",
+    "results": "{count} sonuç",
+    "total": "{modules} modülde {count} özellik",
+    "noResults": "Aramanızla eşleşen özellik bulunamadı.",
+    "featureCount": "{count} özellik"
   }
 }

@@ -1,0 +1,564 @@
+{
+ "aydinlatma": [
+  {
+   "type": "h2",
+   "runs": [
+    {
+     "text": "1. Amaç ve Kapsam"
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Bu aydınlatma kişisel verilerinizin işlenmesi konusunda 6698 sayılı Kişisel Verilerin Korunması Kanunu (buradan sonra “KVKK” olarak anılacaktır) 10. maddesi uyarınca, Sanal Yazılım Bilgisayar Sanayi ve Tic. Ltd. Şti. (buradan sonra “SANAL” olarak anılacaktır) olarak, kişisel veri işleme faaliyetleri hakkında sizleri aydınlatmak amacıyla hazırlanmıştır. SANAL, kişisel verilerinizi “"
+    },
+    {
+     "text": "Kişisel Verilerin İşlenmesi ve Korunması",
+     "href": "https://sanal.mobi/tr/Sayfa/32-kisisel-verilerin-islenmesi-ve-korunmasi"
+    },
+    {
+     "text": "” sayfasındaki bağlantılı bilgilendirmelerde ayrıntılı olarak açıkladığı şekilde işler. Bunlara ek olarak SANAL’ın internet sitesini ziyaret etmeniz durumunda kullanılan çerez ve işlenen kişisel veriler hakkında ayrıntılı bilgiler “"
+    },
+    {
+     "text": "Çerez Politikası",
+     "href": "https://drdentes.com.tr/tr/Sayfa/1-cerez-kullanimi"
+    },
+    {
+     "text": "”nda yer alır."
+    }
+   ]
+  },
+  {
+   "type": "h2",
+   "runs": [
+    {
+     "text": "2. Veri Sorumlusunun Bilgileri"
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Firma Tam İsmi",
+     "bold": true
+    },
+    {
+     "text": ": Sanal Yazılım Bilgisayar Sanayi ve Ticaret Limited Şirketi"
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "Vergi Dairesi",
+     "bold": true
+    },
+    {
+     "text": ": Konak"
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "Vergi No",
+     "bold": true
+    },
+    {
+     "text": ": 743 005 5424"
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "MERSİS No",
+     "bold": true
+    },
+    {
+     "text": ": 0-7430-0554-2400015"
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "Ticaret Sicil No",
+     "bold": true
+    },
+    {
+     "text": ": 77672"
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "Adres",
+     "bold": true
+    },
+    {
+     "text": ": Akdeniz Mh. 1353 Sk. Taner İş Merkezi No:1/204 Konak/İZMİR"
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "Telefon",
+     "bold": true
+    },
+    {
+     "text": ": +90 (506) 188 20 19"
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "E-posta",
+     "bold": true
+    },
+    {
+     "text": ": "
+    },
+    {
+     "text": "iletisim@sanal.mobi",
+     "href": "mailto:iletisim@sanal.mobi"
+    }
+   ]
+  },
+  {
+   "type": "h2",
+   "runs": [
+    {
+     "text": "3. Aydınlatmada Yer Alan “Kişisel Veri” Nedir?"
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Kişisel Veri",
+     "bold": true
+    },
+    {
+     "text": ": Kimliği belirli ya da belirlenebilir gerçek kişiye ilişkin her türlü bilgidir."
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "Özel Nitelikli Kişisel Veri",
+     "bold": true
+    },
+    {
+     "text": ": Öğrenilmesi halinde kişi hakkında ayrımcılık yapılmasına veya mağduriyete neden olabilecek nitelikteki verilerdir. Kanunda özel nitelikli kişisel veriler, sınırlı sayma yoluyla belirlenmiştir. Bunlar; kişinin ırkı, etnik kökeni, siyasi düşüncesi, felsefi inancı, dini, mezhebi veya diğer inançları, kılık ve kıyafeti, dernek, vakıf ya da sendika üyeliği, sağlığı, cinsel hayatı, ceza mahkûmiyeti ve güvenlik tedbirleriyle ilgili verileri ile biyometrik ve genetik verileridir. Özel nitelikli kişisel verilerin kıyas yoluyla genişletilmesi mümkün değildir."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "SANAL, KANUNDA ÖNGÖRÜLEN HALLER DIŞINDA ÖZEL NİTELİKLİ KİŞİSEL VERİLERİNİZİ TALEP ETMEZ VE İŞLEMEZ!",
+     "bold": true
+    }
+   ]
+  },
+  {
+   "type": "h2",
+   "runs": [
+    {
+     "text": "4. Kişisel Verileriniz Hangi Amaçlarla İşlenebilir?"
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Toplanan kişisel verileriniz, KVKK tarafından öngörülen temel ilkelere uygun olarak ve KVKK’nın 5. ve 6. maddelerinde belirtilen kişisel veri işleme şartları ve amaçları dahilinde, SANAL tarafından aşağıda yer alan amaçlar doğrultusunda işlenebilir:"
+    }
+   ]
+  },
+  {
+   "type": "ul",
+   "items": [
+    [
+     {
+      "text": "Bilgi güvenliği süreçlerinin yürütülmesi, şirket içi standartların sağlanması ve prosedürlerin uygulanmasında."
+     }
+    ],
+    [
+     {
+      "text": "Eğitim faaliyetlerinin planlanması ve yürütülmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Eğitim faaliyetlerinin katılımcılar tarafından değerlendirilmesinde ve performans ölçümü yapılmasında."
+     }
+    ],
+    [
+     {
+      "text": "SANAL’ın şirket faaliyetleri ve ürün/hizmet alım ve satımının mevzuatlara uygun yürütülmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Finans ve muhasebe işlerinin yürütülmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Firma/ürün/hizmetlere bağlılığa yönelik faaliyetlerde."
+     }
+    ],
+    [
+     {
+      "text": "Hukuk işlerinin takibi ve yürütülmesinde."
+     }
+    ],
+    [
+     {
+      "text": "İletişim faaliyetlerinin yürütülmesinde."
+     }
+    ],
+    [
+     {
+      "text": "İnsan kaynakları süreçlerinin planlanmasında."
+     }
+    ],
+    [
+     {
+      "text": "İş süreçlerinin iyileştirilmesine yönelik önerilerin alınması, değerlendirmesi ve öneri sunan tarafa geri dönüş yapılmasında."
+     }
+    ],
+    [
+     {
+      "text": "Tedarikçilerden mal/hizmet satın alımında."
+     }
+    ],
+    [
+     {
+      "text": "SANAL tarafından iş ortağı/müşteri/tedarikçiler ile yapılan sözleşmelerden kaynaklanan yükümlülüklerin ifası, hak tesisi, hakların korunması, ticari ve hukuki değerlendirme süreçleri, mali işlerin yürütülmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Mal/hizmet satış sonrası yardım/destek hizmetlerinin sunulmasında."
+     }
+    ],
+    [
+     {
+      "text": "Mal/hizmet satış süreçlerinin yürütülmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Mal/hizmet üretim ve operasyon süreçlerinin yürütülmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Müşteri ilişkilerinin yönetiminde."
+     }
+    ],
+    [
+     {
+      "text": "SANAL ile iş ilişkisi içerisinde olan üçüncü gerçek veya tüzel kişiler ile sözleşme yapılması veya sözleşmelerle yürütülen faaliyetler çerçevesinde; hukuki ve ticari yükümlülüklerin gerçekleştirilmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Personel politikalarına uygun şekilde; operasyonlarının yürütülmesi, açık pozisyonlara uygun personel temini, İş Kanunu, Sosyal Güvenlik Kanunu ve sair iş hayatını düzenleyen mevzuat ile iş sağlığı ve iş güvenliği çerçevesinde yükümlülüklerin yerine getirilmesi ve gerekli tedbirlerin alınmasında."
+     }
+    ],
+    [
+     {
+      "text": "SANAL tarafından sunulan mal ve hizmetleri tanıtılmasında; ürün, hizmet ve iletişiminin geliştirmesinde; promosyon/tanıtım/kampanya ve duyurular hazırlamak ve gönderilmesinde."
+     }
+    ],
+    [
+     {
+      "text": "SANAL tarafından yürütülen ticari faaliyetlerin gerçekleştirilmesi için ilgili iş birimleri tarafından gerekli çalışmaların yapılması ve buna bağlı iş süreçlerinin yürütülmesinin sağlanmasında."
+     }
+    ],
+    [
+     {
+      "text": "SANAL’ın ticari ve/veya iş stratejilerini planlama ve icrasının gerçekleştirilmesinde."
+     }
+    ],
+    [
+     {
+      "text": "SANAL’ın ve SANAL’la iş ilişkisi içerisinde olan ilgili kişilerin hukuki, teknik ve ticari iş güvenliğinin temin edilmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Web formları üzerinden başvuru yapan müşteri adaylarının kimlik, adres, mesleki durum ve iletişim ve diğer gerekli bilgilerini kaydedilmesi ve resmi kurumlardan teyit edilmesinde, elektronik veya kağıt ortamında işleme dayanak olacak tüm kayıt ve belgelerin düzenlemesinde."
+     }
+    ],
+    [
+     {
+      "text": "İşlem ve bilgi güvenliğini sağlanmasında, hileli veya yasadışı faaliyetleri içerebilecek işlemlerin önlenmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Müşteri deneyiminin iyileştirilmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Kamu güvenliğine ilişkin hususlarda talep halinde ve mevzuat gereği kamu görevlilerine bilgi verilmesinde."
+     }
+    ],
+    [
+     {
+      "text": "Doğabilecek uyuşmazlıklarda delil olarak kullanılmasında."
+     }
+    ]
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Kişisel verilerinizin SANAL tarafından işlenme amaçları konusunda ayrıntılı bilgiler, “"
+    },
+    {
+     "text": "Kişisel Verilerin İşlenmesi ve Korunması",
+     "href": "https://sanal.mobi/tr/Sayfa/32-kisisel-verilerin-islenmesi-ve-korunmasi"
+    },
+    {
+     "text": "” sayfasındaki bağlantılı bilgilendirmelerde yer alır. Kişisel verileriniz SANAL birimleri tarafından sözlü, yazılı ya da elektronik olarak toplanabilir; SANAL ile ilişkiniz devam ettiği sürece güncellenir ve işlenmesi zorunlu olan veriler, Veri Sorumlusu sıfatıyla SANAL tarafından; hukuki sorumluluğun yerine getirebilmesi için KVKK’nın 5. ve 6.maddelerinde belirtilen kişisel veri işleme şartları ve amaçları dahilinde; işlenir/işlenebilir."
+    }
+   ]
+  },
+  {
+   "type": "h2",
+   "runs": [
+    {
+     "text": "5. Kişisel Verilerinizin Aktarılması"
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "SANAL tarafından işlenen kişisel verileriniz, SANAL’ın yasal yükümlülüklerini yerine getirmesi amacıyla yetkili mercilerle paylaşılabilir. Toplanan kişisel verileriniz; yukarıda belirtilen sebepler, amaçlar ve KVKK’da yer alan düzenlemeler çerçevesinde; SANAL tarafından dâhili olarak kullanılacağı gibi, kanunen yetkili kamu kurum ve kuruluşları ve kanunen yetkili özel hukuk gerçek ve tüzel kişilerine; faaliyetlerimizi yürütebilmek amacıyla işbirliği yaptığımız kurum ve kuruluşlarla; verilerin saklanması için hizmetlerinden faydalandığımız, fiziksel sunucu (server) ve/veya bulut hizmeti aldığımız yurt içi/yurt dışı kişi ve kurumlarla, ticari elektronik iletilerin gönderilmesi konusunda hizmet aldığımız yurt içi/yurt dışı firmalarla ya da yurtiçi/yurtdışı diğer iş ortaklarımızla, kanunen yetkili kamu kurumları ve özel kişilere yurtiçi ve yurtdışında KVKK’nın 8. ve 9. maddelerinde belirtilen kişisel veri işleme şartları ve amaçları çerçevesinde paylaşılabilir."
+    }
+   ]
+  },
+  {
+   "type": "h2",
+   "runs": [
+    {
+     "text": "6. Kişisel Verinizin Toplanma Yöntemleri ve Hukuki Sebepleri"
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Kişisel verileriniz, otomatik ya da otomatik olmayan yöntemlerle; e-posta, mobil uygulamalar, SMS veya diğer iletişim yollarıyla ya da iş ilişkilerimiz sırasında, ticari sözleşmelerin imzalanması aşamasında ve/veya ticari ilişki süreci içerisinde ve/veya SANAL’a ait internet sitesini ziyaret ettiğiniz sırada sistemlerimizin sizi otomatik olarak tanımasına yarayan ve çerez (cookies) olarak adlandırılan (sabit sürücünüze yerleşen küçük dosyalar) teknik iletişim dosyaları ve benzeri vasıtalarla sözlü, yazılı ya da elektronik olarak toplanır. Kişisel verileriniz, SANAL tarafından verilen eğitim, seminer, kurs, konferans vb. hizmetlerden yaralandığınız müddetçe, SANAL tarafından düzenlenen organizasyonlara katıldığınızda, SANAL’a iş başvurusu yaptığınızda, SANAL’ın iletişim kanallarına ulaştığınızda, SANAL’ın ürün/hizmetlerinin incelemek üzere başvuru yaptığınızda, SANAL’dan ürün/hizmet aldığınızda veya sattığınızda, SANAL’ın web sitesini veya sosyal medya hesaplarını ziyaret ettiğinizde de toplanabilir, güncellenebilir ve işlenebilir."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Bu kapsamdaki kişisel verileriniz, SANAL tarafından işbu aydınlatma formunun 4.maddesinde sayılan amaçların gerçekleştirilmesi için ilgili mevzuatlar ve KVKK’nın 5’inci maddesinde belirtilen;"
+    }
+   ]
+  },
+  {
+   "type": "ul",
+   "items": [
+    [
+     {
+      "text": "Kanunlarda açıkça öngörülmesi,"
+     }
+    ],
+    [
+     {
+      "text": "Bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması,"
+     }
+    ],
+    [
+     {
+      "text": "Veri sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi için zorunlu olması ve ilgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla, veri sorumlusunun meşru menfaatleri için veri işlenmesinin zorunlu olması"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "hukuki sebeplerine dayanılarak işlenir. Yukarıdaki amaçlar kapsamına girmeyen haller için kişisel verileriniz, ayrıntıları “"
+    },
+    {
+     "text": "Açık Rıza Metni",
+     "href": "page:acik-riza-beyani"
+    },
+    {
+     "text": "”nde belirtilen açık rızanız alınarak işlenebilir."
+    }
+   ]
+  },
+  {
+   "type": "h2",
+   "runs": [
+    {
+     "text": "7. Veri Sahibi İlgili Kişilerin Hakları"
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "KVKK’nın 11. maddesi uyarınca, ilgili kişi olarak, yazılı veya Kişisel Verileri Koruma Kurulu’nun belirlediği diğer yöntemlerle"
+    },
+    {
+     "text": "1",
+     "sup": true
+    },
+    {
+     "text": " SANAL’a başvurarak:"
+    }
+   ]
+  },
+  {
+   "type": "ol",
+   "items": [
+    [
+     {
+      "text": "Kişisel verinizin işlenip işlenmediğini öğrenme,"
+     }
+    ],
+    [
+     {
+      "text": "Kişisel veriniz işlenmişse buna ilişkin bilgi talep etme,"
+     }
+    ],
+    [
+     {
+      "text": "Kişisel verilerinizin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,"
+     }
+    ],
+    [
+     {
+      "text": "Yurt içinde veya yurt dışında kişisel verilerinizin aktarıldığı üçüncü kişileri bilme,"
+     }
+    ],
+    [
+     {
+      "text": "Kişisel verilerinizin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme,"
+     }
+    ],
+    [
+     {
+      "text": "KVKK’nın 7. Maddesinde öngörülen şartlar çerçevesinde kişisel verilerinizin silinmesini veya yok edilmesini isteme,"
+     }
+    ],
+    [
+     {
+      "text": "Yukarıda yer alan (4) ve (5) bentleri uyarınca yapılan işlemlerin, kişisel verilerinizin aktarıldığı üçüncü kişilere bildirilmesini isteme,"
+     }
+    ],
+    [
+     {
+      "text": "İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle tarafınız aleyhine bir sonucun ortaya çıkmasına itiraz etme, ve kişisel verilerinizin KVKK’ya aykırı olarak işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "haklarına sahipsiniz. Yukarıda belirtilen haklarınızı kullanmak için, kimliğinizi tespit etmeye yarayan gerekli bilgiler ile KVKK’nın 11. maddesinde belirtilen haklardan kullanmak istediğiniz hakkınıza yönelik açıklamalarınızı içeren talebinizi SANAL’ın internet sitesinde (sanal.mobi) yer alan “"
+    },
+    {
+     "text": "İlgili Kişi Başvuru Formu",
+     "href": "https://sanal.mobi/tr/Sayfa/36-ilgili-kisi-basvurusu"
+    },
+    {
+     "text": "”nu tam ve eksiksiz bir şekilde doldurarak, formun ıslak imzalı bir nüshasını “Akdeniz Mh. 1353 Sk. Taner İş Merkezi No:1/204 Konak/İZMİR” adresine, bizzat elden iletebilir, noter kanalıyla, e-posta ile veya KVKK’da belirtilen diğer yöntemler ile gönderebilirsiniz. Başvurunuzda yer alan talepleriniz, talebin niteliğine göre en kısa sürede ve en geç otuz (30) gün içinde SANAL tarafından ücretsiz olarak sonuçlandırılır. Ancak, işlemin SANAL için ayrıca bir maliyet gerektirmesi hâlinde, Kişisel Verileri Koruma Kurulu tarafından belirlenen tarifedeki ücret alınır."
+    },
+    {
+     "text": "2",
+     "sup": true
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "1*",
+     "sup": true
+    },
+    {
+     "text": "10.03.2018 tarih ve 30356 sayılı “Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ” uyarınca; veri sahipleri, Kanun’un 11. maddesinde belirtilen hakları kapsamında taleplerini, yazılı olarak veya kayıtlı elektronik posta (KEP) adresi, güvenli elektronik imza, mobil imza ya da veri sahipleri tarafından SANAL’a daha önce bildirilen SANAL’ın sisteminde kayıtlı bulunan elektronik posta adresini kullanmak suretiyle veya başvuru amacına yönelik geliştirilmiş bir yazılım ya da uygulama vasıtasıyla SANAL’a iletir."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "2*",
+     "sup": true
+    },
+    {
+     "text": "10.03.2018 tarih ve 30356 sayılı Resmi Gazete’de yayınlanan “Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ” uyarınca, veri sahiplerinin başvurusuna yazılı olarak cevap verilecekse, on sayfaya kadar ücret alınmaz. On sayfanın üzerindeki her sayfa için 1 Türk Lirası işlem ücreti alınabilir. Başvuruya cevabın CD, flash bellek gibi bir kayıt ortamında verilmesi halinde firma tarafından talep edilebilecek ücret kayıt ortamının maliyetini geçemez."
+    }
+   ]
+  },
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "Veri Sorumlusu ",
+     "bold": true
+    },
+    {
+     "text": "\n"
+    },
+    {
+     "text": "Sanal Yazılım Bilgisayar Sanayi ve Tic. Ltd. Şti."
+    }
+   ]
+  }
+ ],
+ "acikRiza": [
+  {
+   "type": "p",
+   "runs": [
+    {
+     "text": "İşbu bilgilendirme yazısını okuduğumu ve 6698 sayılı Kişisel Verilerin Korunması Kanunu gereğince, Sanal Yazılım Bilgisayar Sanayi ve Tic. Ltd. Şti.’ne tarafımca elektronik ortamda verdiğim, kimliğimi belirleyen veya belirlemeye yarayanlar da dahil olmak üzere aşağıdaki listede ayrıntıları bulunan kişisel verilerimin; Sanal Yazılım Bilgisayar Sanayi ve Tic. Ltd. Şti. tarafından işlenmesine, kaydedilmesine ve ilgili mevzuatlar kapsamında; Sanal Yazılım Bilgisayar Sanayi ve Tic. Ltd. Şti.’nin hizmet sunma gerekliliklerinin karşılanması için diğer kişi ve kuruluşlar ile de paylaşılmasına açık rıza gösterdiğimi kabul ederim."
+    }
+   ]
+  },
+  {
+   "type": "ul",
+   "items": [
+    [
+     {
+      "text": "Kimliği belirli veya belirlenebilir bir gerçek kişiye ait olduğu açık olan; kısmen veya tamamen otomatik şekilde veya veri kayıt sisteminin bir parçası olarak otomatik olmayan şekilde işlenen; kimlik bilgilerine ilişkin veriler; ad, soyad."
+     }
+    ],
+    [
+     {
+      "text": "Kimliği belirli veya belirlenebilir bir gerçek kişiye ait olduğu açık olan; kısmen veya tamamen otomatik şekilde veya veri kayıt sisteminin bir parçası olarak otomatik olmayan şekilde işlenen; iletişim bilgilerine ilişkin kişisel veriler; telefon numarası, e-posta"
+     }
+    ]
+   ]
+  }
+ ]
+}

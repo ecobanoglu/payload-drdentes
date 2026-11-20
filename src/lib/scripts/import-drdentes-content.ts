@@ -29,6 +29,8 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { getPayload } from 'payload'
 
+import { buildFeatureCatalogGroups } from './lib/featureCatalog'
+
 import type { Page } from '@/payload-types'
 
 const payload = await getPayload({ config })
@@ -686,6 +688,145 @@ const { docs: forms } = await payload.find({ collection: 'forms', locale, where:
 const formId = forms[0]?.id
 if (!formId) log('! "İletişim Formu" bulunamadı — İletişim bölümü formsuz oluşturulacak (önce seed-product-site.ts çalıştırın)')
 
+// ─────────────────────────── 6a. KVKK metinleri ve form onayları ───────────────────────────
+
+/** Yasal metin satır içi parçası (kalın, üst simge, bağlantı) — `data/legal-tr.json` */
+type LegalRun = { text: string; bold?: boolean; sup?: boolean; href?: string }
+/** Yasal metin bloğu: başlık, paragraf ya da liste */
+type LegalBlock =
+  | { type: 'h2' | 'p'; runs: LegalRun[] }
+  | { type: 'ul' | 'ol'; items: LegalRun[][] }
+
+/** drdentes.com.tr'deki "Aydınlatma" ve "Açık Rıza Beyanı" pencerelerinin metinleri */
+const legal: { aydinlatma: LegalBlock[]; acikRiza: LegalBlock[] } = JSON.parse(
+  fs.readFileSync(path.resolve(dirname, 'data/legal-tr.json'), 'utf8'),
+)
+
+/**
+ * Bağlantı düğümü: `page:<slug>` adresleri iç sayfa referansına (dil önekli URL'ye otomatik
+ * çevrilir), diğerleri özel URL'ye dönüşür; dış bağlantılar yeni sekmede açılır.
+ */
+const linkNode = (href: string, children: LexicalNode[], pageIds: Record<string, number>): LexicalNode => {
+  const pageSlug = href.startsWith('page:') ? href.slice(5) : null
+  return {
+    type: 'link',
+    format: '',
+    indent: 0,
+    version: 3,
+    direction: 'ltr',
+    fields: pageSlug
+      ? { linkType: 'internal', doc: { relationTo: 'pages', value: pageIds[pageSlug] }, newTab: true }
+      : { linkType: 'custom', url: href, newTab: !href.startsWith('mailto:') },
+    children,
+  }
+}
+
+/** Satır içi parçaları Lexical düğümlerine çevirir (format: 1 = kalın, 64 = üst simge; \n = satır sonu) */
+const legalInline = (runs: LegalRun[], pageIds: Record<string, number>): LexicalNode[] =>
+  runs
+    .filter((run) => run.text)
+    .map((run) => {
+      if (run.text === '\n') return { type: 'linebreak', version: 1 }
+      const node = textNode(run.text, (run.bold ? 1 : 0) | (run.sup ? 64 : 0))
+      return run.href ? linkNode(run.href, [node], pageIds) : node
+    })
+
+/** Yasal metni zengin metne çevirir (bölüm başlıkları h2, paragraflar, ul/ol listeler) */
+const legalRich = (blocks: LegalBlock[], pageIds: Record<string, number> = {}): RichText =>
+  root(
+    blocks.map((block) => {
+      if (block.type === 'ul' || block.type === 'ol') {
+        const listNode = list(block.type, block.items.map(() => ''))
+        // Liste maddelerinin içeriği bağlantı/kalın içerebileceğinden parçalardan kurulur
+        ;(listNode.children as LexicalNode[]).forEach((item, index) => {
+          item.children = legalInline(block.items[index], pageIds)
+        })
+        return listNode
+      }
+      const base = block.type === 'h2' ? heading('h2', '') : paragraph('')
+      return { ...base, children: legalInline((block as { runs: LegalRun[] }).runs, pageIds) }
+    }),
+  )
+
+/** Yasal metin sayfası: kısa başlık bandı + tek sütun içerik */
+const legalPage = (title: string, richText: RichText, description: string) => ({
+  title,
+  parent: null,
+  hero: lowHero(title),
+  layout: [{ blockType: 'content', columns: [{ size: 'full', richText }] }],
+  meta: meta(title, description),
+})
+
+log('\n— KVKK metinleri')
+const consentPageId = await upsertPage(
+  'acik-riza-beyani',
+  legalPage('Açık Rıza Beyanı', legalRich(legal.acikRiza), 'Dr.DENTES iletişim formu kişisel veri işleme açık rıza beyanı.'),
+)
+const privacyNoticePageId = await upsertPage(
+  'kisisel-verilerin-islenmesine-iliskin-aydinlatma',
+  legalPage(
+    'Kişisel Verilerin İşlenmesine İlişkin Aydınlatma',
+    legalRich(legal.aydinlatma, { 'acik-riza-beyani': consentPageId }),
+    '6698 sayılı KVKK 10. maddesi uyarınca Sanal Yazılım Ltd. Şti. kişisel veri işleme aydınlatma metni.',
+  ),
+)
+
+/**
+ * İletişim formunun onay alanları (drdentes.com.tr iletişim formundaki gibi):
+ * aydınlatma metni bağlantısı (bilgi metni), zorunlu açık rıza onayı ve isteğe bağlı ticari
+ * elektronik ileti onayı. Etiketteki "[metin](/adres)" kalıbı sitede bağlantıya çevrilir.
+ */
+const CONSENT_FIELD_NAMES = ['kvkkNotice', 'acikRiza', 'ticariIletiOnayi']
+const consentFields = [
+  {
+    blockType: 'message',
+    blockName: 'kvkkNotice',
+    message: root([
+      {
+        ...paragraph(''),
+        children: [
+          linkNode('page:aydinlatma', [textNode('Kişisel Verilerin İşlenmesine İlişkin Aydınlatma')], {
+            aydinlatma: privacyNoticePageId,
+          }),
+          textNode("'yı okumak için tıklayın."),
+        ],
+      },
+    ]),
+  },
+  {
+    blockType: 'checkbox',
+    name: 'acikRiza',
+    label: "[Açık Rıza Beyanı](/acik-riza-beyani)'nı okudum, kabul ediyorum.",
+    required: true,
+    width: 100,
+  },
+  {
+    blockType: 'checkbox',
+    name: 'ticariIletiOnayi',
+    label:
+      "15.07.2015 Çarşamba tarihli ve 29417 sayılı Resmi Gazete'de yayınlanan 'Ticari İletişim ve Ticari Elektronik İletiler Hakkında Yönetmelik'e uygun olarak tarafıma reklam, kampanya ve tanıtım amaçlı e-posta, SMS, telefon vb. yoluyla ticari elektronik iletiler gönderilmesine onay veriyorum.",
+    required: false,
+    width: 100,
+  },
+]
+
+if (formId) {
+  // Mevcut alanlar korunur; onay alanları (önceki sürümleri silinerek) en sona eklenir
+  const form = await payload.findByID({ collection: 'forms', id: formId, locale, depth: 0 })
+  const otherFields = (form.fields ?? []).filter((field) => {
+    const key = 'name' in field ? field.name : field.blockName
+    return !CONSENT_FIELD_NAMES.includes(key ?? '')
+  })
+  await payload.update({
+    collection: 'forms',
+    id: formId,
+    locale,
+    context,
+    data: { fields: [...otherFields, ...consentFields] as never },
+  })
+  log('✓ İletişim formuna KVKK onay alanları eklendi')
+}
+
 /** Ana sayfa hero'sunda cihazların çevresindeki özellik etiketleri (metin + ikon) */
 const HERO_FEATURES: { text: string; icon: string }[] = [
   { text: 'Sınırsız hekim ve kullanıcı yönetimi', icon: 'users' },
@@ -760,19 +901,36 @@ for (const feature of data.features) {
   const [first, ...rest] = feature.body
   const intro = first?.tag === 'p' ? first.text : undefined
   const bodyBlocks = intro ? rest : feature.body
-  const image = featureImages.get(feature.sourceId) ?? null
+  const sourceImage = featureImages.get(feature.sourceId) ?? null
+  // Admin'de değiştirilmiş içerik görseli korunur: sayfada orijinalden farklı bir görsel
+  // seçiliyse script onu ezmez (yalnızca görsel hiç yoksa orijinal görsel atanır)
+  const { docs: existing } = await payload.find({
+    collection: 'pages',
+    locale,
+    where: { slug: { equals: feature.slug } },
+    limit: 1,
+    depth: 0,
+    draft: true,
+  })
+  const existingDetail = existing[0]?.layout?.find((block) => block.blockType === 'featureDetail')
+  const existingMedia =
+    existingDetail && 'media' in existingDetail && typeof existingDetail.media === 'number'
+      ? existingDetail.media
+      : null
+  const image = existingMedia ?? sourceImage
   const id = await upsertPage(feature.slug, {
     title: feature.title,
     parent: featuresPageId,
     hero: lowHero(feature.title, intro),
+    // Sol 3/4: görsel + metin; sağ 1/4: diğer özellikler listesi (Tüm Özellikler kart grubu)
     layout: [
       {
-        blockType: 'featureSplit',
-        body: root(await blocksToNodes(bodyBlocks)),
+        blockType: 'featureDetail',
         media: image,
-        mediaPosition: 'end',
+        body: root(await blocksToNodes(bodyBlocks)),
+        sidebarHeading: 'Diğer Özellikler',
+        sidebarCardSet: allFeaturesSetId,
       },
-      { blockType: 'cards', heading: 'Diğer Özellikler', cardSet: allFeaturesSetId, columns: '3' },
     ],
     meta: meta(feature.title, feature.metaDescription || feature.points.join(', '), image),
   })
@@ -784,21 +942,16 @@ await upsertCardSet('Tüm Özellikler', { variant: 'services', cards: allFeature
 log('✓ Kart grubu: Tüm Özellikler (15)')
 
 // Menü menü ayrıntılı özellik listesi ("HASTA > Hasta Kartı" gibi satırlar alt başlık olur)
+/** "Dr.DENTES Özellikleri" sayfasının giriş metni */
+const FEATURE_CATALOG_INTRO =
+  'Dr.DENTES diş kliniği yönetim yazılımının menü menü tüm özellikleri. Aradığınız özelliği arama kutusuyla hızlıca bulun.'
+
 const fullListPageId = await upsertPage('drdentes-ozellikleri', {
   title: 'Dr.DENTES Özellikleri',
   parent: featuresPageId,
-  hero: lowHero('Dr.DENTES Özellikleri'),
-  layout: [
-    {
-      blockType: 'content',
-      columns: [
-        {
-          size: 'full',
-          richText: root(await blocksToNodes(data.allFeatures, { headingFor: (block) => (block.tag === 'p' ? 'h3' : null) })),
-        },
-      ],
-    },
-  ],
+  hero: lowHero('Dr.DENTES Özellikleri', FEATURE_CATALOG_INTRO),
+  // Aranabilir katalog: solda modül menüsü, sağda modüllere göre gruplanmış bölüm kartları
+  layout: [{ blockType: 'featureCatalog', groups: buildFeatureCatalogGroups(data.allFeatures) }],
   meta: meta('Dr.DENTES Özellikleri', 'Dr.DENTES diş kliniği yönetim yazılımının menü menü ayrıntılı özellik listesi.'),
 })
 
@@ -811,6 +964,8 @@ await upsertPage('ozellikler', {
     { blockType: 'cards', cardSet: allFeaturesSetId, columns: '3' },
     {
       blockType: 'cta',
+      // Koyu ana renk (lacivert) zeminli kutu
+      tone: 'dark',
       richText: rich({ h: 'h3', text: 'Dr.DENTES Özellikleri' }, 'Menü menü tüm özelliklerin ayrıntılı listesi.'),
       links: [{ link: pageLink(fullListPageId, 'Özelliklerin Hepsi İçin Tıklayın', 'default') }],
     },
@@ -958,6 +1113,14 @@ await upsertPage('home', {
       limit: 3,
       links: [{ link: pageLink(featuresPageId, 'Tüm Özellikler', 'outline') }],
     },
+    // Adımlar: ortadan inen S biçimli noktalı çizgi boyunca sağda/solda belirir
+    {
+      blockType: 'cards',
+      heading: 'Nasıl Kullanıcı Olabilirim?',
+      intro: STEPS_INTRO,
+      cardSet: stepsSetId,
+      layout: 'pathTimeline',
+    },
     {
       blockType: 'featureSplit',
       heading: 'Mobil Uygulamamızı Ücretsiz İndirin',
@@ -978,17 +1141,10 @@ await upsertPage('home', {
       ).filter((id): id is number => id !== null),
       mediaPosition: 'start',
     },
-    // Adımlar: ortadan inen S biçimli noktalı çizgi boyunca sağda/solda belirir
-    {
-      blockType: 'cards',
-      heading: 'Nasıl Kullanıcı Olabilirim?',
-      intro: STEPS_INTRO,
-      cardSet: stepsSetId,
-      layout: 'pathTimeline',
-    },
     // Kullanıcı etkileşimleri: en yeni 3 soru-yanıt + listeleme sayfasına buton (Blog'dan önce)
     {
       blockType: 'testimonials',
+      background: 'muted',
       heading: 'Kullanıcı Etkileşimleri',
       intro: TESTIMONIALS_INTRO,
       limit: 3,

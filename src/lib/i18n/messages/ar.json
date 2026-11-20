@@ -143,5 +143,17 @@
     "reply": "رد Dr.DENTES",
     "loadMore": "عرض المزيد",
     "announcement": "إعلان"
+  },
+  "FeatureDetail": {
+    "otherFeatures": "ميزات أخرى"
+  },
+  "FeatureCatalog": {
+    "modules": "الوحدات",
+    "searchPlaceholder": "ابحث في الميزات (مثل: موعد، رسائل SMS، فاتورة)",
+    "clear": "مسح البحث",
+    "results": "{count} نتيجة",
+    "total": "{count} ميزة في {modules} وحدات",
+    "noResults": "لا توجد ميزات مطابقة لبحثك.",
+    "featureCount": "{count} ميزة"
   }
 }

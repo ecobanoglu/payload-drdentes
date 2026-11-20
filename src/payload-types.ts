@@ -270,6 +270,8 @@ export interface Page {
   layout: (
     | CardsBlock
     | FeatureSplitBlock
+    | FeatureDetailBlock
+    | FeatureCatalogBlock
     | PricingBlock
     | PricingAddonsBlock
     | FaqBlock
@@ -721,6 +723,71 @@ export interface FeatureSplitBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureDetailBlock".
+ */
+export interface FeatureDetailBlock {
+  media?: (number | null) | Media;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Boş bırakılırsa "Diğer Özellikler" yazar.
+   */
+  sidebarHeading?: string | null;
+  /**
+   * Gruptaki bağlantılı kartların başlıkları listelenir (ör. "Tüm Özellikler").
+   */
+  sidebarCardSet?: (number | null) | CardSet;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featureDetail';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureCatalogBlock".
+ */
+export interface FeatureCatalogBlock {
+  groups?:
+    | {
+        /**
+         * Ör. "Hasta", "Randevu", "Rapor".
+         */
+        title: string;
+        icon?: ('patient' | 'calendar' | 'wallet' | 'chart' | 'document' | 'settings' | 'sparkles') | null;
+        sections?:
+          | {
+              /**
+               * Ör. "Hasta Kartı". Boş bırakılırsa modül adı kullanılır.
+               */
+              title?: string | null;
+              /**
+               * Her satır bir özellik maddesi olarak gösterilir.
+               */
+              items: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featureCatalog';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "PricingBlock".
  */
 export interface PricingBlock {
@@ -923,6 +990,7 @@ export interface Faq {
 export interface TestimonialsBlock {
   heading?: string | null;
   intro?: string | null;
+  background?: ('none' | 'muted') | null;
   /**
    * Ör. ana sayfada 3. Boş bırakılırsa tümü gösterilir ve kayıtlar "Daha fazla göster" ile parça parça açılır.
    */
@@ -960,6 +1028,7 @@ export interface TestimonialsBlock {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  tone?: ('light' | 'dark') | null;
   richText?: {
     root: {
       type: string;
@@ -1699,6 +1768,8 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         cards?: T | CardsBlockSelect<T>;
         featureSplit?: T | FeatureSplitBlockSelect<T>;
+        featureDetail?: T | FeatureDetailBlockSelect<T>;
+        featureCatalog?: T | FeatureCatalogBlockSelect<T>;
         pricing?: T | PricingBlockSelect<T>;
         pricingAddons?: T | PricingAddonsBlockSelect<T>;
         faq?: T | FaqBlockSelect<T>;
@@ -1802,6 +1873,40 @@ export interface FeatureSplitBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureDetailBlock_select".
+ */
+export interface FeatureDetailBlockSelect<T extends boolean = true> {
+  media?: T;
+  body?: T;
+  sidebarHeading?: T;
+  sidebarCardSet?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureCatalogBlock_select".
+ */
+export interface FeatureCatalogBlockSelect<T extends boolean = true> {
+  groups?:
+    | T
+    | {
+        title?: T;
+        icon?: T;
+        sections?:
+          | T
+          | {
+              title?: T;
+              items?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "PricingBlock_select".
  */
 export interface PricingBlockSelect<T extends boolean = true> {
@@ -1895,6 +2000,7 @@ export interface FaqBlockSelect<T extends boolean = true> {
 export interface TestimonialsBlockSelect<T extends boolean = true> {
   heading?: T;
   intro?: T;
+  background?: T;
   limit?: T;
   links?:
     | T
@@ -1919,6 +2025,7 @@ export interface TestimonialsBlockSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  tone?: T;
   richText?: T;
   links?:
     | T

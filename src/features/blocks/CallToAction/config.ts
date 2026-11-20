@@ -9,10 +9,24 @@ import {
 
 import { linkGroup } from '../../fields/linkGroup'
 
+/**
+ * "Call to Action" bloğu: kısa metin + buton(lar) içeren kutu.
+ * Görünüm: açık (kart zemini) veya koyu ana renk (lacivert, başlık bandıyla aynı).
+ */
 export const CallToAction: Block = {
   slug: 'cta',
   interfaceName: 'CallToActionBlock',
   fields: [
+    {
+      name: 'tone',
+      label: { tr: 'Görünüm', en: 'Tone' },
+      type: 'select',
+      defaultValue: 'light',
+      options: [
+        { label: { tr: 'Açık', en: 'Light' }, value: 'light' },
+        { label: { tr: 'Koyu ana renk (lacivert)', en: 'Dark brand (navy)' }, value: 'dark' },
+      ],
+    },
     {
       name: 'richText',
       type: 'richText',

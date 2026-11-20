@@ -143,5 +143,17 @@
     "reply": "Απάντηση του Dr.DENTES",
     "loadMore": "Εμφάνιση περισσότερων",
     "announcement": "Ανακοίνωση"
+  },
+  "FeatureDetail": {
+    "otherFeatures": "Άλλες λειτουργίες"
+  },
+  "FeatureCatalog": {
+    "modules": "Ενότητες",
+    "searchPlaceholder": "Αναζήτηση λειτουργιών (π.χ. ραντεβού, SMS, τιμολόγιο)",
+    "clear": "Εκκαθάριση αναζήτησης",
+    "results": "{count, plural, one {# αποτέλεσμα} other {# αποτελέσματα}}",
+    "total": "{count} λειτουργίες σε {modules} ενότητες",
+    "noResults": "Καμία λειτουργία δεν ταιριάζει με την αναζήτησή σας.",
+    "featureCount": "{count, plural, one {# λειτουργία} other {# λειτουργίες}}"
   }
 }

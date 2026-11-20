@@ -143,5 +143,17 @@
     "reply": "Respuesta de Dr.DENTES",
     "loadMore": "Mostrar más",
     "announcement": "Anuncio"
+  },
+  "FeatureDetail": {
+    "otherFeatures": "Otras funciones"
+  },
+  "FeatureCatalog": {
+    "modules": "Módulos",
+    "searchPlaceholder": "Buscar funciones (p. ej., cita, SMS, factura)",
+    "clear": "Borrar búsqueda",
+    "results": "{count, plural, one {# resultado} other {# resultados}}",
+    "total": "{count} funciones en {modules} módulos",
+    "noResults": "Ninguna función coincide con tu búsqueda.",
+    "featureCount": "{count, plural, one {# función} other {# funciones}}"
   }
 }

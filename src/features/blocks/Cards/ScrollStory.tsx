@@ -60,23 +60,22 @@ const CardVisual = ({ card, priority }: { card: Card; priority?: boolean }) => {
 }
 
 /**
- * Vurgulu kelime: marka mavisi zemin üzerinde beyaz yazı. `active` olunca zemin soldan sağa
- * (RTL dillerde sağdan sola) kayarak açılır; pasifken zemin hızla kapanır. Yazı rengi
- * geçişsizdir (hep beyaz).
+ * Vurgulu kelime: zeminsiz, altında marka mavisi kalın çizgi. `active` olunca çizgi soldan sağa
+ * (RTL dillerde sağdan sola) çizilerek açılır; pasifken hızla kapanır. Yazı rengi değişmez.
  * "Hareketi azalt" açıksa geçiş olmadan değişir.
  */
 const EmphasizedWord = ({ text, active }: { text: string; active: boolean }) => (
-  <span className="relative isolate inline-block px-[0.18em]">
+  <span className="relative inline-block">
+    {text}
     <span
       aria-hidden
       className={cn(
-        'absolute inset-0 -z-10 origin-left rounded-[0.18em] bg-brand transition-transform ease-out motion-reduce:transition-none rtl:origin-right',
+        // Kelimenin hemen altında, yazı boyutuyla orantılı kalınlıkta çizgi
+        'absolute inset-x-0 -bottom-[0.06em] h-[0.1em] origin-left rounded-full bg-brand transition-transform ease-out motion-reduce:transition-none rtl:origin-right',
         // Açılış: kartın metni belirdikten sonra başlar
         active ? 'scale-x-100 delay-300 duration-300' : 'scale-x-0 delay-0 duration-200',
       )}
     />
-    {/* Yazı rengi geçişsiz, hep beyaz: zemin soldan sağa açıldıkça kelime de zeminle birlikte görünür */}
-    <span className="text-white">{text}</span>
   </span>
 )
 
@@ -84,8 +83,8 @@ const EmphasizedWord = ({ text, active }: { text: string; active: boolean }) => 
  * Kartın metin içeriği: başlık + açıklama (+ isteğe bağlı bağlantı).
  * Başlık "her kelimenin ilk harfi büyük, diğerleri küçük" gösterilir (dile duyarlı;
  * ör. "SINIRSIZ Hekim ve Kullanıcı" → "Sınırsız Hekim ve Kullanıcı"). Panelde tamamı büyük
- * harfle yazılmış kelimeler (ör. "YOK") vurgu kabul edilir ve marka mavisi zeminle gösterilir.
- * `active`: kart görünür/etkin mi (vurgu zemini o zaman açılır).
+ * harfle yazılmış kelimeler (ör. "YOK") vurgu kabul edilir ve marka mavisi alt çizgiyle gösterilir.
+ * `active`: kart görünür/etkin mi (vurgu çizgisi o zaman açılır).
  */
 const CardText = ({
   card,

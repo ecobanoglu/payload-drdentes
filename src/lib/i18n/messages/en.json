@@ -143,5 +143,17 @@
     "reply": "Reply from Dr.DENTES",
     "loadMore": "Show more",
     "announcement": "Announcement"
+  },
+  "FeatureDetail": {
+    "otherFeatures": "Other Features"
+  },
+  "FeatureCatalog": {
+    "modules": "Modules",
+    "searchPlaceholder": "Search features (e.g. appointment, SMS, invoice)",
+    "clear": "Clear search",
+    "results": "{count, plural, one {# result} other {# results}}",
+    "total": "{count} features in {modules} modules",
+    "noResults": "No features match your search.",
+    "featureCount": "{count, plural, one {# feature} other {# features}}"
   }
 }

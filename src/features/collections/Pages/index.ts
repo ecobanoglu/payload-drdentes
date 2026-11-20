@@ -11,6 +11,8 @@ import { CardsBlock } from '../../blocks/Cards/config'
 import { ContactBlock } from '../../blocks/Contact/config'
 import { FaqBlock } from '../../blocks/Faq/config'
 import { TestimonialsBlock } from '../../blocks/Testimonials/config'
+import { FeatureCatalogBlock } from '../../blocks/FeatureCatalog/config'
+import { FeatureDetailBlock } from '../../blocks/FeatureDetail/config'
 import { FeatureSplitBlock } from '../../blocks/FeatureSplit/config'
 import { PricingBlock } from '../../blocks/Pricing/config'
 import { PricingAddonsBlock } from '../../blocks/PricingAddons/config'
@@ -94,6 +96,8 @@ export const Pages: CollectionConfig<'pages'> = {
               blocks: [
                 CardsBlock,
                 FeatureSplitBlock,
+                FeatureDetailBlock,
+                FeatureCatalogBlock,
                 PricingBlock,
                 PricingAddonsBlock,
                 FaqBlock,

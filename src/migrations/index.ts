@@ -26,6 +26,10 @@ import * as migration_20261120_112721_testimonials from './20261120_112721_testi
 import * as migration_20261120_113443_testimonials_type from './20261120_113443_testimonials_type';
 import * as migration_20261120_141818_faq_footnote from './20261120_141818_faq_footnote';
 import * as migration_20261120_151803_pricing_comparison_addons from './20261120_151803_pricing_comparison_addons';
+import * as migration_20261120_170345_feature_detail from './20261120_170345_feature_detail';
+import * as migration_20261120_173214_testimonials_background from './20261120_173214_testimonials_background';
+import * as migration_20261120_180344_feature_catalog from './20261120_180344_feature_catalog';
+import * as migration_20261120_180941_cta_tone from './20261120_180941_cta_tone';
 
 export const migrations = [
   {
@@ -166,6 +170,26 @@ export const migrations = [
   {
     up: migration_20261120_151803_pricing_comparison_addons.up,
     down: migration_20261120_151803_pricing_comparison_addons.down,
-    name: '20261120_151803_pricing_comparison_addons'
+    name: '20261120_151803_pricing_comparison_addons',
+  },
+  {
+    up: migration_20261120_170345_feature_detail.up,
+    down: migration_20261120_170345_feature_detail.down,
+    name: '20261120_170345_feature_detail',
+  },
+  {
+    up: migration_20261120_173214_testimonials_background.up,
+    down: migration_20261120_173214_testimonials_background.down,
+    name: '20261120_173214_testimonials_background',
+  },
+  {
+    up: migration_20261120_180344_feature_catalog.up,
+    down: migration_20261120_180344_feature_catalog.down,
+    name: '20261120_180344_feature_catalog',
+  },
+  {
+    up: migration_20261120_180941_cta_tone.up,
+    down: migration_20261120_180941_cta_tone.down,
+    name: '20261120_180941_cta_tone'
   },
 ];

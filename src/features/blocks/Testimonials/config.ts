@@ -7,6 +7,7 @@ import { linkGroup } from '../../fields/linkGroup'
  * kartlar halinde gösterir (en yeni yanıt önce).
  *
  * - Ana sayfada "En fazla kayıt" ile birkaç kayıt + listeleme sayfasına giden buton.
+ * - "Açık gri" arka planda bölüm tam genişlikte gri şerit üzerinde gösterilir.
  * - Listeleme sayfasında sınır boş bırakılır: kayıtlar parça parça ("Daha fazla göster") açılır.
  */
 export const TestimonialsBlock: Block = {
@@ -19,6 +20,17 @@ export const TestimonialsBlock: Block = {
   fields: [
     { name: 'heading', label: { tr: 'Bölüm başlığı', en: 'Section heading' }, type: 'text' },
     { name: 'intro', label: { tr: 'Giriş metni', en: 'Intro text' }, type: 'textarea' },
+    {
+      // Bölüm zemini: sayfa zemini veya tam genişlikte açık gri şerit (Cards bloğundaki gibi)
+      name: 'background',
+      label: { tr: 'Arka plan', en: 'Background' },
+      type: 'select',
+      defaultValue: 'none',
+      options: [
+        { label: { tr: 'Yok', en: 'None' }, value: 'none' },
+        { label: { tr: 'Açık gri (muted)', en: 'Light gray (muted)' }, value: 'muted' },
+      ],
+    },
     {
       name: 'limit',
       label: { tr: 'En fazla kayıt', en: 'Maximum items' },

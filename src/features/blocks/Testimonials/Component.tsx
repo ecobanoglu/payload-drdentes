@@ -9,6 +9,7 @@ import { Reveal } from '@/components/animation/Reveal'
 import { CMSLink } from '@/components/Link'
 import { SectionHeader } from '@/components/SectionHeader'
 import type { Locale } from '@/lib/i18n/config'
+import { cn } from '@/lib/utilities/ui'
 import { TestimonialList, type TestimonialItem } from './TestimonialList.client'
 
 /** Addan avatar için baş harfler: "Gazi B." → "GB" */
@@ -28,12 +29,14 @@ const getInitials = (name: string, locale: string) =>
  * - `limit` girildiyse yalnızca o kadar kayıt; boşsa tümü "Daha fazla göster" ile parça parça.
  * - Tarihler dile göre biçimlenir (ör. "6 Kasım 2026").
  * - Kartların altında isteğe bağlı butonlar (ör. "Tümünü Gör").
+ * - `background: 'muted'`: bölüm tam genişlikte açık gri zemin üzerinde.
  */
 export async function TestimonialsBlockComponent({
   heading,
   intro,
   limit,
   links,
+  background,
 }: TestimonialsBlockProps) {
   const locale = (await getLocale()) as Locale
   const payload = await getPayload({ config: configPromise })
@@ -80,19 +83,22 @@ export async function TestimonialsBlockComponent({
   if (items.length === 0) return null
 
   return (
-    <section className="container">
-      <SectionHeader heading={heading} intro={intro} className="mb-10" />
-      {/* Liste kaydırınca belirir */}
-      <Reveal>
-        <TestimonialList items={items} paginate={!limit} />
-      </Reveal>
-      {Array.isArray(links) && links.length > 0 && (
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
-          {links.map(({ link }, index) => (
-            <CMSLink key={index} size="lg" {...link} />
-          ))}
-        </div>
-      )}
+    // Açık gri zemin: tam genişlik şerit + iç boşluk; kartlar beyaz (bg-background) kalır
+    <section className={cn(background === 'muted' && 'bg-muted py-16 md:py-24')}>
+      <div className="container">
+        <SectionHeader heading={heading} intro={intro} className="mb-10" />
+        {/* Liste kaydırınca belirir */}
+        <Reveal>
+          <TestimonialList items={items} paginate={!limit} />
+        </Reveal>
+        {Array.isArray(links) && links.length > 0 && (
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {links.map(({ link }, index) => (
+              <CMSLink key={index} size="lg" {...link} />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   )
 }

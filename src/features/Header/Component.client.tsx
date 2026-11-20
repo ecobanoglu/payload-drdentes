@@ -1,6 +1,7 @@
 'use client'
 import { useHeaderTheme } from '@/lib/providers/HeaderTheme'
 import { Link, usePathname } from '@/lib/i18n/navigation'
+import { useLenis } from 'lenis/react'
 import React, { useEffect, useRef, useState } from 'react'
 
 import type { Header } from '@/payload-types'
@@ -82,6 +83,22 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const pathname = usePathname()
   const scrollState = useHeaderScrollState()
   const isTop = scrollState === 'top'
+  // Yumuşak kaydırma örneği ("Hareketi azalt" açıksa yoktur)
+  const lenis = useLenis()
+
+  /**
+   * Logo tıklaması: ana sayfadayken aynı adrese gezinme bir şey yapmadığı için sayfa en üste
+   * (hero'ya) kaydırılır. Diğer sayfalarda bağlantı normal çalışır (ana sayfaya gider).
+   * Yeni sekmede açma (Ctrl/Cmd/Shift tıklaması, orta tuş) engellenmez.
+   */
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== '/') return
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+      return
+    event.preventDefault()
+    if (lenis) lenis.scrollTo(0)
+    else window.scrollTo({ top: 0 })
+  }
 
   useEffect(() => {
     setHeaderTheme(null)
@@ -108,7 +125,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         {...(isTop ? { 'data-header-top': '' } : {})}
         className={cn(
           'inset-x-0 top-0 transition-[transform,background-color,box-shadow,padding] duration-300 ease-out',
-          isTop ? 'absolute' : 'fixed border-b border-border/60 bg-background/85 shadow-sm backdrop-blur-md',
+          isTop
+            ? 'absolute'
+            : 'fixed border-b border-border/60 bg-background/85 shadow-sm backdrop-blur-md',
           scrollState === 'hidden' && '-translate-y-full',
         )}
       >
@@ -118,7 +137,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             isTop ? 'py-8' : 'py-3',
           )}
         >
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" onClick={handleLogoClick}>
             <Logo />
           </Link>
           <div className="flex items-center gap-6">
