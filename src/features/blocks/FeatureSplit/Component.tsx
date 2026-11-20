@@ -98,7 +98,7 @@ export function FeatureSplitBlockComponent({
           {eyebrow}
         </p>
       )}
-      {heading && <h2 className="mb-5 text-3xl font-semibold md:text-4xl">{heading}</h2>}
+      {heading && <h2 className="mb-5 text-3xl font-bold md:text-4xl">{heading}</h2>}
       {body && (
         <RichText data={body} enableGutter={false} className="max-w-none text-muted-foreground" />
       )}

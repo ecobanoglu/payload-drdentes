@@ -70,6 +70,7 @@ export interface Config {
     pages: Page;
     posts: Post;
     faqs: Faq;
+    testimonials: Testimonial;
     'pricing-plans': PricingPlan;
     categories: Category;
     media: Media;
@@ -95,6 +96,7 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -269,7 +271,9 @@ export interface Page {
     | CardsBlock
     | FeatureSplitBlock
     | PricingBlock
+    | PricingAddonsBlock
     | FaqBlock
+    | TestimonialsBlock
     | CallToActionBlock
     | ContactBlock
     | ContentBlock
@@ -732,6 +736,29 @@ export interface PricingBlock {
    * Her satır ayrı paragraf olarak gösterilir.
    */
   footnote?: string | null;
+  comparisonHeading?: string | null;
+  /**
+   * Boş bırakılırsa tablo gösterilmez. Değerler kartlardaki plan sırasıyla girilir; "✓" tik, "—" çizgi olarak gösterilir.
+   */
+  comparison?:
+    | {
+        title: string;
+        rows?:
+          | {
+              label: string;
+              hint?: string | null;
+              values?:
+                | {
+                    value?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'pricing';
@@ -791,9 +818,41 @@ export interface PricingPlan {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingAddonsBlock".
+ */
+export interface PricingAddonsBlock {
+  heading?: string | null;
+  intro?: string | null;
+  items?:
+    | {
+        title: string;
+        description?: string | null;
+        tiers?:
+          | {
+              label: string;
+              price: string;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Her satır ayrı paragraf olarak gösterilir.
+         */
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingAddons';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "FaqBlock".
  */
 export interface FaqBlock {
+  /**
+   * İki cümle yazılırsa ikinci cümle soluk renkte görünür (ör. "Sorularınız mı var? Yanıtları burada.").
+   */
   heading?: string | null;
   intro?: string | null;
   source?: ('all' | 'category' | 'selected') | null;
@@ -803,6 +862,27 @@ export interface FaqBlock {
    * Boş bırakılırsa tümü gösterilir (ör. ana sayfada 5).
    */
   limit?: number | null;
+  footnote?: string | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'faq';
@@ -835,6 +915,45 @@ export interface Faq {
   category: 'general' | 'product' | 'pricing' | 'security' | 'support';
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock".
+ */
+export interface TestimonialsBlock {
+  heading?: string | null;
+  intro?: string | null;
+  /**
+   * Ör. ana sayfada 3. Boş bırakılırsa tümü gösterilir ve kayıtlar "Daha fazla göster" ile parça parça açılır.
+   */
+  limit?: number | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1213,6 +1332,29 @@ export interface FormBlock {
   blockType: 'formBlock';
 }
 /**
+ * Kullanıcı soruları/istekleri ile Dr.DENTES yanıtları ve Dr.DENTES duyuruları. Sitede tarihe göre (en yeni üstte) sıralanır.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  type: 'qa' | 'announcement';
+  /**
+   * Ad ve soyadın baş harfi (ör. "Gazi B.").
+   */
+  author: string;
+  questionDate?: string | null;
+  /**
+   * Diğer dillerde boş bırakılan kayıt o dilde gösterilmez.
+   */
+  question?: string | null;
+  answer?: string | null;
+  answerDate: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
@@ -1415,6 +1557,10 @@ export interface PayloadLockedDocument {
         value: number | Faq;
       } | null)
     | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
+      } | null)
+    | ({
         relationTo: 'pricing-plans';
         value: number | PricingPlan;
       } | null)
@@ -1554,7 +1700,9 @@ export interface PagesSelect<T extends boolean = true> {
         cards?: T | CardsBlockSelect<T>;
         featureSplit?: T | FeatureSplitBlockSelect<T>;
         pricing?: T | PricingBlockSelect<T>;
+        pricingAddons?: T | PricingAddonsBlockSelect<T>;
         faq?: T | FaqBlockSelect<T>;
+        testimonials?: T | TestimonialsBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
         contact?: T | ContactBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
@@ -1663,6 +1811,51 @@ export interface PricingBlockSelect<T extends boolean = true> {
   defaultPeriod?: T;
   showToggle?: T;
   footnote?: T;
+  comparisonHeading?: T;
+  comparison?:
+    | T
+    | {
+        title?: T;
+        rows?:
+          | T
+          | {
+              label?: T;
+              hint?: T;
+              values?:
+                | T
+                | {
+                    value?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingAddonsBlock_select".
+ */
+export interface PricingAddonsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        tiers?:
+          | T
+          | {
+              label?: T;
+              price?: T;
+              id?: T;
+            };
+        note?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1677,6 +1870,47 @@ export interface FaqBlockSelect<T extends boolean = true> {
   category?: T;
   items?: T;
   limit?: T;
+  footnote?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock_select".
+ */
+export interface TestimonialsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  limit?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1831,6 +2065,20 @@ export interface FaqsSelect<T extends boolean = true> {
   question?: T;
   answer?: T;
   category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  type?: T;
+  author?: T;
+  questionDate?: T;
+  question?: T;
+  answer?: T;
+  answerDate?: T;
   updatedAt?: T;
   createdAt?: T;
 }

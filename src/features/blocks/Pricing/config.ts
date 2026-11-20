@@ -1,8 +1,12 @@
 import type { Block } from 'payload'
 
 /**
- * "Fiyatlandırma" bloğu: fiyat planlarını kartlar halinde, aylık/yıllık geçişiyle gösterir.
- * Plan seçilmezse tüm planlar admin'deki sıraya göre gösterilir.
+ * "Fiyatlandırma" bloğu (Supabase pricing düzeni):
+ *
+ * - Fiyat planları yan yana kartlar halinde (geniş ekranda tek şerit; öne çıkan plan yükseltilmiş),
+ *   isteğe bağlı aylık/yıllık geçişiyle. Plan seçilmezse tüm planlar admin'deki sıraya göre.
+ * - Kartların altında isteğe bağlı "Paketleri karşılaştırın" tablosu: gruplar → satırlar →
+ *   her plan için bir değer (sütun sırası = kartların sırası).
  */
 export const PricingBlock: Block = {
   slug: 'pricing',
@@ -51,6 +55,58 @@ export const PricingBlock: Block = {
       label: { tr: 'Dipnot', en: 'Footnote' },
       type: 'textarea',
       admin: { description: 'Her satır ayrı paragraf olarak gösterilir.' },
+    },
+    {
+      name: 'comparisonHeading',
+      label: { tr: 'Karşılaştırma tablosu başlığı', en: 'Comparison table heading' },
+      type: 'text',
+      admin: { placeholder: 'Paketleri karşılaştırın' },
+    },
+    {
+      // Karşılaştırma tablosu: her grup bir ara başlık (ör. "Kapasite"), altında satırlar
+      name: 'comparison',
+      label: { tr: 'Karşılaştırma tablosu', en: 'Comparison table' },
+      labels: {
+        singular: { tr: 'Grup', en: 'Group' },
+        plural: { tr: 'Gruplar', en: 'Groups' },
+      },
+      type: 'array',
+      admin: {
+        initCollapsed: true,
+        description:
+          'Boş bırakılırsa tablo gösterilmez. Değerler kartlardaki plan sırasıyla girilir; "✓" tik, "—" çizgi olarak gösterilir.',
+      },
+      fields: [
+        { name: 'title', label: { tr: 'Grup başlığı', en: 'Group title' }, type: 'text', required: true },
+        {
+          name: 'rows',
+          label: { tr: 'Satırlar', en: 'Rows' },
+          labels: {
+            singular: { tr: 'Satır', en: 'Row' },
+            plural: { tr: 'Satırlar', en: 'Rows' },
+          },
+          type: 'array',
+          fields: [
+            { name: 'label', label: { tr: 'Özellik', en: 'Feature' }, type: 'text', required: true },
+            {
+              // Satırın altında küçük açıklama (ör. "Telefon, tablet, bilgisayar…")
+              name: 'hint',
+              label: { tr: 'Açıklama', en: 'Hint' },
+              type: 'text',
+            },
+            {
+              name: 'values',
+              label: { tr: 'Plan değerleri (sırayla)', en: 'Plan values (in order)' },
+              labels: {
+                singular: { tr: 'Değer', en: 'Value' },
+                plural: { tr: 'Değerler', en: 'Values' },
+              },
+              type: 'array',
+              fields: [{ name: 'value', label: { tr: 'Değer', en: 'Value' }, type: 'text' }],
+            },
+          ],
+        },
+      ],
     },
   ],
 }

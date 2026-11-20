@@ -22,6 +22,10 @@ import * as migration_20261119_115159_feature_split_shifting_background from './
 import * as migration_20261120_094622_cards_path_timeline from './20261120_094622_cards_path_timeline';
 import * as migration_20261120_094904_remove_feature_split_phone_pair from './20261120_094904_remove_feature_split_phone_pair';
 import * as migration_20261120_111340_archive_links from './20261120_111340_archive_links';
+import * as migration_20261120_112721_testimonials from './20261120_112721_testimonials';
+import * as migration_20261120_113443_testimonials_type from './20261120_113443_testimonials_type';
+import * as migration_20261120_141818_faq_footnote from './20261120_141818_faq_footnote';
+import * as migration_20261120_151803_pricing_comparison_addons from './20261120_151803_pricing_comparison_addons';
 
 export const migrations = [
   {
@@ -142,6 +146,26 @@ export const migrations = [
   {
     up: migration_20261120_111340_archive_links.up,
     down: migration_20261120_111340_archive_links.down,
-    name: '20261120_111340_archive_links'
+    name: '20261120_111340_archive_links',
+  },
+  {
+    up: migration_20261120_112721_testimonials.up,
+    down: migration_20261120_112721_testimonials.down,
+    name: '20261120_112721_testimonials',
+  },
+  {
+    up: migration_20261120_113443_testimonials_type.up,
+    down: migration_20261120_113443_testimonials_type.down,
+    name: '20261120_113443_testimonials_type',
+  },
+  {
+    up: migration_20261120_141818_faq_footnote.up,
+    down: migration_20261120_141818_faq_footnote.down,
+    name: '20261120_141818_faq_footnote',
+  },
+  {
+    up: migration_20261120_151803_pricing_comparison_addons.up,
+    down: migration_20261120_151803_pricing_comparison_addons.down,
+    name: '20261120_151803_pricing_comparison_addons'
   },
 ];

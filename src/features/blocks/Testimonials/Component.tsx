@@ -1,0 +1,98 @@
+import configPromise from '@payload-config'
+import { getLocale } from 'next-intl/server'
+import { getPayload } from 'payload'
+import React from 'react'
+
+import type { TestimonialsBlock as TestimonialsBlockProps } from '@/payload-types'
+
+import { Reveal } from '@/components/animation/Reveal'
+import { CMSLink } from '@/components/Link'
+import { SectionHeader } from '@/components/SectionHeader'
+import type { Locale } from '@/lib/i18n/config'
+import { TestimonialList, type TestimonialItem } from './TestimonialList.client'
+
+/** Addan avatar için baş harfler: "Gazi B." → "GB" */
+const getInitials = (name: string, locale: string) =>
+  name
+    .split(/\s+/)
+    .map((part) => Array.from(part.replace(/[^\p{L}]/gu, ''))[0] ?? '')
+    .join('')
+    .slice(0, 2)
+    .toLocaleUpperCase(locale)
+
+/**
+ * "Kullanıcı Etkileşimleri" (Testimonials) bloğunun görünümü.
+ *
+ * - Kayıtlar (soru-yanıtlar ve Dr.DENTES duyuruları) aktif dilde, tarihe göre (en yeni önce)
+ *   tek akışta getirilir; bu dile çevrilmemiş (içeriği boş) kayıtlar gösterilmez.
+ * - `limit` girildiyse yalnızca o kadar kayıt; boşsa tümü "Daha fazla göster" ile parça parça.
+ * - Tarihler dile göre biçimlenir (ör. "6 Kasım 2026").
+ * - Kartların altında isteğe bağlı butonlar (ör. "Tümünü Gör").
+ */
+export async function TestimonialsBlockComponent({
+  heading,
+  intro,
+  limit,
+  links,
+}: TestimonialsBlockProps) {
+  const locale = (await getLocale()) as Locale
+  const payload = await getPayload({ config: configPromise })
+
+  const { docs } = await payload.find({
+    collection: 'testimonials',
+    locale,
+    fallbackLocale: false,
+    depth: 0,
+    limit: limit && limit > 0 ? limit : 500,
+    pagination: false,
+    sort: '-answerDate',
+    // Bu dilde içeriği olan kayıtlar: soru-yanıtta soru, duyuruda metin dolu olmalı
+    where: {
+      or: [
+        { and: [{ type: { equals: 'qa' } }, { question: { exists: true } }] },
+        { and: [{ type: { equals: 'announcement' } }, { answer: { exists: true } }] },
+      ],
+    },
+  })
+
+  const formatDate = new Intl.DateTimeFormat(locale, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+  const items: TestimonialItem[] = docs
+    .filter((doc) => (doc.type === 'announcement' ? Boolean(doc.answer) : Boolean(doc.question)))
+    .map((doc) => ({
+      id: doc.id,
+      type: doc.type,
+      author: doc.author,
+      initials: getInitials(doc.author, locale),
+      question: doc.question ?? '',
+      questionDate: doc.questionDate ?? undefined,
+      questionDateLabel: doc.questionDate
+        ? formatDate.format(new Date(doc.questionDate))
+        : undefined,
+      answer: doc.answer ?? undefined,
+      answerDate: doc.answerDate,
+      answerDateLabel: formatDate.format(new Date(doc.answerDate)),
+    }))
+
+  if (items.length === 0) return null
+
+  return (
+    <section className="container">
+      <SectionHeader heading={heading} intro={intro} className="mb-10" />
+      {/* Liste kaydırınca belirir */}
+      <Reveal>
+        <TestimonialList items={items} paginate={!limit} />
+      </Reveal>
+      {Array.isArray(links) && links.length > 0 && (
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          {links.map(({ link }, index) => (
+            <CMSLink key={index} size="lg" {...link} />
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}

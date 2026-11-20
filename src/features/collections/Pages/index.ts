@@ -10,8 +10,10 @@ import { FormBlock } from '../../blocks/Form/config'
 import { CardsBlock } from '../../blocks/Cards/config'
 import { ContactBlock } from '../../blocks/Contact/config'
 import { FaqBlock } from '../../blocks/Faq/config'
+import { TestimonialsBlock } from '../../blocks/Testimonials/config'
 import { FeatureSplitBlock } from '../../blocks/FeatureSplit/config'
 import { PricingBlock } from '../../blocks/Pricing/config'
+import { PricingAddonsBlock } from '../../blocks/PricingAddons/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/features/heros/config'
 import { slugField } from 'payload'
@@ -93,7 +95,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 CardsBlock,
                 FeatureSplitBlock,
                 PricingBlock,
+                PricingAddonsBlock,
                 FaqBlock,
+                TestimonialsBlock,
                 CallToAction,
                 ContactBlock,
                 Content,

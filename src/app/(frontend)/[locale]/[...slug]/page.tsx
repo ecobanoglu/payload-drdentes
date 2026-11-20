@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { PageHeader } from '@/components/PageHeader'
+import RichText from '@/components/RichText'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { setRequestLocale } from 'next-intl/server'
@@ -88,6 +90,10 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   const { hero, layout } = page
+  // İç sayfalarda (ana sayfa hariç) hero "Düşük etkili" ya da boşsa lacivert başlık bandı gösterilir:
+  // breadcrumb + hero metni (başlık + açıklama); hero metni yoksa sayfa başlığı
+  const isHome = page.slug === 'home'
+  const usePageHeader = !isHome && (!hero?.type || hero.type === 'none' || hero.type === 'lowImpact')
   const paths = 'id' in page && page.id ? await getLocalizedPaths('pages', page.id) : undefined
 
   return (
@@ -99,8 +105,28 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <Breadcrumbs crumbs={page.breadcrumbs} locale={locale} />
-      <RenderHero {...hero} />
+      {usePageHeader ? (
+        // -mt: article'ın üst boşluğu (4rem) + header (6.5rem); bant sayfanın en üstünden başlar
+        <PageHeader
+          locale={locale}
+          crumbs={page.breadcrumbs}
+          title={page.title}
+          className="-mt-[10.5rem]"
+        >
+          {hero?.type === 'lowImpact' && hero.richText ? (
+            <RichText
+              data={hero.richText}
+              enableGutter={false}
+              className="max-w-none [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:leading-tight [&_h1]:text-balance [&_h1]:text-white md:[&_h1]:text-5xl [&_p]:text-lg [&_p]:text-white/70"
+            />
+          ) : undefined}
+        </PageHeader>
+      ) : (
+        <>
+          <Breadcrumbs crumbs={page.breadcrumbs} locale={locale} />
+          <RenderHero {...hero} />
+        </>
+      )}
       <RenderBlocks blocks={layout} />
     </article>
   )

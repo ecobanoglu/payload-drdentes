@@ -14,6 +14,7 @@
   },
   "Posts": {
     "title": "Blog",
+    "description": "Diş hekimliği, klinik yönetimi ve Dr.DENTES'teki yenilikler üzerine yazılar.",
     "metaTitle": "Blog",
     "pageMetaTitle": "Blog – Sayfa {page}"
   },
@@ -72,7 +73,12 @@
     "save": "%{percent} tasarruf",
     "popular": "En popüler",
     "customPrice": "Size özel",
-    "perYear": "/yıl"
+    "perYear": "/yıl",
+    "includes": "Pakete dahil:",
+    "compareHeading": "Paketleri karşılaştırın",
+    "feature": "Özellik",
+    "included": "Dahil",
+    "notIncluded": "Dahil değil"
   },
   "Contact": {
     "email": "E-posta",
@@ -132,5 +138,10 @@
     "rootCanal": "Kanal Tedavisi",
     "implant": "İmplant",
     "caption": "Dr.DENTES arayüzünün temsili animasyonu"
+  },
+  "Testimonials": {
+    "reply": "Dr.DENTES yanıtı",
+    "loadMore": "Daha fazla göster",
+    "announcement": "Duyuru"
   }
 }

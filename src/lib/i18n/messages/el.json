@@ -14,6 +14,7 @@
   },
   "Posts": {
     "title": "Blog",
+    "description": "Άρθρα για την οδοντιατρική, τη διαχείριση κλινικών και τα νέα του Dr.DENTES.",
     "metaTitle": "Blog",
     "pageMetaTitle": "Blog – Σελίδα {page}"
   },
@@ -72,7 +73,12 @@
     "save": "Εξοικονόμηση {percent}%",
     "popular": "Πιο δημοφιλές",
     "customPrice": "Κατόπιν προσφοράς",
-    "perYear": "/έτος"
+    "perYear": "/έτος",
+    "includes": "Περιλαμβάνει:",
+    "compareHeading": "Συγκρίνετε τα πακέτα",
+    "feature": "Χαρακτηριστικό",
+    "included": "Περιλαμβάνεται",
+    "notIncluded": "Δεν περιλαμβάνεται"
   },
   "Contact": {
     "email": "Email",
@@ -132,5 +138,10 @@
     "rootCanal": "Απονεύρωση",
     "implant": "Εμφύτευμα",
     "caption": "Ενδεικτικό κινούμενο σχέδιο της διεπαφής Dr.DENTES"
+  },
+  "Testimonials": {
+    "reply": "Απάντηση του Dr.DENTES",
+    "loadMore": "Εμφάνιση περισσότερων",
+    "announcement": "Ανακοίνωση"
   }
 }

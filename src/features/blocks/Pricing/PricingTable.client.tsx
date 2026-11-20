@@ -49,9 +49,12 @@ const priceFor = (plan: PricingPlan, period: Period): Price | null => {
 }
 
 /**
- * Fiyat kartları ve aylık/yıllık geçişi (tarayıcı bileşeni).
+ * Fiyat kartları ve aylık/yıllık geçişi (tarayıcı bileşeni), Supabase pricing düzeninde.
  *
- * - Öne çıkarılan plan ana renkte çerçeve ve rozetle vurgulanır.
+ * - Geniş ekranda (xl) kartlar tek bir şerit halinde birleşir; öne çıkan plan şeritten taşan,
+ *   gölgeli ve marka renginde çerçeveli bir kart olur. Daha dar ekranlarda ayrı kartlar.
+ * - Kart iki bölümlüdür (lg ve üstünde satırlar arası hizalı, CSS subgrid): üstte ad + rozet,
+ *   açıklama, fiyat, buton ve not kutusu; altta "Pakete dahil" özellik listesi.
  * - Yıllık seçenekte en yüksek tasarruf oranı geçiş düğmesinin yanında gösterilir.
  * - Özel teklif planlarında fiyat yerine CMS'teki metin ("Size özel") yazar.
  */
@@ -109,102 +112,132 @@ export function PricingTable({
         </div>
       )}
 
-      <Reveal stagger={0.1}>
+      <Reveal stagger={0.08}>
         <ul
           className={cn(
-            'grid grid-cols-1 items-stretch gap-6',
-            plans.length === 2 && 'md:grid-cols-2 md:mx-auto md:max-w-4xl',
-            plans.length >= 3 && 'md:grid-cols-2 lg:grid-cols-3',
-            plans.length === 4 && 'xl:grid-cols-4',
-            plans.length >= 5 && 'xl:grid-cols-5',
+            'mx-auto grid max-w-md grid-cols-1 gap-4 lg:max-w-none',
+            plans.length === 2 && 'lg:max-w-4xl lg:grid-cols-2',
+            plans.length >= 3 && 'lg:grid-cols-3',
+            // xl: kartlar aralıksız tek şerit
+            plans.length === 4 && 'xl:grid-cols-4 xl:gap-x-0',
+            plans.length >= 5 && 'xl:grid-cols-5 xl:gap-x-0',
           )}
         >
           {plans.map((plan) => {
             const isCustom = plan.pricingType === 'custom'
             const price = isCustom ? null : priceFor(plan, period)
             const currency = plan.currency ?? 'TRY'
+            // Not kutusu: yıllık faturalandırma bilgisi (aylık/yıllık fiyatı olan planlarda)
+            const noteLines = [
+              price?.billedYearly
+                ? t('billedYearly', { amount: formatMoney(price.billedYearly, currency, locale) })
+                : null,
+            ].filter(Boolean)
 
             return (
               <li
                 key={plan.id}
                 data-reveal-item
                 className={cn(
-                  'relative flex flex-col rounded-2xl border bg-card',
-                  // 5 sütunda kartlar dar kalır; iç boşluk küçülür
-                  plans.length >= 5 ? 'p-6' : 'p-8',
+                  // lg+: iki satırlık subgrid → üst/alt bölümler satır boyunca hizalı
+                  'flex flex-col rounded-2xl border lg:row-span-2 lg:grid lg:grid-rows-subgrid lg:gap-y-0',
                   plan.highlighted
-                    ? 'border-primary shadow-lg ring-1 ring-primary'
-                    : 'border-border',
+                    ? 'relative z-10 border-primary bg-card shadow-xl ring-1 ring-primary xl:-my-3'
+                    : // Şeritte kartlar arası tek çizgi: sağ kenar yalnızca son kartta; köşeler yalnızca uçlarda
+                      'border-border bg-background xl:rounded-none xl:border-e-0 xl:first:rounded-s-2xl xl:last:rounded-e-2xl xl:last:border-e',
                 )}
               >
-                {plan.highlighted && (
-                  <span className="absolute -top-3 start-8 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
-                    {plan.badge || t('popular')}
-                  </span>
-                )}
-
-                <h3 className="text-xl font-semibold">{plan.name}</h3>
-                {plan.description && (
-                  <p className="mt-2 text-sm text-muted-foreground">{plan.description}</p>
-                )}
-
-                <div className="mt-6 min-h-[4.5rem]">
-                  {isCustom || !price ? (
-                    <p className="text-4xl font-bold tracking-tight">
-                      {plan.customPriceLabel || t('customPrice')}
+                {/* Üst bölüm: ad, açıklama, fiyat, buton, not */}
+                <div className={cn('flex flex-col px-6 pt-6', plan.highlighted && 'xl:pt-9')}>
+                  <div className="flex items-center justify-between gap-2 pb-2">
+                    <h3 className="text-2xl font-semibold">{plan.name}</h3>
+                    {plan.highlighted && (
+                      <span className="whitespace-nowrap rounded-md bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
+                        {plan.badge || t('popular')}
+                      </span>
+                    )}
+                  </div>
+                  {plan.description && (
+                    <p className="mb-6 text-sm text-black/70 lg:min-h-[3lh] dark:text-white/70">
+                      {plan.description}
                     </p>
-                  ) : (
-                    <>
-                      <p className="flex flex-wrap items-baseline gap-1">
-                        <span className="text-4xl font-bold tracking-tight">
+                  )}
+
+                  <div className="mb-6">
+                    {/* Fiyatın üstündeki küçük not (ör. "KDV dahil") */}
+                    <p className="min-h-[1lh] text-[0.8125rem] text-black/60 dark:text-white/60">
+                      {!isCustom && plan.priceNote}
+                    </p>
+                    {isCustom || !price ? (
+                      <p className="mt-2 text-4xl font-bold tracking-tight lg:min-h-12">
+                        {plan.customPriceLabel || t('customPrice')}
+                      </p>
+                    ) : (
+                      <p className="mt-2 flex flex-wrap items-baseline gap-1 lg:min-h-12">
+                        <span className="text-4xl font-bold tracking-tight tabular-nums">
                           {formatMoney(price.amount, currency, locale)}
                         </span>
-                        <span className="text-muted-foreground">
+                        <span className="text-[0.8125rem] text-black/60 dark:text-white/60">
                           {t(price.unit === 'year' ? 'perYear' : 'perMonth')}
                         </span>
                       </p>
-                      {plan.priceNote && (
-                        <p className="mt-1 text-sm text-muted-foreground">{plan.priceNote}</p>
-                      )}
-                      {price.billedYearly && (
-                        <p className="mt-1 text-sm text-muted-foreground">
-                          {t('billedYearly', {
-                            amount: formatMoney(price.billedYearly, currency, locale),
-                          })}
-                        </p>
-                      )}
-                    </>
+                    )}
+                  </div>
+
+                  {plan.link && (
+                    <CMSLink
+                      {...plan.link}
+                      appearance={plan.highlighted ? 'default' : 'outline'}
+                      className="w-full"
+                      size="lg"
+                    />
                   )}
+
+                  {noteLines.length > 0 && (
+                    // Girintili not kutusu (Supabase "recessed" kutusu)
+                    <p className="mt-4 rounded-lg bg-muted px-3 py-2.5 text-[0.8125rem] leading-5 text-black/70 dark:text-white/70">
+                      {noteLines.map((line, index) => (
+                        <span key={index} className="block">
+                          {line}
+                        </span>
+                      ))}
+                    </p>
+                  )}
+
+                  {/* Ayırıcı: alt bölüme geçiş */}
+                  <div aria-hidden className="mt-auto pt-6">
+                    <div className="h-px bg-border" />
+                  </div>
                 </div>
 
-                {plan.link && (
-                  <CMSLink
-                    {...plan.link}
-                    appearance={plan.highlighted ? 'default' : 'outline'}
-                    className="mt-6 w-full"
-                    size="lg"
-                  />
-                )}
-
-                {plan.features && plan.features.length > 0 && (
-                  <ul className="mt-8 space-y-3 text-sm">
-                    {plan.features.map((feature, index) => (
-                      <li
-                        key={feature.id ?? index}
-                        className={cn(
-                          'flex gap-3',
-                          !feature.included && 'text-muted-foreground line-through',
-                        )}
-                      >
-                        {feature.included ? (
-                          <Check aria-hidden className="size-5 shrink-0 text-primary" />
-                        ) : (
-                          <Minus aria-hidden className="size-5 shrink-0" />
-                        )}
-                        {feature.text}
-                      </li>
-                    ))}
-                  </ul>
+                {/* Alt bölüm: pakete dahil özellikler */}
+                {plan.features && plan.features.length > 0 ? (
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="mb-3 text-[0.8125rem] text-black/60 dark:text-white/60">
+                      {t('includes')}
+                    </p>
+                    <ul className="text-[0.8125rem]">
+                      {plan.features.map((feature, index) => (
+                        <li
+                          key={feature.id ?? index}
+                          className={cn(
+                            'flex items-start gap-2 py-1.5',
+                            !feature.included && 'text-muted-foreground line-through',
+                          )}
+                        >
+                          {feature.included ? (
+                            <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-primary" />
+                          ) : (
+                            <Minus aria-hidden className="mt-0.5 size-4 shrink-0" />
+                          )}
+                          {feature.text}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  // Subgrid'in ikinci satırı boş kalmasın
+                  <div />
                 )}
               </li>
             )

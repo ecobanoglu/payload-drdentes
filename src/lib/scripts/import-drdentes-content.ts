@@ -8,11 +8,11 @@
  * Yaptıkları:
  * - Görselleri orijinal siteden indirip Medya'ya yükler (aynı adlı medya varsa yeniden yüklemez).
  * - Sayfaları slug'a göre oluşturur ya da **içeriğini değiştirir**: ana sayfa, Özellikler ve
- *   15 alt sayfası, Dr.DENTES Özellikleri, Fiyat, S.S.S., İletişim, Banka Bilgileri.
+ *   15 alt sayfası, Dr.DENTES Özellikleri, Fiyat (/ucretlendirme), S.S.S., İletişim, Banka Bilgileri.
  * - 12 blog yazısını slug'a göre oluşturur/günceller.
  * - Fiyat planlarını, SSS'leri, kart gruplarını, İletişim Bilgileri'ni, üst/alt menüyü günceller.
- * - Önceki örnek içeriği (örnek planlar, örnek SSS'ler, "Ücretlendirme" sayfası,
- *   "Ana sayfa özellikleri" kart grubu) siler.
+ * - Önceki örnek içeriği (örnek planlar, örnek SSS'ler, "Ana sayfa özellikleri" kart grubu) siler.
+ *   Önceki "fiyat" slug'lı fiyat sayfası "ucretlendirme" olarak yeniden adlandırılır.
  *
  * Tekrar çalıştırılabilir: her çalıştırmada aynı sonuca ulaşır. Admin'de bu sayfalarda
  * yapılan elle değişikliklerin üzerine yazılacağını unutmayın.
@@ -486,6 +486,45 @@ for (const faq of FAQS) {
 }
 log(`✓ ${FAQS.length} soru`)
 
+// ─────────────────────────── 3b. Kullanıcı etkileşimleri ───────────────────────────
+// drdentes.com.tr/tr/kullaniciEtkilesim akışından: en güncel 50 soru-yanıt ikilisi (kullanıcı
+// sorusu/isteği + Dr.DENTES yanıtı) ve aynı dönemdeki Türkçe Dr.DENTES duyuruları.
+// Kullanıcı + tarih (soru tarihi; duyuruda duyuru tarihi) ile eşleştirilip güncellenir.
+
+type TestimonialSource = {
+  type: 'qa' | 'announcement'
+  author: string
+  questionDate?: string
+  question?: string
+  answerDate: string
+  answer: string
+}
+const TESTIMONIALS: TestimonialSource[] = JSON.parse(
+  fs.readFileSync(path.resolve(dirname, 'data/testimonials-tr.json'), 'utf8'),
+)
+for (const item of TESTIMONIALS) {
+  const { docs } = await payload.find({
+    collection: 'testimonials',
+    locale,
+    where: {
+      and: [
+        { author: { equals: item.author } },
+        item.type === 'announcement'
+          ? { answerDate: { equals: item.answerDate } }
+          : { questionDate: { equals: item.questionDate } },
+      ],
+    },
+    limit: 1,
+    depth: 0,
+  })
+  if (docs[0]) await payload.update({ collection: 'testimonials', id: docs[0].id, locale, context, data: item })
+  else await payload.create({ collection: 'testimonials', locale, context, data: item })
+}
+log(`✓ ${TESTIMONIALS.length} kullanıcı etkileşimi`)
+
+/** "Kullanıcı Etkileşimleri" bölüm/sayfa açıklaması (ana sayfa ve listeleme sayfası) */
+const TESTIMONIALS_INTRO = 'Kullanıcılarımızın soru ve istekleri, Dr.DENTES ekibinin yanıtlarıyla.'
+
 // ─────────────────────────── 4. Fiyat planları ───────────────────────────
 
 log('\n— Paketler')
@@ -531,30 +570,75 @@ const PRICING_FOOTNOTE = [
   'Paket limiti aşılınca üst pakete geçiş, fark bedeli ödenerek yapılır. USS/e-Nabız ayrıca ücretlendirilir.',
 ].join('\n')
 
-/** "Eşsiz Deneyim" bölümü: SMS ve e-Fatura ek paket fiyatları (iki sütun) */
+/** Ek paket fiyat kademesi: [miktar, fiyat] → blok verisi */
+const tiers = (rows: [string, string][]) => rows.map(([label, price]) => ({ label, price }))
+const ADDON_NOTE = 'Fiyatlara KDV dahildir. Kullanım süresi bir (1) yıldır.'
+
+/** "Ek Paketler" bölümü: SMS ve e-Fatura ek paket fiyatları (Supabase "Fine-tune your project" düzeni) */
 const addonsBlock = () => ({
-  blockType: 'content' as const,
-  columns: [
-    { size: 'full' as const, richText: rich({ h: 'h2', text: 'Eşsiz Deneyim' }) },
+  blockType: 'pricingAddons' as const,
+  heading: 'Ek Paketler',
+  intro: 'Paketinize ihtiyacınız kadar SMS ve e-Fatura kontörü ekleyin.',
+  items: [
     {
-      size: 'half' as const,
-      richText: root([
-        heading('h3', 'SMS'),
-        list('ul', ['1.000 Adet — 645 ₺', '5.000 Adet — 2.215 ₺', '10.000 Adet — 3.775 ₺', '50.000 Adet — 15.995 ₺', '100.000 Adet — 25.995 ₺']),
-        paragraph('Fiyatlara KDV dahildir. Kullanım süresi bir (1) yıldır.'),
-      ]),
+      title: 'SMS',
+      description: 'Randevu hatırlatma, bilgilendirme ve kampanya mesajları için SMS paketi.',
+      tiers: tiers([['1.000 Adet', '645 ₺'], ['5.000 Adet', '2.215 ₺'], ['10.000 Adet', '3.775 ₺'], ['50.000 Adet', '15.995 ₺'], ['100.000 Adet', '25.995 ₺']]),
+      note: ADDON_NOTE,
     },
     {
-      size: 'half' as const,
-      richText: root([
-        heading('h3', 'e-Fatura / e-Arşiv Fatura / e-SMM'),
-        list('ul', ['100 Adet — 919 ₺', '500 Adet — 3.939 ₺', '1.000 Adet — 7.079 ₺', '2.500 Adet — 16.109 ₺', '5.000 Adet — 27.779 ₺']),
-        paragraph('Her Bir Mükellef İçin Aktivasyon: 1.500 ₺'),
-        paragraph('Fiyatlara KDV dahildir. Kullanım süresi bir (1) yıldır.'),
-      ]),
+      title: 'e-Fatura / e-Arşiv Fatura / e-SMM',
+      description: 'Dr.DENTES içinden e-Fatura, e-Arşiv Fatura ve e-SMM düzenlemek için kontör paketi.',
+      tiers: tiers([['100 Adet', '919 ₺'], ['500 Adet', '3.939 ₺'], ['1.000 Adet', '7.079 ₺'], ['2.500 Adet', '16.109 ₺'], ['5.000 Adet', '27.779 ₺']]),
+      note: ['Her bir mükellef için aktivasyon: 1.500 ₺', ADDON_NOTE].join('\n'),
     },
   ],
 })
+
+/** Karşılaştırma tablosu satırı: [özellik, plan değerleri (S, M, L, XL, 2XL sırasıyla), açıklama?] */
+const compareRow = (label: string, values: string[], hint?: string) => ({
+  label,
+  ...(hint ? { hint } : {}),
+  values: values.map((value) => ({ value })),
+})
+/** Tüm paketlerde aynı değer */
+const allPlans = (value: string) => PLANS.map(() => value)
+
+/** "Paketleri karşılaştırın" tablosu (fiyat sayfası) */
+const PRICING_COMPARISON = [
+  {
+    title: 'Kapasite',
+    rows: [
+      compareRow('Veri boyutu', ['2.000 MB', '3.000 MB', '4.000 MB', '6.000 MB', '6.000 MB'], 'Hasta kartları, tedavi kayıtları, görüntüler'),
+      compareRow('Aylık trafik', ['1.500 MB', '2.000 MB', '4.000 MB', '10.000 MB', '15.000 MB']),
+    ],
+  },
+  {
+    title: 'Kullanım',
+    rows: [
+      compareRow('Hekim', allPlans('Sınırsız')),
+      compareRow('Kullanıcı', allPlans('Sınırsız'), 'Kullanıcılar için esnek yetkilendirme'),
+      compareRow('Cihaz', allPlans('Sınırsız'), 'Telefon, tablet, bilgisayar, Apple Mac, akıllı TV'),
+    ],
+  },
+  {
+    title: 'Hizmetler',
+    rows: [
+      compareRow('Kurulum ücreti', allPlans('Yok')),
+      compareRow('Ücretsiz online eğitim', allPlans('✓'), 'Hesap açılışından sonraki ilk 15 gün içinde, bir defaya mahsus'),
+      compareRow('Ücretsiz güncellemeler', allPlans('✓')),
+      compareRow('Bulutta güvenli veri saklama', allPlans('✓')),
+    ],
+  },
+  {
+    title: 'Ek hizmetler',
+    rows: [
+      compareRow('SMS', allPlans('Ek paket')),
+      compareRow('e-Fatura / e-Arşiv / e-SMM', allPlans('Ek paket')),
+      compareRow('USS / e-Nabız', allPlans('Ayrıca ücretlendirilir')),
+    ],
+  },
+]
 
 // ─────────────────────────── 5. Görseller ───────────────────────────
 
@@ -763,24 +847,65 @@ const stepsSetId = await upsertCardSet('Kullanıcı Olma Adımları', {
 })
 log('✓ Kart grupları: Ana Sayfa – Öne Çıkan Özellikler, Avantajlar, Kullanıcı Olma Adımları')
 
-const pricingPageId = await upsertPage('fiyat', {
-  title: 'Fiyat',
+/** Fiyat sayfasının (/ucretlendirme) blokları */
+const pricingLayout = () => [
+  {
+    blockType: 'pricing' as const,
+    defaultPeriod: 'yearly' as const,
+    showToggle: false,
+    footnote: PRICING_FOOTNOTE,
+    comparisonHeading: 'Paketleri karşılaştırın',
+    comparison: PRICING_COMPARISON,
+  },
+  addonsBlock(),
+]
+
+// Supabase pricing düzeni: paket kartları + karşılaştırma tablosu, ardından ek paketler
+// Fiyat sayfasının adresi /ucretlendirme. Daha önce "fiyat" slug'ı ile oluşturulduysa aynı kayıt
+// yeniden adlandırılır (kimlik ve ona verilen bağlantılar korunur)
+{
+  const { docs: legacy } = await payload.find({ collection: 'pages', locale, where: { slug: { equals: 'fiyat' } }, limit: 1, depth: 0 })
+  const { docs: current } = await payload.find({ collection: 'pages', locale, where: { slug: { equals: 'ucretlendirme' } }, limit: 1, depth: 0 })
+  if (legacy[0] && !current[0]) {
+    await payload.update({ collection: 'pages', id: legacy[0].id, locale, context, data: { slug: 'ucretlendirme' } })
+    log('  ↻ Sayfa: fiyat → ucretlendirme')
+  }
+}
+const pricingPageId = await upsertPage('ucretlendirme', {
+  title: 'Ücretlendirme',
   parent: null,
-  hero: lowHero('Paket Fiyatları'),
-  layout: [
-    { blockType: 'pricing', defaultPeriod: 'yearly', showToggle: false, footnote: PRICING_FOOTNOTE },
-    { blockType: 'cards', heading: 'Nasıl Kullanıcı Olabilirim?', cardSet: stepsSetId, columns: '3' },
-    addonsBlock(),
-  ],
-  meta: meta('Fiyat', 'Dr.DENTES paket fiyatları (S, M, L, XL, 2XL), SMS ve e-Fatura ek paketleri. Sınırsız hekim, kullanıcı ve cihaz.'),
+  hero: lowHero('Paket Fiyatları', 'Sınırsız hekim, kullanıcı ve cihaz. Kurulum ücreti yok; ihtiyacınız büyüdükçe üst pakete geçin.'),
+  layout: pricingLayout(),
+  meta: meta('Ücretlendirme', 'Dr.DENTES paket fiyatları (S, M, L, XL, 2XL), SMS ve e-Fatura ek paketleri. Sınırsız hekim, kullanıcı ve cihaz.'),
 })
 
 const faqPageId = await upsertPage('sss', {
   title: 'S.S.S.',
   parent: null,
   hero: lowHero('Sık Sorulan Sorular', 'Hakkımızda daha fazla bilgi edinmek ister misiniz?'),
-  layout: [{ blockType: 'faq', source: 'all' }],
+  // 1centre "Have questions? Find answers." düzeni: iki tonlu başlık, tek liste, altta iletişim bağlantısı
+  layout: [
+    {
+      blockType: 'faq',
+      source: 'all',
+      heading: 'Sorularınız mı var? Yanıtları burada.',
+      footnote: 'Başka sorunuz mu var?',
+      links: [{ link: pageLink(contactPageId, 'Bize ulaşın') }],
+    },
+  ],
   meta: meta('Sık Sorulan Sorular', 'Dr.DENTES kurulum, veri aktarımı, güvenlik, paket seçimi ve dil desteği hakkında sık sorulan sorular.'),
+})
+
+// Kullanıcı etkileşimleri listeleme sayfası (menüde yok; ana sayfadaki "Tümünü Gör" ile açılır)
+const testimonialsPageId = await upsertPage('kullanici-etkilesimleri', {
+  title: 'Kullanıcı Etkileşimleri',
+  parent: null,
+  hero: lowHero('Kullanıcı Etkileşimleri', TESTIMONIALS_INTRO),
+  layout: [{ blockType: 'testimonials' }],
+  meta: meta(
+    'Kullanıcı Etkileşimleri',
+    'Dr.DENTES kullanıcılarının soru ve istekleri ile Dr.DENTES ekibinin yanıtları.',
+  ),
 })
 
 await upsertPage('home', {
@@ -861,6 +986,14 @@ await upsertPage('home', {
       cardSet: stepsSetId,
       layout: 'pathTimeline',
     },
+    // Kullanıcı etkileşimleri: en yeni 3 soru-yanıt + listeleme sayfasına buton (Blog'dan önce)
+    {
+      blockType: 'testimonials',
+      heading: 'Kullanıcı Etkileşimleri',
+      intro: TESTIMONIALS_INTRO,
+      limit: 3,
+      links: [{ link: pageLink(testimonialsPageId, 'Tümünü Gör', 'outline') }],
+    },
     {
       blockType: 'archive',
       introContent: rich({ h: 'h2', text: 'Blog' }, 'Diş hekimliğine dair gelişmeler...'),
@@ -878,11 +1011,6 @@ await upsertPage('home', {
   ),
 })
 
-// Eski örnek "Ücretlendirme" sayfası yerini "Fiyat" sayfasına bıraktı
-{
-  const { docs } = await payload.delete({ collection: 'pages', locale, context, where: { slug: { equals: 'ucretlendirme' } } })
-  if (docs.length) log('  − Sayfa: ucretlendirme (yerine "fiyat")')
-}
 
 // Örnek kart grubu artık kullanılmıyor
 {
@@ -936,7 +1064,7 @@ await payload.updateGlobal({
   data: {
     navItems: [
       { link: pageLink(featuresPageId, 'Özellikler') },
-      { link: pageLink(pricingPageId, 'Fiyat') },
+      { link: pageLink(pricingPageId, 'Ücretlendirme') },
       { link: pageLink(faqPageId, 'S.S.S.') },
       { link: urlLink('/blog', 'Blog') },
       { link: pageLink(contactPageId, 'İletişim') },

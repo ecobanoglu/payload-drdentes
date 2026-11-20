@@ -1,6 +1,7 @@
 import type { Metadata } from 'next/types'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import { PageHeader } from '@/components/PageHeader'
 import configPromise from '@payload-config'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
@@ -74,13 +75,16 @@ export default async function Page({ params, searchParams: searchParamsPromise }
   return (
     <div className="pt-24 pb-24">
       <PageClient />
+      {/* Lacivert başlık bandı; -mt: üst boşluk (6rem) + header (6.5rem) */}
+      <PageHeader
+        locale={locale}
+        crumbs={[{ url: '/search', label: t('title') }]}
+        title={t('title')}
+        className="-mt-[12.5rem]"
+      />
       <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none text-center">
-          <h1 className="mb-8 lg:mb-16">{t('title')}</h1>
-
-          <div className="max-w-[50rem] mx-auto">
-            <Search />
-          </div>
+        <div className="max-w-[50rem]">
+          <Search />
         </div>
       </div>
 

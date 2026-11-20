@@ -14,6 +14,7 @@
   },
   "Posts": {
     "title": "المدونة",
+    "description": "مقالات حول طب الأسنان وإدارة العيادات وأحدث ما في Dr.DENTES.",
     "metaTitle": "المدونة",
     "pageMetaTitle": "المدونة – الصفحة {page}"
   },
@@ -72,7 +73,12 @@
     "save": "وفّر {percent}%",
     "popular": "الأكثر شيوعًا",
     "customPrice": "سعر مخصص",
-    "perYear": "/سنة"
+    "perYear": "/سنة",
+    "includes": "تتضمن الباقة:",
+    "compareHeading": "قارن الباقات",
+    "feature": "الميزة",
+    "included": "متضمن",
+    "notIncluded": "غير متضمن"
   },
   "Contact": {
     "email": "البريد الإلكتروني",
@@ -132,5 +138,10 @@
     "rootCanal": "علاج العصب",
     "implant": "زرعة",
     "caption": "رسم متحرك توضيحي لواجهة Dr.DENTES"
+  },
+  "Testimonials": {
+    "reply": "رد Dr.DENTES",
+    "loadMore": "عرض المزيد",
+    "announcement": "إعلان"
   }
 }

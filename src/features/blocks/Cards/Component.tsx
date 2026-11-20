@@ -45,20 +45,32 @@ const CardPoints = ({ points }: { points?: string | null }) => {
  * Tıklanabilir kart: kartın bağlantısı görünmez bir katmanla (`after:` sözde öğesi) tüm kartı
  * kaplar; kartın herhangi bir yerine tıklamak bağlantıyı açar. Ekran okuyucu ve klavye için tek
  * bir bağlantı kalır. Kartta bağlantı yoksa kart tıklanamaz.
+ * Görünüm blog kartındaki "Devamını oku" butonuyla aynı: yuvarlak, kenarlıklı; kartın üzerine
+ * gelince ana renge döner ve ok kayar (globals.css `.btn-arrow`).
  */
 const cardLinkClassName =
-  'mt-auto self-start px-0 after:absolute after:inset-0 after:rounded-lg after:content-[""]'
+  'mt-auto inline-flex self-start items-center rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors group-hover:border-primary/40 group-hover:text-primary after:absolute after:inset-0 after:rounded-lg after:content-[""]'
+
+/** Kart kabuğu (blog kartıyla aynı): beyaz zemin, ince kenarlık, yuvarlak köşe */
+const cardShellClassName =
+  'relative flex flex-1 flex-col overflow-hidden rounded-lg border border-border bg-background'
 
 /**
- * Bağlantılı kartın üzerine gelince/odaklanınca hafif gölge ve odak halkası.
- * `group`: kartın içindeki başlık, kartın üzerine gelinince ana renge döner (cardTitleClassName).
+ * Bağlantılı kartın üzerine gelince gölge belirir ve kart hafifçe yukarı kalkar (blog kartı gibi);
+ * klavyeyle odaklanınca odak halkası. `group`: içerideki buton kartın üzerine gelinince renk değiştirir.
  */
 const linkedCardClassName =
-  'group cursor-pointer transition-shadow hover:shadow-md has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-primary/40'
+  'group hover:cursor-pointer hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-primary/40'
 
-/** Kart başlığı: bağlantılı kartta üzerine gelince/odaklanınca ana renk (primary) */
-const cardTitleClassName =
-  'text-xl font-semibold transition-colors group-hover:text-primary group-has-[a:focus-visible]:text-primary'
+/** Kart başlığı */
+const cardTitleClassName = 'text-xl font-semibold'
+
+/** Kartın bağlantısı: blog kartı butonu gibi etiket + kayan ok */
+const CardLink = ({ link }: { link: NonNullable<Card['link']> }) => (
+  <CMSLink {...link} appearance="inline" className={cardLinkClassName}>
+    <span className="btn-arrow" aria-hidden="true" />
+  </CMSLink>
+)
 
 /** Özellik kartı: ikon + başlık + açıklama (+ isteğe bağlı bağlantı) */
 const FeatureCard = ({ card }: { card: Card }) => {
@@ -69,7 +81,8 @@ const FeatureCard = ({ card }: { card: Card }) => {
   return (
     <article
       className={cn(
-        'relative flex flex-1 flex-col gap-4 rounded-lg bg-card p-6',
+        cardShellClassName,
+        'gap-4 p-6',
         hasLink && linkedCardClassName,
       )}
     >
@@ -82,7 +95,7 @@ const FeatureCard = ({ card }: { card: Card }) => {
       {card.description && <p className="text-muted-foreground">{card.description}</p>}
       <CardPoints points={card.points} />
       {hasLink && card.link && (
-        <CMSLink {...card.link} appearance="link" className={cardLinkClassName} />
+        <CardLink link={card.link} />
       )}
     </article>
   )
@@ -100,14 +113,15 @@ const ServiceCard = ({ card }: { card: Card }) => {
   return (
     <article
       className={cn(
-        'relative flex flex-1 flex-col overflow-hidden rounded-lg bg-card',
+        cardShellClassName,
         hasLink && linkedCardClassName,
       )}
     >
       {card.image && typeof card.image === 'object' && (
         <Media
           resource={card.image}
-          className="flex justify-start px-6 pt-6"
+          // Görselin altında kart genişliğinde ince ayırıcı çizgi (blog kartındaki görsel/metin ayrımı gibi)
+          className="flex justify-start border-b border-border p-6"
           pictureClassName="block max-w-full"
           imgClassName="h-auto max-w-full"
           size="(min-width: 1024px) 33vw, 100vw"
@@ -119,7 +133,7 @@ const ServiceCard = ({ card }: { card: Card }) => {
         <CardPoints points={card.points} />
         {/* Bağlantı en altta: tüm kartlarda aynı hizada */}
         {hasLink && card.link && (
-          <CMSLink {...card.link} appearance="link" className={cardLinkClassName} />
+          <CardLink link={card.link} />
         )}
       </div>
     </article>

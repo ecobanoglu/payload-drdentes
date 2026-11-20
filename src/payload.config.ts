@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 
 import { CardSets } from './features/collections/CardSets'
 import { Faqs } from './features/collections/Faqs'
+import { Testimonials } from './features/collections/Testimonials'
 import { PricingPlans } from './features/collections/PricingPlans'
 import { ContactInfo } from './features/ContactInfo/config'
 import { Categories } from './features/collections/Categories'
@@ -123,7 +124,7 @@ export default buildConfig({
     }),
     email,
     // Sıra, admin sidebar'daki sırayı da belirler (grup içinde korunur)
-    collections: [Pages, Posts, Faqs, PricingPlans, Categories, Media, CardSets, Users],
+    collections: [Pages, Posts, Faqs, Testimonials, PricingPlans, Categories, Media, CardSets, Users],
     // Medya klasörleri: personel oluşturur/düzenler, editör ve üstü siler
     folders: {
         collectionOverrides: [

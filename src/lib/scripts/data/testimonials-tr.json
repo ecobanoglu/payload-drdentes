@@ -1,0 +1,504 @@
+[
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-11-18T16:54:09+03:00",
+    "answer": "RAPOR > Tedavi Sayacı ve RAPOR > Tedavi'ye \"Uyruk Filtresi\" eklendi.\nBöylelikle tedavi raporlarınızı hastalarınızın uyruklarına göre filtreleyerek daha ayrıntılı inceleyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Gazi B.",
+    "questionDate": "2020-06-20T10:05:00+03:00",
+    "question": "Yeni öğrendiğim bilgiye göre uyarı sistemindeki bildirimler 100'ün üzerine çıktığında 1 saat içinde 100'ün altına indirilmezse uyarı sistemi tekrar kendini kapatıyormuş. Güzel bir özellik aslında. Ama bazen kontrol edemediğimiz oluyor ve birikiyor. Toplu okundu olarak işaretleme özelliği getirilse. Yanlışlıkla basmayı engellemek için ayarlar klinik menüsü içine eklenebilir. Şimdi 250'den fazla bildirimi tek tek elle tıklamam lazım.\nSMS bildirimleri önemsiz aslında ama randevu istek bildirimlerini asistanlarım göremiyor uyarı sistemi kapalı iken. Mail geliyor. Oradan farkediyorum. Ekran görüntüsü yapıp gönderiyorum.",
+    "answerDate": "2026-11-12T14:41:27+03:00",
+    "answer": "Dr.DENTES uyarı sistemine “Tümünü Okundu Yap” özelliği eklendi!\nBirden fazla okunmamış uyarınız bulunuyorsa “Tümünü Okundu Yap” düğmesini kullanarak tüm uyarılarınızı tek seferde okundu olarak işaretleyebilirsiniz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-11-10T09:33:36+03:00",
+    "answer": "Dr.DENTES API'da hasta notlarının ve hasta diş notlarının sorgulanabilmesi sağlandı.\nDr.DENTES API 1.1.3 sürümüyle birlikte listPatientNotes ve listToothNotes uç noktaları ile yapabilirsiniz. Aşağıdaki dokümantasyon bağlantısını iş ortağınız yazılım firmaları ile paylaşabilirsiniz.\nhttps://drdentes.com.tr/api/"
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-11-06T15:55:57+03:00",
+    "answer": "Dr.DENTES API'da hastaların Dr.DENTES'deki son güncellenme tarihlerine göre sorgulanabilmesi sağlandı.\nDr.DENTES API 1.1.2 sürümüyle birlikte listPatients uç noktasına eklenen updateDate parametresi ile yapabilirsiniz.  Aşağıdaki dokümantasyon bağlantısını iş ortağınız yazılım firmaları ile paylaşabilirsiniz.\nhttps://drdentes.com.tr/api/"
+  },
+  {
+    "type": "qa",
+    "author": "Özgür İ.",
+    "questionDate": "2026-11-06T10:03:52+03:00",
+    "question": "Tarifede kuafaj gibi tedaviler yok. Eklediğimde uss kabul etmiyor. Eklediğimiz tarifeleri uss uygun şekilde sistem otomatik güncellemeli.",
+    "answerDate": "2026-11-06T10:44:48+03:00",
+    "answer": "Dr.DENTES'de Kuafaj (Dolgu Hariç) adında tedavi bulunmaktadır ve SUT kodu mevcuttur. Şayet HASTA > Oral sayfasında İşlemler bölümünde ilgili tedavi yer almıyor ise AYARLAR > Tarife sayfasından tedavinin durumunu kontrol edebilirsiniz. Durumu \"Pasif\" yapılan tedaviler Oral sayfasında gösterilmez. Bazı tedavilerin ve kendi eklediğiniz tedavilerin SUT kodu olmaz, SUT kodlarını Sağlık Bakanlığı belirlemektedir. Kendi eklediğiniz tedavileri AYARLAR > Tarife sayfasından seçip \"Değiştir\" düğmesini kullanarak şema bölümünden eş değer bir SUT kodlu tedaviye bağlayabilirsiniz. Bundan sonraki tedavilerde şema olarak bağladığınız tedavinin SUT kodu kullanılarak USS'ye gönderilir.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki AYARLAR > Tarife sayfasını inceleyebilirsiniz. Menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da aynı başlıklardaki eğitim videolarını izleyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Ali K.",
+    "questionDate": "2026-10-17T12:50:31+03:00",
+    "question": "Diagnoz girilirken dişlerin seçimi çoklu yapılabilmeli. Hasta total dişsiz tüm dişlere tek tek kayıp diş giriyoruz örneğin işlem kalabalığı oluyor. Kayıp dişe tıklayınca tedavi kısmında kron seçeceğinde olduğu gibi ağız açılmalı tıklamayla tüm kayıp dişler işaretlenebilmeli. Tüm diagnoz işlemleri için bu şekilde olması gerekiyor.",
+    "answerDate": "2026-10-17T13:23:30+03:00",
+    "answer": "Diyagnozda tüm çeneyi kayıp diş olarak göstermek için diyagnoz listesindeki \"KRET\"i kullanabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Serkan G.",
+    "questionDate": "2026-10-15T09:16:09+03:00",
+    "question": "Yabancı para biriminde fatura kesemiyorum. Bu konuda bir güncelleme olabilir mi? Döviz ile ödeme yapan hastalar için gerekli.",
+    "answerDate": "2026-10-15T11:04:47+03:00",
+    "answer": "Yabancı para birimi ile e-Fatura veya e-Arşiv Fatura kesebilirsiniz. HASTA > Hasta Kartı'ndaki \"Para Birimi\" alanından hastayla çalışılacak para birimini değiştirebilirsiniz. HASTA > Oral sayfasında tedavi eklendiğinde ilgili para birimi ile eklenir ve fatura kesimini gerçekleştirebilirsiniz.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki HASTA > Hasta Kartı, HASTA > Oral ve HASTA > Fatura sayfalarını inceleyebilirsiniz. Menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da aynı başlıklardaki eğitim videolarını izleyebilirsiniz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-10-06T17:43:44+03:00",
+    "answer": "- Romence tedavi listesi eklendi. AYARLAR > Tarife'den yeni tarife eklerken tarife grubu olarak \"Română (Romanian)\" seçip ekleyebilirsiniz.\n- Diyagnozların Romence tercümeleri yüklendi. HASTA > Oral'de sağ taraftaki Oral Bilgileri bölümündeki Diyagnoz kutusundan istediğiniz dili seçerek diyagnoz işleyebilirsiniz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-10-05T16:50:14+03:00",
+    "answer": "Dr.DENTES'e Romence dil desteği eklendi. AYARLAR > Kullanıcı'dan ilgili kulllanıcının dilini \"Română (Romanian)\" seçip kullanabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Nergiz C.",
+    "questionDate": "2026-10-03T09:47:58+03:00",
+    "question": "Sistemde hata var randevu saatlerini kaydıramıyoruz",
+    "answerDate": "2026-10-03T17:36:01+03:00",
+    "answer": "Randevu taşıma ayarınız kapalı olabilir. RANDEVU sayfasındaki Takvim alanının yanında yer alan \"Sürükle Bırak\" kutucuğunu işaretlediğinizde randevularınızı sürükleyerek başka tarih, saatlere taşıyabilirsiniz.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki RANDEVU sayfasını inceleyebilir, menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da ilgili eğitim videolarını izleyebilirsiniz"
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-09-30T17:08:48+03:00",
+    "answer": "BELGELER > Onam Formları'na \"Detertraj, Subgingival Küretaj Uygulamaları Bilgilendirme ve Onam Formu\" eklendi."
+  },
+  {
+    "type": "qa",
+    "author": "Gürkan M.",
+    "questionDate": "2025-05-06T14:07:29+03:00",
+    "question": "TDB tarifelerinde bulunan retreatmant (kanal tekrarı) kaleminde şema karşılığı yapılmamış. Bu işlem oralde girildiğinde şemada kanal yapılmamış görünüyor. Düzeltilmesini rica ediyorum.",
+    "answerDate": "2026-09-14T15:06:20+03:00",
+    "answer": "Kanal Dolgusu Tekrarı (Retreatment - Her Kanal İçin-Dolgu Hariç) tedavisinin çizimi eklendi. HASTA > Oral sayfasında ilgili tedavi uygulandığında tedavinin çizimi oral şemada görünür."
+  },
+  {
+    "type": "qa",
+    "author": "Ortaç G.",
+    "questionDate": "2025-01-16T13:49:38+03:00",
+    "question": "Merhaba bazı tedavilerde şema eklenme durumu bulunmamaktadır. Bu tedavi seçeneklerine sizler tarafından şema eklenebilirse çok güzel olur. Özellikle retreatmant tedavisine şema eklenmesini talep etmekteyiz. Kolay gelsin.",
+    "answerDate": "2026-09-14T15:05:44+03:00",
+    "answer": "Kanal Dolgusu Tekrarı (Retreatment - Her Kanal İçin-Dolgu Hariç) tedavisinin çizimi eklendi. HASTA > Oral sayfasında ilgili tedavi uygulandığında tedavinin çizimi oral şemada görünür."
+  },
+  {
+    "type": "qa",
+    "author": "Alim O.",
+    "questionDate": "2020-07-17T18:18:17+03:00",
+    "question": "Kanal retreatmant, kanal içini kırmızı veya yeşil renk koyabilir misiniz, işaretlediğimizde gözüksün?",
+    "answerDate": "2026-09-14T15:04:41+03:00",
+    "answer": "Kanal Dolgusu Tekrarı (Retreatment - Her Kanal İçin-Dolgu Hariç) tedavisinin çizimi eklendi. HASTA > Oral sayfasında ilgili tedavi uygulandığında tedavinin çizimi oral şemada görünür."
+  },
+  {
+    "type": "qa",
+    "author": "Osman S.",
+    "questionDate": "2026-08-28T16:11:43+03:00",
+    "question": "paslanmaz çelik kron isimli bir tedavi girişi yaptık ama bunu USS  kabul etmiyor. Ne yapabiliriz ?",
+    "answerDate": "2026-09-03T15:56:03+03:00",
+    "answer": "Sağlık Bakanlığı'na sadece SUT kodu olan tedaviler gönderilir. Kendi eklediğiniz tedavilerin SUT kodu olmaz, AYARLAR > Tarife sayfasından ilgili tedaviyi seçip \"Değiştir\" düğmesini kullanarak şema bölümünden benzer bir SUT kodlu tedaviye bağlayabilirsiniz. Oralde kendi eklediğiniz tedavi görünür ancak Sağlık Bakanlığı'na şema olarak seçtiğiniz tedavi gönderilir."
+  },
+  {
+    "type": "qa",
+    "author": "Mustafa A.E.",
+    "questionDate": "2026-08-29T13:55:08+03:00",
+    "question": "sabah programı ilk açtığımızda randevu saatleri kaymış oluyor. bir kaç kez aç kapa yapınca düzeliyor ama farketmediğimizde hastalarla sorun yaşıyoruz. sorunun giderilmesini talep ediyorum",
+    "answerDate": "2026-08-29T14:47:42+03:00",
+    "answer": "Genel bir durum görünmemektedir. Giriş yapıp çıkış yapmak randevu saatlerinde değişikliğe sebep olmaz. Giriş yaptığınız kullanıcıların yetkileri farklı ise farklı randevuları görüyor olabilirsiniz. Daha ayrıntılı inceleme için mesai saatlerimizde çağrı merkezimizden ulaşmanız halinde uzak bağlantı yapabiliriz."
+  },
+  {
+    "type": "qa",
+    "author": "Adem Y.",
+    "questionDate": "2026-08-26T09:27:18+03:00",
+    "question": "Hasta silme şifresini verebilir misiniz? 2 kayıt açılan.",
+    "answerDate": "2026-08-26T09:39:57+03:00",
+    "answer": "Hasta kartını giriş yaptığınız kullanıcının şifresi ile silebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Ecren Ç.",
+    "questionDate": "2026-08-25T10:45:42+03:00",
+    "question": "Randevunun oluşturulduğu tarih ve saati görebiliyor muyuz?",
+    "answerDate": "2026-08-25T11:58:44+03:00",
+    "answer": "Fare ile randevunun üzerinde durulduğunda randevuyu oluşturan kullanıcı ve oluşturulma zamanı gösterilmektedir.\nRandevuda herhangi bir değişiklik yapıldı ise randevuya tıkladığınızda mor renkli \"Randevu Geçmişi\" düğmesi ile hastaya ait randevu geçmişini detaylı bir şekilde görüntüleyebilirsiniz.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki RANDEVU sayfasını inceleyebilir, menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da ilgili eğitim videolarını izleyebilirsiniz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-08-12T13:45:58+03:00",
+    "answer": "Mobil uygulamamız güncellendi!\n\"Beni Hatırla\" özelliği ile artık her girişte kullanıcı adı ve şifreyi yeniden girmenize gerek kalmadan daha pratik bir şekilde giriş yapabilirsiniz. Uygulamayı güncelleyerek hemen kullanmaya başlayabilirsiniz"
+  },
+  {
+    "type": "qa",
+    "author": "Murat Y.",
+    "questionDate": "2022-08-04T14:20:40+03:00",
+    "question": "Merhaba :) TSİM verilerini girerken bilgisayarda sürekli sekmeler ve uygulama arasında geçiş yapmak zor oluyor. Raporun çıktısını da almak isteriz, veri girişimizi kolaylaştırır. Oraya yazdırma seçeneği ekleyebilirsiniz. İyi çalışmalar.",
+    "answerDate": "2026-08-11T14:39:53+03:00",
+    "answer": "RAPOR > TSİM'de Windows cihazlar için \"CTRL + P\", Mac cihazlar için \"Komut (veya Cmd) ⌘ + P\" tuş kombinasyonuyla raporu yazdırabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Furkan Ç.",
+    "questionDate": "2026-07-20T16:26:42+03:00",
+    "question": "Siteye ilk girişte cloudfare doğrulaması sık sık başarısız oluyor herhangi bir şekilde kendim için bu doğrulama adımını kaldırabilir miyim?",
+    "answerDate": "2026-07-21T11:19:35+03:00",
+    "answer": "İlgili durum yaşandığında aşağıdaki adımları uygulayabilirsiniz.\n- Tarayıcı/Sekmenizi kapatıp yeniden açarak deneyiniz.\n- Tarayıcınızın önbelleğini temizleyiniz.\n- Tarayıcınız güncel değil ise güncelleyiniz.\nTüm bu adımlardan sonra yine giremiyorsanız modeminizi kapatıp 1-2 dakika bekleyip yeniden deneyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Ahmet Ş.",
+    "questionDate": "2026-07-19T22:20:40+03:00",
+    "question": "Botoks, diş ağartma, şeffaf plakla Ortodonti tedavilerini USS ye gönderemiyorum.",
+    "answerDate": "2026-07-19T22:46:12+03:00",
+    "answer": "Bir tedavinin USS/E-Nabız sistemine gönderilebilmesi için Sağlık Bakanlığının skrs.saglik.gov.tr adresinde bulunan Sağlık Kodlama Referans Sunucusundaki Sağlık Uygulama Tebliği (SUT) listesinde yer alması gerekmektedir. İlgili işlemler Bakanlığın SUT listesinde bulunmamaktadır."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-07-02T10:09:47+03:00",
+    "answer": "Dr.DENTES AI Asistan yayında!\nDr.DENTES ile ilgili sorularınızı 7/24 sorabilir ve Dr.DENTES hakkında destek alabilirsiniz!"
+  },
+  {
+    "type": "qa",
+    "author": "Mehmet Ç.",
+    "questionDate": "2026-06-10T16:40:56+03:00",
+    "question": "Son bir aylık MBYS bildirimleri listesini nasıl alabilirim?",
+    "answerDate": "2026-06-10T17:17:09+03:00",
+    "answer": "RAPOR > Protokol defteri sayfasından tarih aralığı seçerek, RAPOR > USS sayfasından ise günlük olarak USS/e-Nabız'a gönderilen hastalarınızı görüntüleyebilirsiniz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-06-09T17:04:12+03:00",
+    "answer": "Dr.DENTES'de RAPOR > Gelen e-Fatura'da tarafınıza kesilen e-İrsaliye'lerin de görülmesi sağlandı."
+  },
+  {
+    "type": "qa",
+    "author": "Erdem O.A.",
+    "questionDate": "2026-06-05T14:42:06+03:00",
+    "question": "Peki API keyimiz vs nereden alabiliriz bu kendi merchand infolarımızı nasıl alıcaz",
+    "answerDate": "2026-06-05T14:45:25+03:00",
+    "answer": "API ile ilgili soru ve taleplerinizi kliniğin sorumlu e-posta adresinden [email protected] e-posta adresimize iletmenizi rica ederiz."
+  },
+  {
+    "type": "qa",
+    "author": "Erdem O.A.",
+    "questionDate": "2026-06-05T14:22:23+03:00",
+    "question": "Dr.DENTES API veya online randevu modülü sunuyor mu kendi web sitemizle entegre etmek istiyoruz.",
+    "answerDate": "2026-06-05T14:36:11+03:00",
+    "answer": "Dr.DENTES API mevcuttur. Detaylarını drdentes.com.tr/api adresinden inceleyebilirsiniz. API ile ilgili soru ve taleplerinizi kliniğin sorumlu e-posta adresinden [email protected] e-posta adresimize iletmenizi rica ederiz."
+  },
+  {
+    "type": "qa",
+    "author": "Elif Y.",
+    "questionDate": "2026-05-21T14:53:00+03:00",
+    "question": "SMS sağlayıcı arayışındayız, bu kapsamda IYS hizmeti de verebiliyor musunuz? Eğer IYS hizmeti vermiyorsanız sistemden çıkan bilgilendirme mesajlarının yasal zorunluluğu var mı?",
+    "answerDate": "2026-05-21T16:36:21+03:00",
+    "answer": "Dr.DENTES ile hastalara toplu veya tekil SMS gönderebilirsiniz. SMS ile hastalarınızdan dijital onam veya KVKK onayı alabilirsiniz. Otomatik SMS gönderimi ile yarın randevusu olan hastalara, periyodik kontrol tarihi gelenlere, doğum günü olan hastalara SMS gönderimi yapabilir, ayrıca randevu oluşturduğunuz anda veya hastadan ödeme alma kaydı işlendiği anda da otomatik SMS gönderimini kullanabilirsiniz.\nŞu an için Dr.DENTES'de İYS entegrasyonu bulunmamaktadır. İYS ve kullanımı konusunda şuradaki yazımızı okumanızı öneririz: https://drdentes.com.tr/tr/yazi/11-ileti-yonetim-sistemi-iys-nedir\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki AYARLAR > SMS Gönder sayfasını inceleyebilir, menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da ilgili eğitim videolarını izleyebilirsiniz"
+  },
+  {
+    "type": "qa",
+    "author": "Büşra Y.Ü.",
+    "questionDate": "2026-04-15T13:25:49+03:00",
+    "question": "Merhaba; randevulu hastaları mouse ile sürükleyerek farklı gün yada saate kaydıramıyoruz. Daha önce böyle bir sorun yoktu. Böyle olunca aynı saate iki hasta yazamıyoruz. Problemin çözülmesini rica ediyorum.",
+    "answerDate": "2026-04-15T13:54:49+03:00",
+    "answer": "RANDEVU sayfasındaki Takvim alanının yanında yer alan \"Sürükle Bırak\" kutucuğunu işaretlediğinizde randevularınızı sürükleyerek başka tarih, saatlere taşıyabilirsiniz.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki RANDEVU sayfasını inceleyebilir, menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da ilgili eğitim videolarını izleyebilirsiniz"
+  },
+  {
+    "type": "qa",
+    "author": "Ali V.Y.",
+    "questionDate": "2026-04-03T17:06:59+03:00",
+    "question": "Sözleşme sekmesi gibi planlama kısmından ağız içi şema ile beraber yapılacak tedavilerin çıktısının alınabileceği. Tedavilerin şema altında listelendiği ve yazılı karşılığında paraf boşluğu olan kağıdın en altında da \"Yukarıda listelenmiş tedavilerin yapılmasını kabul ediyorum.Tedavilerle ilgili her türlü süreç,sonuç ve risk bilgilendirmeleri tarafıma anlayabileceğim gibi anlatılmıştır.\" yazan ve Hasta ismi TC no ve imza ...Olursa dijital onay alamayanlar için çok kullanışlı olacaktır. Tek sayfa olma avantajı olacak.Diğer uzun uzun açıklamalı formlar sadece hastaya okutturma amaçlı olabilir. Dosyalanıp okutup dediğim formu imzalatmak daha pratik olacak gibi.",
+    "answerDate": "2026-04-03T17:50:22+03:00",
+    "answer": "AYARLAR > Klinik sayfasında bulunan \"Oral Çıktı Notu\" alanına yazdığınız notlar proforma ve tedavi çıktılarında sayfasında sonunda gösterilmektedir. Bu alana not yazabilir ve ardından HASTA > Oral sayfasında yer alan \"Yazdır\" düğmesi ile tedavilerin çıktısını alabilirsiniz.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki AYARLAR > Klinik sayfasını inceleyebilirsiniz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-04-03T14:34:10+03:00",
+    "answer": "Dr.DENTES mobil uygulamamız yayında!\nGoogle Play ve App Store üzerinden uygulamamızı indirebilirsiniz!\nApple iPhone (iOS) telefon ve Apple iPad (iOS) tabletler için buraya tıklayınız!\nAndroid telefon ve tabletler için buraya tıklayınız!"
+  },
+  {
+    "type": "qa",
+    "author": "Bahattin S.",
+    "questionDate": "2025-01-28T17:54:07+03:00",
+    "question": "Rapor, liste, liste kıstası alanına, hastaların yaptığı toplam ödemeyi görebileceğimiz bir seçenek eklenirse çok mutlu oluruz.",
+    "answerDate": "2026-04-03T11:03:03+03:00",
+    "answer": "RAPOR > Liste'ye \"Tedaviler Toplamı\" ve \"Alınan Paralar\" adında 2 alan daha eklendi.\nBöylece hasta listesi alırken toplam tedavi ve toplam alınan para tutarlarını görüntüleyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Sahra A.",
+    "questionDate": "2026-03-23T10:25:21+03:00",
+    "question": "Avülsiyon tedavisini ekleyebilir misiniz rica etsem ?\nTeşekkürler...",
+    "answerDate": "2026-03-23T11:35:48+03:00",
+    "answer": "AYARLAR > Tarife sayfasında bulunan mavi renkli \"Yeni\" düğmesi ile kendi tedavilerinizi ekleyebilir ve toplam tutarını belirleyebilirsiniz.\nAyrıntılı bilgi için BELGELER > Dr.DENTES Eğitimi sayfasındaki AYARLAR > Tarife başlığı altında bulunan \"Tedavi Ekleme, Düzenleme ve Silme\" isimli videodan destek alabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Abdullah A.",
+    "questionDate": "2026-03-23T10:34:02+03:00",
+    "question": "istirahat raporu neden yazamıyoruz",
+    "answerDate": "2026-03-23T10:48:08+03:00",
+    "answer": "Sağlık Bakanlığı kararı doğrultusunda artık ıslak imzalı rapor düzenlenmeyecektir. HASTA > Hasta Kartı sayfasında bulunan e-rapor düğmesi ile rapor oluşturabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Osman S.",
+    "questionDate": "2026-03-16T16:56:06+03:00",
+    "question": "KVKK ve dijital onam formları SMS'leri gitmiyor.",
+    "answerDate": "2026-03-16T17:59:19+03:00",
+    "answer": "Yaptığımız incelemelere göre SMS gönderiminde bir problem görünmüyor. SMS'lerinizin iletim durumlarını AYARLAR > SMS Gönder sayfasının sağ üst tarafındaki SMS Gönderim Raporu bölümünden takip edebilirsiniz. Aşağıdaki durumları yaşamadığınızdan emin olunuz.\n1- Hastanın cep numarası doğru mu?\n2- Hasta kartındaki \"SMS İstemiyor\" onay kutusu işaretli mi? (İşaretliyse SMS gönderilmez.)\n3- Hasta GSM operatörlerinden özel başlıklı SMS'lerin kabul edilmemesine dair ayar yapmış olabilir.\n4- Cep numarası Türkiye dışı bir GSM operatörüne kayıtlı olabilir.\n5- SMS metninizde istenmeyen bir ifade veya link geçiyorsa GSM operatörleri arasındaki SPAM filtreleri tarafından engellenebilir. (SMS metninizde düzenleme yapabilirsiniz)\nYukarıdaki kontrolleri yaptıktan sonra hala problem yaşıyorsanız mesai saatlerimiz içinde bize ulaşabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Şerif T.",
+    "questionDate": "2026-03-13T21:18:36+03:00",
+    "question": "Ortalama 2 aydır sistemde aşırı derecede bir yavaşlık ve ara ara kompalar mevcut bi yavaşlık bizi çok fazla aksatıyor ve yoruyor bilginiz olsun",
+    "answerDate": "2026-03-13T21:31:11+03:00",
+    "answer": "Genel bir problem görülmemektedir. İnternet hattınız, cihazınız veya internet tarayıcınız ile ilgili bir durum olabilir. Mesai saatlerimiz içinde aramanız halinde uzaktan bağlantı ile ayrıntılı incelemek isteriz. İnternet hattınız kaynaklı geçici problemlerde mobil veriniz ile Dr.DENTES’i kullanabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Özkan A.",
+    "questionDate": "2026-03-12T14:51:56+03:00",
+    "question": "Fiyatlarınızı çok artırmışsınız. Geçen yıla göre benim ödediğim miktara göre %57’lik bir artış var ve bu çok fazla. Ayrıca programı daha efektif kullanmak adına online eğitim talep ettim. Bu 3. senem olacak. Israrla ilk üyeliğinizden itibaren 15 gün içerisinde ücretsizdi. Şu an ücretsiz olarak faydalanamazsınız, deniyor. Neden böyle bir kısıtlama var? Ben bir defaya mahsus istediğim zaman kullanmalıyım ve kullanmak istiyorum. Bu programın amacı bize kolaylık sağlamak değil mi? Bir ürün yapıyorsunuz ve ben bundan en iyi şekilde faydalanmak istiyorum. Sizin de zaten amacınız bu değil mi? Eğitim videoları sınırlı kalıyor. Gerçekten tavrınıza anlam veremiyorum.",
+    "answerDate": "2026-03-12T18:03:32+03:00",
+    "answer": "3 yıldır süregelen iş birliğiniz için teşekkür ederiz. Yazılımımızdan en yüksek verimi alma isteğinizi anlıyor ve sorularınızı yanıtlamak istiyoruz.\nFiyatlandırma Hakkında:\nPaylaştığımız %47 oranı, tüm paketlerimizin genel ortalamasını yansıtmaktadır. Ancak bildiğiniz üzere fiyatlandırma modelimiz, kullanıcılarımıza sunduğumuz veri boyutu ve aylık trafik limitlerine dayanmaktadır. Depolama gereksinimlerinin maliyet artışları ile doğrudan ilişkilidir. Fiyat güncellemesi, yüksek veri güvenliği ve kesintisiz altyapı hizmeti sunabilmemiz adına zorunlu hale gelmiştir.\nEğitim Talebiniz Hakkında:\nÜcretsiz eğitim süreçlerimiz, tüm kullanıcılarımıza standart ve sürdürülebilir bir hizmet sunabilmek adına hesap açılış tarihinizden itibaren ilk 15 günü kapsayacak şekilde planlanmıştır. Belirlenen bu sürenin dışındaki eğitim talepleri, operasyonel kapasitemiz doğrultusunda ek hizmet kapsamında değerlendirilmektedir.\nProgramı daha efektif kullanabilmeniz adına size destek olmak istiyoruz. Mevcut eğitim videolarımıza ek olarak hazırladığımız kapsamlı kullanım kılavuzumuz mevcuttur. Ayrıca, takıldığınız spesifik noktalar olursa destek ekibimize WhatsApp yada telefon üzerinden ulaşabilirsiniz; size rehberlik etmekten memnuniyet duyacaklardır.\nAnlayışınız ve uzun süreli iş birliğiniz için tekrar teşekkür ederiz."
+  },
+  {
+    "type": "qa",
+    "author": "Murat Y.",
+    "questionDate": "2024-04-16T16:32:05+03:00",
+    "question": "Merhaba. Ödeme yapan eski hastalara o gün tedavi yapmadığımız bir senaryoda, sadece ödemesini o gün yaptığı için fatura kesmek istediğimizden ötürü biz tedavi tarifemize muayene şemalı \"fatura\" adında 0 TL bir işlem ekledik. O işlem üzerinden hastanın faturasını kestiğimizde USS'ye o gün muayene olmuş gibi veri gidiyor.\nBir diğer konu ise hastamız olmayan kişiler örneğin diş depolarına satış/iade faturası kesmek istediğimizde yine aynı yöntem ile kendi hasta kartlarımız üzerinden \"fatura\" isimli tedaviyi ekleyip fatura bilgilerini değiştirerek işlem yapıyoruz. Yani kendi adımıza USS'ye gerçek dışı veri göndermiş oluyoruz, muayene olmuş gibi.\nBu sorunun ortadan kalkmasını, fatura kestiğimizde hastanın oraline bir şey eklemek zorunda kalmamamızı ve tüzel kişilere de bu sistem üzerinden fatura kesmek istiyoruz.\nTeşekkürler.",
+    "answerDate": "2026-03-12T16:21:16+03:00",
+    "answer": "AYARLAR > Tarife sayfasından eklediğiniz \"fatura\" adındaki tedaviden şemayı kaldırabilirsiniz.\nGİDER'e Fatura modülü eklendi. GİDER > Fatura sayfasından tedaviden bağımsız fatura kalemleri oluşturarak firmalara fatura kesebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Hasan K.C.",
+    "questionDate": "2026-03-12T11:59:04+03:00",
+    "question": "fiyatlarınız geçen seneye oranla çok arttı daha makul bir artış olabilirdi",
+    "answerDate": "2026-03-12T12:24:08+03:00",
+    "answer": "Geri bildiriminizi açıkça paylaştığınız için teşekkür ederiz. Ücret güncellemelerinin hassas bir konu olduğunun farkındayız ve bu konudaki memnuniyetinizi önemsiyoruz.\nYaptığımız ücret güncellemeleri yalnızca yıllık artış yaklaşımıyla değil; son dönemde artan altyapı, veri güvenliği, bakım ve geliştirme maliyetleri ile birlikte yıl boyunca eklediğimiz yeni özelliklerin sürdürülebilir şekilde devam edebilmesi amacıyla belirlenmektedir. Amacımız, kullanıcılarımızın günlük iş akışını kolaylaştıran ve uzun vadede daha fazla değer üreten bir sistem sunmaya devam etmektir. Bu yıl tüm paket ve ek hizmet fiyatlarımızda ortalama %47 seviyesinde bir güncelleme yapılmıştır.\nAnlayış ve iş birliğiniz için tekrar teşekkür ederiz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-03-12T12:14:33+03:00",
+    "answer": "GİDER'e Fatura modülü eklendi. GİDER > Fatura sayfasından tedaviden bağımsız fatura kalemleri oluşturarak firmalara fatura kesebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Kartepe S.",
+    "questionDate": "2026-03-07T14:38:46+03:00",
+    "question": "merhabalar, 2026 fiyat tarifesinin içerisinde 2025 tarifesine ait fiyatlar görüntülüyorum. Sebebini ve düzeltmek için ne yapmamız gerektiğini öğrenmek istiyorum, iyi çalışmalar.",
+    "answerDate": "2026-03-10T14:27:12+03:00",
+    "answer": "Tüm tedavi fiyatları 2026 TDB fiyat listesine göre güncellenmişti. Tespit ettiğiniz tedavileri 0506 188 20 19 numaralı WhatsApp hattımız üzerinden bizimle paylaşmanız halinde ekibimiz inceleyecektir. AYARLAR > Tarife sayfasında yer alan \"Kopyala\" düğmesi ile eski tarifelerden yeni tarifeye kopyalama yapıldığında tedavi fiyatları da değişmektedir.\nAYARLAR > Tarife sayfasında üst bölümdeki mavi renkli Yeni düğmesi ile güncel TDB tarifesini ekleyebilirsiniz. Tarife adına dilerseniz TDB 2026  yazabilir ya da kendi tarife isminizi belirleyebilirsiniz.\nAyrıntılı bilgi için BELGELER > Dr.DENTES Eğitimi sayfasındaki AYARLAR > Tarife başlığı altında bulunan \"Tarife Ekleme, Varsayılan Yapma ve Hasta Aktarma\" isimli videodan destek alabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Abdullah Ö.",
+    "questionDate": "2026-02-28T23:56:58+03:00",
+    "question": "Bazı faturalarda fatura oranı %8 seçilmiş otomatik olarak. Onların düzeltilmesini rica ediyorum.\nSMM2026000000041\nSMM2026000000008",
+    "answerDate": "2026-03-02T15:16:05+03:00",
+    "answer": "Kullandığınız tarifenin KDV oranı fatura sayfasına yansımaktadır. Temmuz 2023'den önce oluşturduğunuz tarifeyi kullanıyorsanız KDV oranınız %8 kalmış olabilir. AYARLAR > Tarife sayfasında bulunan \"Yeni\" düğmesi ile güncel bir tarife ekleyip onu kullanmanızı veya mevcut tarifenizin KDV oranını %10 olarak güncellemenizi öneririz.\nFaturalarınızın otomatik %10 KDV oranlı oluşmasını isterseniz HASTA > Fatura'da sağ üstteki Ayarlar düğmesine basarak \"Faturada kullanılacak KDV oranı (%)\" ayarını \"10\" olarak girebilirsiniz.\n%10 veya %20 dışında bir KDV oranı ile fatura kesmeye çalıştığınızda da sistem uyarı vermektedir.\nKesilen/GİB'e gönderilen faturalarda değişiklik yapılamamaktadır. Yasal iptal süresi içinde ise HASTA > Fatura sayfasında yer alan kırmızı renkli \"İptal Et\" düğmesi ile faturalarınızı iptal edip yeniden kesebilirsiniz. Muhasebe/mali müşavirinizden konu ile ilgili destek alabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Abdullah Ö.",
+    "questionDate": "2026-02-28T23:53:32+03:00",
+    "question": "RAPOR > Gider deyince toplam giderleri gösteriyor. Ben bunların ay ay ayrılmasını isterim. Ocak ayı şu kadar toplam ödeme yapmışım, teknisyene şu kadar ödemişim şubatta şu kadar yapmışım gibi ayrı ayrı.",
+    "answerDate": "2026-03-02T09:56:17+03:00",
+    "answer": "RAPOR > Defter sayfasında seçtiğiniz dönem aralığında \"Ödediğimiz\" bölümünün altında gider kartlarına yapılan ödemeler gözükür. Hesap tiplerine göre de ayrıca rapor alabilirsiniz.\nRAPOR > Gider sayfasında ise borcunuz/fazla ödediğiniz gider kartları listelenir.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki RAPOR > Defter sayfasını inceleyebilir, menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da ilgili eğitim videolarını izleyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Deneme D.",
+    "questionDate": "2026-02-28T17:10:07+03:00",
+    "question": "SMS paketleri ile ilgili bilgi alabilir miyiz? Yer değişikliği yaptık adres bilgisi göndermek istiyoruz hastalarımıza.\nMB olarak belirtilmiş ücretler ama tek SMS ücreti nedir ? yada 2,000 mb kaç SMS ?",
+    "answerDate": "2026-03-02T09:49:03+03:00",
+    "answer": "AYARLAR > Sipariş sayfasında yer alan \"SMS Kredi\" başlığının altından SMS paketlerimizi inceleyebilirsiniz. Paketlerimizin satın alındığı tarihten itibaren bir yıl kullanım süresi bulunmaktadır. SMS gönderimi için öncelikle başlık (gönderen ismi) belirlemelisiniz. SMS başlığı oluşturmak için;\nHesabınıza giriş yaptıktan sonra AYARLAR > Hakkımızda sayfasındaki Dr.DENTES SMS başlığı altından SMS başlık tanımlama formuna ulaşabilirsiniz. SMS başlığınız onaylandıktan ve kredi aldıktan sonra kullanımına başlayabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Büşra Z.",
+    "questionDate": "2026-02-26T10:22:07+03:00",
+    "question": "Hasta kartı bölümünde istirahat raporu düne kadar alabiliyordum ama şuan alamıyorum sebebi nedir?",
+    "answerDate": "2026-02-26T11:19:07+03:00",
+    "answer": "Sağlık Bakanlığı kararı doğrultusunda artık ıslak imzalı rapor düzenlenmeyecektir. HASTA > Hasta Kartı sayfasında bulunan e-rapor düğmesi ile rapor oluşturabilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "İbrahim M.F.",
+    "questionDate": "2026-02-25T21:16:41+03:00",
+    "question": "Merhaba, bu sene ücretlere %60 gibi fahiş bir zam yapmanızın geçerli bir sebebi var mı acaba? Her sene üstüne koyarak ücret güncellemesi yapıyorsunuz. İlk yıllardaki hekim memnuniyetleri giderek azalıyor bilginiz olsun.",
+    "answerDate": "2026-02-26T00:40:01+03:00",
+    "answer": "Geri bildiriminizi açıkça paylaştığınız için teşekkür ederiz. Ücret güncellemelerinin hassas bir konu olduğunun farkındayız ve bu konudaki memnuniyetinizi önemsiyoruz.\nYaptığımız ücret güncellemeleri yalnızca yıllık artış yaklaşımıyla değil; son dönemde artan altyapı, veri güvenliği, bakım ve geliştirme maliyetleri ile birlikte yıl boyunca eklediğimiz yeni özelliklerin sürdürülebilir şekilde devam edebilmesi amacıyla belirlenmektedir. Amacımız, kullanıcılarımızın günlük iş akışını kolaylaştıran ve uzun vadede daha fazla değer üreten bir sistem sunmaya devam etmektir. Bu yıl tüm paket ve ek hizmet fiyatlarımızda ortalama %47 seviyesinde bir güncelleme yapılmıştır.\nAnlayış ve iş birliğiniz için tekrar teşekkür ederiz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-02-24T16:26:23+03:00",
+    "answer": "Dr.DENTES e-Fatura'da İstisna tiplerine \"351\" kodlu \"KDV - İstisna Olmayan Diğer\" seçeneği eklendi."
+  },
+  {
+    "type": "qa",
+    "author": "İsmail Ç.D.",
+    "questionDate": "2026-02-19T13:22:58+03:00",
+    "question": "05-999-998 nolu tarifede yer alan apikal cerrahi işlemi, USS’ye gönderim için gerekli kodu içermediğinden dolayı USS gönderimi yapılamamaktadır.\nAyrıca, tarife içerisinde “Komposit” olarak geçen ifadelerin doğru yazımı “Kompozit” şeklindedir ve bu doğrultuda düzeltilmesi gerekmektedir.\nAksi takdirde, her yıl tarafımızca düzeltme yapılması gerekmektedir.\nTeşekkür ederiz.",
+    "answerDate": "2026-02-19T15:07:13+03:00",
+    "answer": "Sağlık Bakanlığı'na sadece SUT kodu olan tedaviler gönderilir. Kendi eklediğiniz tedavilerin SUT kodu olmaz, AYARLAR > Tarife sayfasından ilgili tedaviyi seçip \"Değiştir\" düğmesini kullanarak şema bölümünden benzer bir SUT kodlu tedaviye bağlayabilirsiniz. Oralde kendi eklediğiniz tedavi görünür ancak Sağlık Bakanlığı'na şema olarak seçtiğiniz tedavi gönderilir.\nAYARLAR > Tarife sayfasında üst bölümdeki mavi renkli Yeni düğmesi ile güncel TDB tarifesini ekleyebilirsiniz. Güncel TDB tarifesinde tedavi isimleri \"Kompozit\" olarak yer almaktadır."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-02-03T15:13:25+03:00",
+    "answer": "Aşağıdaki eğitim videoları güncellendi. BELGELER > Dr.DENTES Eğitimi sayfasından ulaşabilirsiniz.\n- HASTA > Hasta Kartı: \"SMS ile KVKK Onayı\"\n- HASTA > Hasta Kartı: \"SMS ile Dijital Onam\"\n- AYARLAR > Klinik: \"KVKK Metinleri\"\n- AYARLAR > Klinik: \"Onam Metinleri\"\n- AYARLAR > Klinik: \"Yedekleme\""
+  },
+  {
+    "type": "qa",
+    "author": "Ahmet S.Ö.",
+    "questionDate": "2026-02-02T11:30:13+03:00",
+    "question": "Randevu sekmesinin ilk sekme olması mümkün mü acaba? Kendimiz sekme sıralamasını değiştirebiliyor muyuz?",
+    "answerDate": "2026-02-02T11:38:40+03:00",
+    "answer": "AYARLAR > Klinik sayfasındaki \"Açılış Sayfası\" ayarı ile açılış sayfanızı değiştirebilirsiniz.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki AYARLAR > Klinik sayfasını inceleyebilir, menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da ilgili eğitim videolarını izleyebilirsiniz."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-01-27T17:57:06+03:00",
+    "answer": "\"3/10 Tevkifat Oranı\" ve \"Tevkifat İade\" tipi Dr.DENTES e-Fatura sistemine dahil edildi. Fatura türünü \"e-Fatura\" yada \"e-Arşiv Fatura\" seçip tip olarak da \"Tevkifat İade\" seçtikten sonra iade edilecek fatura bilgilerini girip fatura düzenleyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Elif A.N.",
+    "questionDate": "2026-01-24T16:15:02+03:00",
+    "question": "sistem gidiyor randevuı ekranı ve hastalar görünmüyor ve planlamalar açılmıyor",
+    "answerDate": "2026-01-24T16:51:50+03:00",
+    "answer": "Herhangi bir problem görünmüyor. Kullanıcınızın yetkileriyle ilgili bir durum olabilir. Güvenli çıkış yapıp tekrar giriş yaparak deneyiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Ömer A.",
+    "questionDate": "2025-05-02T12:37:54+03:00",
+    "question": "Hasta planlama fiyatını çıktı olarak aldıktan 3 ay sonra geliyor ve fiyatın yeniden değerlendirilmesi gerekiyor bazı durumlarda. Bunun önüne geçmek adına planlama çıktısının altına not kısmı oluşturabilirsek, bu sayede fiyatın belirli bir süre geçerli olabileceğini bildirirsek hastaya çok daha iyi olacak. İyi çalışmalar dileriz.",
+    "answerDate": "2026-01-21T17:38:10+03:00",
+    "answer": "AYARLAR > Klinik'e \"Oral Çıktı Notu\" alanı eklendi. Bu alana yazdığınız not Proforma ve tedavi çıktılarında gösterilmektedir."
+  },
+  {
+    "type": "qa",
+    "author": "Cem K.",
+    "questionDate": "2024-07-29T17:42:51+03:00",
+    "question": "Planlama kesinleştirdiğimiz ekranda tedavi ve ödeme şartları ile ilgili not girebilmeliyiz.",
+    "answerDate": "2026-01-21T17:36:40+03:00",
+    "answer": "AYARLAR > Klinik'e \"Oral Çıktı Notu\" alanı eklendi. Bu alana yazdığınız not Proforma ve tedavi çıktılarında gösterilmektedir."
+  },
+  {
+    "type": "qa",
+    "author": "Banko B.",
+    "questionDate": "2024-05-21T12:08:58+03:00",
+    "question": "Hastaya bir planlama yaptığımda bu planlamada bulunan fiyatın süresinin geçerlilik tarihi veya planlamada tedavi sırasında değişikler olabileceğine dair bir not eklemek istiyoruz. Bu konuda yardımcı olur musunuz ?",
+    "answerDate": "2026-01-21T17:36:07+03:00",
+    "answer": "AYARLAR > Klinik'e \"Oral Çıktı Notu\" alanı eklendi. Bu alana yazdığınız not Proforma ve tedavi çıktılarında gösterilmektedir."
+  },
+  {
+    "type": "qa",
+    "author": "Uğur U.",
+    "questionDate": "2023-12-14T08:55:19+03:00",
+    "question": "Hastalara planlama çıktısı verirken alt tarafta bu fiyatlar 15 gün - 1 ay vs geçerlidir diye ibare koyabilirsek çok iyi olur. Bazı hasta takip programlarında olan bir özellik gerçekten çok faydalı olabilir bizler için. İyi çalışmalar",
+    "answerDate": "2026-01-21T17:35:30+03:00",
+    "answer": "AYARLAR > Klinik'e \"Oral Çıktı Notu\" alanı eklendi. Bu alana yazdığınız not Proforma ve tedavi çıktılarında gösterilmektedir."
+  },
+  {
+    "type": "qa",
+    "author": "Önder G.",
+    "questionDate": "2021-09-28T16:07:37+03:00",
+    "question": "Planlama kısmında hastalarımıza imza attırmak ve işlemleri onaylamaları için yazı ekletmek istiyoruz.\nYazımız : Hastayla yapılan ön görüşmede yukarıdaki işlemlerin yapılması hususunda anlaşmaya varılmıştır.Yukarıdaki fiyatlar dahilinde işlemler başlatılmıştır.",
+    "answerDate": "2026-01-21T17:34:55+03:00",
+    "answer": "AYARLAR > Klinik'e \"Oral Çıktı Notu\" alanı eklendi. Bu alana yazdığınız not Proforma ve tedavi çıktılarında gösterilmektedir."
+  },
+  {
+    "type": "qa",
+    "author": "Ayşegül Y.",
+    "questionDate": "2020-08-21T17:19:30+03:00",
+    "question": "Merhaba,\nSözleşme metnine bir yerlere verilen fiyatların ilk altı ay geçerli olacağına dair bir metin alanı ekleyebilir misiniz? Ya da herkes için değişkenlik göstereceğinden manuel olarak yazılabilecek bir free text alanı yaratabilir misiniz?\nteşekkürler",
+    "answerDate": "2026-01-21T17:34:12+03:00",
+    "answer": "AYARLAR > Klinik'e \"Oral Çıktı Notu\" alanı eklendi. Bu alana yazdığınız not Proforma ve tedavi çıktılarında gösterilmektedir."
+  },
+  {
+    "type": "qa",
+    "author": "M.,",
+    "questionDate": "2020-08-16T02:05:00+03:00",
+    "question": "Planlamada çıktı almadan önce, sözleşme kısmında açıklama gibi bir ekleme yapabilirseniz \"teklifimiz 15 gün geçerlidir\" tarzı bir not ekleyebiliriz.",
+    "answerDate": "2026-01-21T17:33:23+03:00",
+    "answer": "AYARLAR > Klinik'e \"Oral Çıktı Notu\" alanı eklendi. Bu alana yazdığınız not Proforma ve tedavi çıktılarında gösterilmektedir."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-01-21T17:29:51+03:00",
+    "answer": "AYARLAR > Klinik'e \"Oral Çıktı Notu\" alanı eklendi. Bu alana yazdığınız not proforma ve tedavi çıktılarında gösterilmektedir."
+  },
+  {
+    "type": "qa",
+    "author": "Lilyum P.D.",
+    "questionDate": "2026-01-05T14:23:50+03:00",
+    "question": "Gelen e-fatura iptali nasıl olur?",
+    "answerDate": "2026-01-06T14:58:53+03:00",
+    "answer": "\"Temel e-Fatura\" ve \"Ticari e-Fatura\" olmak üzere 2 tip e-Fatura vardır. Sadece Ticari e-Faturalar RAPOR > Gelen e-Fatura sayfasından ilk 8 gün içinde onaylanabilir veya reddedilebilir.\nAyrıntılı bilgi için muhasebecinize/mali müşavirinize danışabilir, HASTA > Fatura'daki \"Kurallar\" bölümünü inceleyebilir ve menüdeki \"?\" simgesinden yardım kılavuzundaki RAPOR > Gelen e-Fatura sayfasını inceleyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Mehmet Ç.",
+    "questionDate": "2026-01-06T13:08:50+03:00",
+    "question": "Merhaba,\nEndodonti de ilk önce amalgam dolgu yerine komposit dolguyu nasıl öncelikli yapabilirim?",
+    "answerDate": "2026-01-06T14:40:17+03:00",
+    "answer": "AYARLAR > Tarife sayfasındaki mor renkli “Tedavileri Sırala” düğmesi ile bölümlere göre sık kullandığınız tedavileri üst sıralara taşıyabilir, kaydet düğmesi ile listeyi kaydedebilirsiniz. Oral sayfasında öncelikle görseli olan tedaviler üst sıralarda gösterilir.\nAyrıntılı bilgi için menüdeki \"?\" simgesinden yardım kılavuzundaki AYARLAR > Tarife sayfasını inceleyebilir, menüdeki BELGELER > Dr.DENTES Eğitimi sayfasından da ilgili eğitim videolarını izleyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Oğuzhan S.",
+    "questionDate": "2026-01-06T11:25:13+03:00",
+    "question": "Bu seneki tdb tarifesi önceki seneye göre geç eklendi. Liste dün yayınlanana kadar ben kendi tarifemi sıfırdan yazmıştım. Mümkünse liste açıklanır açıklanmaz eklenirse bizleri rahatlatır. Önümüzdeki sene daha erken çıkarsa çok sevinirim.",
+    "answerDate": "2026-01-06T14:33:41+03:00",
+    "answer": "Bu yıl TDB tarifesi önceki yıllara kıyasla daha geç yayınlandı. TDB, tarifeyi yayınlandığı an ekibimiz çalışmalara başlayıp mümkün mertebe en erken sürede Dr.DENTES'e entegre etmektedir. Tüm liste titizlikle baştan sona hazırlanarak kullanımınıza sunulmaktadır."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2026-01-05T14:16:58+03:00",
+    "answer": "TDB 2026 tarifesi yüklendi. Üstte çıkan bilgilendirme mesajına tıklayarak veya AYARLAR > Tarife'den mavi renkli \"Yeni\" düğmesiyle ekleyebilirsiniz.\nAYARLAR > Tarife sayfasında yeşil renkli \"Hasta Aktar\" düğmesiyle tek seferde tüm hastaların tarifesini TDB 2026 olarak değiştirebilirsiniz.\nAyrıntılı bilgi için BELGELER > Dr.DENTES Eğitimi sayfasındaki AYARLAR > Tarife başlığı altında bulunan \"Tarife Ekleme, Varsayılan Yapma ve Hasta Aktarma\" isimli videodan destek alabilirsiniz veya menüdeki \"?\" simgesinden yardım kılavuzundaki AYARLAR > Tarife sayfasını inceleyebilirsiniz."
+  },
+  {
+    "type": "qa",
+    "author": "Rasim K.O.",
+    "questionDate": "2026-01-02T15:01:00+03:00",
+    "question": "Merhaba,\nKolay gelsin 2026 Fiyat tarifesi ne zaman sisteme eklenir veya eklendiyse nasıl içe aktarabilirim?",
+    "answerDate": "2026-01-05T12:15:10+03:00",
+    "answer": "TDB 2026 tarifesi 06.01.2026 tarihine kadar yüklenecektir. Yüklendiğinde Dr.DENTES içerisinden duyuru çıkacaktır."
+  },
+  {
+    "type": "qa",
+    "author": "İbrahim E.B.",
+    "questionDate": "2026-01-05T11:13:48+03:00",
+    "question": "Merhaba. 2026 tarifesi ne zaman ve nasıl yüklenecek?",
+    "answerDate": "2026-01-05T12:15:08+03:00",
+    "answer": "TDB 2026 tarifesi 06.01.2026 tarihine kadar yüklenecektir. Yüklendiğinde Dr.DENTES içerisinden duyuru çıkacaktır."
+  },
+  {
+    "type": "announcement",
+    "author": "Dr.DENTES",
+    "answerDate": "2025-12-30T17:15:48+03:00",
+    "answer": "\"İlaç ve Tıbbi Cihaz\" senaryosu Dr.DENTES e-Fatura sistemine dahil edildi. Fatura türünü \"e-Fatura\" seçip, senaryo olarak da \"İlaç ve Tıbbi Cihaz\" seçtikten sonra fatura kalemi düzenleme ekranından \"İlaç/Tıbbi Cihaz\" bilgilerini girip SATIŞ veya İADE faturası düzenleyebilirsiniz."
+  }
+]

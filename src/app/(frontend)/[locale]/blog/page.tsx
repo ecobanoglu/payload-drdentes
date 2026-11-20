@@ -2,6 +2,7 @@ import type { Metadata } from 'next/types'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageRange } from '@/components/PageRange'
+import { PageHeader } from '@/components/PageHeader'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -45,11 +46,14 @@ export default async function Page({ params }: Args) {
   return (
     <div className="pt-24 pb-24">
       <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>{t('title')}</h1>
-        </div>
-      </div>
+      {/* Lacivert başlık bandı; -mt: üst boşluk (6rem) + header (6.5rem) */}
+      <PageHeader
+        locale={locale}
+        crumbs={[{ url: BLOG_PATH, label: t('title') }]}
+        title={t('title')}
+        description={t('description')}
+        className="-mt-[12.5rem]"
+      />
 
       <div className="container mb-8">
         <PageRange

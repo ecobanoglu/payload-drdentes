@@ -14,6 +14,7 @@
   },
   "Posts": {
     "title": "Blog",
+    "description": "Artículos sobre odontología, gestión de clínicas y novedades de Dr.DENTES.",
     "metaTitle": "Blog",
     "pageMetaTitle": "Blog – Página {page}"
   },
@@ -72,7 +73,12 @@
     "save": "Ahorra {percent} %",
     "popular": "Más popular",
     "customPrice": "Personalizado",
-    "perYear": "/año"
+    "perYear": "/año",
+    "includes": "Incluye:",
+    "compareHeading": "Compara los planes",
+    "feature": "Característica",
+    "included": "Incluido",
+    "notIncluded": "No incluido"
   },
   "Contact": {
     "email": "Correo electrónico",
@@ -132,5 +138,10 @@
     "rootCanal": "Endodoncia",
     "implant": "Implante",
     "caption": "Animación ilustrativa de la interfaz de Dr.DENTES"
+  },
+  "Testimonials": {
+    "reply": "Respuesta de Dr.DENTES",
+    "loadMore": "Mostrar más",
+    "announcement": "Anuncio"
   }
 }

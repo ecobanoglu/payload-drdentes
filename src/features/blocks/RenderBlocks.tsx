@@ -11,12 +11,14 @@ import { ContactBlockComponent } from '@/features/blocks/Contact/Component'
 import { FaqBlockComponent } from '@/features/blocks/Faq/Component'
 import { FeatureSplitBlockComponent } from '@/features/blocks/FeatureSplit/Component'
 import { PricingBlockComponent } from '@/features/blocks/Pricing/Component'
+import { PricingAddonsBlockComponent } from '@/features/blocks/PricingAddons/Component'
+import { TestimonialsBlockComponent } from '@/features/blocks/Testimonials/Component'
 import { ContentBlock } from '@/features/blocks/Content/Component'
 import { FormBlock } from '@/features/blocks/Form/Component'
 import { MediaBlock } from '@/features/blocks/MediaBlock/Component'
 
 /** Kendi giriş animasyonunu yöneten bloklar (ör. kartlar sırayla belirir); dış Reveal uygulanmaz */
-const selfAnimatedBlocks = new Set<string>(['cards', 'faq', 'pricing'])
+const selfAnimatedBlocks = new Set<string>(['cards', 'faq', 'pricing', 'pricingAddons', 'testimonials'])
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -25,6 +27,8 @@ const blockComponents = {
   faq: FaqBlockComponent,
   featureSplit: FeatureSplitBlockComponent,
   pricing: PricingBlockComponent,
+  pricingAddons: PricingAddonsBlockComponent,
+  testimonials: TestimonialsBlockComponent,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
