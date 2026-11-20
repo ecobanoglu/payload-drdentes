@@ -1,3 +1,4 @@
+import { SectionHeader } from '@/components/SectionHeader'
 import type { Post, ArchiveBlock as ArchiveBlockProps } from '@/payload-types'
 
 import configPromise from '@payload-config'
@@ -56,7 +57,10 @@ export const ArchiveBlock: React.FC<
     <div className="my-16" id={`block-${id}`}>
       {introContent && (
         <div className="container mb-16">
-          <RichText className="ms-0 max-w-[48rem]" data={introContent} enableGutter={false} />
+          {/* Giriş içeriği (zengin metin): diğer bölüm başlıkları gibi %40 genişlik + animasyon */}
+          <SectionHeader>
+            <RichText className="ms-0 max-w-none" data={introContent} enableGutter={false} />
+          </SectionHeader>
         </div>
       )}
       <CollectionArchive posts={posts} />

@@ -4,15 +4,24 @@ import { getLocale } from 'next-intl/server'
 import { getPayload, type Where } from 'payload'
 import React from 'react'
 
+import { SectionHeader } from '@/components/SectionHeader'
 import type { Faq, FaqBlock as FaqBlockProps } from '@/payload-types'
 
 import { Reveal } from '@/components/animation/Reveal'
 import RichText from '@/components/RichText'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import type { Locale } from '@/lib/i18n/config'
 
 /** Bloğun ayarına göre gösterilecek soruları aktif dilde getirir (sıra: admin'deki sürükle-bırak sırası). */
-const getFaqs = async ({ source, category, items, limit }: FaqBlockProps, locale: Locale): Promise<Faq[]> => {
+const getFaqs = async (
+  { source, category, items, limit }: FaqBlockProps,
+  locale: Locale,
+): Promise<Faq[]> => {
   if (source === 'selected') {
     return (items ?? []).filter((item): item is Faq => typeof item === 'object')
   }
@@ -64,14 +73,9 @@ export async function FaqBlockComponent(props: FaqBlockProps) {
 
   return (
     <section className="container">
+      {/* Başlık bölüm genişliğine göre (%40), soru listesi dar sütunda */}
+      <SectionHeader heading={heading} intro={intro} align="center" className="mb-10" />
       <div className="mx-auto max-w-3xl">
-        {(heading || intro) && (
-          <header className="mb-10 text-center">
-            {heading && <h2 className="mb-4 text-3xl font-semibold md:text-4xl">{heading}</h2>}
-            {intro && <p className="text-lg text-muted-foreground">{intro}</p>}
-          </header>
-        )}
-
         <Reveal stagger={0.06}>
           <Accordion type="single" collapsible className="rounded-2xl border border-border bg-card">
             {faqs.map((faq) => (

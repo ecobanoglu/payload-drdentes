@@ -37,7 +37,8 @@
   },
   "Card": {
     "noImage": "لا توجد صورة",
-    "untitledCategory": "فئة بدون عنوان"
+    "untitledCategory": "فئة بدون عنوان",
+    "readMore": "اقرأ المزيد"
   },
   "Form": {
     "loading": "جارٍ الإرسال، يرجى الانتظار...",

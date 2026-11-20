@@ -19,14 +19,17 @@ export const ContactBlock: Block = {
       label: { tr: 'Form', en: 'Form' },
       type: 'relationship',
       relationTo: 'forms',
-      admin: { description: 'Formlar bölümünde oluşturulan iletişim formu. Boşsa yalnızca bilgiler gösterilir.' },
+      admin: {
+        description:
+          'Formlar bölümünde oluşturulan iletişim formu. Boşsa yalnızca bilgiler gösterilir.',
+      },
     },
     {
       name: 'showContactInfo',
       label: { tr: 'İletişim bilgilerini göster', en: 'Show contact info' },
       type: 'checkbox',
       defaultValue: true,
-      admin: { description: 'Bilgiler Globaller → İletişim Bilgileri\'nden gelir.' },
+      admin: { description: "Bilgiler Globaller → İletişim Bilgileri'nden gelir." },
     },
   ],
 }

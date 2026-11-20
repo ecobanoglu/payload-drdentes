@@ -11,7 +11,6 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { cn } from '@/lib/utilities/ui'
-import { PhonePair } from './PhonePair'
 import { PhoneScreens } from './PhoneScreens'
 import { SHIFTING_START_COLOR } from './shiftingColors'
 
@@ -52,7 +51,6 @@ const coloredBackgrounds: Record<'dark' | 'primary' | 'shifting', React.CSSPrope
  *   ters döner. Görsel yoksa metin ortalanmış tek sütun olarak gösterilir.
  * - `mediaStyle`:
  *   - `single`: tek görsel
- *   - `phonePair`: üst üste duran, animasyonlu iki telefon (ikisi de yüklenmiş olmalı)
  *   - `phoneScreens`: ekran yüksekliğinde sabitlenen bölüm; kaydırdıkça telefon çerçevesindeki
  *     ekranlar sağdan sola akar
  * - `background: 'dark'`: bölüm hero'daki gibi koyu, tam genişlik zemin üzerinde gösterilir;
@@ -70,8 +68,6 @@ export function FeatureSplitBlockComponent({
   media,
   mediaPosition,
   mediaStyle,
-  phoneFront,
-  phoneBack,
   screens,
 }: FeatureSplitBlockProps) {
   // Renkli zemin (koyu veya primary): tam genişlik, açık renk yazı
@@ -82,16 +78,6 @@ export function FeatureSplitBlockComponent({
   const isDark = coloredBackground !== null
   const mediaFirst = mediaPosition === 'start'
 
-  // İki telefon modu: iki görsel de yüklü olmalı
-  const phones =
-    mediaStyle === 'phonePair' &&
-    phoneFront &&
-    typeof phoneFront === 'object' &&
-    phoneBack &&
-    typeof phoneBack === 'object'
-      ? { front: phoneFront, back: phoneBack }
-      : null
-
   // Telefon ekranları modu: yüklenmiş (nesne olarak gelen) ekranlar
   const phoneScreens =
     mediaStyle === 'phoneScreens'
@@ -101,13 +87,8 @@ export function FeatureSplitBlockComponent({
       : []
 
   const singleMedia =
-    mediaStyle !== 'phonePair' &&
-    mediaStyle !== 'phoneScreens' &&
-    media &&
-    typeof media === 'object'
-      ? media
-      : null
-  const hasMedia = Boolean(phones || phoneScreens.length > 0 || singleMedia)
+    mediaStyle !== 'phoneScreens' && media && typeof media === 'object' ? media : null
+  const hasMedia = Boolean(phoneScreens.length > 0 || singleMedia)
 
   // Metin sütunu: üst etiket, başlık, metin, maddeler, butonlar
   const content = (
@@ -179,13 +160,6 @@ export function FeatureSplitBlockComponent({
           )}
         >
           <div className={cn(hasMedia && mediaFirst && 'lg:order-2')}>{content}</div>
-
-          {phones && (
-            // Telefonlar kendi şeffaf zeminleriyle durur (çerçeve/kutu yok)
-            <div className={cn(mediaFirst && 'lg:order-1')}>
-              <PhonePair front={phones.front} back={phones.back} />
-            </div>
-          )}
 
           {singleMedia && (
             <div

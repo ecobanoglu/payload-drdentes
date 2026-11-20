@@ -37,7 +37,8 @@
   },
   "Card": {
     "noImage": "Görsel yok",
-    "untitledCategory": "Adsız kategori"
+    "untitledCategory": "Adsız kategori",
+    "readMore": "Devamını oku"
   },
   "Form": {
     "loading": "Gönderiliyor, lütfen bekleyin...",

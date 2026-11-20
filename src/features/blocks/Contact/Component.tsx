@@ -1,8 +1,18 @@
 import type { Form as FormType } from '@payloadcms/plugin-form-builder/types'
-import { Building2, Clock, Landmark, Mail, MapPin, MessageCircle, Phone, type LucideIcon } from 'lucide-react'
+import {
+  Building2,
+  Clock,
+  Landmark,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  type LucideIcon,
+} from 'lucide-react'
 import { getLocale, getTranslations } from 'next-intl/server'
 import React from 'react'
 
+import { SectionHeader } from '@/components/SectionHeader'
 import type { ContactBlock as ContactBlockProps, ContactInfo } from '@/payload-types'
 
 import { FormBlock } from '@/features/blocks/Form/Component'
@@ -20,7 +30,15 @@ const SOCIAL_LABELS: Record<string, string> = {
 }
 
 /** İkonlu tek bir iletişim bilgisi satırı */
-const InfoItem = ({ Icon, label, children }: { Icon: LucideIcon; label: string; children: React.ReactNode }) => (
+const InfoItem = ({
+  Icon,
+  label,
+  children,
+}: {
+  Icon: LucideIcon
+  label: string
+  children: React.ReactNode
+}) => (
   <li className="flex gap-4">
     <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
       <Icon aria-hidden className="size-5" />
@@ -36,25 +54,32 @@ const InfoItem = ({ Icon, label, children }: { Icon: LucideIcon; label: string; 
  * "İletişim" bloğunun görünümü: solda form, sağda iletişim bilgileri (mobilde alt alta).
  * Bilgiler aktif dilde İletişim Bilgileri global'inden okunur; boş alanlar gösterilmez.
  */
-export async function ContactBlockComponent({ heading, intro, form, showContactInfo }: ContactBlockProps) {
+export async function ContactBlockComponent({
+  heading,
+  intro,
+  form,
+  showContactInfo,
+}: ContactBlockProps) {
   const locale = (await getLocale()) as Locale
   const t = await getTranslations('Contact')
-  const info: ContactInfo | null = showContactInfo !== false ? await getCachedGlobal('contact-info', locale, 0)() : null
+  const info: ContactInfo | null =
+    showContactInfo !== false ? await getCachedGlobal('contact-info', locale, 0)() : null
   const hasForm = Boolean(form && typeof form === 'object')
 
   const hasInfo = Boolean(
     info &&
-      (info.email || info.phone || info.address || info.workingHours || info.companyName || info.bankInfo || info.social?.length),
+    (info.email ||
+      info.phone ||
+      info.address ||
+      info.workingHours ||
+      info.companyName ||
+      info.bankInfo ||
+      info.social?.length),
   )
 
   return (
     <section className="container">
-      {(heading || intro) && (
-        <header className="mx-auto mb-10 max-w-2xl text-center">
-          {heading && <h2 className="mb-4 text-3xl font-semibold md:text-4xl">{heading}</h2>}
-          {intro && <p className="text-lg text-muted-foreground">{intro}</p>}
-        </header>
-      )}
+      <SectionHeader heading={heading} intro={intro} align="center" className="mb-10" />
 
       <div className={cn('grid gap-10', hasForm && hasInfo && 'lg:grid-cols-[3fr_2fr]')}>
         {hasForm && (
@@ -80,7 +105,11 @@ export async function ContactBlockComponent({ heading, intro, form, showContactI
               )}
               {info.phone && (
                 <InfoItem Icon={Phone} label={t('phone')}>
-                  <a href={`tel:${info.phone.replace(/\s+/g, '')}`} className="hover:text-primary" dir="ltr">
+                  <a
+                    href={`tel:${info.phone.replace(/\s+/g, '')}`}
+                    className="hover:text-primary"
+                    dir="ltr"
+                  >
                     {info.phone}
                   </a>
                 </InfoItem>
@@ -111,7 +140,9 @@ export async function ContactBlockComponent({ heading, intro, form, showContactI
               {info.bankInfo && (
                 <InfoItem Icon={Landmark} label={t('bankAccounts')}>
                   {/* IBAN'lar soldan sağa okunur; uzun satırlar kırılabilir */}
-                  <span className="whitespace-pre-line break-words text-sm font-normal">{info.bankInfo}</span>
+                  <span className="whitespace-pre-line break-words text-sm font-normal">
+                    {info.bankInfo}
+                  </span>
                 </InfoItem>
               )}
             </ul>

@@ -47,10 +47,14 @@ export const CardsBlock: Block = {
       options: [
         { label: { tr: 'Izgara', en: 'Grid' }, value: 'grid' },
         { label: { tr: 'Kaydırmalı anlatım', en: 'Scroll story' }, value: 'scrollStory' },
+        {
+          label: { tr: 'Kıvrımlı yol (S çizgi)', en: 'Winding path (S line)' },
+          value: 'pathTimeline',
+        },
       ],
       admin: {
         description:
-          'Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Görselli (hizmet) kart gruplarıyla en iyi sonucu verir.',
+          'Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Kıvrımlı yol: ortadan S biçiminde noktalı bir çizgi iner, kartlar sırayla sağda ve solda belirir (adım adım anlatımlar için).',
       },
     },
     {
@@ -70,7 +74,9 @@ export const CardsBlock: Block = {
       type: 'select',
       defaultValue: '3',
       // Sütun sayısı yalnızca ızgara görünümünde anlamlı
-      admin: { condition: (_, siblingData) => siblingData?.layout !== 'scrollStory' },
+      admin: {
+        condition: (_, siblingData) => !siblingData?.layout || siblingData.layout === 'grid',
+      },
       options: [
         { label: '2', value: '2' },
         { label: '3', value: '3' },

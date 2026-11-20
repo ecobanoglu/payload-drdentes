@@ -3,6 +3,7 @@ import { getLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
 import React from 'react'
 
+import { SectionHeader } from '@/components/SectionHeader'
 import type { PricingBlock as PricingBlockProps, PricingPlan } from '@/payload-types'
 
 import type { Locale } from '@/lib/i18n/config'
@@ -39,12 +40,7 @@ export async function PricingBlockComponent(props: PricingBlockProps) {
 
   return (
     <section className="container">
-      {(heading || intro) && (
-        <header className="mx-auto mb-10 max-w-2xl text-center">
-          {heading && <h2 className="mb-4 text-3xl font-semibold md:text-4xl">{heading}</h2>}
-          {intro && <p className="text-lg text-muted-foreground">{intro}</p>}
-        </header>
-      )}
+      <SectionHeader heading={heading} intro={intro} align="center" className="mb-10" />
       <PricingTable
         plans={plans}
         locale={locale}

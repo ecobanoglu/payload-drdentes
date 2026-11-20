@@ -60,9 +60,13 @@ const CardVisual = ({ card, priority }: { card: Card; priority?: boolean }) => {
 /** Kartın metin içeriği: başlık + açıklama (+ isteğe bağlı bağlantı) */
 const CardText = ({ card, headingClassName }: { card: Card; headingClassName?: string }) => (
   <>
-    <h3 className={cn('font-semibold tracking-tight text-balance', headingClassName)}>{card.title}</h3>
+    <h3 className={cn('font-semibold tracking-tight text-balance', headingClassName)}>
+      {card.title}
+    </h3>
     {card.description && (
-      <p className="mt-6 max-w-[34rem] text-base text-muted-foreground lg:text-lg">{card.description}</p>
+      <p className="mt-6 max-w-[34rem] text-base text-muted-foreground lg:text-lg">
+        {card.description}
+      </p>
     )}
     {card.enableLink && card.link && (
       <CMSLink {...card.link} appearance="link" className="mt-4 px-0" />
@@ -77,7 +81,10 @@ const CardText = ({ card, headingClassName }: { card: Card; headingClassName?: s
 const StackedList = ({ cards }: { cards: Card[] }) => (
   <ol className="space-y-14">
     {cards.map((card, index) => (
-      <li key={card.id ?? index} className="grid gap-6 md:grid-cols-[2fr_3fr] md:items-center md:gap-10">
+      <li
+        key={card.id ?? index}
+        className="grid gap-6 md:grid-cols-[2fr_3fr] md:items-center md:gap-10"
+      >
         <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
           <CardVisual card={card} />
         </div>
@@ -152,7 +159,9 @@ export const CardsScrollStory = ({
     <>
       {/* JavaScript kapalıyken sabitlenmiş görünüm gizlenir, yedek liste gösterilir */}
       <noscript>
-        <style>{'[data-story-pinned]{display:none!important}[data-story-list]{display:block!important}'}</style>
+        <style>
+          {'[data-story-pinned]{display:none!important}[data-story-list]{display:block!important}'}
+        </style>
       </noscript>
 
       {/* Yedek görünüm: başlık üstte, kartlar alt alta */}
@@ -183,7 +192,9 @@ export const CardsScrollStory = ({
                   className={cn(
                     // Yalnızca solma (büyüme/kayma yok); metinlerle aynı zamanlama
                     'absolute inset-0 transition-opacity ease-in-out',
-                    index === activeIndex ? 'opacity-100 delay-200 duration-500' : 'opacity-0 duration-300',
+                    index === activeIndex
+                      ? 'opacity-100 delay-200 duration-500'
+                      : 'opacity-0 duration-300',
                   )}
                 >
                   <CardVisual card={card} priority={index === 0} />
@@ -198,7 +209,10 @@ export const CardsScrollStory = ({
                 aria-hidden
                 className="absolute inset-y-0 start-[calc(5.5rem+1rem)] w-px -translate-x-1/2 bg-primary/25 rtl:translate-x-1/2"
               >
-                <span ref={progressRef} className="absolute inset-0 origin-top scale-y-0 bg-primary" />
+                <span
+                  ref={progressRef}
+                  className="absolute inset-0 origin-top scale-y-0 bg-primary"
+                />
               </span>
 
               {/* Kartların metinleri üst üste (aynı ızgara hücresi); etkin olan görünür */}

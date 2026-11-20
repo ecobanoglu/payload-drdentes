@@ -573,6 +573,9 @@ const advantageImages: (number | null)[] = []
 for (const [index, advantage] of ADVANTAGES.entries()) {
   advantageImages.push(await ensureMedia(`${ORIGIN}/img/basozellik/${index + 1}.jpg`, `avantaj-${index + 1}.jpg`, advantage.title))
 }
+/** "Nasıl Kullanıcı Olabilirim?" bölümünün başlık altı özeti (ana sayfa) */
+const STEPS_INTRO =
+  'Başvuru formunu doldurup seçtiğiniz paketin ödemesini yapmanız yeterli. Ardından diş hekimliği uygulamanızı tüm cihazlarınızdan hemen kullanmaya başlayabilirsiniz!'
 const STEP_TITLES = ['Başvuru formunu doldurun.', 'Seçtiğiniz paketin ödemesini yapın.', 'Tüm cihazlardan kullanmaya başlayın!']
 const stepImages: (number | null)[] = []
 for (const [index, title] of STEP_TITLES.entries()) {
@@ -848,7 +851,14 @@ await upsertPage('home', {
       ).filter((id): id is number => id !== null),
       mediaPosition: 'start',
     },
-    { blockType: 'cards', heading: 'Nasıl Kullanıcı Olabilirim?', cardSet: stepsSetId, columns: '3' },
+    // Adımlar: ortadan inen S biçimli noktalı çizgi boyunca sağda/solda belirir
+    {
+      blockType: 'cards',
+      heading: 'Nasıl Kullanıcı Olabilirim?',
+      intro: STEPS_INTRO,
+      cardSet: stepsSetId,
+      layout: 'pathTimeline',
+    },
     {
       blockType: 'archive',
       introContent: rich({ h: 'h2', text: 'Blog' }, 'Diş hekimliğine dair gelişmeler...'),

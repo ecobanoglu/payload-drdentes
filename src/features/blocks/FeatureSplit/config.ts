@@ -75,17 +75,13 @@ export const FeatureSplitBlock: Block = {
     },
     linkGroup({ appearances: ['default', 'outline'], overrides: { maxRows: 2 } }),
     {
-      // Görselin sunuluşu: tek görsel veya üst üste duran, animasyonlu iki telefon
+      // Görselin sunuluşu: tek görsel veya kaydırmalı telefon ekranları
       name: 'mediaStyle',
       label: { tr: 'Görsel tipi', en: 'Media style' },
       type: 'select',
       defaultValue: 'single',
       options: [
         { label: { tr: 'Tek görsel', en: 'Single image' }, value: 'single' },
-        {
-          label: { tr: 'İki telefon (animasyonlu)', en: 'Two phones (animated)' },
-          value: 'phonePair',
-        },
         {
           label: { tr: 'Telefon ekranları (kaydırmalı)', en: 'Phone screens (scroll)' },
           value: 'phoneScreens',
@@ -109,27 +105,6 @@ export const FeatureSplitBlock: Block = {
       },
     },
     {
-      // İki telefon: öndeki solda, arkadaki sağda ve biraz yukarıda durur; ikisi de şeffaf PNG olmalı
-      type: 'row',
-      admin: { condition: (_, siblingData) => siblingData?.mediaStyle === 'phonePair' },
-      fields: [
-        {
-          name: 'phoneFront',
-          label: { tr: 'Öndeki telefon', en: 'Front phone' },
-          type: 'upload',
-          relationTo: 'media',
-          admin: { width: '50%', description: 'Şeffaf zeminli PNG; solda, önde durur.' },
-        },
-        {
-          name: 'phoneBack',
-          label: { tr: 'Arkadaki telefon', en: 'Back phone' },
-          type: 'upload',
-          relationTo: 'media',
-          admin: { width: '50%', description: 'Şeffaf zeminli PNG; sağda, arkada durur.' },
-        },
-      ],
-    },
-    {
       type: 'row',
       fields: [
         {
@@ -140,8 +115,7 @@ export const FeatureSplitBlock: Block = {
           admin: {
             width: '50%',
             // Tek görsel modunda kullanılır
-            condition: (_, siblingData) =>
-              siblingData?.mediaStyle !== 'phonePair' && siblingData?.mediaStyle !== 'phoneScreens',
+            condition: (_, siblingData) => siblingData?.mediaStyle !== 'phoneScreens',
           },
         },
         {

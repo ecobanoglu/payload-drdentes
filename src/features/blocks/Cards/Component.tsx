@@ -1,6 +1,7 @@
 import { Check } from 'lucide-react'
 import React from 'react'
 
+import { SectionHeader } from '@/components/SectionHeader'
 import type { CardSet, CardsBlock as CardsBlockProps } from '@/payload-types'
 
 import { Reveal } from '@/components/animation/Reveal'
@@ -8,6 +9,7 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import { cn } from '@/lib/utilities/ui'
 import { cardIconComponents } from './icons'
+import { CardsPathTimeline } from './PathTimeline'
 import { CardsScrollStory } from './ScrollStory'
 
 type Card = NonNullable<CardSet['cards']>[number]
@@ -130,7 +132,8 @@ const ServiceCard = ({ card }: { card: Card }) => {
  * - Kart grubu sayfa sorgusuyla birlikte (aynı dilde) gelir.
  * - Bu dile çevrilmemiş (başlığı boş) kartlar gösterilmez.
  * - Kart grubu silinmiş veya yayında değilse blok hiç render edilmez.
- * - `layout: 'scrollStory'` seçiliyse kartlar ızgara yerine kaydırmalı anlatım olarak gösterilir.
+ * - `layout: 'scrollStory'` seçiliyse kartlar ızgara yerine kaydırmalı anlatım olarak gösterilir;
+ *   `'pathTimeline'` seçiliyse ortadan inen S biçimli noktalı çizgi boyunca sağda/solda belirir.
  * - `limit` girildiyse gruptaki kartların yalnızca ilk N tanesi gösterilir.
  * - `background: 'muted'` seçiliyse bölüm tam genişlikte açık gri (--muted) zemin üzerinde gösterilir.
  */
@@ -155,12 +158,14 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
   const CardComponent = cardSet.variant === 'services' ? ServiceCard : FeatureCard
 
   // Bölüm başlığı + giriş metni (kaydırmalı anlatımda sabitlenen alanın içinde gösterilir)
+  // Kıvrımlı yol görünümünde başlık ortalanır (çizgi başlığın altından başlar)
   const header =
     heading || intro ? (
-      <header className="max-w-[48rem]">
-        {heading && <h2 className="mb-4 text-3xl font-semibold md:text-4xl">{heading}</h2>}
-        {intro && <p className="text-lg text-muted-foreground">{intro}</p>}
-      </header>
+      <SectionHeader
+        heading={heading}
+        intro={intro}
+        align={layout === 'pathTimeline' ? 'center' : 'start'}
+      />
     ) : null
 
   const isMuted = background === 'muted'
@@ -174,6 +179,17 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
           // Solda görsel, sağda numaralı metin; kaydırdıkça kartlar sırayla değişir.
           // Başlık bölüm boyunca ekranda kalsın diye bileşene verilir.
           <CardsScrollStory cards={cards} header={header} />
+        ) : layout === 'pathTimeline' ? (
+          // Bölümün üstünden S biçiminde noktalı çizgi iner; kartlar sırayla sağda/solda belirir.
+          // Başlık ortalanır, çizgi başlığın altından başlar.
+          <CardsPathTimeline
+            header={header}
+            muted={isMuted}
+            items={cards.map((card, index) => ({
+              key: card.id ?? String(index),
+              node: <CardComponent card={card} />,
+            }))}
+          />
         ) : (
           // Kartlar kaydırınca sırayla belirir
           <>

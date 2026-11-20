@@ -545,9 +545,9 @@ export interface CardsBlock {
    */
   cardSet: number | CardSet;
   /**
-   * Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Görselli (hizmet) kart gruplarıyla en iyi sonucu verir.
+   * Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Kıvrımlı yol: ortadan S biçiminde noktalı bir çizgi iner, kartlar sırayla sağda ve solda belirir (adım adım anlatımlar için).
    */
-  layout?: ('grid' | 'scrollStory') | null;
+  layout?: ('grid' | 'scrollStory' | 'pathTimeline') | null;
   background?: ('none' | 'muted') | null;
   columns?: ('2' | '3' | '4') | null;
   /**
@@ -704,19 +704,11 @@ export interface FeatureSplitBlock {
   /**
    * Telefon ekranları: bölüm ekran yüksekliğinde sabitlenir, sayfa kaydırıldıkça telefon çerçevesindeki ekranlar sağdan sola akar.
    */
-  mediaStyle?: ('single' | 'phonePair' | 'phoneScreens') | null;
+  mediaStyle?: ('single' | 'phoneScreens') | null;
   /**
    * Ekran görüntüleri listedeki sırayla gösterilir (önerilen oran 224×396).
    */
   screens?: (number | Media)[] | null;
-  /**
-   * Şeffaf zeminli PNG; solda, önde durur.
-   */
-  phoneFront?: (number | null) | Media;
-  /**
-   * Şeffaf zeminli PNG; sağda, arkada durur.
-   */
-  phoneBack?: (number | null) | Media;
   media?: (number | null) | Media;
   mediaPosition?: ('end' | 'start') | null;
   id?: string | null;
@@ -1631,8 +1623,6 @@ export interface FeatureSplitBlockSelect<T extends boolean = true> {
       };
   mediaStyle?: T;
   screens?: T;
-  phoneFront?: T;
-  phoneBack?: T;
   media?: T;
   mediaPosition?: T;
   id?: T;

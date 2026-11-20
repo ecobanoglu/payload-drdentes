@@ -40,7 +40,12 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
+        // Beyaz (sayfa zemini) ve kenarlıklı kart; koyu temada zemin otomatik koyulaşır.
+        // Üzerine gelince gölge belirir ve kart hafifçe yukarı kalkar
+        // group: içerideki "Devamını oku" butonu kartın üzerine gelinince renk değiştirir.
+        // flex-col: butonlar tüm kartlarda en altta, aynı hizada
+        'group flex flex-col border border-border rounded-lg overflow-hidden bg-background hover:cursor-pointer',
+        'hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300',
         className,
       )}
       ref={cardRef}
@@ -49,7 +54,7 @@ export const Card: React.FC<{
         {!metaImage && <div className="">{t('noImage')}</div>}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
       </div>
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         {showCategories && hasCategories && (
           <div className="uppercase text-sm mb-4">
             {categories?.map((category, index) => {
@@ -81,7 +86,23 @@ export const Card: React.FC<{
             </h3>
           </div>
         )}
-        {description && <div className="mt-2">{description && <p>{sanitizedDescription}</p>}</div>}
+        {/* Açıklama: küçük ve gri (başlığın altında ikincil bilgi) */}
+        {description && (
+          <div className="mt-2">
+            <p className="text-sm text-gray-500">{sanitizedDescription}</p>
+          </div>
+        )}
+        {/* "Devamını oku" butonu: kartın tamamı zaten bağlantı olduğu için görsel bir işaret
+            (span); ekran okuyucuda tekrar okunmasın diye gizli. Üzerine gelince ok kayar (globals.css) */}
+        <div className="mt-auto">
+          <span
+            aria-hidden
+            className="mt-4 inline-flex items-center rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-900 transition-colors group-hover:border-primary/40 group-hover:text-primary"
+          >
+            {t('readMore')}
+            <span className="btn-arrow" aria-hidden="true" />
+          </span>
+        </div>
       </div>
     </article>
   )

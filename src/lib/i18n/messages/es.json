@@ -37,7 +37,8 @@
   },
   "Card": {
     "noImage": "Sin imagen",
-    "untitledCategory": "Categoría sin título"
+    "untitledCategory": "Categoría sin título",
+    "readMore": "Leer más"
   },
   "Form": {
     "loading": "Enviando, por favor espere...",

@@ -43,7 +43,9 @@ const priceFor = (plan: PricingPlan, period: Period): Price | null => {
   if (period === 'yearly' && plan.yearlyPrice) {
     return { amount: plan.yearlyPrice / 12, unit: 'month', billedYearly: plan.yearlyPrice }
   }
-  return plan.monthlyPrice != null ? { amount: plan.monthlyPrice, unit: 'month', billedYearly: null } : null
+  return plan.monthlyPrice != null
+    ? { amount: plan.monthlyPrice, unit: 'month', billedYearly: null }
+    : null
 }
 
 /**
@@ -90,7 +92,9 @@ export function PricingTable({
                 onClick={() => setPeriod(value)}
                 className={cn(
                   'inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-colors',
-                  period === value ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground',
+                  period === value
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:text-foreground',
                 )}
               >
                 {t(value)}
@@ -128,7 +132,9 @@ export function PricingTable({
                   'relative flex flex-col rounded-2xl border bg-card',
                   // 5 sütunda kartlar dar kalır; iç boşluk küçülür
                   plans.length >= 5 ? 'p-6' : 'p-8',
-                  plan.highlighted ? 'border-primary shadow-lg ring-1 ring-primary' : 'border-border',
+                  plan.highlighted
+                    ? 'border-primary shadow-lg ring-1 ring-primary'
+                    : 'border-border',
                 )}
               >
                 {plan.highlighted && (
@@ -138,11 +144,15 @@ export function PricingTable({
                 )}
 
                 <h3 className="text-xl font-semibold">{plan.name}</h3>
-                {plan.description && <p className="mt-2 text-sm text-muted-foreground">{plan.description}</p>}
+                {plan.description && (
+                  <p className="mt-2 text-sm text-muted-foreground">{plan.description}</p>
+                )}
 
                 <div className="mt-6 min-h-[4.5rem]">
                   {isCustom || !price ? (
-                    <p className="text-4xl font-bold tracking-tight">{plan.customPriceLabel || t('customPrice')}</p>
+                    <p className="text-4xl font-bold tracking-tight">
+                      {plan.customPriceLabel || t('customPrice')}
+                    </p>
                   ) : (
                     <>
                       <p className="flex flex-wrap items-baseline gap-1">
@@ -153,10 +163,14 @@ export function PricingTable({
                           {t(price.unit === 'year' ? 'perYear' : 'perMonth')}
                         </span>
                       </p>
-                      {plan.priceNote && <p className="mt-1 text-sm text-muted-foreground">{plan.priceNote}</p>}
+                      {plan.priceNote && (
+                        <p className="mt-1 text-sm text-muted-foreground">{plan.priceNote}</p>
+                      )}
                       {price.billedYearly && (
                         <p className="mt-1 text-sm text-muted-foreground">
-                          {t('billedYearly', { amount: formatMoney(price.billedYearly, currency, locale) })}
+                          {t('billedYearly', {
+                            amount: formatMoney(price.billedYearly, currency, locale),
+                          })}
                         </p>
                       )}
                     </>
@@ -177,7 +191,10 @@ export function PricingTable({
                     {plan.features.map((feature, index) => (
                       <li
                         key={feature.id ?? index}
-                        className={cn('flex gap-3', !feature.included && 'text-muted-foreground line-through')}
+                        className={cn(
+                          'flex gap-3',
+                          !feature.included && 'text-muted-foreground line-through',
+                        )}
                       >
                         {feature.included ? (
                           <Check aria-hidden className="size-5 shrink-0 text-primary" />
