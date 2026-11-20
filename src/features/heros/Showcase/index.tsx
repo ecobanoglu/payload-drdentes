@@ -37,7 +37,15 @@ const TAG_POSITIONS = [
  * Özellik etiketi (beyaz zemin, gölge, renkli ikon). Cihazlardan sonra sırayla belirir
  * (`--reveal-delay`), ardından farklı süre ve yönde süzülür (`data-float`) — globals.css.
  */
-const ShowcaseTag = ({ feature, index, className }: { feature: Feature; index: number; className?: string }) => (
+const ShowcaseTag = ({
+  feature,
+  index,
+  className,
+}: {
+  feature: Feature
+  index: number
+  className?: string
+}) => (
   <li
     data-showcase-tag
     data-float={index % 2 === 0 ? 'sm-up' : 'sm-down'}
@@ -83,7 +91,12 @@ const DeviceImage = ({
   <div
     data-showcase-card
     data-float={order % 2 === 0 ? 'up' : 'down'}
-    style={{ '--reveal-delay': `${0.8 + order * 0.18}s`, '--float-duration': `${3.4 + order * 0.4}s` } as React.CSSProperties}
+    style={
+      {
+        '--reveal-delay': `${0.8 + order * 0.18}s`,
+        '--float-duration': `${3.4 + order * 0.4}s`,
+      } as React.CSSProperties
+    }
     className={cn('absolute drop-shadow-[0_28px_40px_rgba(0,0,0,0.55)]', className)}
   >
     <Media resource={media} imgClassName="h-auto w-full" size={size} priority={priority} />
@@ -120,6 +133,8 @@ export const ShowcaseHero: React.FC<Page['hero']> = ({
   })
 
   const hasLinks = Array.isArray(links) && links.length > 0
+  /** Hero zemin rengi (CMS'ten HEX; boşsa koyu varsayılan) */
+  const heroBackground = showcase?.background || '#1d1e1f'
 
   return (
     <div
@@ -129,12 +144,22 @@ export const ShowcaseHero: React.FC<Page['hero']> = ({
       data-theme="dark"
       // Header'ın ilk çizimde açık renkli (beyaz) olması için (globals.css)
       data-header-theme="dark"
-      style={{ background: showcase?.background || '#1d1e1f' }}
+      // Zemin rengi CMS'ten. "outline" buton zemini (--background) hero zeminiyle aynı → şeffaf
+      // görünür; kenarlık ve üzerine gelme zemini yarı saydam beyaz (koyu veya renkli zeminde uyumlu)
+      style={
+        {
+          background: heroBackground,
+          '--background': heroBackground,
+          '--input': 'rgb(255 255 255 / 0.5)',
+          '--accent': 'rgb(255 255 255 / 0.12)',
+          '--accent-foreground': '#fff',
+        } as React.CSSProperties
+      }
     >
-      {/* Hafif ışık lekesi: düz zemine derinlik verir */}
+      {/* Hafif marka mavisi ışık lekesi: düz zemine derinlik ve marka tonu verir */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-1/3 end-[-10%] -z-10 size-[60rem] rounded-full bg-[radial-gradient(closest-side,rgba(255,255,255,0.08),transparent)]"
+        className="pointer-events-none absolute -top-1/3 end-[-10%] -z-10 size-[60rem] rounded-full bg-[radial-gradient(closest-side,rgba(47,73,220,0.35),transparent)]"
       />
 
       <div className="container grid items-center gap-16 pt-[9rem] pb-12 w-full lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:pb-14">
@@ -143,7 +168,9 @@ export const ShowcaseHero: React.FC<Page['hero']> = ({
           {eyebrow && (
             <p
               data-reveal="eyebrow"
-              className="mb-4 text-sm font-semibold tracking-wide text-white/70"
+              // Büyük harf + marka mavisinin açık tonu (#6b80f7): koyu lacivert zeminde marka
+              // mavisi (#2f49dc) 2.4:1 kalıyordu, açık ton 4.8:1 ile okunabilirlik sınırını geçer
+              className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#6b80f7]"
             >
               {eyebrow}
             </p>
@@ -160,14 +187,27 @@ export const ShowcaseHero: React.FC<Page['hero']> = ({
           {(hasLinks || video?.url) && (
             <ul className="flex flex-wrap items-center gap-4">
               {links?.map(({ link }, i) => (
-                <li key={i} data-reveal="button" style={{ '--reveal-delay': `${0.65 + i * 0.1}s` } as React.CSSProperties}>
-                  <CMSLink {...link} />
+                <li
+                  key={i}
+                  data-reveal="button"
+                  style={{ '--reveal-delay': `${0.65 + i * 0.1}s` } as React.CSSProperties}
+                >
+                  <CMSLink
+                    {...link}
+                    // Marka mavisi buton koyu zeminde zayıf ayrışır: ince yarı saydam beyaz halka
+                    // butonun sınırını belirginleştirir
+                    className={link.appearance === 'brand' ? 'ring-1 ring-white/25' : undefined}
+                  />
                 </li>
               ))}
               {video?.url && (
                 <li
                   data-reveal="button"
-                  style={{ '--reveal-delay': `${0.65 + (links?.length ?? 0) * 0.1}s` } as React.CSSProperties}
+                  style={
+                    {
+                      '--reveal-delay': `${0.65 + (links?.length ?? 0) * 0.1}s`,
+                    } as React.CSSProperties
+                  }
                 >
                   <VideoModal url={video.url} label={video.label} />
                 </li>
@@ -241,7 +281,11 @@ export const ShowcaseHero: React.FC<Page['hero']> = ({
           {bottomTags.length > 0 && (
             <ul className="mt-12 flex flex-wrap justify-center gap-2.5 lg:hidden">
               {bottomTags.map((feature, index) => (
-                <ShowcaseTag key={feature.id ?? index} feature={feature} index={topTags.length + index} />
+                <ShowcaseTag
+                  key={feature.id ?? index}
+                  feature={feature}
+                  index={topTags.length + index}
+                />
               ))}
             </ul>
           )}

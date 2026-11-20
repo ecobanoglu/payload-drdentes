@@ -5,6 +5,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import RichText from '@/components/RichText'
+import { CMSLink } from '@/components/Link'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
 
@@ -13,7 +14,15 @@ export const ArchiveBlock: React.FC<
     id?: string
   }
 > = async (props) => {
-  const { id, categories, introContent, limit: limitFromProps, populateBy, selectedDocs } = props
+  const {
+    id,
+    categories,
+    introContent,
+    links,
+    limit: limitFromProps,
+    populateBy,
+    selectedDocs,
+  } = props
 
   const limit = limitFromProps || 3
 
@@ -64,6 +73,14 @@ export const ArchiveBlock: React.FC<
         </div>
       )}
       <CollectionArchive posts={posts} />
+      {/* Kartların altında ortalanmış butonlar (ör. "Tüm Yazılar") */}
+      {Array.isArray(links) && links.length > 0 && (
+        <div className="container mt-10 flex flex-wrap justify-center gap-3">
+          {links.map(({ link }, index) => (
+            <CMSLink key={index} size="lg" {...link} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

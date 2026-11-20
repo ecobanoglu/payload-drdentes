@@ -16,7 +16,8 @@ type SectionHeaderProps = {
 /**
  * Bölüm başlığı + açıklama (blokların ortak üst alanı).
  *
- * - Geniş ekranda en fazla %40 genişlik (dar ekranda tam genişlik); ortalıysa yatayda ortalanır.
+ * - Geniş ekranda en fazla %50 genişlik (dar ekranda tam genişlik); ortalıysa yatayda ortalanır.
+ * - Açıklama rengi rgba(0,0,0,0.7); koyu temada aynı oranda beyaz (okunabilir kalsın).
  * - Kaydırınca önce başlık, ardından açıklama aşağıdan süzülerek belirir (`Reveal`, bir kez).
  *   Sayfa açılışında zaten ekranda olan başlıklar animasyonsuz gösterilir; "hareketi azalt"
  *   açıksa veya JavaScript yoksa başlık doğrudan görünür.
@@ -35,16 +36,16 @@ export function SectionHeader({
     <Reveal
       stagger={0.12}
       y={24}
-      className={cn('lg:max-w-[40%]', align === 'center' && 'mx-auto text-center', className)}
+      className={cn('lg:max-w-1/2', align === 'center' && 'mx-auto text-center', className)}
     >
       <header>
         {heading && (
-          <h2 data-reveal-item className="mb-4 text-3xl font-semibold md:text-4xl">
+          <h2 data-reveal-item className="mb-4 text-3xl font-bold md:text-4xl">
             {heading}
           </h2>
         )}
         {intro && (
-          <p data-reveal-item className="text-lg text-muted-foreground">
+          <p data-reveal-item className="text-lg text-black/70 dark:text-white/70">
             {intro}
           </p>
         )}

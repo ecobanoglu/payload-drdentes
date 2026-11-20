@@ -7,6 +7,8 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
+import { linkGroup } from '../../fields/linkGroup'
+
 export const Archive: Block = {
   slug: 'archive',
   interfaceName: 'ArchiveBlock',
@@ -86,6 +88,8 @@ export const Archive: Block = {
       label: 'Selection',
       relationTo: ['posts'],
     },
+    // Kartların altında ortalanmış butonlar (ör. "Tüm Yazılar" → blog listesi)
+    linkGroup({ appearances: ['default', 'outline'], overrides: { maxRows: 2 } }),
   ],
   labels: {
     plural: 'Archives',

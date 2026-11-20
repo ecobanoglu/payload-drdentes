@@ -37,8 +37,10 @@ const inter = Inter({
 
 /**
  * Arapça font. Inter Arapça karakter içermediği için font yığınında Inter'den sonra gelir;
- * tarayıcı yalnızca Arapça karakterler için bu fonta geçer. `preload: false` sayesinde
- * diğer dillerde hiç indirilmez (unicode-range ile yalnızca gerektiğinde yüklenir).
+ * tarayıcı yalnızca Arapça karakterler için bu fonta geçer. `preload: false`: önceden
+ * yüklenmez. Font değişkeni (--font-arabic) yalnızca Arapça sayfalarda tanımlanır; diğer
+ * dillerde (ör. dil menüsündeki "العربية" etiketi) cihazın kendi Arapça fontu kullanılır,
+ * Noto Sans Arabic hiç indirilmez.
  */
 const notoSansArabic = Noto_Sans_Arabic({
   subsets: ['arabic'],
@@ -74,7 +76,7 @@ export default async function RootLayout({ children, params }: Args) {
 
   return (
     <html
-      className={cn(inter.variable, GeistMono.variable, notoSansArabic.variable)}
+      className={cn(inter.variable, GeistMono.variable, locale === 'ar' && notoSansArabic.variable)}
       lang={locale}
       dir={getDirection(locale)}
       suppressHydrationWarning
@@ -90,17 +92,17 @@ export default async function RootLayout({ children, params }: Args) {
           <Providers>
             {/* Yumuşak kaydırma (Lenis) + GSAP ScrollTrigger; yalnızca site tarafında */}
             <SmoothScrollProvider>
-            <LocaleAlternatesProvider>
-              <AdminBar
-                adminBarProps={{
-                  preview: isEnabled,
-                }}
-              />
+              <LocaleAlternatesProvider>
+                <AdminBar
+                  adminBarProps={{
+                    preview: isEnabled,
+                  }}
+                />
 
-              <Header locale={locale} />
-              {children}
-              <Footer locale={locale} />
-            </LocaleAlternatesProvider>
+                <Header locale={locale} />
+                {children}
+                <Footer locale={locale} />
+              </LocaleAlternatesProvider>
             </SmoothScrollProvider>
           </Providers>
         </NextIntlClientProvider>

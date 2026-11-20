@@ -1,5 +1,6 @@
 'use client'
 
+import { useLocale } from 'next-intl'
 import React, { useRef, useState } from 'react'
 
 import type { CardSet } from '@/payload-types'
@@ -7,6 +8,7 @@ import type { CardSet } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/animation/gsap'
+import { toTitleCaseTokens } from '@/lib/utilities/titleCase'
 import { cn } from '@/lib/utilities/ui'
 import { cardIconComponents } from './icons'
 
@@ -57,22 +59,68 @@ const CardVisual = ({ card, priority }: { card: Card; priority?: boolean }) => {
   )
 }
 
-/** Kartın metin içeriği: başlık + açıklama (+ isteğe bağlı bağlantı) */
-const CardText = ({ card, headingClassName }: { card: Card; headingClassName?: string }) => (
-  <>
-    <h3 className={cn('font-semibold tracking-tight text-balance', headingClassName)}>
-      {card.title}
-    </h3>
-    {card.description && (
-      <p className="mt-6 max-w-[34rem] text-base text-muted-foreground lg:text-lg">
-        {card.description}
-      </p>
-    )}
-    {card.enableLink && card.link && (
-      <CMSLink {...card.link} appearance="link" className="mt-4 px-0" />
-    )}
-  </>
+/**
+ * Vurgulu kelime: marka mavisi zemin üzerinde beyaz yazı. `active` olunca zemin soldan sağa
+ * (RTL dillerde sağdan sola) kayarak açılır; pasifken zemin hızla kapanır. Yazı rengi
+ * geçişsizdir (hep beyaz).
+ * "Hareketi azalt" açıksa geçiş olmadan değişir.
+ */
+const EmphasizedWord = ({ text, active }: { text: string; active: boolean }) => (
+  <span className="relative isolate inline-block px-[0.18em]">
+    <span
+      aria-hidden
+      className={cn(
+        'absolute inset-0 -z-10 origin-left rounded-[0.18em] bg-brand transition-transform ease-out motion-reduce:transition-none rtl:origin-right',
+        // Açılış: kartın metni belirdikten sonra başlar
+        active ? 'scale-x-100 delay-300 duration-300' : 'scale-x-0 delay-0 duration-200',
+      )}
+    />
+    {/* Yazı rengi geçişsiz, hep beyaz: zemin soldan sağa açıldıkça kelime de zeminle birlikte görünür */}
+    <span className="text-white">{text}</span>
+  </span>
 )
+
+/**
+ * Kartın metin içeriği: başlık + açıklama (+ isteğe bağlı bağlantı).
+ * Başlık "her kelimenin ilk harfi büyük, diğerleri küçük" gösterilir (dile duyarlı;
+ * ör. "SINIRSIZ Hekim ve Kullanıcı" → "Sınırsız Hekim ve Kullanıcı"). Panelde tamamı büyük
+ * harfle yazılmış kelimeler (ör. "YOK") vurgu kabul edilir ve marka mavisi zeminle gösterilir.
+ * `active`: kart görünür/etkin mi (vurgu zemini o zaman açılır).
+ */
+const CardText = ({
+  card,
+  headingClassName,
+  active = true,
+}: {
+  card: Card
+  headingClassName?: string
+  active?: boolean
+}) => {
+  const locale = useLocale()
+  const tokens = card.title ? toTitleCaseTokens(card.title, locale) : []
+
+  return (
+    <>
+      <h3 className={cn('font-semibold tracking-tight text-balance', headingClassName)}>
+        {tokens.map((token, index) =>
+          token.emphasis ? (
+            <EmphasizedWord key={index} text={token.text} active={active} />
+          ) : (
+            <React.Fragment key={index}>{token.text}</React.Fragment>
+          ),
+        )}
+      </h3>
+      {card.description && (
+        <p className="mt-6 max-w-[34rem] text-base text-muted-foreground lg:text-lg">
+          {card.description}
+        </p>
+      )}
+      {card.enableLink && card.link && (
+        <CMSLink {...card.link} appearance="link" className="mt-4 px-0" />
+      )}
+    </>
+  )
+}
 
 /**
  * Yedek görünüm: kartlar alt alta (görsel + numara + metin).
@@ -244,7 +292,7 @@ export const CardsScrollStory = ({
                         <span className="size-4 rounded-full border border-primary bg-muted" />
                       </span>
                       <div className="ps-4">
-                        <CardText card={card} headingClassName="leading-[1.15]" />
+                        <CardText card={card} headingClassName="leading-[1.15]" active={isActive} />
                       </div>
                     </li>
                   )

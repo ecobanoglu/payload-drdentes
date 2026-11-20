@@ -21,6 +21,7 @@ import * as migration_20261119_114610_feature_split_primary_background from './2
 import * as migration_20261119_115159_feature_split_shifting_background from './20261119_115159_feature_split_shifting_background';
 import * as migration_20261120_094622_cards_path_timeline from './20261120_094622_cards_path_timeline';
 import * as migration_20261120_094904_remove_feature_split_phone_pair from './20261120_094904_remove_feature_split_phone_pair';
+import * as migration_20261120_111340_archive_links from './20261120_111340_archive_links';
 
 export const migrations = [
   {
@@ -136,6 +137,11 @@ export const migrations = [
   {
     up: migration_20261120_094904_remove_feature_split_phone_pair.up,
     down: migration_20261120_094904_remove_feature_split_phone_pair.down,
-    name: '20261120_094904_remove_feature_split_phone_pair'
+    name: '20261120_094904_remove_feature_split_phone_pair',
+  },
+  {
+    up: migration_20261120_111340_archive_links.up,
+    down: migration_20261120_111340_archive_links.down,
+    name: '20261120_111340_archive_links'
   },
 ];

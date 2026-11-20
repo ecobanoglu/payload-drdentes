@@ -97,7 +97,7 @@ export const Card: React.FC<{
         <div className="mt-auto">
           <span
             aria-hidden
-            className="mt-4 inline-flex items-center rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-900 transition-colors group-hover:border-primary/40 group-hover:text-primary"
+            className="mt-4 inline-flex items-center rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors group-hover:border-primary/40 group-hover:text-primary"
           >
             {t('readMore')}
             <span className="btn-arrow" aria-hidden="true" />

@@ -796,12 +796,14 @@ await upsertPage('home', {
     ),
     links: [
       { link: urlLink('https://dtsanal.com/basvuru/', 'Demo Talep Et', 'default') },
+      // Koyu lacivert zeminde marka mavisi buton (hero'da ince beyaz halkayla belirginleşir)
       { link: urlLink('https://dtsanal.com/', 'Demoyu İncele', 'brand') },
     ],
     // Butonların yanında açılır pencerede oynayan tanıtım videosu
     video: { url: 'https://www.youtube.com/watch?v=KL1cCOgtEX4', label: 'Tanıtım Videosu' },
     showcase: {
-      background: '#1d1e1f',
+      // Koyu lacivert (marka mavisinin koyu tonu): okunabilirlik + ürün ekranları öne çıkar
+      background: '#111c44',
       // Cihazlarda animasyonlu arayüz; görseller "Yüklenen görseller" seçilirse kullanılır
       screens: 'animated',
       laptop: await ensureLocalMedia('data/hero/drdentes-bilgisayar.png', 'Dr.DENTES randevu ekranı (bilgisayar)'),
@@ -865,6 +867,8 @@ await upsertPage('home', {
       populateBy: 'collection',
       relationTo: 'posts',
       limit: 3,
+      // Kartların altında blog listesine giden buton (dil öneki otomatik eklenir)
+      links: [{ link: urlLink('/blog', 'Tüm Yazılar', 'outline') }],
     },
   ],
   meta: meta(
