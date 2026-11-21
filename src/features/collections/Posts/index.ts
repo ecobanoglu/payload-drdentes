@@ -141,6 +141,22 @@ export const Posts: CollectionConfig<'posts'> = {
               hasMany: true,
               relationTo: 'categories',
             },
+            // Etiketler: her dilde ayrı girilir; yazının altında gösterilir ve
+            // "ilişkili yazılar" otomatik seçilirken ortak etiketlere bakılır
+            {
+              name: 'tags',
+              type: 'text',
+              hasMany: true,
+              localized: true,
+              label: { tr: 'Etiketler', en: 'Tags' },
+              admin: {
+                position: 'sidebar',
+                description: {
+                  tr: 'Yazıyı yazıp Enter ile ekleyin.',
+                  en: 'Type a tag and press Enter.',
+                },
+              },
+            },
           ],
           label: 'Meta',
         },

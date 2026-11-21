@@ -16,7 +16,11 @@
     "title": "المدونة",
     "description": "مقالات حول طب الأسنان وإدارة العيادات وأحدث ما في Dr.DENTES.",
     "metaTitle": "المدونة",
-    "pageMetaTitle": "المدونة – الصفحة {page}"
+    "pageMetaTitle": "المدونة – الصفحة {page}",
+    "relatedPosts": "مقالات ذات صلة",
+    "allPosts": "جميع المقالات",
+    "tableOfContents": "جدول المحتويات",
+    "tags": "الوسوم"
   },
   "Search": {
     "title": "بحث",

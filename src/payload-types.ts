@@ -335,6 +335,10 @@ export interface Post {
   };
   relatedPosts?: (number | Post)[] | null;
   categories?: (number | Category)[] | null;
+  /**
+   * Type a tag and press Enter.
+   */
+  tags?: string[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -2142,6 +2146,7 @@ export interface PostsSelect<T extends boolean = true> {
   content?: T;
   relatedPosts?: T;
   categories?: T;
+  tags?: T;
   meta?:
     | T
     | {

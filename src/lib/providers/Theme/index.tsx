@@ -1,60 +1,25 @@
 'use client'
 
-import React, { createContext, useCallback, use, useEffect, useState } from 'react'
+import React, { createContext, use } from 'react'
 
-import type { Theme, ThemeContextType } from './types'
+import type { ThemeContextType } from './types'
 
-import canUseDOM from '@/lib/utilities/canUseDOM'
-import { defaultTheme, getImplicitPreference, themeLocalStorageKey } from './shared'
-import { themeIsValid } from './types'
+import { defaultTheme } from './shared'
 
-const initialContext: ThemeContextType = {
+/**
+ * Site her zaman açık temadadır: tema seçici yoktur, sistem ayarı dikkate alınmaz.
+ * `<html data-theme="light">` sunucuda verilir; bağlam yalnızca mevcut temayı okumak isteyen
+ * bileşenler için tutulur (`setTheme` bir şey yapmaz).
+ */
+const ThemeContext = createContext<ThemeContextType>({
   setTheme: () => null,
-  theme: undefined,
-}
+  theme: defaultTheme,
+})
 
-const ThemeContext = createContext(initialContext)
+/** Tema bağlamını sağlar (sabit açık tema) */
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => (
+  <ThemeContext value={{ setTheme: () => null, theme: defaultTheme }}>{children}</ThemeContext>
+)
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setThemeState] = useState<Theme | undefined>(
-    canUseDOM ? (document.documentElement.getAttribute('data-theme') as Theme) : undefined,
-  )
-
-  const setTheme = useCallback((themeToSet: Theme | null) => {
-    if (themeToSet === null) {
-      window.localStorage.removeItem(themeLocalStorageKey)
-      const implicitPreference = getImplicitPreference()
-      document.documentElement.setAttribute('data-theme', implicitPreference || '')
-      if (implicitPreference) setThemeState(implicitPreference)
-    } else {
-      setThemeState(themeToSet)
-      window.localStorage.setItem(themeLocalStorageKey, themeToSet)
-      document.documentElement.setAttribute('data-theme', themeToSet)
-    }
-  }, [])
-
-  useEffect(() => {
-    let themeToSet: Theme = defaultTheme
-    const preference = window.localStorage.getItem(themeLocalStorageKey)
-
-    if (themeIsValid(preference)) {
-      themeToSet = preference
-    } else {
-      const implicitPreference = getImplicitPreference()
-
-      if (implicitPreference) {
-        themeToSet = implicitPreference
-      }
-    }
-
-    document.documentElement.setAttribute('data-theme', themeToSet)
-    // Kasıtlı: tema tercihi yalnızca tarayıcıda okunabilir (localStorage / sistem ayarı);
-    // sunucu render'ıyla uyumsuzluk olmaması için yükleme sonrası state'e yazılır.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setThemeState(themeToSet)
-  }, [])
-
-  return <ThemeContext value={{ setTheme, theme }}>{children}</ThemeContext>
-}
-
+/** Mevcut temayı döner (her zaman "light") */
 export const useTheme = (): ThemeContextType => use(ThemeContext)

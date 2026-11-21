@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 
-import { RelatedPosts } from '@/features/blocks/RelatedPosts/Component'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -13,13 +12,15 @@ import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { PageHeader } from '@/components/PageHeader'
-import { formatAuthors } from '@/lib/utilities/formatAuthors'
 import type { Locale } from '@/lib/i18n/config'
 import { SetLocaleAlternates } from '@/lib/providers/LocaleAlternates'
 import { generateMeta } from '@/lib/utilities/generateMeta'
 import { getLocalizedPaths } from '@/lib/utilities/localizedPaths'
 import { BLOG_PATH } from '@/lib/utilities/constants'
 import PageClient from './page.client'
+import { PostTags, RelatedPostsSidebar, type RelatedPostItem } from './RelatedPostsSidebar'
+import { TableOfContents } from './TableOfContents.client'
+import { getTocHeadings } from '@/lib/utilities/headingAnchors'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 /** Build sırasında her dilde yayınlanmış tüm yazıları statik üretir. */
@@ -63,19 +64,23 @@ export default async function Post({ params: paramsPromise }: Args) {
   const paths = await getLocalizedPaths('posts', post.id)
   const tPosts = await getTranslations('Posts')
 
-  // Bant altındaki bilgi satırı: kategoriler · yayın tarihi (dile göre) · yazarlar
+  // Bant altındaki bilgi satırı: kategoriler · yayın tarihi (dile göre); yazar adı gösterilmez
   const categoryNames = (post.categories ?? [])
     .map((category) => (typeof category === 'object' && category ? category.title : null))
     .filter(Boolean)
     .join(', ')
-  const authors = post.populatedAuthors?.length ? formatAuthors(post.populatedAuthors) : ''
   const publishedLabel = post.publishedAt
     ? new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long', year: 'numeric' }).format(
         new Date(post.publishedAt),
       )
     : null
-  const hasMeta = Boolean(categoryNames || publishedLabel || authors)
+  const hasMeta = Boolean(categoryNames || publishedLabel)
   const heroImage = post.heroImage && typeof post.heroImage === 'object' ? post.heroImage : null
+  const relatedPosts = await queryRelatedPosts({ post, locale })
+  const tags = (post.tags ?? []).filter(Boolean)
+  // İçindekiler: içerikteki h3/h4 başlıkları (en az 1 başlık varsa gösterilir)
+  const tocHeadings = getTocHeadings(post.content)
+  const hasToc = tocHeadings.length >= 1
 
   return (
     <article className="pt-16 pb-16">
@@ -111,31 +116,59 @@ export default async function Post({ params: paramsPromise }: Args) {
                   <time dateTime={post.publishedAt}>{publishedLabel}</time>
                 </>
               )}
-              {authors && (
-                <>
-                  {(categoryNames || publishedLabel) && <span aria-hidden>·</span>}
-                  <span>{authors}</span>
-                </>
-              )}
             </p>
           ) : undefined
         }
       />
 
-      <div className="flex flex-col items-center gap-4">
-        <div className="container">
-          {/* Kapak görseli: bandın altında, yazı genişliğinde */}
-          {heroImage && (
-            <div className="relative mx-auto mb-12 aspect-[16/9] max-w-[48rem] overflow-hidden rounded-2xl">
-              <Media fill priority imgClassName="object-cover" resource={heroImage} />
-            </div>
-          )}
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <RelatedPosts
-              className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
-            />
+      {/* Geniş ekranda iki sütun: solda yazı, sağda içindekiler + ilişkili yazılar; dar ekranda alt alta */}
+      <div className="container">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] xl:gap-16">
+          <div className="min-w-0">
+            {/* Kapak görseli: bandın altında, yazı genişliğinde */}
+            {heroImage && (
+              <div className="relative mb-12 aspect-[16/9] overflow-hidden rounded-2xl">
+                <Media
+                  fill
+                  priority
+                  imgClassName="object-cover"
+                  resource={heroImage}
+                  size="(min-width: 1024px) 60vw, 100vw"
+                />
+              </div>
+            )}
+            {/* Dar ekranda içindekiler yazının başında (geniş ekranda sağ sütunda) */}
+            {hasToc && (
+              <TableOfContents
+                heading={tPosts('tableOfContents')}
+                headings={tocHeadings}
+                className="mb-10 lg:hidden"
+              />
+            )}
+            <RichText className="max-w-none" data={post.content} enableGutter={false} />
+            {tags.length > 0 && <PostTags heading={tPosts('tags')} tags={tags} />}
+          </div>
+
+          {(hasToc || relatedPosts.length > 0) && (
+            // Sayfayla birlikte akar (sabit değil): içindekiler + ilişkili yazılar ekrana sığmayabilir,
+            // sütunun kendi kaydırma çubuğu oluşmasın
+            <aside className="flex flex-col gap-6 lg:self-start">
+              {hasToc && (
+                <TableOfContents
+                  heading={tPosts('tableOfContents')}
+                  headings={tocHeadings}
+                  className="hidden lg:block"
+                />
+              )}
+              {relatedPosts.length > 0 && (
+                <RelatedPostsSidebar
+                  heading={tPosts('relatedPosts')}
+                  allPostsLabel={tPosts('allPosts')}
+                  locale={locale}
+                  posts={relatedPosts}
+                />
+              )}
+            </aside>
           )}
         </div>
       </div>
@@ -180,3 +213,77 @@ const queryPostBySlug = cache(async ({ locale, slug }: { locale: Locale; slug: s
 
   return result.docs?.[0] || null
 })
+
+/** Yan listede gösterilecek en çok yazı sayısı */
+const RELATED_POSTS_LIMIT = 5
+
+/**
+ * Yazının sağında listelenecek ilişkili yazıları seçer (yalnızca bu dilde yayınlanmış olanlar):
+ *
+ * 1. Yönetim panelinde elle seçilen "relatedPosts" (girilen sırayla),
+ * 2. ortak etiketi / kategorisi olan yazılar (en çok ortaklığı olan, sonra en yeni önce),
+ * 3. liste dolmadıysa en yeni yazılar.
+ */
+const queryRelatedPosts = async ({
+  post,
+  locale,
+}: {
+  post: Post
+  locale: Locale
+}): Promise<RelatedPostItem[]> => {
+  const payload = await getPayload({ config: configPromise })
+
+  // Blog az sayıda yazı içerdiği için aday yazılar tek sorguda alınıp burada puanlanır
+  const { docs: candidates } = await payload.find({
+    collection: 'posts',
+    locale,
+    fallbackLocale: false,
+    overrideAccess: false,
+    depth: 1,
+    limit: 200,
+    pagination: false,
+    sort: '-publishedAt',
+    where: { id: { not_equals: post.id } },
+    select: {
+      title: true,
+      slug: true,
+      publishedAt: true,
+      heroImage: true,
+      tags: true,
+      categories: true,
+      meta: { image: true },
+    },
+  })
+
+  const available = candidates.filter((doc) => doc.slug && doc.title)
+  const byId = new Map(available.map((doc) => [doc.id, doc]))
+
+  // Karşılaştırma büyük/küçük harften bağımsız (dile göre)
+  const normalize = (tag: string) => tag.trim().toLocaleLowerCase(locale)
+  const ownTags = new Set((post.tags ?? []).map(normalize))
+  const relationId = (value: number | { id: number }) => (typeof value === 'object' ? value.id : value)
+  const ownCategories = new Set((post.categories ?? []).map(relationId))
+
+  // 1. Elle seçilenler
+  const manual = (post.relatedPosts ?? [])
+    .map((value) => byId.get(relationId(value)))
+    .filter((doc): doc is (typeof available)[number] => Boolean(doc))
+  const chosen = new Set(manual.map((doc) => doc.id))
+
+  // 2. Ortak etiket (2 puan) ve kategori (1 puan) sayısına göre; eşitlikte sorgu sırası (en yeni önce) korunur
+  const score = (doc: (typeof available)[number]) =>
+    (doc.tags ?? []).filter((tag) => ownTags.has(normalize(tag))).length * 2 +
+    (doc.categories ?? []).filter((category) => ownCategories.has(relationId(category))).length
+  const similar = available
+    .filter((doc) => !chosen.has(doc.id))
+    .map((doc) => ({ doc, score: score(doc) }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((item) => item.doc)
+  similar.forEach((doc) => chosen.add(doc.id))
+
+  // 3. Kalan yer en yeni yazılarla doldurulur
+  const latest = available.filter((doc) => !chosen.has(doc.id))
+
+  return [...manual, ...similar, ...latest].slice(0, RELATED_POSTS_LIMIT)
+}

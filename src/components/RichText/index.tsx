@@ -23,6 +23,7 @@ import { CallToActionBlock } from '@/features/blocks/CallToAction/Component'
 import { cn } from '@/lib/utilities/ui'
 import { useLocale } from 'next-intl'
 import { getDocumentPath } from '@/lib/utilities/pagePath'
+import { getHeadingIds } from '@/lib/utilities/headingAnchors'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -43,11 +44,23 @@ const createInternalDocToHref =
     return path === '/' ? `/${locale}` : `/${locale}${path}`
   }
 
-/** Lexical düğümlerini React bileşenlerine çeviren eşlemeyi aktif dil için üretir. */
+/**
+ * Lexical düğümlerini React bileşenlerine çeviren eşlemeyi aktif dil için üretir.
+ * `headingIds`: başlıklara verilecek bağlantı kimlikleri (içindekiler tablosundan bölüme atlamak için).
+ */
 const createJsxConverters =
-  (locale: string): JSXConvertersFunction<NodeTypes> =>
+  (locale: string, headingIds: Map<object, string>): JSXConvertersFunction<NodeTypes> =>
   ({ defaultConverters }) => ({
   ...defaultConverters,
+  // Başlıklar kimlikli; scroll-mt: bölüme atlanınca sabit üst menünün altında kalmasın
+  heading: ({ node, nodesToJSX }) => {
+    const Tag = node.tag
+    return (
+      <Tag id={headingIds.get(node)} className="scroll-mt-32">
+        {nodesToJSX({ nodes: node.children })}
+      </Tag>
+    )
+  },
   ...LinkJSXConverter({ internalDocToHref: createInternalDocToHref(locale) }),
   blocks: {
     banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
@@ -76,9 +89,10 @@ type Props = {
 export default function RichText(props: Props) {
   const { className, enableProse = true, enableGutter = true, ...rest } = props
   const locale = useLocale()
+  const headingIds = getHeadingIds(props.data)
   return (
     <ConvertRichText
-      converters={createJsxConverters(locale)}
+      converters={createJsxConverters(locale, headingIds)}
       className={cn(
         'payload-richtext',
         {

@@ -4,7 +4,6 @@ import React from 'react'
 import type { Locale } from '@/lib/i18n/config'
 import { Link } from '@/lib/i18n/navigation'
 import { getCachedGlobal } from '@/lib/utilities/getGlobals'
-import { ThemeSelector } from '@/lib/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 import { SITE_NAME } from '@/lib/utilities/site'
@@ -114,7 +113,6 @@ export async function Footer({ locale }: { locale: Locale }) {
                 ))}
               </ul>
             )}
-            <ThemeSelector />
           </div>
         </div>
       </div>

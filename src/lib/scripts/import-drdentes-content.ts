@@ -30,6 +30,7 @@ import { fileURLToPath } from 'url'
 import { getPayload } from 'payload'
 
 import { buildFeatureCatalogGroups } from './lib/featureCatalog'
+import { tidyPostContent, type ContentNode } from './lib/postHeadings'
 
 import type { Page } from '@/payload-types'
 
@@ -1141,13 +1142,13 @@ await upsertPage('home', {
       ).filter((id): id is number => id !== null),
       mediaPosition: 'start',
     },
-    // Kullanıcı etkileşimleri: en yeni 3 soru-yanıt + listeleme sayfasına buton (Blog'dan önce)
+    // Kullanıcı etkileşimleri: en yeni 6 kayıt + listeleme sayfasına buton (Blog'dan önce)
     {
       blockType: 'testimonials',
       background: 'muted',
       heading: 'Kullanıcı Etkileşimleri',
       intro: TESTIMONIALS_INTRO,
-      limit: 3,
+      limit: 6,
       links: [{ link: pageLink(testimonialsPageId, 'Tümünü Gör', 'outline') }],
     },
     {
@@ -1185,11 +1186,14 @@ const posts = [...data.posts].sort((a, b) => a.sourceId - b.sourceId)
 const now = Date.now()
 for (const [index, post] of posts.entries()) {
   const image = await ensureMedia(post.image, `blog-${post.sourceId}.jpg`, post.title)
+  // tidyPostContent: tekrar eden liste maddelerini atar, başlıksız yazıda alt başlıkları h3 yapar
   const content = root(
-    await blocksToNodes(post.body, {
-      imagePrefix: `blog-${post.sourceId}`,
-      headingFor: (block) => (block.tag === 'p' && block.text && looksLikeHeading(block.text) ? 'h3' : null),
-    }),
+    tidyPostContent(
+      (await blocksToNodes(post.body, {
+        imagePrefix: `blog-${post.sourceId}`,
+        headingFor: (block) => (block.tag === 'p' && block.text && looksLikeHeading(block.text) ? 'h3' : null),
+      })) as ContentNode[],
+    ) as LexicalNode[],
   )
   const description = post.description.replace(/&?\.\.\.$/, '…')
   const postData = {
@@ -1198,6 +1202,8 @@ for (const [index, post] of posts.entries()) {
     _status: 'published',
     heroImage: image,
     content,
+    // Orijinal sitedeki etiketler (yazının altında ve ilişkili yazı seçiminde kullanılır)
+    tags: post.tags,
     authors: authorId ? [authorId] : [],
     // Orijinal yayın tarihleri sitede yok: sıralama korunacak şekilde dakika arayla
     publishedAt: new Date(now - (posts.length - index) * 60_000).toISOString(),

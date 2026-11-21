@@ -24,7 +24,8 @@ const getInitials = (name: string, locale: string) =>
 /**
  * "Kullanıcı Etkileşimleri" (Testimonials) bloğunun görünümü.
  *
- * - Kayıtlar (soru-yanıtlar ve Dr.DENTES duyuruları) aktif dilde, tarihe göre (en yeni önce)
+ * - Kayıtlar (soru-yanıtlar ve Dr.DENTES duyuruları) aktif dilde,
+ *   kartta görünen tarihe göre (duyuruda duyuru, soru-yanıtta soru tarihi; en yeni önce)
  *   tek akışta getirilir; bu dile çevrilmemiş (içeriği boş) kayıtlar gösterilmez.
  * - `limit` girildiyse yalnızca o kadar kayıt; boşsa tümü "Daha fazla göster" ile parça parça.
  * - Tarihler dile göre biçimlenir (ör. "6 Kasım 2026").
@@ -46,9 +47,9 @@ export async function TestimonialsBlockComponent({
     locale,
     fallbackLocale: false,
     depth: 0,
-    limit: limit && limit > 0 ? limit : 500,
+    // Sıralama kartta görünen tarihe göre aşağıda yapılır; bu yüzden tümü getirilir
+    limit: 500,
     pagination: false,
-    sort: '-answerDate',
     // Bu dilde içeriği olan kayıtlar: soru-yanıtta soru, duyuruda metin dolu olmalı
     where: {
       or: [
@@ -63,7 +64,15 @@ export async function TestimonialsBlockComponent({
     month: 'long',
     year: 'numeric',
   })
-  const items: TestimonialItem[] = docs
+  /** Kartta görünen tarih: duyuruda duyuru tarihi, soru-yanıtta soru tarihi (yoksa yanıt tarihi) */
+  const displayDate = (doc: (typeof docs)[number]) =>
+    new Date(
+      doc.type === 'announcement' ? doc.answerDate : (doc.questionDate ?? doc.answerDate),
+    ).getTime()
+
+  const items: TestimonialItem[] = [...docs]
+    // En yeni (bugüne en yakın) tarih en başta; sınır girildiyse ilk N kayıt
+    .sort((a, b) => displayDate(b) - displayDate(a))
     .filter((doc) => (doc.type === 'announcement' ? Boolean(doc.answer) : Boolean(doc.question)))
     .map((doc) => ({
       id: doc.id,
@@ -79,6 +88,7 @@ export async function TestimonialsBlockComponent({
       answerDate: doc.answerDate,
       answerDateLabel: formatDate.format(new Date(doc.answerDate)),
     }))
+    .slice(0, limit && limit > 0 ? limit : undefined)
 
   if (items.length === 0) return null
 

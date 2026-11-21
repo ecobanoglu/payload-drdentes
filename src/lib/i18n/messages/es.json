@@ -16,7 +16,11 @@
     "title": "Blog",
     "description": "Artículos sobre odontología, gestión de clínicas y novedades de Dr.DENTES.",
     "metaTitle": "Blog",
-    "pageMetaTitle": "Blog – Página {page}"
+    "pageMetaTitle": "Blog – Página {page}",
+    "relatedPosts": "Artículos relacionados",
+    "allPosts": "Todos los artículos",
+    "tableOfContents": "Índice",
+    "tags": "Etiquetas"
   },
   "Search": {
     "title": "Buscar",

@@ -49,12 +49,12 @@ export function VideoModal({ url, label, className }: Props) {
           className,
         )}
       >
-        {/* Play dairesi: mor zemin (#6d28d9, violet-700) + beyaz ikon (kontrast 7.1:1) */}
-        <span className="relative inline-flex size-10 items-center justify-center rounded-full bg-violet-700 text-white shadow-lg ring-1 ring-black/5 transition-transform group-hover:scale-105">
+        {/* Play dairesi: kırmızı zemin (#FF0033) + beyaz ikon (kontrast 4:1, ikonlar için yeterli) */}
+        <span className="relative inline-flex size-10 items-center justify-center rounded-full bg-[#FF0033] text-white shadow-lg ring-1 ring-black/5 transition-transform group-hover:scale-105">
           {/* Dikkat çeken yumuşak dalga (hareketi azalt ayarında kapalı) */}
           <span
             aria-hidden
-            className="absolute inset-0 rounded-full bg-violet-500/40 motion-safe:animate-ping"
+            className="absolute inset-0 rounded-full bg-[#FF0033]/40 motion-safe:animate-ping"
           />
           <Play aria-hidden className="relative size-4 translate-x-px fill-current" />
         </span>

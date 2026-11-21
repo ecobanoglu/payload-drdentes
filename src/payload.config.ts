@@ -52,6 +52,12 @@ export default buildConfig({
         // Tarayıcı sekmesinde "Sayfalar – Dr. Dentes" gibi görünür
         meta: {
             titleSuffix: ` – ${SITE_NAME}`,
+            // Admin sekmesinde de sitenin favicon'u (Payload ikonu yerine)
+            icons: [
+                { rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg' },
+                { rel: 'icon', sizes: '32x32', url: '/favicon.ico' },
+                { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
+            ],
         },
         // Yalnızca açık tema (koyu mod seçeneği kaldırılır). Görünüm: src/app/(payload)/custom.scss
         theme: 'light',

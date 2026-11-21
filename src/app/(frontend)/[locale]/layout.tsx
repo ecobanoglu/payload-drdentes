@@ -17,6 +17,7 @@ import { Providers } from '@/lib/providers'
 import { LocaleAlternatesProvider } from '@/lib/providers/LocaleAlternates'
 import { SmoothScrollProvider } from '@/lib/providers/SmoothScroll'
 import { InitTheme } from '@/lib/providers/Theme/InitTheme'
+import { defaultTheme } from '@/lib/providers/Theme/shared'
 import { mergeOpenGraph } from '@/lib/utilities/mergeOpenGraph'
 import { SITE_NAME } from '@/lib/utilities/site'
 import { draftMode } from 'next/headers'
@@ -79,6 +80,8 @@ export default async function RootLayout({ children, params }: Args) {
       className={cn(inter.variable, GeistMono.variable, locale === 'ar' && notoSansArabic.variable)}
       lang={locale}
       dir={getDirection(locale)}
+      // Site her zaman açık temada (tema seçici yok, sistem ayarı dikkate alınmaz)
+      data-theme={defaultTheme}
       suppressHydrationWarning
     >
       <head>

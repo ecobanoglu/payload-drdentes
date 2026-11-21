@@ -16,7 +16,11 @@
     "title": "Blog",
     "description": "Άρθρα για την οδοντιατρική, τη διαχείριση κλινικών και τα νέα του Dr.DENTES.",
     "metaTitle": "Blog",
-    "pageMetaTitle": "Blog – Σελίδα {page}"
+    "pageMetaTitle": "Blog – Σελίδα {page}",
+    "relatedPosts": "Σχετικά άρθρα",
+    "allPosts": "Όλα τα άρθρα",
+    "tableOfContents": "Περιεχόμενα",
+    "tags": "Ετικέτες"
   },
   "Search": {
     "title": "Αναζήτηση",

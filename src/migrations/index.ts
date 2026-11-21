@@ -30,6 +30,7 @@ import * as migration_20261120_170345_feature_detail from './20261120_170345_fea
 import * as migration_20261120_173214_testimonials_background from './20261120_173214_testimonials_background';
 import * as migration_20261120_180344_feature_catalog from './20261120_180344_feature_catalog';
 import * as migration_20261120_180941_cta_tone from './20261120_180941_cta_tone';
+import * as migration_20261121_084712_blog_tags from './20261121_084712_blog_tags';
 
 export const migrations = [
   {
@@ -190,6 +191,11 @@ export const migrations = [
   {
     up: migration_20261120_180941_cta_tone.up,
     down: migration_20261120_180941_cta_tone.down,
-    name: '20261120_180941_cta_tone'
+    name: '20261120_180941_cta_tone',
+  },
+  {
+    up: migration_20261121_084712_blog_tags.up,
+    down: migration_20261121_084712_blog_tags.down,
+    name: '20261121_084712_blog_tags'
   },
 ];

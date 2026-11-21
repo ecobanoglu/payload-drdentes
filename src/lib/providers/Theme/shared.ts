@@ -1,17 +1,7 @@
 import type { Theme } from './types'
 
+/** Tema seçici varken seçimin saklandığı localStorage anahtarı (artık yalnızca eski kaydı silmek için) */
 export const themeLocalStorageKey = 'payload-theme'
 
-export const defaultTheme = 'light'
-
-export const getImplicitPreference = (): Theme | null => {
-  const mediaQuery = '(prefers-color-scheme: dark)'
-  const mql = window.matchMedia(mediaQuery)
-  const hasImplicitPreference = typeof mql.matches === 'boolean'
-
-  if (hasImplicitPreference) {
-    return mql.matches ? 'dark' : 'light'
-  }
-
-  return null
-}
+/** Sitenin tek teması: her zaman açık */
+export const defaultTheme: Theme = 'light'

@@ -16,7 +16,11 @@
     "title": "Blog",
     "description": "Articles on dentistry, clinic management and what's new in Dr.DENTES.",
     "metaTitle": "Blog",
-    "pageMetaTitle": "Blog – Page {page}"
+    "pageMetaTitle": "Blog – Page {page}",
+    "relatedPosts": "Related Posts",
+    "allPosts": "All Posts",
+    "tableOfContents": "Table of Contents",
+    "tags": "Tags"
   },
   "Search": {
     "title": "Search",

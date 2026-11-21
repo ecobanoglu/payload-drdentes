@@ -15,14 +15,16 @@ interface HeaderClientProps {
   data: Header
 }
 
-/** Header'ın sayfa akışındaki yüksekliği (px); bu kadar kaydırılınca "yapışkan" moda geçilir */
+/** Header'ın sayfa akışındaki yüksekliği (px); yer tutucu kutu bu yükseklikte */
 const HEADER_HEIGHT = 104
+/** Bu kadar (px) kaydırılana kadar "en üstte" sayılır (yumuşak kaydırmanın küçük artıkları için pay) */
+const TOP_THRESHOLD = 8
 /** Yön değişimini algılamak için en az kaydırma (px); küçük titreşimler yok sayılır */
 const SCROLL_DELTA = 6
 
 /**
  * Header'ın kaydırma durumu:
- * - `top`: sayfanın en üstü; header akıştaki yerinde, şeffaf (hero'nun üstünde)
+ * - `top`: sayfanın en üstü; header şeffaf (hero'nun üstünde), iç boşluğu geniş
  * - `hidden`: aşağı kaydırılıyor; header yukarı kayarak gizlenir
  * - `pinned`: yukarı kaydırılıyor; header üstte sabit, zeminli ve kompakt görünür
  */
@@ -42,7 +44,7 @@ function useHeaderScrollState(): ScrollState {
     const update = () => {
       frame = 0
       const y = window.scrollY
-      if (y <= HEADER_HEIGHT) {
+      if (y <= TOP_THRESHOLD) {
         setState('top')
       } else if (Math.abs(y - lastY.current) >= SCROLL_DELTA) {
         setState(y > lastY.current ? 'hidden' : 'pinned')
@@ -70,10 +72,11 @@ function useHeaderScrollState(): ScrollState {
 /**
  * Site header'ı.
  *
- * - Sayfanın en üstünde akıştaki yerindedir; hero'lar altına girer (koyu hero → açık yazı).
+ * - Her durumda ekrana sabittir (fixed); en üstte şeffaftır ve hero'lar altına girer (koyu hero → açık yazı).
  * - Aşağı kaydırınca gizlenir, yukarı kaydırınca üstte yapışkan olarak belirir
  *   (buzlu zemin, alt çizgi, daha az iç boşluk). Yapışkan modda sayfanın kendi teması kullanılır.
- * - Yer tutucu kutu sayesinde header sabitlendiğinde sayfa içeriği kaymaz.
+ * - Konum (absolute ↔ fixed) hiç değişmez: üste dönerken header zıplamaz, yalnızca zemini
+ *   ve iç boşluğu yumuşakça değişir. Yer tutucu kutu içeriğin header altında başlamasını sağlar.
  */
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   // Header teması state'te tutulur: context'in tarayıcıdaki ilk değeri sunucu HTML'inden
@@ -117,17 +120,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const appliedTheme = isTop ? theme : null
 
   return (
-    // Yer tutucu: header akıştan çıktığında (fixed) içerik yukarı kaymasın
+    // Yer tutucu: header akış dışında (fixed) olduğu için içerik onun altından başlasın
     <div className="relative z-30" style={{ height: HEADER_HEIGHT }}>
       <header
         {...(appliedTheme ? { 'data-theme': appliedTheme } : {})}
         // En üstteyken işaretlenir: koyu hero'lu sayfada ilk çizimden itibaren koyu tema (globals.css)
         {...(isTop ? { 'data-header-top': '' } : {})}
         className={cn(
-          'inset-x-0 top-0 transition-[transform,background-color,box-shadow,padding] duration-300 ease-out',
+          'fixed inset-x-0 top-0 border-b transition-[transform,background-color,border-color,box-shadow] duration-300 ease-out',
           isTop
-            ? 'absolute'
-            : 'fixed border-b border-border/60 bg-background/85 shadow-sm backdrop-blur-md',
+            ? 'border-transparent'
+            : 'border-border/60 bg-background/85 shadow-sm backdrop-blur-md',
           scrollState === 'hidden' && '-translate-y-full',
         )}
       >

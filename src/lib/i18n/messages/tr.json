@@ -16,7 +16,11 @@
     "title": "Blog",
     "description": "Diş hekimliği, klinik yönetimi ve Dr.DENTES'teki yenilikler üzerine yazılar.",
     "metaTitle": "Blog",
-    "pageMetaTitle": "Blog – Sayfa {page}"
+    "pageMetaTitle": "Blog – Sayfa {page}",
+    "relatedPosts": "İlişkili Yazılar",
+    "allPosts": "Tüm Yazılar",
+    "tableOfContents": "İçindekiler",
+    "tags": "Etiketler"
   },
   "Search": {
     "title": "Arama",

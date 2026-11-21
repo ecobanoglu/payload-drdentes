@@ -2,31 +2,19 @@
 
 import React from 'react'
 
-import { defaultTheme, themeLocalStorageKey } from '../ThemeSelector/types'
+import { defaultTheme, themeLocalStorageKey } from '../shared'
 
 /**
- * Sayfa boyanmadan önce `<html data-theme>` değerini ayarlayan betik (tema yanıp sönmesini önler).
- * Sıra: kayıtlı tercih (localStorage) → işletim sistemi tercihi → varsayılan tema.
+ * Sayfa boyanmadan önce çalışan betik. Site her zaman açık temadadır (`<html data-theme>`
+ * sunucuda verilir); betik yine de temayı sabitler ve tema seçici varken kaydedilmiş eski
+ * seçimi (localStorage) siler.
  */
 const themeScript = `
 (function () {
-  function getImplicitPreference() {
-    var mql = window.matchMedia('(prefers-color-scheme: dark)')
-    if (typeof mql.matches === 'boolean') return mql.matches ? 'dark' : 'light'
-    return null
-  }
-  function themeIsValid(theme) {
-    return theme === 'light' || theme === 'dark'
-  }
-  var themeToSet = '${defaultTheme}'
-  var preference = window.localStorage.getItem('${themeLocalStorageKey}')
-  if (themeIsValid(preference)) {
-    themeToSet = preference
-  } else {
-    var implicitPreference = getImplicitPreference()
-    if (implicitPreference) themeToSet = implicitPreference
-  }
-  document.documentElement.setAttribute('data-theme', themeToSet)
+  try {
+    window.localStorage.removeItem('${themeLocalStorageKey}')
+  } catch (e) {}
+  document.documentElement.setAttribute('data-theme', '${defaultTheme}')
 })();
 `
 
