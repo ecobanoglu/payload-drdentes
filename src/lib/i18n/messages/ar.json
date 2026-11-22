@@ -128,5 +128,10 @@
     "total": "{count} ميزة في {modules} وحدات",
     "noResults": "لا توجد ميزات مطابقة لبحثك.",
     "featureCount": "{count} ميزة"
+  },
+  "Nav": {
+    "open": "فتح القائمة",
+    "close": "إغلاق القائمة",
+    "title": "القائمة"
   }
 }

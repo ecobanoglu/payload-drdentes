@@ -128,5 +128,10 @@
     "total": "{modules} modülde {count} özellik",
     "noResults": "Aramanızla eşleşen özellik bulunamadı.",
     "featureCount": "{count} özellik"
+  },
+  "Nav": {
+    "open": "Menüyü aç",
+    "close": "Menüyü kapat",
+    "title": "Menü"
   }
 }

@@ -9,6 +9,7 @@ import type { Header } from '@/payload-types'
 import { Logo } from '@/components/Logo/Logo'
 import { cn } from '@/lib/utilities/ui'
 import { HeaderNav } from './Nav'
+import { MobileNav } from './Nav/MobileNav'
 
 interface HeaderClientProps {
   data: Header
@@ -142,9 +143,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <Link href="/" className="flex items-center" onClick={handleLogoClick}>
             <Logo />
           </Link>
-          {/* Dil değiştirici footer'da (alt şeridin sağında) */}
+          {/* Dil değiştirici footer'da (alt şeridin sağında). Dar ekranda menü hamburger panelinde */}
           <div className="flex items-center gap-6">
             <HeaderNav data={data} />
+            <MobileNav data={data} />
           </div>
         </div>
       </header>

@@ -51,7 +51,6 @@ export default async function Page({ params }: Args) {
         locale={locale}
         crumbs={[{ url: BLOG_PATH, label: t('title') }]}
         title={t('title')}
-        description={t('description')}
         className="-mt-[12.5rem]"
       />
 
@@ -80,6 +79,8 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'Posts' })
   return {
     title: t('metaTitle'),
+    // Açıklama sayfada gösterilmez; arama motorları için meta açıklaması olarak kullanılır
+    description: t('description'),
     alternates: buildAlternates(locale, samePathInAllLocales(BLOG_PATH)),
   }
 }

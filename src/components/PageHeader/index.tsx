@@ -15,10 +15,9 @@ type PageHeaderProps = {
   locale: Locale
   /** Sayfa yolu: Ana sayfa › … › bu sayfa (son halka bu sayfa) */
   crumbs?: Crumb[] | null
-  /** Düz metin başlık (CMS sayfalarında başlık + açıklama `children` içindeki zengin metinden gelir) */
+  /** Düz metin başlık (CMS sayfalarında başlık `children` içindeki zengin metinden gelir) */
   title?: string | null
-  description?: string | null
-  /** Başlık/açıklamanın yerine geçen içerik (ör. CMS hero'sunun zengin metni) */
+  /** Başlığın yerine geçen içerik (ör. CMS hero'sunun zengin metnindeki başlık) */
   children?: React.ReactNode
   /** Başlığın altında küçük bilgi satırı (ör. blog yazısında kategori · tarih · yazar) */
   meta?: React.ReactNode
@@ -27,7 +26,7 @@ type PageHeaderProps = {
 }
 
 /**
- * İç sayfaların başlık bandı: breadcrumb + başlık (h1) + açıklama.
+ * İç sayfaların başlık bandı: yalnızca breadcrumb + başlık (h1); açıklama metni gösterilmez.
  *
  * - Zemin ana sayfa hero'su ile aynı (#F7FAFD + sol üst ve sol altta dairesel ışık); yazılar koyu.
  * - Header bandın üstüne biner (bant sayfanın en üstünden başlar); sayfa açık temada olduğu için
@@ -39,7 +38,6 @@ export function PageHeader({
   locale,
   crumbs,
   title,
-  description,
   children,
   meta,
   className,
@@ -58,14 +56,10 @@ export function PageHeader({
       <div className="container w-full pt-[9rem] pb-12 md:pb-14">
         <Breadcrumbs crumbs={crumbs} locale={locale} variant="band" className="mb-5" />
         <div className="max-w-[48rem]">
-          {children ?? (
-            <>
-              {title && (
-                <h1 className="text-4xl font-bold leading-tight text-balance md:text-5xl">{title}</h1>
-              )}
-              {description && <p className="mt-4 text-lg text-black/70">{description}</p>}
-            </>
-          )}
+          {children ??
+            (title && (
+              <h1 className="text-4xl font-bold leading-tight text-balance md:text-5xl">{title}</h1>
+            ))}
           {meta && <div className="mt-6 text-sm text-black/60">{meta}</div>}
         </div>
       </div>

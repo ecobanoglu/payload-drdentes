@@ -128,5 +128,10 @@
     "total": "{count} features in {modules} modules",
     "noResults": "No features match your search.",
     "featureCount": "{count, plural, one {# feature} other {# features}}"
+  },
+  "Nav": {
+    "open": "Open menu",
+    "close": "Close menu",
+    "title": "Menu"
   }
 }

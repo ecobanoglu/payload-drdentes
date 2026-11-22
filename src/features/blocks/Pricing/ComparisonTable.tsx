@@ -67,9 +67,10 @@ export async function ComparisonTable({
       <div className="container">
         <h2 className="mb-10 text-3xl font-bold md:text-4xl">{heading || t('compareHeading')}</h2>
 
-        {/* Beyaz kart; dar ekranda içinde yatay kaydırma, md ve üstünde taşma yok
-            (yapışkan başlık satırı çalışsın) */}
-        <div className="overflow-x-auto rounded-2xl border border-border bg-background px-4 pb-4 md:overflow-visible md:px-6 md:pb-6">
+        {/* Beyaz kart; telefon ve tablette içinde yatay kaydırma (tablo en az 44rem), lg ve
+            üstünde taşma yok (yapışkan başlık satırı çalışsın). relative: hücrelerdeki
+            ekran okuyucu metinleri (sr-only, absolute) kutunun dışına kaçıp sayfayı genişletmesin */}
+        <div className="relative overflow-x-auto rounded-2xl border border-border bg-background px-4 pb-4 md:px-6 md:pb-6 lg:overflow-visible">
           <table className="w-full min-w-[44rem] table-fixed border-collapse text-sm">
             <colgroup>
               <col className="w-[28%]" />
@@ -81,7 +82,7 @@ export async function ComparisonTable({
               <tr>
                 <th
                   scope="col"
-                  className="sticky start-0 z-20 bg-background md:top-0 md:bg-background/90 md:backdrop-blur-sm"
+                  className="sticky start-0 z-20 bg-background lg:top-0 lg:bg-background/90 lg:backdrop-blur-sm"
                 >
                   <span className="sr-only">{t('feature')}</span>
                 </th>
@@ -90,7 +91,7 @@ export async function ComparisonTable({
                     key={plan.id}
                     scope="col"
                     className={cn(
-                      'px-3 pt-4 pb-5 text-start align-bottom font-normal md:sticky md:top-0 md:z-10 md:bg-background/90 md:backdrop-blur-sm',
+                      'px-3 pt-4 pb-5 text-start align-bottom font-normal lg:sticky lg:top-0 lg:z-10 lg:bg-background/90 lg:backdrop-blur-sm',
                       columnTone(index),
                     )}
                   >
@@ -123,7 +124,7 @@ export async function ComparisonTable({
                   <tr key={row.id ?? rowIndex} className="border-b border-border">
                     <th
                       scope="row"
-                      className="sticky start-0 z-10 bg-background py-3.5 pe-4 text-start font-normal md:static md:bg-transparent"
+                      className="sticky start-0 z-10 bg-background py-3.5 pe-4 text-start font-normal lg:static lg:bg-transparent"
                     >
                       <span className="block">{row.label}</span>
                       {row.hint && (

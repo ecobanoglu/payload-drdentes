@@ -51,8 +51,9 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
         >
           {item.initials}
         </span>
-        {/* Ad ve tarih aynı satırda: ad solda, tarih sağda (RTL'de ters), yazı tabanında hizalı */}
-        <div className="flex min-w-0 flex-1 items-baseline justify-between gap-3">
+        {/* Ad ve tarih aynı satırda: ad solda, tarih sağda (RTL'de ters), yazı tabanında hizalı.
+            Dar ekranda sığmazsa tarih alt satıra geçer (ad kısaltılmaz) */}
+        <div className="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
           <p className="flex min-w-0 items-baseline gap-2">
             <span className="truncate font-semibold">{item.author}</span>
             {isAnnouncement && (

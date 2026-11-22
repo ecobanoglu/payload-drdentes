@@ -6,12 +6,16 @@ import type { Header as HeaderType } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 
-/** Header menüsü: CMS'ten gelen bağlantılar + isteğe bağlı vurgulu buton. */
+/**
+ * Header menüsü: CMS'ten gelen bağlantılar + isteğe bağlı vurgulu buton.
+ * Yalnızca lg (1024px) ve üstünde görünür; daha dar ekranda (telefon, dikey tablet)
+ * `MobileNav` (hamburger) kullanılır: menüye öğe eklense de header taşmaz.
+ */
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
 
   return (
-    <nav className="flex items-center gap-1">
+    <nav className="hidden items-center gap-1 lg:flex">
       {navItems.map(({ link }, i) => {
         return (
           <CMSLink

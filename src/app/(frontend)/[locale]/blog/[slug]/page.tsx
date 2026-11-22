@@ -100,7 +100,6 @@ export default async function Post({ params: paramsPromise }: Args) {
           { url: `${BLOG_PATH}/${decodedSlug}`, label: post.title },
         ]}
         title={post.title}
-        description={post.meta?.description}
         className="-mt-[10.5rem]"
         meta={
           hasMeta ? (

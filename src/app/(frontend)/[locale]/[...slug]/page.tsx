@@ -91,10 +91,21 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { hero, layout } = page
   // İç sayfalarda (ana sayfa hariç) hero "Düşük etkili" ya da boşsa açık başlık bandı gösterilir:
-  // breadcrumb + hero metni (başlık + açıklama); hero metni yoksa sayfa başlığı
+  // breadcrumb + başlık (hero metnindeki başlık; yoksa sayfa adı). Açıklama gösterilmez
   const isHome = page.slug === 'home'
   const usePageHeader = !isHome && (!hero?.type || hero.type === 'none' || hero.type === 'lowImpact')
   const paths = 'id' in page && page.id ? await getLocalizedPaths('pages', page.id) : undefined
+
+  // Başlık bandında hero metninin yalnızca başlık(lar)ı gösterilir; açıklama paragrafları atlanır.
+  // Hero'da başlık yoksa bant sayfa adını gösterir.
+  const heroHeadingNodes =
+    hero?.type === 'lowImpact' && hero.richText
+      ? hero.richText.root.children.filter((node) => node.type === 'heading')
+      : []
+  const heroHeading =
+    hero?.richText && heroHeadingNodes.length > 0
+      ? { ...hero.richText, root: { ...hero.richText.root, children: heroHeadingNodes } }
+      : null
 
   return (
     <article className="pt-16 pb-24">
@@ -113,11 +124,11 @@ export default async function Page({ params: paramsPromise }: Args) {
           title={page.title}
           className="-mt-[10.5rem]"
         >
-          {hero?.type === 'lowImpact' && hero.richText ? (
+          {heroHeading ? (
             <RichText
-              data={hero.richText}
+              data={heroHeading}
               enableGutter={false}
-              className="max-w-none [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:leading-tight [&_h1]:text-balance md:[&_h1]:text-5xl [&_p]:text-lg [&_p]:text-black/70"
+              className="max-w-none [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:leading-tight [&_h1]:text-balance md:[&_h1]:text-5xl"
             />
           ) : undefined}
         </PageHeader>
