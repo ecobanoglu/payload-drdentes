@@ -3,10 +3,13 @@ import { getLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
 import React from 'react'
 
+import { JsonLd } from '@/components/JsonLd'
 import { SectionHeader } from '@/components/SectionHeader'
 import type { PricingBlock as PricingBlockProps, PricingPlan } from '@/payload-types'
 
 import type { Locale } from '@/lib/i18n/config'
+import { absoluteLocalizedURL } from '@/lib/utilities/generateMeta'
+import { buildSoftwareApplication } from '@/lib/utilities/structuredData'
 import { ComparisonTable } from './ComparisonTable'
 import { PricingTable } from './PricingTable.client'
 
@@ -43,6 +46,17 @@ export async function PricingBlockComponent(props: PricingBlockProps) {
 
   return (
     <>
+      {/* Yapılandırılmış veri: yazılım + paket başına yıllık teklif (arama motorları) */}
+      <JsonLd
+        nodes={[
+          buildSoftwareApplication({
+            locale,
+            url: absoluteLocalizedURL(locale, '/'),
+            plans,
+            offers: 'list',
+          }),
+        ]}
+      />
       <section className="container">
         <SectionHeader heading={heading} intro={intro} align="center" className="mb-10" />
         <PricingTable

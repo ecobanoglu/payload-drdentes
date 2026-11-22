@@ -9,7 +9,7 @@ import { DEFAULT_OG_IMAGE, SITE_NAME } from './site'
 import { getServerSideURL } from './getURL'
 
 /** OG görselinin tam URL'ini döner; görsel yoksa varsayılan görseli kullanır. */
-const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
+export const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
 
   let url = serverUrl + DEFAULT_OG_IMAGE

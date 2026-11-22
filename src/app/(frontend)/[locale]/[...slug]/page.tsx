@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { HomeStructuredData } from '@/components/JsonLd/HomeStructuredData'
 import { PageHeader } from '@/components/PageHeader'
 import RichText from '@/components/RichText'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
@@ -111,6 +112,8 @@ export default async function Page({ params: paramsPromise }: Args) {
     <article className="pt-16 pb-24">
       <PageClient />
       {paths && <SetLocaleAlternates paths={paths} />}
+      {/* Ana sayfa: şirket, site ve yazılım için yapılandırılmış veri (arama motorları) */}
+      {isHome && <HomeStructuredData locale={locale} description={page.meta?.description} />}
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} locale={locale} />
 

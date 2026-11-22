@@ -14,7 +14,9 @@ import { Media } from '@/components/Media'
 import { PageHeader } from '@/components/PageHeader'
 import { SHARED_CONTENT_LOCALE, type Locale } from '@/lib/i18n/config'
 import { SetLocaleAlternates } from '@/lib/providers/LocaleAlternates'
-import { generateMeta } from '@/lib/utilities/generateMeta'
+import { absoluteLocalizedURL, generateMeta } from '@/lib/utilities/generateMeta'
+import { buildBlogPosting } from '@/lib/utilities/structuredData'
+import { JsonLd } from '@/components/JsonLd'
 import { getLocalizedPaths } from '@/lib/utilities/localizedPaths'
 import { BLOG_PATH } from '@/lib/utilities/constants'
 import PageClient from './page.client'
@@ -87,6 +89,15 @@ export default async function Post({ params: paramsPromise }: Args) {
     <article className="pt-16 pb-16">
       <PageClient />
       <SetLocaleAlternates paths={paths} />
+      {/* Yapılandırılmış veri: blog yazısı (arama motorları) */}
+      <JsonLd
+        nodes={[
+          buildBlogPosting({
+            post,
+            url: absoluteLocalizedURL(locale, `${BLOG_PATH}/${decodedSlug}`),
+          }),
+        ]}
+      />
 
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} locale={locale} />
