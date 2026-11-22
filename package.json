@@ -19,9 +19,10 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "reinstall": "npm install",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
-    "test": "npm run test:int && npm run test:e2e",
+    "test": "npm run test:unit && npm run test:int && npm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
-    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts tests/int",
+    "test:unit": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts tests/unit",
     "ci": "npm run migrate && npm run build"
   },
   "dependencies": {
