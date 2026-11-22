@@ -26,7 +26,14 @@ import { cn } from '@/lib/utilities/ui'
  *    Sayfa o dilde yayınlanmamışsa o dilin ana sayfasına gider.
  * 2. Bildirmediyse (ör. /blog, /search) aynı yolu diğer dilde açar.
  */
-export function LanguageSwitcher({ className }: { className?: string }) {
+export function LanguageSwitcher({
+  className,
+  side = 'bottom',
+}: {
+  className?: string
+  /** Menünün açılacağı yön (ör. sayfanın altındaki footer'da 'top') */
+  side?: 'top' | 'bottom'
+}) {
   const currentLocale = useLocale() as Locale
   const pathname = usePathname()
   const alternates = useLocaleAlternates()
@@ -50,7 +57,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         <ChevronDown aria-hidden className="size-3.5 opacity-70" />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" className="min-w-40">
+      <DropdownMenuContent align="end" side={side} className="min-w-40">
         {locales.map((locale) => {
           const isActive = locale === currentLocale
           return (

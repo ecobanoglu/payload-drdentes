@@ -69,7 +69,12 @@ export const RenderBlocks: React.FC<{
 
               // Tam genişlikte renkli zeminli bloklar (gri, koyu, marka mavisi...) dış boşluksuz:
               // komşu renkli bölümlerle arada beyaz şerit kalmaz; boşluğu kendi iç dolgusu verir
-              const margin = hasFullWidthBackground(block) ? 'my-0' : 'my-16'
+              // Sabitlenmiş slaytlar kendi ekran yüksekliğindeki alanıyla gelir: dış boşluk yok
+              const margin =
+                hasFullWidthBackground(block) ||
+                (block.blockType === 'cards' && block.layout === 'pinnedSlides')
+                  ? 'my-0'
+                  : 'my-16'
 
               // Kendi animasyonunu yöneten bloklar düz kapsayıcıda; diğerleri kaydırınca belirir
               return selfAnimatedBlocks.has(blockType) ? (

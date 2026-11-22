@@ -4,6 +4,7 @@ import React from 'react'
 import type { Locale } from '@/lib/i18n/config'
 import { Link } from '@/lib/i18n/navigation'
 import { getCachedGlobal } from '@/lib/utilities/getGlobals'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 import { SITE_NAME } from '@/lib/utilities/site'
@@ -95,7 +96,7 @@ export async function Footer({ locale }: { locale: Locale }) {
         )}
       </div>
 
-      {/* Alt şerit: telif, sosyal medya, tema */}
+      {/* Alt şerit: telif, sosyal medya, dil değiştirici */}
       <div className="border-t border-white/10">
         <div className="container flex flex-col gap-4 py-6 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
           <p>
@@ -113,6 +114,11 @@ export async function Footer({ locale }: { locale: Locale }) {
                 ))}
               </ul>
             )}
+            {/* Dil değiştirici: koyu zeminde açık renk; menü yukarı açılır */}
+            <LanguageSwitcher
+              side="top"
+              className="text-white/80 hover:bg-white/10 hover:text-white data-[state=open]:bg-white/10"
+            />
           </div>
         </div>
       </div>

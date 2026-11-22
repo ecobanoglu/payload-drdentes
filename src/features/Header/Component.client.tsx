@@ -7,7 +7,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
-import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { cn } from '@/lib/utilities/ui'
 import { HeaderNav } from './Nav'
 
@@ -143,9 +142,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <Link href="/" className="flex items-center" onClick={handleLogoClick}>
             <Logo />
           </Link>
+          {/* Dil değiştirici footer'da (alt şeridin sağında) */}
           <div className="flex items-center gap-6">
             <HeaderNav data={data} />
-            <LanguageSwitcher />
           </div>
         </div>
       </header>

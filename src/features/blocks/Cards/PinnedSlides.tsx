@@ -173,10 +173,14 @@ export const CardsPinnedSlides = ({
   }
 
   return (
-    <section className="bg-background">
+    // isolate: ışıklar (-z-10) zeminin üstünde, içeriğin altında çizilir. overflow-clip: taşan
+    // ışıklar kırpılır (hidden'ın aksine kaydırma kabı oluşturmaz, sticky bozulmaz)
+    <section className="relative isolate overflow-clip bg-background">
       {/* JavaScript kapalıyken sabitlenmiş görünüm gizlenir, yedek liste gösterilir */}
       <noscript>
-        <style>{'[data-ps-pinned]{display:none!important}[data-ps-list]{display:block!important}'}</style>
+        <style>
+          {'[data-ps-pinned]{display:none!important}[data-ps-list]{display:block!important}'}
+        </style>
       </noscript>
 
       {/* Yedek görünüm: başlık üstte, kartlar alt alta (görsel + numara + metin) */}
@@ -217,6 +221,11 @@ export const CardsPinnedSlides = ({
       >
         {/* Üst boşluk: yukarı kaydırınca beliren yapışkan site header'ı başlığı örtmesin */}
         <div className="container sticky top-0 flex h-screen flex-col pt-24 pb-12">
+          {/* Kart ışığı: sol alttan metin alanına doğru yukarı çapraz uzanan elips */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-[8rem] -start-[20rem] -z-10 h-[28rem] w-[56rem] -rotate-[28deg] rounded-full bg-[radial-gradient(closest-side,rgba(107,128,247,0.2),transparent)] rtl:rotate-[28deg]"
+          />
           {header && <div className="shrink-0">{header}</div>}
 
           {/* Ana alan: metin | ilerleme çubukları | görsel */}
@@ -226,6 +235,8 @@ export const CardsPinnedSlides = ({
               {cards.map((card, index) => {
                 const isActive = index === activeIndex
                 const state = slideState(index, activeIndex, '-translate-y-14', 'translate-y-14')
+                // Numara ve başlık yerinde sabit kalır: yalnızca saydamlıkla değişir (kaymaz)
+                const fade = isActive ? 'opacity-100' : 'opacity-0'
                 return (
                   <li
                     key={card.id ?? index}
@@ -233,15 +244,16 @@ export const CardsPinnedSlides = ({
                     // Gizli kartlar odak/ekran okuyucu dışında kalır
                     inert={!isActive}
                     className={cn(
-                      'col-start-1 row-start-1 max-w-[40rem]',
+                      // self-start: tüm kartlar hücrenin üstüne hizalı; numara/başlık aynı yerde
+                      'col-start-1 row-start-1 max-w-[40rem] self-start',
                       !isActive && 'pointer-events-none',
                     )}
                   >
                     <span
                       className={cn(
-                        'block font-mono text-lg text-primary transition-all duration-300',
+                        'block font-mono text-lg text-primary transition-opacity duration-300',
                         EASE,
-                        state,
+                        fade,
                         isActive && 'delay-50',
                       )}
                     >
@@ -249,9 +261,9 @@ export const CardsPinnedSlides = ({
                     </span>
                     <h3
                       className={cn(
-                        'mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-balance transition-all duration-400 xl:text-5xl',
+                        'mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-balance transition-opacity duration-400 xl:text-5xl',
                         EASE,
-                        state,
+                        fade,
                         isActive && 'delay-75',
                       )}
                     >
@@ -305,22 +317,30 @@ export const CardsPinnedSlides = ({
               ))}
             </div>
 
-            {/* Görsel çerçevesi: görseller üst üste; etkin olan metinle birlikte kayarak belirir */}
-            <div className="relative size-[min(28rem,50vh)] overflow-hidden rounded-2xl bg-muted">
-              {cards.map((card, index) => (
-                <div
-                  key={card.id ?? index}
-                  aria-hidden={index !== activeIndex}
-                  className={cn(
-                    'absolute inset-0 transition-all duration-450',
-                    EASE,
-                    slideState(index, activeIndex, '-translate-y-1/4', 'translate-y-1/4'),
-                    index === activeIndex && 'delay-50',
-                  )}
-                >
-                  <CardImage card={card} priority={index === 0} />
-                </div>
-              ))}
+            {/* Görsel ışığı: görselle dikeyde ortalı, sağ kenarın ortasından yayılır */}
+            <div className="relative">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute end-0 top-1/2 -z-10 size-[150%] translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(47,73,220,0.2),transparent)] rtl:-translate-x-1/2"
+              />
+              {/* Görsel çerçevesi: görseller üst üste; etkin olan metinle birlikte kayarak belirir.
+                Yarı saydam zemin: arkadaki ışık çerçeveye hafifçe yansır */}
+              <div className="relative size-[min(28rem,50vh)] overflow-hidden rounded-2xl bg-muted/60 ring-1 ring-primary/5">
+                {cards.map((card, index) => (
+                  <div
+                    key={card.id ?? index}
+                    aria-hidden={index !== activeIndex}
+                    className={cn(
+                      'absolute inset-0 transition-all duration-450',
+                      EASE,
+                      slideState(index, activeIndex, '-translate-y-1/4', 'translate-y-1/4'),
+                      index === activeIndex && 'delay-50',
+                    )}
+                  >
+                    <CardImage card={card} priority={index === 0} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

@@ -2,6 +2,7 @@
 
 import React, { useId, useRef } from 'react'
 
+import { Reveal } from '@/components/animation/Reveal'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/animation/gsap'
 import { cn } from '@/lib/utilities/ui'
 
@@ -309,10 +310,11 @@ export function CardsPathTimeline({
         />
       </svg>
 
-      {/* Başlık: ortalı; çizgi bunun altından (boşluk bırakarak) başlar */}
+      {/* Başlık: ortalı; çizgi bunun altından (boşluk bırakarak) başlar. Kaydırınca aşağıdan
+          belirir; kayma iç öğede olduğu için çizginin başlangıç ölçüsü (dış öğe) etkilenmez */}
       {header && (
         <div data-path-header className="relative mb-14 md:mb-16 lg:mb-20">
-          {header}
+          <Reveal>{header}</Reveal>
         </div>
       )}
 
@@ -324,7 +326,8 @@ export function CardsPathTimeline({
             data-path-card
             style={{ gridRow: index + 1 }}
             className={cn(
-              'col-start-2 flex w-full max-w-md',
+              // relative isolate: kartın altındaki ışık (-z-10) kartın arkasında kalır
+              'relative isolate col-start-2 flex w-full max-w-md',
               // Bu görünümde kartlar beyaz (sayfa zemini) ve kenarlıklı: noktalı çizgiden ayrışsın
               '[--card:var(--background)] [&>article]:border [&>article]:border-border',
               index % 2 === 0
@@ -332,6 +335,20 @@ export function CardsPathTimeline({
                 : 'lg:col-start-1 lg:justify-self-end',
             )}
           >
+            {/* Kart ışığı: kartın dış alt köşesinde dairesel ışık (24rem); merkezi köşenin
+                3rem içinde ve 2rem yukarısında, böylece ışık köşeden karta doğru yayılır.
+                Kartla birlikte belirir. Sağdaki kartlarda sağ alt, soldakilerde sol alt köşe
+                (dar ekranda kartlar çizginin sağında: sağ alt). RTL'de taraflar aynalanır */}
+            <div
+              aria-hidden
+              className={cn(
+                'pointer-events-none absolute -bottom-40 -z-10 size-96 rounded-full bg-[radial-gradient(closest-side,rgba(107,128,247,0.22),transparent)]',
+                // Sağ (end) alt köşe
+                '-end-36',
+                // Geniş ekranda soldaki (start) kartlar: sol alt köşe
+                index % 2 === 1 && 'lg:end-auto lg:-start-36',
+              )}
+            />
             {item.node}
           </li>
         ))}

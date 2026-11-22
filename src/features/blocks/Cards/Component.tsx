@@ -203,7 +203,13 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
   return (
     // Muted zemin: tam genişlik şerit + iç boşluk. Kart zemini (--card) muted ile neredeyse
     // aynı ton olduğundan bu bölümde kartlar sayfa zemini (beyaz) ile çizilir.
-    <section className={cn(isMuted && 'bg-muted py-16 md:py-24 [--card:var(--background)]')}>
+    // Kıvrımlı yolda kart ışıkları kenarlara taşabilir: yatayda kırpılır (sayfa yana kaymaz)
+    <section
+      className={cn(
+        isMuted && 'bg-muted py-16 md:py-24 [--card:var(--background)]',
+        layout === 'pathTimeline' && 'overflow-x-clip',
+      )}
+    >
       <div className="container">
         {layout === 'scrollStory' ? (
           // Solda görsel, sağda numaralı metin; kaydırdıkça kartlar sırayla değişir.
