@@ -2,7 +2,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { cache } from 'react'
 
-import { defaultLocale, locales, type Locale } from '@/lib/i18n/config'
+import { defaultLocale, locales, SHARED_CONTENT_LOCALE, type Locale } from '@/lib/i18n/config'
 import { HOME_SLUG } from './constants'
 import { getDocumentPath, type RoutableCollection } from './pagePath'
 
@@ -37,6 +37,14 @@ export const pathsFromAllLocalesDoc = (
   const isHome = collection === 'pages' && readLocalized(slugs, defaultLocale) === HOME_SLUG
 
   const paths: LocalizedPaths = {}
+
+  // Blog yazıları tüm dillerde ortak içerik dilindeki kayıtla gösterilir: o dilde yayınlanmışsa
+  // her dilde aynı yol (ör. /tr/blog/x ve /en/blog/x)
+  if (collection === 'posts') {
+    if (readLocalized(statuses, SHARED_CONTENT_LOCALE) !== 'published') return paths
+    const path = getDocumentPath(collection, { slug: readLocalized(slugs, SHARED_CONTENT_LOCALE) })
+    return path ? samePathInAllLocales(path) : paths
+  }
 
   for (const locale of locales) {
     if (readLocalized(statuses, locale) !== 'published') continue

@@ -8,6 +8,7 @@ import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import { SHARED_CONTENT_LOCALE } from '@/lib/i18n/config'
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
@@ -39,6 +40,9 @@ export const ArchiveBlock: React.FC<
 
     const fetchedPosts = await payload.find({
       collection: 'posts',
+      // Blog tüm dillerde ortak içerik dilindeki (Türkçe) yazılarla gösterilir
+      locale: SHARED_CONTENT_LOCALE,
+      fallbackLocale: false,
       depth: 1,
       limit,
       ...(flattenedCategories && flattenedCategories.length > 0
@@ -55,11 +59,23 @@ export const ArchiveBlock: React.FC<
     posts = fetchedPosts.docs
   } else {
     if (selectedDocs?.length) {
-      const filteredSelectedPosts = selectedDocs.map((post) => {
-        if (typeof post.value === 'object') return post.value
-      }) as Post[]
-
-      posts = filteredSelectedPosts
+      // Elle seçilen yazılar da ortak içerik dilinde (Türkçe) getirilir; sayfa başka dildeyken
+      // ilişki o dilde (boş metinle) gelir. Seçim sırası korunur.
+      const ids = selectedDocs
+        .map((doc) => (typeof doc.value === 'object' ? doc.value.id : doc.value))
+        .filter((value): value is number => typeof value === 'number')
+      const payload = await getPayload({ config: configPromise })
+      const { docs } = await payload.find({
+        collection: 'posts',
+        locale: SHARED_CONTENT_LOCALE,
+        fallbackLocale: false,
+        depth: 1,
+        limit: ids.length,
+        pagination: false,
+        where: { id: { in: ids } },
+      })
+      const byId = new Map(docs.map((doc) => [doc.id, doc]))
+      posts = ids.map((value) => byId.get(value)).filter((doc): doc is Post => Boolean(doc))
     }
   }
 

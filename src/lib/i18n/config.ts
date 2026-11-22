@@ -9,6 +9,13 @@ export type Locale = (typeof locales)[number]
 
 export const defaultLocale: Locale = 'tr'
 
+/**
+ * Blog yazıları ve kullanıcı etkileşimleri dile göre çevrilmez: tüm dillerde bu dildeki
+ * kayıtlar (metin, slug, yayın durumu) gösterilir. Arayüz metinleri ve tarih biçimi yine
+ * sayfanın dilindedir.
+ */
+export const SHARED_CONTENT_LOCALE: Locale = defaultLocale
+
 export const localeLabels: Record<Locale, string> = {
   tr: 'Türkçe',
   en: 'English',

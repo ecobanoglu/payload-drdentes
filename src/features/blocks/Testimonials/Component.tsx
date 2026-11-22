@@ -8,7 +8,7 @@ import type { TestimonialsBlock as TestimonialsBlockProps } from '@/payload-type
 import { Reveal } from '@/components/animation/Reveal'
 import { CMSLink } from '@/components/Link'
 import { SectionHeader } from '@/components/SectionHeader'
-import type { Locale } from '@/lib/i18n/config'
+import { SHARED_CONTENT_LOCALE, type Locale } from '@/lib/i18n/config'
 import { cn } from '@/lib/utilities/ui'
 import { TestimonialList, type TestimonialItem } from './TestimonialList.client'
 
@@ -45,13 +45,15 @@ export async function TestimonialsBlockComponent({
 
   const { docs } = await payload.find({
     collection: 'testimonials',
-    locale,
+    // Kayıtlar tüm dillerde ortak içerik dilindeki (Türkçe) metinle gösterilir; tarih biçimi ve
+    // arayüz metinleri sayfanın dilindedir
+    locale: SHARED_CONTENT_LOCALE,
     fallbackLocale: false,
     depth: 0,
     // Sıralama kartta görünen tarihe göre aşağıda yapılır; bu yüzden tümü getirilir
     limit: 500,
     pagination: false,
-    // Bu dilde içeriği olan kayıtlar: soru-yanıtta soru, duyuruda metin dolu olmalı
+    // İçeriği olan kayıtlar: soru-yanıtta soru, duyuruda metin dolu olmalı
     where: {
       or: [
         { and: [{ type: { equals: 'qa' } }, { question: { exists: true } }] },

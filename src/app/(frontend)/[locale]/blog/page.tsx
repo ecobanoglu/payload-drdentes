@@ -7,7 +7,7 @@ import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
-import type { Locale } from '@/lib/i18n/config'
+import { SHARED_CONTENT_LOCALE, type Locale } from '@/lib/i18n/config'
 import { buildAlternates } from '@/lib/utilities/generateMeta'
 import { samePathInAllLocales } from '@/lib/utilities/localizedPaths'
 import { BLOG_PATH } from '@/lib/utilities/constants'
@@ -32,7 +32,8 @@ export default async function Page({ params }: Args) {
     collection: 'posts',
     depth: 1,
     limit: 12,
-    locale,
+    // Blog tüm dillerde ortak içerik dilindeki (Türkçe) yazılarla gösterilir
+    locale: SHARED_CONTENT_LOCALE,
     fallbackLocale: false,
     overrideAccess: false,
     select: {

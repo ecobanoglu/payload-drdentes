@@ -12,7 +12,7 @@ import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { PageHeader } from '@/components/PageHeader'
-import type { Locale } from '@/lib/i18n/config'
+import { SHARED_CONTENT_LOCALE, type Locale } from '@/lib/i18n/config'
 import { SetLocaleAlternates } from '@/lib/providers/LocaleAlternates'
 import { generateMeta } from '@/lib/utilities/generateMeta'
 import { getLocalizedPaths } from '@/lib/utilities/localizedPaths'
@@ -23,14 +23,15 @@ import { TableOfContents } from './TableOfContents.client'
 import { getTocHeadings } from '@/lib/utilities/headingAnchors'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
-/** Build sırasında her dilde yayınlanmış tüm yazıları statik üretir. */
-export async function generateStaticParams({ params }: { params: { locale: string } }) {
+/** Build sırasında ortak içerik dilinde yayınlanmış tüm yazıları her dil için statik üretir. */
+export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
     collection: 'posts',
     draft: false,
     limit: 1000,
-    locale: params.locale as Locale,
+    // Blog tüm dillerde ortak içerik dilindeki (Türkçe) yazılarla gösterilir
+    locale: SHARED_CONTENT_LOCALE,
     fallbackLocale: false,
     overrideAccess: false,
     pagination: false,
@@ -57,7 +58,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
   const url = `/${locale}${BLOG_PATH}/${decodedSlug}`
-  const post = await queryPostBySlug({ locale, slug: decodedSlug })
+  const post = await queryPostBySlug({ slug: decodedSlug })
 
   if (!post) return <PayloadRedirects url={url} locale={locale} />
 
@@ -180,17 +181,17 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const { locale, slug = '' } = await paramsPromise
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
-  const post = await queryPostBySlug({ locale, slug: decodedSlug })
+  const post = await queryPostBySlug({ slug: decodedSlug })
   const paths = post ? await getLocalizedPaths('posts', post.id) : undefined
 
   return generateMeta({ doc: post, locale, paths })
 }
 
 /**
- * Yazıyı istenen dilde slug ile getirir. `fallbackLocale: false`: o dilde
- * çevrilip yayınlanmamış yazı bulunamaz.
+ * Yazıyı slug ile getirir. Yazılar tüm dillerde ortak içerik dilindeki (Türkçe) kayıtla
+ * gösterilir; o dilde yayınlanmamış yazı bulunamaz.
  */
-const queryPostBySlug = cache(async ({ locale, slug }: { locale: Locale; slug: string }) => {
+const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
@@ -199,7 +200,8 @@ const queryPostBySlug = cache(async ({ locale, slug }: { locale: Locale; slug: s
     collection: 'posts',
     draft,
     limit: 1,
-    locale,
+    // Blog tüm dillerde ortak içerik dilindeki (Türkçe) yazılarla gösterilir
+    locale: SHARED_CONTENT_LOCALE,
     fallbackLocale: false,
     overrideAccess: draft,
     pagination: false,
@@ -217,7 +219,7 @@ const queryPostBySlug = cache(async ({ locale, slug }: { locale: Locale; slug: s
 const RELATED_POSTS_LIMIT = 5
 
 /**
- * Yazının sağında listelenecek ilişkili yazıları seçer (yalnızca bu dilde yayınlanmış olanlar):
+ * Yazının sağında listelenecek ilişkili yazıları seçer (ortak içerik dilinde yayınlanmış olanlar):
  *
  * 1. Yönetim panelinde elle seçilen "relatedPosts" (girilen sırayla),
  * 2. ortak etiketi / kategorisi olan yazılar (en çok ortaklığı olan, sonra en yeni önce),
@@ -235,7 +237,8 @@ const queryRelatedPosts = async ({
   // Blog az sayıda yazı içerdiği için aday yazılar tek sorguda alınıp burada puanlanır
   const { docs: candidates } = await payload.find({
     collection: 'posts',
-    locale,
+    // Blog tüm dillerde ortak içerik dilindeki (Türkçe) yazılarla gösterilir
+    locale: SHARED_CONTENT_LOCALE,
     fallbackLocale: false,
     overrideAccess: false,
     depth: 1,

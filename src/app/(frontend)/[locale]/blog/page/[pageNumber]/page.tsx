@@ -8,7 +8,7 @@ import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getPayload } from 'payload'
-import type { Locale } from '@/lib/i18n/config'
+import { SHARED_CONTENT_LOCALE, type Locale } from '@/lib/i18n/config'
 import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
@@ -38,7 +38,8 @@ export default async function Page({ params: paramsPromise }: Args) {
     depth: 1,
     limit: 12,
     page: sanitizedPageNumber,
-    locale,
+    // Blog tüm dillerde ortak içerik dilindeki (Türkçe) yazılarla gösterilir
+    locale: SHARED_CONTENT_LOCALE,
     fallbackLocale: false,
     overrideAccess: false,
   })
@@ -83,12 +84,13 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   }
 }
 
-/** Her dilde, o dildeki yazı sayısına göre sayfa numaralarını statik üretir. */
-export async function generateStaticParams({ params }: { params: { locale: string } }) {
+/** Ortak içerik dilindeki yazı sayısına göre sayfa numaralarını (her dil için) statik üretir. */
+export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const { totalDocs } = await payload.count({
     collection: 'posts',
-    locale: params.locale as Locale,
+    // Blog tüm dillerde ortak içerik dilindeki (Türkçe) yazılarla gösterilir
+    locale: SHARED_CONTENT_LOCALE,
     overrideAccess: false,
   })
 

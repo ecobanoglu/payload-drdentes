@@ -268,7 +268,7 @@ export const CardsPinnedSlides = ({
                     </span>
                     <h3
                       className={cn(
-                        'mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-balance transition-opacity duration-400 xl:text-5xl',
+                        'mt-4 text-2xl font-bold leading-[1.2] tracking-tight text-balance transition-opacity duration-400 xl:text-3xl',
                         EASE,
                         fade,
                         isActive && 'delay-75',
