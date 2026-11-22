@@ -10,6 +10,7 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/animation/gsap'
 import { toTitleCaseTokens } from '@/lib/utilities/titleCase'
+import { MOBILE_CAROUSEL_ITEM, MOBILE_CAROUSEL_LIST } from '@/lib/utilities/mobileCarousel'
 import { cn } from '@/lib/utilities/ui'
 import { cardIconComponents } from './icons'
 import { EmphasizedWord } from './ScrollStory'
@@ -183,25 +184,31 @@ export const CardsPinnedSlides = ({
         </style>
       </noscript>
 
-      {/* Yedek görünüm: başlık üstte, kartlar alt alta (görsel + numara + metin) */}
+      {/* Yedek görünüm: başlık üstte, kartlar alt alta (görsel + numara + metin). Telefonda
+          kartlar sağdan sola kaydırılan, her kartta duran yatay şeritte (kenarlıklı kart) */}
       <div data-ps-list className="container py-16 md:py-24 lg:motion-safe:hidden">
         {header && <div className="mb-12">{header}</div>}
-        <ol className="space-y-14">
+        <ol className={cn('space-y-14 max-md:space-y-0', MOBILE_CAROUSEL_LIST)}>
           {cards.map((card, index) => (
             <li
               key={card.id ?? index}
-              className="grid gap-6 md:grid-cols-2 md:items-center md:gap-10"
+              className={cn(
+                'grid content-start gap-6 md:grid-cols-2 md:items-center md:gap-10',
+                MOBILE_CAROUSEL_ITEM,
+                'max-md:gap-5 max-md:rounded-2xl max-md:border max-md:border-border max-md:bg-background max-md:p-4',
+              )}
             >
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
                 <CardImage card={card} />
               </div>
               <div>
-                <span className="font-mono text-lg text-primary">{formatIndex(index)}</span>
-                <h3 className="mt-2 text-3xl font-bold leading-tight text-balance">
+                {/* Telefondaki şerit kartlarında yazılar küçük; md ve üstünde eski boyutlar */}
+                <span className="font-mono text-base text-primary md:text-lg">{formatIndex(index)}</span>
+                <h3 className="mt-1 text-xl font-bold leading-tight text-balance md:mt-2 md:text-3xl">
                   <CardTitle title={card.title ?? ''} active />
                 </h3>
                 {card.description && (
-                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:mt-4 md:text-lg">
                     {card.description}
                   </p>
                 )}

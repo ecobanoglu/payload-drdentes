@@ -6,6 +6,7 @@ import React, { useRef, useState } from 'react'
 import type { Media as MediaType } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { IMAGE_QUALITY } from '@/components/Media/ImageMedia'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/animation/gsap'
 import { cn } from '@/lib/utilities/ui'
 import { pickRandomColor, SHIFTING_START_COLOR } from './shiftingColors'
@@ -165,7 +166,8 @@ export function PhoneScreens({
         >
           <div className="container grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Metin sütunu */}
-            <div className={cn(mediaFirst && 'lg:order-2')}>{children}</div>
+            {/* Dar ekranda (lg altı) metin telefonun üstünde ve ortalı */}
+            <div className={cn('max-lg:text-center', mediaFirst && 'lg:order-2')}>{children}</div>
 
             {/* Telefon: çerçeve + içinde ekran şeridi */}
             <div className={cn('flex flex-col items-center gap-6', mediaFirst && 'lg:order-1')}>
@@ -203,8 +205,8 @@ export function PhoneScreens({
                   src={FRAME.src}
                   width={FRAME.width}
                   height={FRAME.height}
-                  // Projede yalnızca 100 kalite tanımlı (next.config images.qualities)
-                  quality={100}
+                  // Projede tanımlı tek kalite (next.config images.qualities)
+                  quality={IMAGE_QUALITY}
                   alt=""
                   aria-hidden
                   className="pointer-events-none absolute inset-0 size-full select-none drop-shadow-[0_30px_40px_rgba(0,0,0,0.45)]"

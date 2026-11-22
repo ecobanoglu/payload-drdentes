@@ -89,6 +89,8 @@ export function FeatureSplitBlockComponent({
   const singleMedia =
     mediaStyle !== 'phoneScreens' && media && typeof media === 'object' ? media : null
   const hasMedia = Boolean(phoneScreens.length > 0 || singleMedia)
+  // Telefon ekranlı düzende metin, dar ekranda (lg altı) ortalı telefonun üstünde: ortalanır
+  const centerWhenStacked = phoneScreens.length > 0
 
   // Metin sütunu: üst etiket, başlık, metin, maddeler, butonlar
   const content = (
@@ -104,7 +106,14 @@ export function FeatureSplitBlockComponent({
       )}
 
       {bullets && bullets.length > 0 && (
-        <ul className={cn('mt-6 space-y-3', !hasMedia && 'inline-block text-start')}>
+        <ul
+          className={cn(
+            'mt-6 space-y-3',
+            !hasMedia && 'inline-block text-start',
+            // Ortalı metinde maddeler blok olarak ortalanır, satırlar sola hizalı kalır
+            centerWhenStacked && 'max-lg:inline-block max-lg:text-start',
+          )}
+        >
           {bullets.map((bullet, index) => (
             <li key={bullet.id ?? index} className="flex gap-3">
               <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -117,7 +126,13 @@ export function FeatureSplitBlockComponent({
       )}
 
       {Array.isArray(links) && links.length > 0 && (
-        <div className={cn('mt-8 flex flex-wrap gap-3', !hasMedia && 'justify-center')}>
+        <div
+          className={cn(
+            'mt-8 flex flex-wrap gap-3',
+            !hasMedia && 'justify-center',
+            centerWhenStacked && 'max-lg:justify-center',
+          )}
+        >
           {links.map(({ link }, index) => {
             // Mağaza bağlantısıysa etiketin önüne App Store / Google Play logosu eklenir
             const StoreIcon = link.type === 'custom' ? getStoreIcon(link.url) : null

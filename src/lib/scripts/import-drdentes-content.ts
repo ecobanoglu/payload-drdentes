@@ -1120,6 +1120,8 @@ await upsertPage('home', {
       background: 'muted',
       // Ana sayfada yalnızca ilk 3 öne çıkan özellik; tümü "Tüm Özellikler" sayfasında
       limit: 3,
+      // Telefonda kartlar sağdan sola kaydırılan şeritte
+      mobileCarousel: true,
       links: [{ link: pageLink(featuresPageId, 'Tüm Özellikler', 'outline') }],
     },
     // Adımlar: ortadan inen S biçimli noktalı çizgi boyunca sağda/solda belirir
@@ -1157,6 +1159,7 @@ await upsertPage('home', {
       heading: 'Kullanıcı Etkileşimleri',
       intro: TESTIMONIALS_INTRO,
       limit: 6,
+      mobileCarousel: true,
       links: [{ link: pageLink(testimonialsPageId, 'Tümünü Gör', 'outline') }],
     },
     {
@@ -1165,6 +1168,7 @@ await upsertPage('home', {
       populateBy: 'collection',
       relationTo: 'posts',
       limit: 3,
+      mobileCarousel: true,
       // Kartların altında blog listesine giden buton (dil öneki otomatik eklenir)
       links: [{ link: urlLink('/blog', 'Tüm Yazılar', 'outline') }],
     },

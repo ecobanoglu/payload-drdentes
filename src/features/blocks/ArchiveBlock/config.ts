@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '../../fields/linkGroup'
+import { mobileCarouselField } from '../../fields/mobileCarousel'
 
 export const Archive: Block = {
   slug: 'archive',
@@ -78,6 +79,8 @@ export const Archive: Block = {
       defaultValue: 10,
       label: 'Limit',
     },
+    // Telefonda yazı kartları yatay kaydırılan şeritte (ör. ana sayfa)
+    mobileCarouselField(),
     {
       name: 'selectedDocs',
       type: 'relationship',

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import React, { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { MOBILE_CAROUSEL_ITEM, MOBILE_CAROUSEL_LIST } from '@/lib/utilities/mobileCarousel'
 import { cn } from '@/lib/utilities/ui'
 
 /** Listede gösterilmeye hazır kayıt (tarihler sunucuda dile göre biçimlenmiş) */
@@ -114,13 +115,17 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
  *
  * `paginate` açıksa önce PAGE_SIZE kayıt gösterilir, "Daha fazla göster" ile sıradakiler açılır
  * (kayıtların tamamı sayfada zaten yüklü; arama motorları için yalnızca görünenler HTML'dedir).
+ * `mobileCarousel` açıksa telefonda kartlar yatay kaydırılan şeritte gösterilir.
  */
 export function TestimonialList({
   items,
   paginate,
+  mobileCarousel,
 }: {
   items: TestimonialItem[]
   paginate?: boolean
+  /** Telefonda yatay kaydırılan şerit (md ve üstünde ızgara) */
+  mobileCarousel?: boolean
 }) {
   const t = useTranslations('Testimonials')
   const [visible, setVisible] = useState(paginate ? PAGE_SIZE : items.length)
@@ -128,10 +133,16 @@ export function TestimonialList({
 
   return (
     <>
-      <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <ul
+        className={cn(
+          'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3',
+          // Şeritte her kart kendi yüksekliğinde: uzun yanıtlı tek kart diğerlerini uzatmasın
+          mobileCarousel && [MOBILE_CAROUSEL_LIST, 'max-md:items-start'],
+        )}
+      >
         {shown.map((item) => (
           // flex: kart, satırın tam yüksekliğini doldurur (alt kenarlar hizalı)
-          <li key={item.id} className="flex">
+          <li key={item.id} className={cn('flex', mobileCarousel && MOBILE_CAROUSEL_ITEM)}>
             <TestimonialCard item={item} />
           </li>
         ))}

@@ -564,6 +564,10 @@ export interface CardsBlock {
    * Boş bırakılırsa gruptaki tüm kartlar gösterilir.
    */
   limit?: number | null;
+  /**
+   * On phones, cards are shown in a horizontally swipeable strip (grid on tablet and desktop).
+   */
+  mobileCarousel?: boolean | null;
   links?:
     | {
         link: {
@@ -999,6 +1003,10 @@ export interface TestimonialsBlock {
    * Ör. ana sayfada 3. Boş bırakılırsa tümü gösterilir ve kayıtlar "Daha fazla göster" ile parça parça açılır.
    */
   limit?: number | null;
+  /**
+   * On phones, cards are shown in a horizontally swipeable strip (grid on tablet and desktop).
+   */
+  mobileCarousel?: boolean | null;
   links?:
     | {
         link: {
@@ -1344,6 +1352,10 @@ export interface ArchiveBlock {
   relationTo?: 'posts' | null;
   categories?: (number | Category)[] | null;
   limit?: number | null;
+  /**
+   * On phones, cards are shown in a horizontally swipeable strip (grid on tablet and desktop).
+   */
+  mobileCarousel?: boolean | null;
   selectedDocs?:
     | {
         relationTo: 'posts';
@@ -1820,6 +1832,7 @@ export interface CardsBlockSelect<T extends boolean = true> {
   background?: T;
   columns?: T;
   limit?: T;
+  mobileCarousel?: T;
   links?:
     | T
     | {
@@ -2006,6 +2019,7 @@ export interface TestimonialsBlockSelect<T extends boolean = true> {
   intro?: T;
   background?: T;
   limit?: T;
+  mobileCarousel?: T;
   links?:
     | T
     | {
@@ -2106,6 +2120,7 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   relationTo?: T;
   categories?: T;
   limit?: T;
+  mobileCarousel?: T;
   selectedDocs?: T;
   links?:
     | T

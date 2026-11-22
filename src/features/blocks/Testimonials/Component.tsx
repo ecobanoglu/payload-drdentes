@@ -38,6 +38,7 @@ export async function TestimonialsBlockComponent({
   limit,
   links,
   background,
+  mobileCarousel,
 }: TestimonialsBlockProps) {
   const locale = (await getLocale()) as Locale
   const payload = await getPayload({ config: configPromise })
@@ -99,7 +100,7 @@ export async function TestimonialsBlockComponent({
         <SectionHeader heading={heading} intro={intro} className="mb-10" />
         {/* Liste kaydırınca belirir */}
         <Reveal>
-          <TestimonialList items={items} paginate={!limit} />
+          <TestimonialList items={items} paginate={!limit} mobileCarousel={Boolean(mobileCarousel)} />
         </Reveal>
         {Array.isArray(links) && links.length > 0 && (
           <div className="mt-10 flex flex-wrap justify-center gap-3">

@@ -7,6 +7,7 @@ import type { CardSet, CardsBlock as CardsBlockProps } from '@/payload-types'
 import { Reveal } from '@/components/animation/Reveal'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
+import { MOBILE_CAROUSEL_ITEM, MOBILE_CAROUSEL_LIST } from '@/lib/utilities/mobileCarousel'
 import { cn } from '@/lib/utilities/ui'
 import { cardIconComponents } from './icons'
 import { CardsPinnedSlides } from './PinnedSlides'
@@ -162,6 +163,7 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
   background,
   limit,
   links,
+  mobileCarousel,
 }) => {
   if (!cardSet || typeof cardSet !== 'object') return null
 
@@ -231,10 +233,21 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
           <>
             {header && <div className="mb-10">{header}</div>}
             <Reveal stagger={0.12}>
-              <ul className={cn('grid grid-cols-1 gap-6', columnClasses[columns ?? '3'])}>
+              {/* mobileCarousel: telefonda yatay kaydırılan şerit (md ve üstünde ızgara) */}
+              <ul
+                className={cn(
+                  'grid grid-cols-1 gap-6',
+                  columnClasses[columns ?? '3'],
+                  mobileCarousel && MOBILE_CAROUSEL_LIST,
+                )}
+              >
                 {cards.map((card, index) => (
                   // flex: kart, ızgara satırının tam yüksekliğini doldurur → bağlantılar aynı hizada
-                  <li key={card.id ?? index} data-reveal-item className="flex">
+                  <li
+                    key={card.id ?? index}
+                    data-reveal-item
+                    className={cn('flex', mobileCarousel && MOBILE_CAROUSEL_ITEM)}
+                  >
                     <CardComponent card={card} />
                   </li>
                 ))}

@@ -22,6 +22,10 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL
 
 const nextConfig: NextConfig = {
+  // Geliştirmede telefondan/tabletten yerel ağ adresiyle (ör. http://192.168.1.20:3000) test:
+  // Next.js başka adreslerden gelen geliştirme isteklerini (JS, HMR) varsayılan olarak engeller;
+  // sayfa açılır ama JavaScript çalışmaz. Yalnızca `next dev`i etkiler, yayındaki siteyi etkilemez.
+  allowedDevOrigins: ['192.168.*.*', '10.*.*.*', '172.16.*.*'],
   // Temporarily required on Windows until Next.js fixes Turbopack Sass resolution.
   // See: https://github.com/vercel/next.js/issues/86431
   sassOptions: {
@@ -37,7 +41,8 @@ const nextConfig: NextConfig = {
         pathname: '/images/**',
       },
     ],
-    qualities: [100],
+    // Görsel kalitesi: ImageMedia'daki IMAGE_QUALITY ile aynı olmalı
+    qualities: [85],
     remotePatterns: [
       ...[NEXT_PUBLIC_SERVER_URL, R2_PUBLIC_URL].filter((item): item is string => Boolean(item)).map((item) => {
         const url = new URL(item)

@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 import { linkGroup } from '../../fields/linkGroup'
+import { mobileCarouselField } from '../../fields/mobileCarousel'
 
 /**
  * "Kullanıcı Etkileşimleri" (Testimonials) bloğu: koleksiyondaki soru-yanıt ikililerini
@@ -41,6 +42,8 @@ export const TestimonialsBlock: Block = {
           'Ör. ana sayfada 3. Boş bırakılırsa tümü gösterilir ve kayıtlar "Daha fazla göster" ile parça parça açılır.',
       },
     },
+    // Telefonda kartlar yatay kaydırılan şeritte (ör. ana sayfa)
+    mobileCarouselField(),
     // Kartların altında ortalanmış butonlar (ör. "Tümünü Gör" → listeleme sayfası)
     linkGroup({ appearances: ['default', 'outline'], overrides: { maxRows: 2 } }),
   ],

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useId, useRef } from 'react'
+import React, { useRef } from 'react'
 
 import { Reveal } from '@/components/animation/Reveal'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/animation/gsap'
@@ -45,7 +45,13 @@ const getGaps = () => {
  *   açılır; yukarı kaydırınca ikisi de geri gizlenir.
  * - Çizginin yolu kartların gerçek konumlarından piksel olarak hesaplanır (her kartta kartın
  *   tarafına kıvrılır); boyut değişince (pencere, görsel yüklenmesi) yeniden çizilir.
- * - Dar ekranda çizgi kartların yanında (satır başında) küçük kıvrımlarla iner.
+ * - Telefonda (md altı) çizgi, ok ve daireler gösterilmez; kartlar aralarında küçük boşlukla
+ *   alt alta durur ve kaydırdıkça sırayla belirir.
+ * - Dar ekranda (lg altı) kartlar ortalanır; çizgi kartların ortasından düz iner ve kartların
+ *   altında kalır (yalnızca kart aralarında görünür). Daireler kartların üst kenarının
+ *   ortasında, kartların üstünde durur; kartlar aşağıdan kayarak belirir.
+ * - Daireler ayrı bir SVG katmanında, kartlardan sonra çizilir (kartların üstünde kalır);
+ *   çizgi ve ok kartların altındaki katmandadır.
  * - "Hareketi azalt" açıksa çizgi tam çizili, kartlar ve daireler görünür gelir; JavaScript
  *   yoksa kartlar görünür, çizgi çizilmez.
  *
@@ -63,14 +69,13 @@ export function CardsPathTimeline({
   muted?: boolean
 }) {
   const rootRef = useRef<HTMLDivElement>(null)
-  // SVG maske kimliği: useId'deki ":" karakterleri url(#...) içinde sorun çıkarmasın
-  const maskId = `path-mask-${useId().replace(/[^a-zA-Z0-9-]/g, '')}`
 
   useGSAP(
     () => {
       const root = rootRef.current
       if (!root) return
       const svg = root.querySelector<SVGSVGElement>('[data-path-svg]')!
+      const nodesSvg = root.querySelector<SVGSVGElement>('[data-path-nodes-svg]')!
       const dots = root.querySelector<SVGPathElement>('[data-path-dots]')!
       const reveal = root.querySelector<SVGPathElement>('[data-path-reveal]')!
       const arrow = root.querySelector<SVGPathElement>('[data-path-arrow]')!
@@ -87,8 +92,15 @@ export function CardsPathTimeline({
       let length = 0
       let progress = reduced ? 1 : 0
       /** Her kartın tarafı (+1 sağ, -1 sol) ve görünmeye başlayacağı y konumu */
+      /** Noktaların yol parçaları ve şu an gösterilen nokta sayısı */
+      let dotSegments: string[] = []
+      let shownDots = -1
       let sides: number[] = []
       let revealYs: number[] = []
+      /** Geniş ekran (lg+): S çizgi + yanlarda kartlar; değilse ortadan düz çizgi */
+      let wide = true
+      /** Telefon (md altı): çizgi gizli; kartlar çizgiye değil ekrana girişlerine göre belirir */
+      let lineHidden = false
       const visible = new Set<number>()
 
       /** Kartların konumlarını ölçüp S biçimli yolu ve dairelerin yerini yeniden kurar */
@@ -98,30 +110,40 @@ export function CardsPathTimeline({
         const height = box.height
         if (!width || !height) return
         const gaps = getGaps()
+        wide = window.matchMedia('(min-width: 1024px)').matches
+        lineHidden = !window.matchMedia('(min-width: 768px)').matches
         startY = headerElement
           ? headerElement.getBoundingClientRect().bottom - box.top + gaps.start
           : 0
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`)
+        nodesSvg.setAttribute('viewBox', `0 0 ${width} ${height}`)
 
         // Kıvrım: daire kartla arasında boşluk kalacak kadar sütunun içinde kalır
         const column = lineColumn.getBoundingClientRect()
         const centerX = column.left - box.left + column.width / 2
-        const amplitude = Math.max(
-          0,
-          Math.min(column.width / 2 - NODE_RADIUS - gaps.node, MAX_AMPLITUDE),
-        )
+        // Dar ekranda kıvrım yok: çizgi kartların ortasından düz iner
+        const amplitude = wide
+          ? Math.max(0, Math.min(column.width / 2 - NODE_RADIUS - gaps.node, MAX_AMPLITUDE))
+          : 0
 
-        const rects = cards.map((card) => card.getBoundingClientRect())
+        // Kartların animasyonsuz (yerindeki) konumu: gizli kartlar kaydırılmış durur (x/y), bu
+        // kayma ölçümden çıkarılır; yoksa daireler ve çizgi kaymış konuma göre yerleşirdi
+        const rects = cards.map((card) => {
+          const rect = card.getBoundingClientRect()
+          const x = Number(gsap.getProperty(card, 'x')) || 0
+          const y = Number(gsap.getProperty(card, 'y')) || 0
+          return new DOMRect(rect.left - x, rect.top - y, rect.width, rect.height)
+        })
         sides = rects.map((rect) => (rect.left + rect.width / 2 - box.left > centerX ? 1 : -1))
         // Dar ekranda kartlar hep aynı tarafta: kıvrım için sırayla iki yana salınılır
         const sameSide = sides.every((side) => side === sides[0])
         const swing = sameSide ? sides.map((_, index) => (index % 2 === 0 ? 1 : -1)) : sides
 
         // Yol noktaları: başlığın altı (orta) → her kartın ortası hizasında kartın tarafına
-        // kıvrım → kartların altı (orta)
+        // kıvrım → kartların altı (orta). Dar ekranda nokta (ve daire) kartın üst kenarında
         const cardPoints = rects.map((rect, index): [number, number] => [
           centerX + swing[index]! * amplitude,
-          rect.top - box.top + rect.height / 2,
+          rect.top - box.top + (wide ? rect.height / 2 : 0),
         ])
         const points: [number, number][] = [[centerX, startY], ...cardPoints, [centerX, height]]
 
@@ -133,12 +155,19 @@ export function CardsPathTimeline({
           const half = (y - py) / 2
           d += ` C ${px} ${py + half} ${x} ${y - half} ${x} ${y}`
         }
-        dots.setAttribute('d', d)
         reveal.setAttribute('d', d)
         length = reveal.getTotalLength()
-        reveal.style.strokeDasharray = `${length}`
+        // Noktalar: yol boyunca DOT_GAP aralıkla; her biri sıfır uzunlukta, yuvarlak uçlu bir çizgi
+        // parçası ("M x y h 0"). Çizilen uzunluk kadarı gösterilir (render). Maske kullanılmaz:
+        // Safari maske içeriği değişince yeniden çizmediği için çizgi hiç görünmeyebiliyordu
+        dotSegments = []
+        for (let at = 0; at <= length; at += DOT_GAP) {
+          const point = reveal.getPointAtLength(at)
+          dotSegments.push(`M ${point.x.toFixed(1)} ${point.y.toFixed(1)} h 0`)
+        }
+        shownDots = -1
 
-        // Daireler: çizginin, kartın ortası hizasındaki noktasında
+        // Daireler: çizginin, kartın ortası hizasındaki (dar ekranda üst kenarındaki) noktasında
         nodes.forEach((node, index) => {
           const [x, y] = cardPoints[index]!
           node.setAttribute('transform', `translate(${x} ${y})`)
@@ -149,13 +178,24 @@ export function CardsPathTimeline({
         render()
       }
 
+      /** Gizli kartın konumu: geniş ekranda kendi tarafına, dar ekranda aşağı kaymış */
+      const hiddenOffset = (index: number) =>
+        wide ? { x: sides[index]! * CARD_OFFSET, y: 0 } : { x: 0, y: CARD_OFFSET }
+
       /** Kartı ve dairesini gösterir/gizler */
       const toggle = (index: number, show: boolean) => {
         const card = cards[index]!
         const dot = nodeDots[index]!
         if (show) {
           visible.add(index)
-          gsap.to(card, { autoAlpha: 1, x: 0, duration: 0.7, ease: 'power3.out', overwrite: true })
+          gsap.to(card, {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            overwrite: true,
+          })
           gsap.to(dot, {
             scale: 1,
             autoAlpha: 1,
@@ -167,7 +207,7 @@ export function CardsPathTimeline({
           visible.delete(index)
           gsap.to(card, {
             autoAlpha: 0,
-            x: sides[index]! * CARD_OFFSET,
+            ...hiddenOffset(index),
             duration: 0.4,
             ease: 'power2.in',
             overwrite: true,
@@ -186,7 +226,12 @@ export function CardsPathTimeline({
       const render = () => {
         if (!length) return
         const drawn = length * progress
-        reveal.style.strokeDashoffset = `${length - drawn}`
+        // Çizilen uzunluğa kadar olan noktalar (sayı değişmediyse yol yeniden yazılmaz)
+        const count = drawn > 0 ? Math.min(dotSegments.length, Math.floor(drawn / DOT_GAP) + 1) : 0
+        if (count !== shownDots) {
+          shownDots = count
+          dots.setAttribute('d', dotSegments.slice(0, count).join(' '))
+        }
 
         // Ok: çizginin çizilmiş ucunun ARROW_LEAD px önünde, yolun yönüne dönük
         const tip = reveal.getPointAtLength(drawn)
@@ -199,8 +244,13 @@ export function CardsPathTimeline({
         arrow.style.opacity = progress > 0.002 ? '1' : '0'
 
         if (reduced) return
-        cards.forEach((_, index) => {
-          const show = tip.y >= revealYs[index]!
+        cards.forEach((card, index) => {
+          // Telefonda: kartın (yerindeki) üstü ekranın %85'ine gelince; diğerlerinde çizginin
+          // ucu kartın üst çeyreğine gelince
+          const show = lineHidden
+            ? card.getBoundingClientRect().top - (Number(gsap.getProperty(card, 'y')) || 0) <
+              window.innerHeight * 0.85
+            : tip.y >= revealYs[index]!
           if (show !== visible.has(index)) toggle(index, show)
         })
       }
@@ -212,9 +262,7 @@ export function CardsPathTimeline({
 
       // Başta kartlar gizli ve kendi taraflarına kaymış, daireler kapalı durur
       if (!reduced) {
-        cards.forEach((card, index) =>
-          gsap.set(card, { autoAlpha: 0, x: sides[index]! * CARD_OFFSET }),
-        )
+        cards.forEach((card, index) => gsap.set(card, { autoAlpha: 0, ...hiddenOffset(index) }))
         gsap.set(nodeDots, { scale: 0, autoAlpha: 0 })
       }
 
@@ -252,51 +300,26 @@ export function CardsPathTimeline({
       <div
         aria-hidden
         data-path-column
-        className="pointer-events-none absolute inset-y-0 start-0 w-16 md:w-20 lg:inset-x-0 lg:mx-auto lg:w-80"
+        className="pointer-events-none absolute inset-0 mx-auto w-full lg:w-80"
       />
 
       {/* Noktalı S çizgi + ok + daireler (dekoratif); konum ve yükseklik ölçülerek ayarlanır */}
       <svg
         aria-hidden
         data-path-svg
-        className="pointer-events-none absolute inset-x-0 top-0 h-full w-full overflow-visible text-primary"
+        // Telefonda (md altı) çizgi ve ok gösterilmez; kartlar yine kaydırdıkça sırayla belirir
+        className="pointer-events-none absolute inset-x-0 top-0 h-full w-full overflow-visible text-primary max-md:hidden"
       >
-        <defs>
-          {/* Çizginin çizilmiş kısmı: noktalı çizgiyi açığa çıkaran düz maske. Uç düz ("butt"):
-              yuvarlak uç çizilen kısmın ilerisini de açıp okun önünde nokta gösterirdi */}
-          <mask id={maskId} maskUnits="userSpaceOnUse">
-            <path
-              data-path-reveal
-              fill="none"
-              stroke="white"
-              strokeWidth={16}
-              strokeLinecap="butt"
-            />
-          </mask>
-        </defs>
+        {/* Yolun geometrisi (görünmez): uzunluk ve nokta konumları buradan ölçülür */}
+        <path data-path-reveal fill="none" stroke="none" />
+        {/* Noktalı çizgi: yalnızca çizilen kısma kadar olan noktalar (yuvarlak uçlu sıfır parçalar) */}
         <path
           data-path-dots
           fill="none"
           stroke="currentColor"
           strokeWidth={4}
           strokeLinecap="round"
-          strokeDasharray={`0 ${DOT_GAP}`}
-          mask={`url(#${maskId})`}
         />
-        {/* Kartların ortası hizasındaki daireler: zemin renginde dolgu + ana renk halka ve göbek */}
-        {items.map((item) => (
-          <g key={item.key} data-path-node>
-            <g data-path-node-dot>
-              <circle
-                r={NODE_RADIUS - 1.5}
-                strokeWidth={3}
-                stroke="currentColor"
-                className={muted ? 'fill-muted' : 'fill-background'}
-              />
-              <circle r={5} fill="currentColor" />
-            </g>
-          </g>
-        ))}
         {/* Ok ucu: +x yönünü gösterir, yolun yönüne döndürülür */}
         <path
           data-path-arrow
@@ -319,7 +342,9 @@ export function CardsPathTimeline({
       )}
 
       {/* Kartlar: geniş ekranda sırayla sağ ve sol sütunda, ortada çizgi boşluğu */}
-      <ol className="relative grid grid-cols-[4rem_minmax(0,1fr)] md:grid-cols-[5rem_minmax(0,1fr)] gap-y-20 pb-6 md:gap-y-28 lg:grid-cols-[minmax(0,1fr)_20rem_minmax(0,1fr)] lg:gap-y-40">
+      {/* Dar ekranda tek sütun, kartlar ortalı (çizgi ortalarından geçer); geniş ekranda
+          sağ/sol sütunlar ve ortada çizgi boşluğu. relative: kartlar çizginin üstünde çizilir */}
+      <ol className="relative grid grid-cols-1 gap-y-6 pb-6 md:gap-y-28 lg:grid-cols-[minmax(0,1fr)_20rem_minmax(0,1fr)] lg:gap-y-40">
         {items.map((item, index) => (
           <li
             key={item.key}
@@ -327,7 +352,7 @@ export function CardsPathTimeline({
             style={{ gridRow: index + 1 }}
             className={cn(
               // relative isolate: kartın altındaki ışık (-z-10) kartın arkasında kalır
-              'relative isolate col-start-2 flex w-full max-w-md',
+              'relative isolate col-start-1 flex w-full max-w-md justify-self-center',
               // Bu görünümde kartlar beyaz (sayfa zemini) ve kenarlıklı: noktalı çizgiden ayrışsın
               '[--card:var(--background)] [&>article]:border [&>article]:border-border',
               index % 2 === 0
@@ -353,6 +378,30 @@ export function CardsPathTimeline({
           </li>
         ))}
       </ol>
+
+      {/* Daireler: kartlardan sonra çizilen ayrı katman (kartların üstünde kalır). Konumları
+          ve görünürlükleri yukarıdaki hesaplamayla ayarlanır */}
+      <svg
+        aria-hidden
+        data-path-nodes-svg
+        // Telefonda çizgiyle birlikte daireler de gösterilmez
+        className="pointer-events-none absolute inset-x-0 top-0 h-full w-full overflow-visible text-primary max-md:hidden"
+      >
+        {/* Kartların ortası hizasındaki daireler: zemin renginde dolgu + ana renk halka ve göbek */}
+        {items.map((item) => (
+          <g key={item.key} data-path-node>
+            <g data-path-node-dot>
+              <circle
+                r={NODE_RADIUS - 1.5}
+                strokeWidth={3}
+                stroke="currentColor"
+                className={muted ? 'fill-muted' : 'fill-background'}
+              />
+              <circle r={5} fill="currentColor" />
+            </g>
+          </g>
+        ))}
+      </svg>
     </div>
   )
 }

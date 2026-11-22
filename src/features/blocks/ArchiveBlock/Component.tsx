@@ -19,6 +19,7 @@ export const ArchiveBlock: React.FC<
     categories,
     introContent,
     links,
+    mobileCarousel,
     limit: limitFromProps,
     populateBy,
     selectedDocs,
@@ -72,7 +73,7 @@ export const ArchiveBlock: React.FC<
           </SectionHeader>
         </div>
       )}
-      <CollectionArchive posts={posts} />
+      <CollectionArchive posts={posts} mobileCarousel={Boolean(mobileCarousel)} />
       {/* Kartların altında ortalanmış butonlar (ör. "Tüm Yazılar") */}
       {Array.isArray(links) && links.length > 0 && (
         <div className="container mt-10 flex flex-wrap justify-center gap-3">

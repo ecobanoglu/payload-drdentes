@@ -128,7 +128,7 @@ export default async function Page({ params: paramsPromise }: Args) {
             <RichText
               data={heroHeading}
               enableGutter={false}
-              className="max-w-none [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:leading-tight [&_h1]:text-balance md:[&_h1]:text-5xl"
+              className="max-w-none [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:leading-tight [&_h1]:text-balance md:[&_h1]:text-5xl"
             />
           ) : undefined}
         </PageHeader>

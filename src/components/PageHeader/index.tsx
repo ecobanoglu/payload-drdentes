@@ -32,6 +32,7 @@ type PageHeaderProps = {
  * - Header bandın üstüne biner (bant sayfanın en üstünden başlar); sayfa açık temada olduğu için
  *   header en üstteyken de koyu yazılıdır (sayfanın PageClient'ı "light" ayarlar).
  * - Yükseklik ekranın yaklaşık 1/3'ü (kısa ekranlarda en az 20rem); içerik bandın altına yaslanır.
+ * - Telefonda (md altı) breadcrumb gizlenir, başlık küçülür, bant yalnızca içeriği kadar yüksektir.
  *   Uzun başlık/açıklamada bant içeriğe göre uzar.
  */
 export function PageHeader({
@@ -45,7 +46,8 @@ export function PageHeader({
   return (
     <header
       className={cn(
-        'relative isolate mb-16 flex min-h-[max(33svh,20rem)] items-end overflow-hidden text-foreground',
+        // Telefonda (md altı) bant içeriği kadar yüksek; md ve üstünde ekranın ~1/3'ü
+        'relative isolate mb-16 flex items-end overflow-hidden text-foreground md:min-h-[max(33svh,20rem)]',
         className,
       )}
       style={{ background: PAGE_HEADER_BACKGROUND }}
@@ -53,12 +55,19 @@ export function PageHeader({
       <HeroGlow size="md" />
 
       {/* Üst boşluk: header yüksekliği (6.5rem) + nefes payı */}
-      <div className="container w-full pt-[9rem] pb-12 md:pb-14">
-        <Breadcrumbs crumbs={crumbs} locale={locale} variant="band" className="mb-5" />
+      {/* Telefonda üst boşluk yalnızca header kadar + az nefes payı; breadcrumb gizli
+          (yapılandırılmış verisi sayfada kalır) */}
+      <div className="container w-full pt-[8rem] pb-8 md:pt-[9rem] md:pb-14">
+        <Breadcrumbs
+          crumbs={crumbs}
+          locale={locale}
+          variant="band"
+          className="mb-5 max-md:hidden"
+        />
         <div className="max-w-[48rem]">
           {children ??
             (title && (
-              <h1 className="text-4xl font-bold leading-tight text-balance md:text-5xl">{title}</h1>
+              <h1 className="text-3xl font-bold leading-tight text-balance md:text-5xl">{title}</h1>
             ))}
           {meta && <div className="mt-6 text-sm text-black/60">{meta}</div>}
         </div>

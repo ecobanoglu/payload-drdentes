@@ -33,6 +33,7 @@ import * as migration_20261120_180941_cta_tone from './20261120_180941_cta_tone'
 import * as migration_20261121_084712_blog_tags from './20261121_084712_blog_tags';
 import * as migration_20261122_125727_hero_green_button from './20261122_125727_hero_green_button';
 import * as migration_20261122_142804_cards_pinned_slides from './20261122_142804_cards_pinned_slides';
+import * as migration_20261122_155735_mobile_carousel from './20261122_155735_mobile_carousel';
 
 export const migrations = [
   {
@@ -208,6 +209,11 @@ export const migrations = [
   {
     up: migration_20261122_142804_cards_pinned_slides.up,
     down: migration_20261122_142804_cards_pinned_slides.down,
-    name: '20261122_142804_cards_pinned_slides'
+    name: '20261122_142804_cards_pinned_slides',
+  },
+  {
+    up: migration_20261122_155735_mobile_carousel.up,
+    down: migration_20261122_155735_mobile_carousel.down,
+    name: '20261122_155735_mobile_carousel'
   },
 ];

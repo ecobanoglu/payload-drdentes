@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 import { linkGroup } from '../../fields/linkGroup'
+import { mobileCarouselField } from '../../fields/mobileCarousel'
 
 /**
  * "Cards" bloğu: Globaller altındaki bir **Kart Grubunu** sayfaya yerleştirir.
@@ -95,6 +96,10 @@ export const CardsBlock: Block = {
         description: 'Boş bırakılırsa gruptaki tüm kartlar gösterilir.',
       },
     },
+    // Telefonda kartlar yatay kaydırılan şeritte (yalnızca ızgara görünümünde)
+    mobileCarouselField({
+      admin: { condition: (_, siblingData) => !siblingData?.layout || siblingData.layout === 'grid' },
+    }),
     // Kartların altında ortalanmış butonlar (ör. "Tüm Özellikler")
     linkGroup({ appearances: ['default', 'outline'], overrides: { maxRows: 2 } }),
   ],
