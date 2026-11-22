@@ -462,4 +462,127 @@ button:focus-visible .btn-arrow::after,
   [data-float='sm-down'] {
     --float-name: float-sm-down;
   }
+
+  /* SVG cihaz illüstrasyonu: gruplar kendi kutularına göre (ortadan) büyür/kayar */
+  [data-devices] [data-showcase-card],
+  [data-devices] [data-dv] {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  /* Ekran içi döngüler: aynı sürede tekrarlanır, öğe gecikmesi `--d` ile verilir */
+  [data-devices] {
+    --dv-cycle: 10s;
+  }
+  [data-dv='grow-y'] {
+    transform-origin: top;
+    animation: dv-grow-y var(--dv-cycle) cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) infinite both;
+  }
+  [data-dv='type'] {
+    transform-origin: left;
+    animation: dv-type var(--dv-cycle) ease-out var(--d, 0s) infinite both;
+  }
+  [data-dv='pop'] {
+    animation: dv-pop var(--dv-cycle) cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0s) infinite both;
+  }
+  [data-dv='blink'] {
+    animation: dv-blink var(--dv-cycle) ease-in-out var(--d, 0s) infinite both;
+  }
+  [data-dv='now'] {
+    animation: dv-now 6s ease-in-out infinite alternate;
+  }
+  [data-dv='pulse'] {
+    animation: dv-pulse 1.6s ease-in-out infinite alternate;
+  }
+}
+
+/*
+ * Cihaz illüstrasyonundaki ekran animasyonları (döngü: belir → bekle → sol → baştan).
+ * Yalnızca opacity/transform değişir; "hareketi azalt" açıkken uygulanmaz (yukarıdaki blok).
+ */
+@keyframes dv-grow-y {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  6%,
+  86% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  94%,
+  100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+@keyframes dv-type {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  1% {
+    opacity: 1;
+  }
+  6%,
+  86% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  94%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+@keyframes dv-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  4%,
+  86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  94%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes dv-blink {
+  0% {
+    opacity: 0;
+  }
+  5%,
+  22% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.35;
+  }
+  38%,
+  86% {
+    opacity: 1;
+  }
+  94%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes dv-now {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(30px);
+  }
+}
+@keyframes dv-pulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.55;
+  }
 }

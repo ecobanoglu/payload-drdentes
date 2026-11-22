@@ -51,10 +51,11 @@ export const CardsBlock: Block = {
           label: { tr: 'Kıvrımlı yol (S çizgi)', en: 'Winding path (S line)' },
           value: 'pathTimeline',
         },
+        { label: { tr: 'Sabit başlıklı slaytlar', en: 'Pinned slides' }, value: 'pinnedSlides' },
       ],
       admin: {
         description:
-          'Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Kıvrımlı yol: ortadan S biçiminde noktalı bir çizgi iner, kartlar sırayla sağda ve solda belirir (adım adım anlatımlar için).',
+          'Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Kıvrımlı yol: ortadan S biçiminde noktalı bir çizgi iner, kartlar sırayla sağda ve solda belirir (adım adım anlatımlar için). Sabit başlıklı slaytlar: bölüm ekrana sabitlenir, başlık ve giriş metni üstte kalır; her kaydırmada solda kartın metni ve sağda görseli birlikte değişir.',
       },
     },
     {

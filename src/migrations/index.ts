@@ -31,6 +31,8 @@ import * as migration_20261120_173214_testimonials_background from './20261120_1
 import * as migration_20261120_180344_feature_catalog from './20261120_180344_feature_catalog';
 import * as migration_20261120_180941_cta_tone from './20261120_180941_cta_tone';
 import * as migration_20261121_084712_blog_tags from './20261121_084712_blog_tags';
+import * as migration_20261122_125727_hero_green_button from './20261122_125727_hero_green_button';
+import * as migration_20261122_142804_cards_pinned_slides from './20261122_142804_cards_pinned_slides';
 
 export const migrations = [
   {
@@ -196,6 +198,16 @@ export const migrations = [
   {
     up: migration_20261121_084712_blog_tags.up,
     down: migration_20261121_084712_blog_tags.down,
-    name: '20261121_084712_blog_tags'
+    name: '20261121_084712_blog_tags',
+  },
+  {
+    up: migration_20261122_125727_hero_green_button.up,
+    down: migration_20261122_125727_hero_green_button.down,
+    name: '20261122_125727_hero_green_button',
+  },
+  {
+    up: migration_20261122_142804_cards_pinned_slides.up,
+    down: migration_20261122_142804_cards_pinned_slides.down,
+    name: '20261122_142804_cards_pinned_slides'
   },
 ];

@@ -4,14 +4,14 @@ import type { CallToActionBlock as CTABlockProps } from '@/payload-types'
 
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
-import { PAGE_HEADER_BACKGROUND } from '@/components/PageHeader'
+import { BRAND_NAVY } from '@/components/PageHeader'
 import { cn } from '@/lib/utilities/ui'
 
 /**
  * "Call to Action" bloğunun görünümü: solda metin, sağda butonlar (mobilde alt alta).
  *
  * - `tone: 'light'`: kart zemininde, ince kenarlıklı kutu (varsayılan).
- * - `tone: 'dark'`: koyu ana renk (lacivert, sayfa başlık bandıyla aynı) zeminli, köşesinde
+ * - `tone: 'dark'`: koyu ana renk (lacivert marka rengi) zeminli, köşesinde
  *   marka mavisi ışık lekesi olan kutu. Koyu tema değişkenleri uygulanır (yazılar açık renk);
  *   ana buton marka mavisi ("brand") olur.
  */
@@ -31,14 +31,14 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText, to
         style={
           isDark
             ? ({
-                background: PAGE_HEADER_BACKGROUND,
-                '--background': PAGE_HEADER_BACKGROUND,
+                background: BRAND_NAVY,
+                '--background': BRAND_NAVY,
               } as React.CSSProperties)
             : undefined
         }
       >
         {isDark && (
-          // Hafif marka mavisi ışık lekesi (başlık bandındaki gibi)
+          // Hafif marka mavisi ışık lekesi
           <div
             aria-hidden
             className="pointer-events-none absolute -top-1/2 end-[-10%] -z-10 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgba(47,73,220,0.4),transparent)]"

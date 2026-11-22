@@ -319,7 +319,7 @@ const pageLink = (id: number, label: string, appearance?: 'default' | 'outline')
 })
 
 /** Dış ya da sabit adrese bağlantı; dış adresler yeni sekmede açılır */
-const urlLink = (url: string, label: string, appearance?: 'default' | 'outline' | 'brand') => ({
+const urlLink = (url: string, label: string, appearance?: 'default' | 'outline' | 'brand' | 'green') => ({
   type: 'custom' as const,
   url,
   label,
@@ -656,9 +656,17 @@ const ADVANTAGES = [
   { title: 'ÜCRETSİZ Güncelleme', description: 'Daima son sürümü kullanın! Taze çıkan ne varsa elinizin altında olsun. Bayat, modası geçmiş ve çakma ürün kullanmayın.' },
   { title: 'SINIRSIZ Hekim ve Kullanıcı', description: 'İstediğiniz kadar hekim ve kullanıcı ekleyin, kullanıcılarınız için esnek yetkilendirme yapın!' },
 ]
+// Avantaj görselleri: panelden yüklenen 480×480 illüstrasyonlar (eski sitedeki 148×171 görseller
+// büyütülünce bulanıklaşıyordu). Dosya adıyla eşleşen medya varsa yeniden yüklenmez.
+const ADVANTAGE_IMAGE_FILES = [
+  'kurulum-ucreti-yok.png',
+  'veri-kaybi-yok-1.png',
+  'ucretsiz-guncelleme.png',
+  'sinirsiz-hekim-kullanici.png',
+]
 const advantageImages: (number | null)[] = []
 for (const [index, advantage] of ADVANTAGES.entries()) {
-  advantageImages.push(await ensureMedia(`${ORIGIN}/img/basozellik/${index + 1}.jpg`, `avantaj-${index + 1}.jpg`, advantage.title))
+  advantageImages.push(await ensureLocalMedia(`data/advantages/${ADVANTAGE_IMAGE_FILES[index]}`, advantage.title))
 }
 /** "Nasıl Kullanıcı Olabilirim?" bölümünün başlık altı özeti (ana sayfa) */
 const STEPS_INTRO =
@@ -1076,15 +1084,15 @@ await upsertPage('home', {
       "1992'den bugüne kadar geliştirdiğimiz en yeni diş kliniği yönetim yazılımı. Etkileşimli, çevrim içi (online), her yerden ve her cihazdan erişim kolaylığı. Öngörü ve deneyime dayalı akıllı çalışma mantığı işlerinizi sezerek hayatınızı kolaylaştırır.",
     ),
     links: [
-      { link: urlLink('https://dtsanal.com/basvuru/', 'Demo Talep Et', 'default') },
-      // Koyu lacivert zeminde marka mavisi buton (hero'da ince beyaz halkayla belirginleşir)
+      // Önce marka mavisi "Demoyu İncele", ardından öne çıkan yeşil "Demo Talep Et"
       { link: urlLink('https://dtsanal.com/', 'Demoyu İncele', 'brand') },
+      { link: urlLink('https://dtsanal.com/basvuru/', 'Demo Talep Et', 'green') },
     ],
     // Butonların yanında açılır pencerede oynayan tanıtım videosu
     video: { url: 'https://www.youtube.com/watch?v=KL1cCOgtEX4', label: 'Tanıtım Videosu' },
     showcase: {
-      // Koyu lacivert (marka mavisinin koyu tonu): okunabilirlik + ürün ekranları öne çıkar
-      background: '#111c44',
+      // Açık gri-mavi zemin: hero açık temada çizilir (koyu yazı, sol üst/alt dairesel ışık)
+      background: '#F7FAFD',
       // Cihazlarda animasyonlu arayüz; görseller "Yüklenen görseller" seçilirse kullanılır
       screens: 'animated',
       laptop: await ensureLocalMedia('data/hero/drdentes-bilgisayar.png', 'Dr.DENTES randevu ekranı (bilgisayar)'),
@@ -1100,8 +1108,8 @@ await upsertPage('home', {
       intro:
         "1992'den bugüne kadar geliştirdiğimiz en yeni diş kliniği yönetim yazılımı. Etkileşimli, çevrim içi (online), her yerden ve her cihazdan erişim kolaylığı. Öngörü ve deneyime dayalı akıllı çalışma mantığı işlerinizi sezerek hayatınızı kolaylaştırır.",
       cardSet: advantagesSetId,
-      // Kaydırdıkça kartların sırayla değiştiği sabitlenmiş anlatım bölümü
-      layout: 'scrollStory',
+      // Sabitlenmiş slaytlar: her kaydırmada solda metin, sağda görsel değişir; ortada ilerleme çubukları
+      layout: 'pinnedSlides',
     },
     {
       blockType: 'cards',

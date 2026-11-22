@@ -215,7 +215,7 @@ export interface Page {
             /**
              * Choose how the link should be rendered.
              */
-            appearance?: ('default' | 'outline' | 'brand') | null;
+            appearance?: ('default' | 'outline' | 'brand' | 'green') | null;
           };
           id?: string | null;
         }[]
@@ -555,9 +555,9 @@ export interface CardsBlock {
    */
   cardSet: number | CardSet;
   /**
-   * Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Kıvrımlı yol: ortadan S biçiminde noktalı bir çizgi iner, kartlar sırayla sağda ve solda belirir (adım adım anlatımlar için).
+   * Kaydırmalı anlatım: solda görsel, sağda numaralı metin; sayfa kaydırıldıkça kartlar sırayla değişir. Kıvrımlı yol: ortadan S biçiminde noktalı bir çizgi iner, kartlar sırayla sağda ve solda belirir (adım adım anlatımlar için). Sabit başlıklı slaytlar: bölüm ekrana sabitlenir, başlık ve giriş metni üstte kalır; her kaydırmada solda kartın metni ve sağda görseli birlikte değişir.
    */
-  layout?: ('grid' | 'scrollStory' | 'pathTimeline') | null;
+  layout?: ('grid' | 'scrollStory' | 'pathTimeline' | 'pinnedSlides') | null;
   background?: ('none' | 'muted') | null;
   columns?: ('2' | '3' | '4') | null;
   /**

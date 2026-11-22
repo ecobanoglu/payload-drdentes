@@ -92,7 +92,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      {/* Lacivert başlık bandı (diğer iç sayfalarla aynı); -mt: üst boşluk (4rem) + header (6.5rem) */}
+      {/* Açık başlık bandı (diğer iç sayfalarla aynı); -mt: üst boşluk (4rem) + header (6.5rem) */}
       <PageHeader
         locale={locale}
         crumbs={[
@@ -106,7 +106,7 @@ export default async function Post({ params: paramsPromise }: Args) {
           hasMeta ? (
             <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
               {categoryNames && (
-                <span className="font-semibold uppercase tracking-wider text-[#6b80f7]">
+                <span className="font-semibold uppercase tracking-wider text-[#2f49dc]">
                   {categoryNames}
                 </span>
               )}

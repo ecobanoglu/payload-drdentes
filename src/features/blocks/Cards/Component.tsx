@@ -9,6 +9,7 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import { cn } from '@/lib/utilities/ui'
 import { cardIconComponents } from './icons'
+import { CardsPinnedSlides } from './PinnedSlides'
 import { CardsPathTimeline } from './PathTimeline'
 import { CardsScrollStory } from './ScrollStory'
 
@@ -147,7 +148,8 @@ const ServiceCard = ({ card }: { card: Card }) => {
  * - Bu dile çevrilmemiş (başlığı boş) kartlar gösterilmez.
  * - Kart grubu silinmiş veya yayında değilse blok hiç render edilmez.
  * - `layout: 'scrollStory'` seçiliyse kartlar ızgara yerine kaydırmalı anlatım olarak gösterilir;
- *   `'pathTimeline'` seçiliyse ortadan inen S biçimli noktalı çizgi boyunca sağda/solda belirir.
+ *   `'pathTimeline'` seçiliyse ortadan inen S biçimli noktalı çizgi boyunca sağda/solda belirir;
+ *   `'pinnedSlides'` seçiliyse sabitlenmiş slayt bölümü olarak gösterilir (her kaydırmada bir kart).
  * - `limit` girildiyse gruptaki kartların yalnızca ilk N tanesi gösterilir.
  * - `background: 'muted'` seçiliyse bölüm tam genişlikte açık gri (--muted) zemin üzerinde gösterilir.
  */
@@ -183,6 +185,20 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
     ) : null
 
   const isMuted = background === 'muted'
+
+  const linkList =
+    Array.isArray(links) && links.length > 0 ? (
+      <div className="mt-10 flex flex-wrap justify-center gap-3">
+        {links.map(({ link }, index) => (
+          <CMSLink key={index} size="lg" {...link} />
+        ))}
+      </div>
+    ) : null
+
+  // Sabit başlıklı slaytlar: kendi bölümünü çizer; başlık + giriş metni sol üstte sabit kalır
+  if (layout === 'pinnedSlides') {
+    return <CardsPinnedSlides cards={cards} header={header} links={linkList} />
+  }
 
   return (
     // Muted zemin: tam genişlik şerit + iç boşluk. Kart zemini (--card) muted ile neredeyse
@@ -220,13 +236,7 @@ export const CardsBlockComponent: React.FC<CardsBlockProps> = ({
             </Reveal>
           </>
         )}
-        {Array.isArray(links) && links.length > 0 && (
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            {links.map(({ link }, index) => (
-              <CMSLink key={index} size="lg" {...link} />
-            ))}
-          </div>
-        )}
+        {linkList}
       </div>
     </section>
   )

@@ -90,7 +90,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   const { hero, layout } = page
-  // İç sayfalarda (ana sayfa hariç) hero "Düşük etkili" ya da boşsa lacivert başlık bandı gösterilir:
+  // İç sayfalarda (ana sayfa hariç) hero "Düşük etkili" ya da boşsa açık başlık bandı gösterilir:
   // breadcrumb + hero metni (başlık + açıklama); hero metni yoksa sayfa başlığı
   const isHome = page.slug === 'home'
   const usePageHeader = !isHome && (!hero?.type || hero.type === 'none' || hero.type === 'lowImpact')
@@ -117,7 +117,7 @@ export default async function Page({ params: paramsPromise }: Args) {
             <RichText
               data={hero.richText}
               enableGutter={false}
-              className="max-w-none [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:leading-tight [&_h1]:text-balance [&_h1]:text-white md:[&_h1]:text-5xl [&_p]:text-lg [&_p]:text-white/70"
+              className="max-w-none [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:leading-tight [&_h1]:text-balance md:[&_h1]:text-5xl [&_p]:text-lg [&_p]:text-black/70"
             />
           ) : undefined}
         </PageHeader>

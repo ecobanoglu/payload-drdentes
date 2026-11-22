@@ -1,12 +1,15 @@
 import React from 'react'
 
 import { Breadcrumbs, type Crumb } from '@/components/Breadcrumbs'
+import { HeroGlow } from '@/components/HeroGlow'
 import type { Locale } from '@/lib/i18n/config'
 import { cn } from '@/lib/utilities/ui'
-import { DarkHeaderTheme } from './DarkHeaderTheme.client'
 
-/** Ana sayfa hero'su ile aynı koyu lacivert zemin */
-export const PAGE_HEADER_BACKGROUND = '#111c44'
+/** Ana sayfa hero'su ile aynı açık gri-mavi zemin */
+export const PAGE_HEADER_BACKGROUND = '#F7FAFD'
+
+/** Koyu marka rengi (lacivert): koyu tonlu bölümler için (ör. koyu "Call to Action" kutusu) */
+export const BRAND_NAVY = '#111c44'
 
 type PageHeaderProps = {
   locale: Locale
@@ -26,8 +29,9 @@ type PageHeaderProps = {
 /**
  * İç sayfaların başlık bandı: breadcrumb + başlık (h1) + açıklama.
  *
- * - Zemin ana sayfa hero'su ile aynı (#111c44 + sağ üstte marka mavisi ışık lekesi); yazılar açık.
- * - Header bandın üstüne biner (bant sayfanın en üstünden başlar); header en üstteyken açık renkli.
+ * - Zemin ana sayfa hero'su ile aynı (#F7FAFD + sol üst ve sol altta dairesel ışık); yazılar koyu.
+ * - Header bandın üstüne biner (bant sayfanın en üstünden başlar); sayfa açık temada olduğu için
+ *   header en üstteyken de koyu yazılıdır (sayfanın PageClient'ı "light" ayarlar).
  * - Yükseklik ekranın yaklaşık 1/3'ü (kısa ekranlarda en az 20rem); içerik bandın altına yaslanır.
  *   Uzun başlık/açıklamada bant içeriğe göre uzar.
  */
@@ -42,36 +46,27 @@ export function PageHeader({
 }: PageHeaderProps) {
   return (
     <header
-      // Koyu tema değişkenleri bant içinde geçerli (ör. prose-invert, butonlar)
-      data-theme="dark"
-      // Header'ın ilk çizimde açık renkli (beyaz) olması için (globals.css)
-      data-header-theme="dark"
       className={cn(
-        'relative isolate mb-16 flex min-h-[max(33svh,20rem)] items-end overflow-hidden text-white',
+        'relative isolate mb-16 flex min-h-[max(33svh,20rem)] items-end overflow-hidden text-foreground',
         className,
       )}
-      style={{ background: PAGE_HEADER_BACKGROUND, '--background': PAGE_HEADER_BACKGROUND } as React.CSSProperties}
+      style={{ background: PAGE_HEADER_BACKGROUND }}
     >
-      <DarkHeaderTheme />
-      {/* Hafif marka mavisi ışık lekesi (ana sayfa hero'su ile aynı) */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-1/2 end-[-10%] -z-10 size-[48rem] rounded-full bg-[radial-gradient(closest-side,rgba(47,73,220,0.35),transparent)]"
-      />
+      <HeroGlow size="md" />
 
       {/* Üst boşluk: header yüksekliği (6.5rem) + nefes payı */}
       <div className="container w-full pt-[9rem] pb-12 md:pb-14">
-        <Breadcrumbs crumbs={crumbs} locale={locale} variant="onDark" className="mb-5" />
+        <Breadcrumbs crumbs={crumbs} locale={locale} variant="band" className="mb-5" />
         <div className="max-w-[48rem]">
           {children ?? (
             <>
               {title && (
                 <h1 className="text-4xl font-bold leading-tight text-balance md:text-5xl">{title}</h1>
               )}
-              {description && <p className="mt-4 text-lg text-white/70">{description}</p>}
+              {description && <p className="mt-4 text-lg text-black/70">{description}</p>}
             </>
           )}
-          {meta && <div className="mt-6 text-sm text-white/60">{meta}</div>}
+          {meta && <div className="mt-6 text-sm text-black/60">{meta}</div>}
         </div>
       </div>
     </header>

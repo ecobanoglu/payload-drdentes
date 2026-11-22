@@ -75,7 +75,7 @@ export default async function Page({ params, searchParams: searchParamsPromise }
   return (
     <div className="pt-24 pb-24">
       <PageClient />
-      {/* Lacivert başlık bandı; -mt: üst boşluk (6rem) + header (6.5rem) */}
+      {/* Açık başlık bandı; -mt: üst boşluk (6rem) + header (6.5rem) */}
       <PageHeader
         locale={locale}
         crumbs={[{ url: '/search', label: t('title') }]}

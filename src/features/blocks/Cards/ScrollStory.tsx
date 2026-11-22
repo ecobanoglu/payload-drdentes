@@ -64,14 +64,24 @@ const CardVisual = ({ card, priority }: { card: Card; priority?: boolean }) => {
  * (RTL dillerde sağdan sola) çizilerek açılır; pasifken hızla kapanır. Yazı rengi değişmez.
  * "Hareketi azalt" açıksa geçiş olmadan değişir.
  */
-const EmphasizedWord = ({ text, active }: { text: string; active: boolean }) => (
+export const EmphasizedWord = ({
+  text,
+  active,
+  lineClassName = 'bg-brand',
+}: {
+  text: string
+  active: boolean
+  /** Çizgi rengi (varsayılan marka mavisi; mavi zeminde ör. beyaz) */
+  lineClassName?: string
+}) => (
   <span className="relative inline-block">
     {text}
     <span
       aria-hidden
       className={cn(
         // Kelimenin hemen altında, yazı boyutuyla orantılı kalınlıkta çizgi
-        'absolute inset-x-0 -bottom-[0.06em] h-[0.1em] origin-left rounded-full bg-brand transition-transform ease-out motion-reduce:transition-none rtl:origin-right',
+        'absolute inset-x-0 -bottom-[0.06em] h-[0.1em] origin-left rounded-full transition-transform ease-out motion-reduce:transition-none rtl:origin-right',
+        lineClassName,
         // Açılış: kartın metni belirdikten sonra başlar
         active ? 'scale-x-100 delay-300 duration-300' : 'scale-x-0 delay-0 duration-200',
       )}

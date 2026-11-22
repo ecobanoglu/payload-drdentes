@@ -46,7 +46,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   return (
     <div className="pt-24 pb-24">
       <PageClient />
-      {/* Lacivert başlık bandı; -mt: üst boşluk (6rem) + header (6.5rem) */}
+      {/* Açık başlık bandı; -mt: üst boşluk (6rem) + header (6.5rem) */}
       <PageHeader
         locale={locale}
         crumbs={[{ url: BLOG_PATH, label: t('title') }]}
